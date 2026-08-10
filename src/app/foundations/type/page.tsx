@@ -19,8 +19,8 @@ export default function TypePage() {
         description="Display through body and UI. Tighten tracking as size grows — -0.02em on headlines, -0.03em on display."
       >
         <Preview className="block">
-          <p className="text-display m-0 font-bold">Software, made.</p>
-          <p className="text-graphite mt-4 mb-0 max-w-[52ch] text-[16px]/[1.6]">
+          <p className="m-0 text-display font-bold">Software, made.</p>
+          <p className="mt-4 mb-0 max-w-[52ch] text-[16px]/[1.6] text-graphite">
             We write like engineers who care about the craft. Plain words about real work, numbers instead of
             adjectives, short declaratives. The work speaks; we do not oversell it.
           </p>
@@ -40,8 +40,8 @@ export default function TypePage() {
               ['Fleet', '120 vehicles'],
             ].map(([label, value]) => (
               <div key={label}>
-                <div className="text-concrete font-mono text-[11px] font-bold tracking-eyebrow uppercase">{label}</div>
-                <div className="text-ink mt-1 text-[22px] font-bold tracking-tight">{value}</div>
+                <div className="font-mono text-[11px] font-bold tracking-eyebrow text-concrete uppercase">{label}</div>
+                <div className="mt-1 text-[22px] font-bold tracking-tight text-ink">{value}</div>
               </div>
             ))}
           </div>
@@ -49,16 +49,19 @@ export default function TypePage() {
       </Section>
 
       <Section title="Scale">
-        <div className="border-line overflow-hidden rounded-sm border">
+        <div className="overflow-hidden rounded-sm border border-line">
           {typeScale.map((step) => (
-            <div key={step.name} className="border-line grid gap-3 border-b p-5 last:border-b-0 sm:grid-cols-[180px_1fr]">
+            <div
+              key={step.name}
+              className="grid gap-3 border-b border-line p-5 last:border-b-0 sm:grid-cols-[180px_1fr]"
+            >
               <div>
-                <div className="text-ink text-[14px] font-semibold">{step.name}</div>
-                <code className="text-concrete font-mono text-[11px]">{step.utility}</code>
-                <p className="text-concrete m-0 mt-1 font-mono text-[11px]">{step.value}</p>
+                <div className="text-[14px] font-semibold text-ink">{step.name}</div>
+                <code className="font-mono text-[11px] text-concrete">{step.utility}</code>
+                <p className="m-0 mt-1 font-mono text-[11px] text-concrete">{step.value}</p>
               </div>
               <div>
-                <p className="text-graphite m-0 text-[13px]/[1.5]">{step.note}</p>
+                <p className="m-0 text-[13px]/[1.5] text-graphite">{step.note}</p>
               </div>
             </div>
           ))}

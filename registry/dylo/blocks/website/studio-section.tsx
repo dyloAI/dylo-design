@@ -12,13 +12,13 @@ export function StudioSection() {
     <section id="studio" className="bg-ink px-8 py-[84px]">
       <div className="mx-auto max-w-[1180px]">
         <Eyebrow tone="light">How we work</Eyebrow>
-        <h2 className="text-bone mt-[18px] mb-11 text-[40px] font-bold tracking-tight">Precise. Engineered. Bold.</h2>
+        <h2 className="mt-[18px] mb-11 text-[40px] font-bold tracking-tight text-bone">Precise. Engineered. Bold.</h2>
         <div className="grid gap-10 md:grid-cols-3">
           {STEPS.map((step) => (
-            <div key={step.n} className="border-graphite border-t pt-5">
-              <div className="text-oxide font-mono text-[13px] font-bold tracking-[0.1em]">{step.n}</div>
-              <div className="text-bone mt-2.5 text-[22px] font-semibold">{step.title}</div>
-              <p className="text-bone/80 mt-2.5 text-[15px]/[1.6]">{step.body}</p>
+            <div key={step.n} className="border-t border-graphite pt-5">
+              <div className="font-mono text-[13px] font-bold tracking-[0.1em] text-oxide">{step.n}</div>
+              <div className="mt-2.5 text-[22px] font-semibold text-bone">{step.title}</div>
+              <p className="mt-2.5 text-[15px]/[1.6] text-bone/80">{step.body}</p>
             </div>
           ))}
         </div>

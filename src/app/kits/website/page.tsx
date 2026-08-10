@@ -34,7 +34,7 @@ export default function WebsiteKitPage() {
         />
       </Page>
 
-      <div className="border-line border-t">
+      <div className="border-t border-line">
         <WebsiteKit />
       </div>
     </>

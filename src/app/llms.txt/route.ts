@@ -37,7 +37,9 @@ export function GET() {
     '',
     '## Colour tokens',
     '',
-    ...[...neutrals, ...accents].map((token) => `- ${token.name}: ${token.value} · ${token.token} · ${token.utility} — ${token.role}`),
+    ...[...neutrals, ...accents].map(
+      (token) => `- ${token.name}: ${token.value} · ${token.token} · ${token.utility} — ${token.role}`
+    ),
     '',
     '## Type',
     '',
@@ -56,7 +58,9 @@ export function GET() {
     ...componentDocs.flatMap((doc) => [
       `### ${doc.name} (${doc.source})`,
       doc.lead,
-      ...doc.props.map((prop) => `- ${prop.name}: ${prop.type}${prop.default ? ` = ${prop.default}` : ''} — ${prop.description}`),
+      ...doc.props.map(
+        (prop) => `- ${prop.name}: ${prop.type}${prop.default ? ` = ${prop.default}` : ''} — ${prop.description}`
+      ),
       '',
     ]),
     '## Choosing a layer',

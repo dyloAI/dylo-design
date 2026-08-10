@@ -53,10 +53,25 @@ export const componentDocs: ComponentDoc[] = [
       </>
     ),
     props: [
-      { name: 'variant', type: "'primary' | 'secondary' | 'ghost'", default: "'primary'", description: 'Visual weight. Ghost has no plate, so it darkens instead of seating.' },
+      {
+        name: 'variant',
+        type: "'primary' | 'secondary' | 'ghost'",
+        default: "'primary'",
+        description: 'Visual weight. Ghost has no plate, so it darkens instead of seating.',
+      },
       { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Control size.' },
-      { name: 'disabled', type: 'boolean', default: 'false', description: 'Drops the shadow and the press transform along with the interaction.' },
-      { name: 'type', type: "'button' | 'submit' | 'reset'", default: "'button'", description: 'Defaults to button so a stray control never submits a form by accident.' },
+      {
+        name: 'disabled',
+        type: 'boolean',
+        default: 'false',
+        description: 'Drops the shadow and the press transform along with the interaction.',
+      },
+      {
+        name: 'type',
+        type: "'button' | 'submit' | 'reset'",
+        default: "'button'",
+        description: 'Defaults to button so a stray control never submits a form by accident.',
+      },
       CLASS_NAME_PROP,
     ],
     notes: (
@@ -130,10 +145,23 @@ export const componentDocs: ComponentDoc[] = [
       </>
     ),
     props: [
-      { name: 'tone', type: "'light' | 'ink'", default: "'light'", description: 'Paper panel with ink text, or the reverse.' },
+      {
+        name: 'tone',
+        type: "'light' | 'ink'",
+        default: "'light'",
+        description: 'Paper panel with ink text, or the reverse.',
+      },
       { name: 'elevated', type: 'boolean', default: 'true', description: 'The hard block-shadow offset.' },
-      { name: 'eyebrow', type: 'ReactNode', description: 'Mono section label above the title. Tone follows the panel.' },
-      { name: 'title', type: 'ReactNode', description: 'Panel heading. Shadows the native title attribute, which a card has no use for.' },
+      {
+        name: 'eyebrow',
+        type: 'ReactNode',
+        description: 'Mono section label above the title. Tone follows the panel.',
+      },
+      {
+        name: 'title',
+        type: 'ReactNode',
+        description: 'Panel heading. Shadows the native title attribute, which a card has no use for.',
+      },
       CLASS_NAME_PROP,
     ],
   },
@@ -154,7 +182,12 @@ export const componentDocs: ComponentDoc[] = [
       </Preview>
     ),
     props: [
-      { name: 'variant', type: "'default' | 'solid' | 'accent' | 'muted'", default: "'default'", description: 'Weight of the chip. Accent spends the view\u2019s one oxide note.' },
+      {
+        name: 'variant',
+        type: "'default' | 'solid' | 'accent' | 'muted'",
+        default: "'default'",
+        description: 'Weight of the chip. Accent spends the view\u2019s one oxide note.',
+      },
       CLASS_NAME_PROP,
     ],
     notes: (
@@ -186,14 +219,19 @@ export const componentDocs: ComponentDoc[] = [
       </>
     ),
     props: [
-      { name: 'tone', type: "'dark' | 'light'", default: "'dark'", description: 'Dark for bone surfaces, light for ink.' },
+      {
+        name: 'tone',
+        type: "'dark' | 'light'",
+        default: "'dark'",
+        description: 'Dark for bone surfaces, light for ink.',
+      },
       { name: 'tick', type: 'boolean', default: 'true', description: 'The oxide square.' },
       CLASS_NAME_PROP,
     ],
     notes: (
       <p className="m-0">
-        The tick is oxide, so a view with an Eyebrow has already spent its one accent. Drop the tick, or drop the
-        other oxide element — do not run both.
+        The tick is oxide, so a view with an Eyebrow has already spent its one accent. Drop the tick, or drop the other
+        oxide element — do not run both.
       </p>
     ),
   },

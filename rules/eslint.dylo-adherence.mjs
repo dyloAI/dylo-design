@@ -58,8 +58,7 @@ function rules({ allowCatalystScales }) {
   return [
     {
       selector: 'Literal[value=/#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?\\b/]',
-      message:
-        'Raw hex colour. Use a dylo token: bg-ink, text-oxide, border-line, or var(--dylo-*) outside Tailwind.',
+      message: 'Raw hex colour. Use a dylo token: bg-ink, text-oxide, border-line, or var(--dylo-*) outside Tailwind.',
     },
     {
       selector: `Literal[value=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-\\d{2,3}\\b/]`,
@@ -75,7 +74,7 @@ function rules({ allowCatalystScales }) {
       message: 'No emoji. The mono type layer carries whatever texture is needed.',
     },
     {
-      selector: "Literal[value=/font-family\\s*:\\s*(?!['\"]?(?:Space Grotesk|Space Mono|var\\(--dylo-font))/i]",
+      selector: 'Literal[value=/font-family\\s*:\\s*(?![\'"]?(?:Space Grotesk|Space Mono|var\\(--dylo-font))/i]',
       message: 'Only two families exist: Space Grotesk (human) and Space Mono (technical).',
     },
   ]

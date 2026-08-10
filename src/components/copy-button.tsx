@@ -19,9 +19,9 @@ export function CopyButton({ value, className }: { value: string; className?: st
         void navigator.clipboard.writeText(value).then(() => setCopied(true))
       }}
       className={cn(
-        'border-line text-concrete hover:text-ink hover:border-concrete rounded-sm border px-2 py-1',
+        'rounded-sm border border-line px-2 py-1 text-concrete hover:border-concrete hover:text-ink',
         'font-mono text-[10px] tracking-eyebrow uppercase transition-colors',
-        'focus-visible:outline-oxide focus-visible:outline-2 focus-visible:outline-offset-2',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oxide',
         className
       )}
     >

@@ -105,13 +105,41 @@
         "dyloAI/dylo-design/brand-assets"
       ],
       "files": [
-        { "path": "blocks/website/index.tsx", "type": "registry:component", "target": "~/src/components/website/index.tsx" },
-        { "path": "blocks/website/header.tsx", "type": "registry:component", "target": "~/src/components/website/header.tsx" },
-        { "path": "blocks/website/hero.tsx", "type": "registry:component", "target": "~/src/components/website/hero.tsx" },
-        { "path": "blocks/website/work-section.tsx", "type": "registry:component", "target": "~/src/components/website/work-section.tsx" },
-        { "path": "blocks/website/studio-section.tsx", "type": "registry:component", "target": "~/src/components/website/studio-section.tsx" },
-        { "path": "blocks/website/contact-section.tsx", "type": "registry:component", "target": "~/src/components/website/contact-section.tsx" },
-        { "path": "blocks/website/footer.tsx", "type": "registry:component", "target": "~/src/components/website/footer.tsx" }
+        {
+          "path": "blocks/website/index.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/index.tsx"
+        },
+        {
+          "path": "blocks/website/header.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/header.tsx"
+        },
+        {
+          "path": "blocks/website/hero.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/hero.tsx"
+        },
+        {
+          "path": "blocks/website/work-section.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/work-section.tsx"
+        },
+        {
+          "path": "blocks/website/studio-section.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/studio-section.tsx"
+        },
+        {
+          "path": "blocks/website/contact-section.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/contact-section.tsx"
+        },
+        {
+          "path": "blocks/website/footer.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/website/footer.tsx"
+        }
       ]
     }
   ]

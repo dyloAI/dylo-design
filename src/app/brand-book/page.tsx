@@ -16,11 +16,11 @@ export default function BrandBookPage() {
       />
 
       <Section title="The document">
-        <div className="border-line overflow-hidden rounded-sm border">
+        <div className="overflow-hidden rounded-sm border border-line">
           <iframe
             src="/brand-book/index.html"
             title="dylo brand book"
-            className="bg-bone h-[80vh] w-full"
+            className="h-[80vh] w-full bg-bone"
             loading="lazy"
           />
         </div>
@@ -30,8 +30,8 @@ export default function BrandBookPage() {
             <a href="/brand-book/index.html" target="_blank" rel="noreferrer">
               in its own tab
             </a>{' '}
-            to page through it full size, or print to PDF — the stylesheet has a landscape print layout, one spread
-            per page.
+            to page through it full size, or print to PDF — the stylesheet has a landscape print layout, one spread per
+            page.
           </p>
         </Prose>
       </Section>

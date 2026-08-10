@@ -15,7 +15,7 @@ one source of truth:
   There is no copy step, so a preview on the site cannot drift from what a
   consumer installs.
 - **The registry** at `registry/` plus [registry.json](registry.json) is a
-  shadcn *source registry*. Because the repo is public, the shadcn CLI installs
+  shadcn _source registry_. Because the repo is public, the shadcn CLI installs
   from it directly — no npm package, no registry server, no `shadcn build`.
 
 Stack: Next.js 16 (App Router) + React 19, Tailwind CSS v4, TypeScript, pnpm 11,
@@ -110,12 +110,12 @@ linter instead of in review. Catalyst apps should use the
 
 ---
 
-## If you are working *in* this repo
+## If you are working _in_ this repo
 
 ### Commands
 
-| Command                  | Purpose                                                   |
-| ------------------------ | --------------------------------------------------------- |
+| Command                  | Purpose                                                    |
+| ------------------------ | ---------------------------------------------------------- |
 | `pnpm dev`               | Docs site on `http://localhost:3000`.                      |
 | `pnpm build`             | Production build. Every route is static.                   |
 | `pnpm lint`              | ESLint flat config.                                        |
@@ -133,17 +133,17 @@ not yet support TypeScript 7.
 
 ### Layout
 
-| Path                    | What it is                                                                       |
-| ----------------------- | -------------------------------------------------------------------------------- |
-| `registry/dylo/theme/`  | Tokens, the Tailwind mapping, the Catalyst layer, the CDN font import.            |
-| `registry/dylo/ui/`     | The five components. Canonical source — this is what consumers get.               |
-| `registry/dylo/blocks/` | The marketing site sections.                                                      |
+| Path                          | What it is                                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
+| `registry/dylo/theme/`        | Tokens, the Tailwind mapping, the Catalyst layer, the CDN font import.                   |
+| `registry/dylo/ui/`           | The five components. Canonical source — this is what consumers get.                      |
+| `registry/dylo/blocks/`       | The marketing site sections.                                                             |
 | `registry/dylo/registry.json` | Item definitions for everything under `registry/dylo/`. Paths are relative to this file. |
-| `registry.json`         | Root catalogue: metadata, `include`, plus the brand-asset and agent-rule items.   |
-| `rules/`                | The Cursor rule and ESLint config shipped by `agent-rules`.                        |
-| `src/`                  | The docs site. Not distributed.                                                    |
-| `public/brand/`         | Brand assets. Served by the site *and* shipped by `brand-assets`.                  |
-| `design-source/`        | The raw Claude Design export. See below.                                           |
+| `registry.json`               | Root catalogue: metadata, `include`, plus the brand-asset and agent-rule items.          |
+| `rules/`                      | The Cursor rule and ESLint config shipped by `agent-rules`.                              |
+| `src/`                        | The docs site. Not distributed.                                                          |
+| `public/brand/`               | Brand assets. Served by the site _and_ shipped by `brand-assets`.                        |
+| `design-source/`              | The raw Claude Design export. See below.                                                 |
 
 ### Adding or changing a component
 
@@ -168,7 +168,7 @@ them onto Tailwind. Change the value in one place only. Every token is prefixed
 `--dylo-` so it can never collide with a consumer's variables.
 
 The spacing scale is deliberately **not** mapped into Tailwind — remapping the
-numeric utilities would quietly change what `p-5` means. Radii and shadows *are*
+numeric utilities would quietly change what `p-5` means. Radii and shadows _are_
 overridden on purpose: in dylo, `rounded-md` is the 8px panel corner.
 
 ### design-source/

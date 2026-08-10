@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
-      <body className="bg-bone text-ink min-h-dvh">
+      <body className="min-h-dvh bg-bone text-ink">
         <div className="lg:grid lg:grid-cols-[260px_1fr]">
           <SiteNav />
           <main className="min-w-0">{children}</main>

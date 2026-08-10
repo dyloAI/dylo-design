@@ -46,15 +46,15 @@ the [Install page](https://design.dylo.dev/install).
 
 ### Items
 
-| Item             | What it installs                                                          |
-| ---------------- | ------------------------------------------------------------------------- |
-| `theme`          | Design tokens plus the Tailwind v4 mapping. Start here.                    |
-| `catalyst-theme` | Remaps Tailwind `zinc`/`blue` onto the dylo palette for Catalyst apps.     |
-| `fonts`          | Space Grotesk + Space Mono over the CDN, for consumers without next/font.  |
-| `button` `input` `card` `badge` `eyebrow` | The components, as TypeScript source you own.     |
-| `brand-assets`   | Keystone mark, logo lockups and app icons into `public/brand/`.            |
-| `agent-rules`    | Cursor brand rule plus the ESLint adherence config.                        |
-| `website-kit`    | The marketing site in six composable sections.                             |
+| Item                                      | What it installs                                                          |
+| ----------------------------------------- | ------------------------------------------------------------------------- |
+| `theme`                                   | Design tokens plus the Tailwind v4 mapping. Start here.                   |
+| `catalyst-theme`                          | Remaps Tailwind `zinc`/`blue` onto the dylo palette for Catalyst apps.    |
+| `fonts`                                   | Space Grotesk + Space Mono over the CDN, for consumers without next/font. |
+| `button` `input` `card` `badge` `eyebrow` | The components, as TypeScript source you own.                             |
+| `brand-assets`                            | Keystone mark, logo lockups and app icons into `public/brand/`.           |
+| `agent-rules`                             | Cursor brand rule plus the ESLint adherence config.                       |
+| `website-kit`                             | The marketing site in six composable sections.                            |
 
 Pin published install commands to a tag so consumers never pick up an
 unreviewed change:
@@ -111,13 +111,13 @@ pnpm install
 pnpm dev
 ```
 
-| Command                  | Purpose                                   |
-| ------------------------ | ----------------------------------------- |
-| `pnpm dev`               | Docs site on `http://localhost:3000`.     |
-| `pnpm build`             | Production build. Every route is static.  |
-| `pnpm lint`              | ESLint.                                   |
-| `pnpm typecheck`         | `tsc --noEmit`.                           |
-| `pnpm registry:validate` | Validate the registry before publishing.  |
+| Command                  | Purpose                                  |
+| ------------------------ | ---------------------------------------- |
+| `pnpm dev`               | Docs site on `http://localhost:3000`.    |
+| `pnpm build`             | Production build. Every route is static. |
+| `pnpm lint`              | ESLint.                                  |
+| `pnpm typecheck`         | `tsc --noEmit`.                          |
+| `pnpm registry:validate` | Validate the registry before publishing. |
 
 The docs site imports components straight out of `registry/`, so a preview on
 the site cannot drift from what a consumer installs.

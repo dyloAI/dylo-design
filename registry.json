@@ -10,18 +10,58 @@
       "title": "Brand assets",
       "description": "The keystone mark, logo lockups and app icons, in SVG and PNG. Installs into public/brand/, which is where the components expect them.",
       "files": [
-        { "path": "public/brand/dylo-logo-horizontal.svg", "type": "registry:file", "target": "~/public/brand/dylo-logo-horizontal.svg" },
-        { "path": "public/brand/dylo-logo-horizontal.png", "type": "registry:file", "target": "~/public/brand/dylo-logo-horizontal.png" },
-        { "path": "public/brand/dylo-logo-horizontal-reversed.svg", "type": "registry:file", "target": "~/public/brand/dylo-logo-horizontal-reversed.svg" },
-        { "path": "public/brand/dylo-logo-horizontal-reversed.png", "type": "registry:file", "target": "~/public/brand/dylo-logo-horizontal-reversed.png" },
-        { "path": "public/brand/dylo-logo-stacked.svg", "type": "registry:file", "target": "~/public/brand/dylo-logo-stacked.svg" },
+        {
+          "path": "public/brand/dylo-logo-horizontal.svg",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-horizontal.svg"
+        },
+        {
+          "path": "public/brand/dylo-logo-horizontal.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-horizontal.png"
+        },
+        {
+          "path": "public/brand/dylo-logo-horizontal-reversed.svg",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-horizontal-reversed.svg"
+        },
+        {
+          "path": "public/brand/dylo-logo-horizontal-reversed.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-horizontal-reversed.png"
+        },
+        {
+          "path": "public/brand/dylo-logo-stacked.svg",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-stacked.svg"
+        },
         { "path": "public/brand/dylo-mark.svg", "type": "registry:file", "target": "~/public/brand/dylo-mark.svg" },
         { "path": "public/brand/dylo-mark.png", "type": "registry:file", "target": "~/public/brand/dylo-mark.png" },
-        { "path": "public/brand/dylo-mark-accent.svg", "type": "registry:file", "target": "~/public/brand/dylo-mark-accent.svg" },
-        { "path": "public/brand/dylo-mark-reversed.svg", "type": "registry:file", "target": "~/public/brand/dylo-mark-reversed.svg" },
-        { "path": "public/brand/dylo-mark-reversed.png", "type": "registry:file", "target": "~/public/brand/dylo-mark-reversed.png" },
-        { "path": "public/brand/dylo-app-icon.png", "type": "registry:file", "target": "~/public/brand/dylo-app-icon.png" },
-        { "path": "public/brand/dylo-app-icon-oxide.png", "type": "registry:file", "target": "~/public/brand/dylo-app-icon-oxide.png" }
+        {
+          "path": "public/brand/dylo-mark-accent.svg",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-mark-accent.svg"
+        },
+        {
+          "path": "public/brand/dylo-mark-reversed.svg",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-mark-reversed.svg"
+        },
+        {
+          "path": "public/brand/dylo-mark-reversed.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-mark-reversed.png"
+        },
+        {
+          "path": "public/brand/dylo-app-icon.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-app-icon.png"
+        },
+        {
+          "path": "public/brand/dylo-app-icon-oxide.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-app-icon-oxide.png"
+        }
       ]
     },
     {

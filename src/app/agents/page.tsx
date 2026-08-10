@@ -22,11 +22,17 @@ export default function AgentsPage() {
         lead="If you are a coding agent asked to build a dylo interface, this page is the short version. The full contract is AGENTS.md in the repo."
       />
 
-      <Section title="Which layer do I use?" description="The most common mistake is forking a Catalyst component to make it look on-brand. The theme already did that.">
+      <Section
+        title="Which layer do I use?"
+        description="The most common mistake is forking a Catalyst component to make it look on-brand. The theme already did that."
+      >
         <CodeBlock code={DECISION} language="decision" />
       </Section>
 
-      <Section title="Do not clone the repo" description="Install the pieces you need. Every item is pinnable to a tag, and installs are reviewable before they touch the working tree.">
+      <Section
+        title="Do not clone the repo"
+        description="Install the pieces you need. Every item is pinnable to a tag, and installs are reviewable before they touch the working tree."
+      >
         <div className="space-y-3">
           <Command>{`pnpm dlx shadcn@latest list ${REGISTRY}`}</Command>
           <Command>{`pnpm dlx shadcn@latest view ${REGISTRY}/card`}</Command>
@@ -34,7 +40,10 @@ export default function AgentsPage() {
         </div>
       </Section>
 
-      <Section title="Inherit the rules" description="Installs the brand rule into .cursor/rules and an ESLint config that fails raw hex colours, so drift is caught by the linter rather than in review.">
+      <Section
+        title="Inherit the rules"
+        description="Installs the brand rule into .cursor/rules and an ESLint config that fails raw hex colours, so drift is caught by the linter rather than in review."
+      >
         <Command>{install('agent-rules')}</Command>
       </Section>
 
@@ -47,8 +56,8 @@ export default function AgentsPage() {
             </li>
             <li>No emoji, anywhere. Line icons only, 2px stroke, from Lucide.</li>
             <li>
-              Never a raw hex value. Use the utilities the theme provides: <code>bg-ink</code>, <code>text-oxide</code>
-              , <code>border-line</code>, <code>shadow-block</code>.
+              Never a raw hex value. Use the utilities the theme provides: <code>bg-ink</code>, <code>text-oxide</code>,{' '}
+              <code>border-line</code>, <code>shadow-block</code>.
             </li>
             <li>
               Cards are stamped plates — ink border plus <code>shadow-block</code>, barely rounded. Not soft floating
@@ -65,8 +74,11 @@ export default function AgentsPage() {
       <Section title="Machine-readable index">
         <Prose>
           <p className="m-0">
-            <a href="/llms.txt">/llms.txt</a> lists every token, component and registry item in one plain-text file.
-            The registry catalogue itself is <a href={`${REPO_URL}/blob/main/registry.json`} rel="noreferrer">registry.json</a>{' '}
+            <a href="/llms.txt">/llms.txt</a> lists every token, component and registry item in one plain-text file. The
+            registry catalogue itself is{' '}
+            <a href={`${REPO_URL}/blob/main/registry.json`} rel="noreferrer">
+              registry.json
+            </a>{' '}
             at the repo root.
           </p>
         </Prose>

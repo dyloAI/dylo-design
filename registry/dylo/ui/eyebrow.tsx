@@ -32,7 +32,7 @@ export interface EyebrowProps extends React.ComponentProps<'span'>, VariantProps
 export function Eyebrow({ className, tone, tick = true, children, ...props }: EyebrowProps) {
   return (
     <span data-slot="eyebrow" className={cn(eyebrowVariants({ tone }), className)} {...props}>
-      {tick && <span aria-hidden="true" className="bg-oxide inline-block size-[10px] flex-none" />}
+      {tick && <span aria-hidden="true" className="inline-block size-[10px] flex-none bg-oxide" />}
       {children}
     </span>
   )

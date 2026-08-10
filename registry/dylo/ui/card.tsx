@@ -1,5 +1,5 @@
-import { Eyebrow } from '@/registry/dylo/ui/eyebrow'
 import { cn } from '@/lib/utils'
+import { Eyebrow } from '@/registry/dylo/ui/eyebrow'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -8,7 +8,7 @@ import * as React from 'react'
  * and a hard block-shadow offset, like a stamped plate. Barely rounded, never
  * soft-floating.
  */
-const cardVariants = cva('border-ink rounded-md border p-8', {
+const cardVariants = cva('rounded-md border border-ink p-8', {
   variants: {
     tone: {
       light: 'bg-paper text-ink',
@@ -25,9 +25,7 @@ const cardVariants = cva('border-ink rounded-md border p-8', {
   },
 })
 
-export interface CardProps
-  extends Omit<React.ComponentProps<'div'>, 'title'>,
-    VariantProps<typeof cardVariants> {
+export interface CardProps extends Omit<React.ComponentProps<'div'>, 'title'>, VariantProps<typeof cardVariants> {
   /** Mono section label rendered above the title. */
   eyebrow?: React.ReactNode
   /** Panel heading. Shadows the native `title` attribute, which a card has no use for. */

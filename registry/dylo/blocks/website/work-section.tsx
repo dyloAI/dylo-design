@@ -14,13 +14,13 @@ export function WorkSection() {
     <section id="work" className="bg-paper px-8 py-[84px]">
       <div className="mx-auto max-w-[1180px]">
         <Eyebrow>Selected work</Eyebrow>
-        <h2 className="text-ink mt-[18px] mb-10 text-[40px] font-bold tracking-tight">Dílo, delivered.</h2>
+        <h2 className="mt-[18px] mb-10 text-[40px] font-bold tracking-tight text-ink">Dílo, delivered.</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {PROJECTS.map((project) => (
             <Card key={project.name} className="flex flex-col items-start gap-3.5">
               <Badge variant="muted">{project.industry}</Badge>
-              <div className="text-ink text-[22px] font-bold">{project.name}</div>
-              <p className="text-graphite m-0 text-[15px]/[1.55]">{project.desc}</p>
+              <div className="text-[22px] font-bold text-ink">{project.name}</div>
+              <p className="m-0 text-[15px]/[1.55] text-graphite">{project.desc}</p>
             </Card>
           ))}
         </div>

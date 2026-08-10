@@ -17,7 +17,7 @@ export function ContactSection() {
     <section id="start" className="bg-bone px-8 py-[84px]">
       <div className="mx-auto max-w-[640px]">
         <Eyebrow>Start a project</Eyebrow>
-        <h2 className="text-ink mt-[18px] mb-[30px] text-[36px] font-bold tracking-tight">
+        <h2 className="mt-[18px] mb-[30px] text-[36px] font-bold tracking-tight text-ink">
           Tell us what you&rsquo;re building.
         </h2>
         {sent ? (

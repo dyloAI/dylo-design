@@ -1,0 +1,12 @@
+# The raw Claude Design export. Kept byte-for-byte so a future sync has
+# somewhere to land — see AGENTS.md. Not maintained, not linted, not formatted.
+design-source/
+
+# Claude Design's own brand-book runtime, served verbatim in an iframe.
+public/brand-book/
+
+# Generated.
+.next/
+out/
+.vercel/
+pnpm-lock.yaml

@@ -6,24 +6,24 @@ export const metadata: Metadata = { title: 'Colour' }
 
 function Swatch({ token, reversed }: { token: ColourToken; reversed?: boolean }) {
   return (
-    <div className="border-line overflow-hidden rounded-sm border">
+    <div className="overflow-hidden rounded-sm border border-line">
       <div
         className="h-24 w-full"
         style={{ backgroundColor: `var(${token.token})` }}
         role="img"
         aria-label={`${token.name}, ${token.value}`}
       />
-      <div className="border-line border-t p-4">
+      <div className="border-t border-line p-4">
         <div className="flex items-baseline justify-between gap-3">
-          <span className="text-ink text-[15px] font-semibold">{token.name}</span>
-          <code className="text-concrete font-mono text-[11px] uppercase">{token.value}</code>
+          <span className="text-[15px] font-semibold text-ink">{token.name}</span>
+          <code className="font-mono text-[11px] text-concrete uppercase">{token.value}</code>
         </div>
-        <p className="text-graphite mt-1.5 mb-2 text-[13px]/[1.5]">{token.role}</p>
+        <p className="mt-1.5 mb-2 text-[13px]/[1.5] text-graphite">{token.role}</p>
         <div className="flex flex-wrap gap-2">
-          <code className="bg-bone text-graphite rounded-sm px-1.5 py-0.5 font-mono text-[11px]">{token.token}</code>
-          <code className="bg-bone text-graphite rounded-sm px-1.5 py-0.5 font-mono text-[11px]">{token.utility}</code>
+          <code className="rounded-sm bg-bone px-1.5 py-0.5 font-mono text-[11px] text-graphite">{token.token}</code>
+          <code className="rounded-sm bg-bone px-1.5 py-0.5 font-mono text-[11px] text-graphite">{token.utility}</code>
         </div>
-        {reversed && <p className="text-concrete mt-2 mb-0 text-[12px]">Pairs with bone text.</p>}
+        {reversed && <p className="mt-2 mb-0 text-[12px] text-concrete">Pairs with bone text.</p>}
       </div>
     </div>
   )

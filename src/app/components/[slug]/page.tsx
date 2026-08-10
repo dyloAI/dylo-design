@@ -1,10 +1,10 @@
-import { CodeBlock, Command, Page, PageHeader, Prose, PropsTable, Section } from '@/components/docs'
+import { CodeBlock, Command, Page, PageHeader, PropsTable, Prose, Section } from '@/components/docs'
 import { componentDocs, getComponentDoc } from '@/lib/component-docs'
 import { install } from '@/lib/registry'
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { notFound } from 'next/navigation'
 
 type Params = { params: Promise<{ slug: string }> }
 
@@ -51,8 +51,8 @@ export default async function ComponentPage({ params }: Params) {
       )}
 
       <Section title="Source" description={`registry/${doc.source}`}>
-        <details className="border-line rounded-sm border">
-          <summary className="text-graphite hover:text-ink cursor-pointer px-4 py-3 font-mono text-[11px] tracking-eyebrow uppercase">
+        <details className="rounded-sm border border-line">
+          <summary className="cursor-pointer px-4 py-3 font-mono text-[11px] tracking-eyebrow text-graphite uppercase hover:text-ink">
             Show source
           </summary>
           <div className="p-4 pt-0">
