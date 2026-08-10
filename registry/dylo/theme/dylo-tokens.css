@@ -1,0 +1,94 @@
+/* dylo — design tokens.
+ *
+ * Raw values only, as plain CSS custom properties on :root. This file has no
+ * Tailwind dependency, so it also drives static HTML, email and one-off
+ * artifacts. dylo-theme.css maps these onto Tailwind utilities.
+ *
+ * Every token is prefixed --dylo- so it can never collide with a consumer's
+ * own variables or with Tailwind's theme namespace.
+ *
+ * This file does not load the webfonts — CSS requires @import to precede all
+ * other rules, so it cannot be done from here. Use next/font (see AGENTS.md)
+ * or import dylo-fonts.css as the very first line of your stylesheet.
+ */
+
+:root {
+  /* Colour — warm monochrome carries ~95% of the work. */
+  --dylo-ink: #1b1714; /* primary: text, the mark */
+  --dylo-graphite: #3a352f; /* secondary ink / dark surfaces */
+  --dylo-concrete: #8e857a; /* muted: captions, metadata */
+  --dylo-line: #d8cfbc; /* hairlines on bone */
+  --dylo-bone: #ece6d8; /* primary surface */
+  --dylo-paper: #f6f3ec; /* lighter surface / cards */
+
+  /* The one accent. Oxide appears once per view — never a second hue. */
+  --dylo-oxide: #9a5236;
+  --dylo-oxide-deep: #7e4029; /* pressed / hover */
+
+  /* Semantic aliases. Prefer these in product code. */
+  --dylo-text-strong: var(--dylo-ink);
+  --dylo-text-body: var(--dylo-graphite);
+  --dylo-text-muted: var(--dylo-concrete);
+  --dylo-surface-page: var(--dylo-bone);
+  --dylo-surface-card: var(--dylo-paper);
+  --dylo-surface-ink: var(--dylo-ink);
+  --dylo-hairline: var(--dylo-line);
+
+  /* Type — two families only.
+   * These are ordinary runtime variables, so an app using next/font can
+   * redefine them in its own :root and every utility follows. See AGENTS.md. */
+  --dylo-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --dylo-font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Scale. Display and h1 fluid; everything below fixed. */
+  --dylo-text-display: clamp(44px, 6vw, 80px);
+  --dylo-text-h1: clamp(30px, 4vw, 48px);
+  --dylo-text-h2: 28px;
+  --dylo-text-h3: 20px;
+  --dylo-text-body-size: 16px;
+  --dylo-text-small: 13px;
+  --dylo-text-mono-size: 12px;
+
+  --dylo-leading-tight: 1.02;
+  --dylo-leading-body: 1.6;
+  --dylo-tracking-tight: -0.02em; /* display / headlines */
+  --dylo-tracking-mono: 0.08em; /* eyebrows, labels */
+  --dylo-tracking-eyebrow: 0.24em; /* the mono section label */
+
+  /* Space — 4px base. Matches Tailwind's default rhythm, so this scale is
+   * provided for non-Tailwind consumers and is deliberately NOT mapped onto
+   * Tailwind's numeric spacing (p-5 stays 20px, not 24px). */
+  --dylo-space-1: 4px;
+  --dylo-space-2: 8px;
+  --dylo-space-3: 12px;
+  --dylo-space-4: 16px;
+  --dylo-space-5: 24px;
+  --dylo-space-6: 32px;
+  --dylo-space-7: 48px;
+  --dylo-space-8: 64px;
+  --dylo-space-9: 96px;
+
+  /* Radii — mostly square. */
+  --dylo-radius-none: 0px;
+  --dylo-radius-sm: 4px;
+  --dylo-radius-md: 8px;
+  --dylo-radius-lg: 14px;
+  --dylo-radius-pill: 999px;
+
+  /* Borders */
+  --dylo-border-hair: 1px solid var(--dylo-line);
+  --dylo-border-ink: 1px solid var(--dylo-ink);
+
+  /* Shadows — restrained. The hard block offset is the brand's real shadow:
+   * a stamped plate, not a soft floating card. */
+  --dylo-shadow-sm: 0 1px 2px rgb(27 23 20 / 0.08);
+  --dylo-shadow-md: 0 6px 18px rgb(27 23 20 / 0.12);
+  --dylo-shadow-lg: 0 18px 40px rgb(27 23 20 / 0.2);
+  --dylo-shadow-block: 6px 6px 0 rgb(27 23 20 / 0.12);
+  --dylo-shadow-block-sm: 4px 4px 0 rgb(27 23 20 / 0.18);
+  --dylo-shadow-block-seated: 1px 1px 0 rgb(27 23 20 / 0.2);
+
+  /* The engineering grid — the only "pattern" in the system. */
+  --dylo-grid-line: rgb(27 23 20 / 0.05);
+  --dylo-grid-line-reversed: rgb(236 230 216 / 0.05);
+}

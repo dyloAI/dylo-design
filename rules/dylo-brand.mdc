@@ -1,0 +1,78 @@
+---
+description: dylo brand and design-system rules. Apply when writing any UI, markup, styling or user-facing copy in a dylo project.
+alwaysApply: false
+globs: ["**/*.tsx", "**/*.jsx", "**/*.css", "**/*.mdx"]
+---
+
+# dylo brand rules
+
+dylo is an AI-native software factory. The name plays on Czech: _dílo_, a crafted
+work, against _robota_, drudgery. We make dílo, not robota. The visual system is
+an industrial foundry: warm monochrome, structural, utilitarian, with a single
+molten note.
+
+Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
+`/llms.txt` on the docs site.
+
+## Non-negotiables
+
+- **The brand is lowercase.** Always `dylo`. The work is capitalised: a Dílo.
+- **One accent per view.** Oxide (`--dylo-oxide`, `#9A5236`) appears exactly
+  once — the keystone, one link, or the single number that matters. An
+  `<Eyebrow>` already spends it: its tick is the accent.
+- **Never a second hue.** No green for success, no red for danger. Status is
+  carried by the Badge's mono type and border weight.
+- **Two families only.** Space Grotesk for anything human, Space Mono for the
+  technical layer — eyebrows, labels, data, metadata — uppercase with wide
+  tracking. Never a third.
+- **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide.
+- **No raw hex, ever.** Use the theme utilities: `bg-ink`, `text-oxide`,
+  `border-line`, `shadow-block`. Outside Tailwind, `var(--dylo-*)`.
+- **Cards are stamped plates.** Ink border plus the hard block-shadow offset
+  (`shadow-block`), barely rounded. Not soft floating cards.
+- **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
+  no glass or blur. The only pattern is the 48px engineering grid
+  (`grid-paper`). The one translucent touch is the oxide focus ring on fields.
+- **Mechanical motion.** 120–180ms, linear to ease-out. Hover darkens; press
+  shifts down and right into the shadow so the plate seats. No bounces, no
+  float loops, and never fade an interactive element to mush.
+- **Never redraw the keystone mark.** Use the files in `public/brand/`. No
+  rotating, recolouring, restacking or effects.
+
+## Which layer to build on
+
+Catalyst-based apps (`dylo`, `pss-platform`, anything from the AxLabs
+boilerplate) install the dylo theme plus the Catalyst compatibility layer, which
+remaps Tailwind's `zinc` and `blue` scales onto the dylo palette. In those apps:
+
+- Keep using Catalyst primitives. **Do not fork Catalyst's Button, Input or
+  Badge to make them on-brand** — the theme already did that, and a fork will
+  drift.
+- `zinc-*` and `blue-*` utilities are correct there; they resolve to the dylo
+  palette.
+- Reach into the dylo registry only for what Catalyst lacks: `Eyebrow` and the
+  foundry `Card`.
+
+Everywhere else — marketing sites, static mocks, one-off artifacts — install the
+dylo components and use them directly.
+
+Install with the shadcn CLI, do not clone the repo:
+
+```bash
+pnpm dlx shadcn@latest add dyloAI/dylo-design/theme
+pnpm dlx shadcn@latest list dyloAI/dylo-design
+```
+
+## Voice
+
+Precise, engineered, bold. We write like engineers who care about the craft.
+
+- Plain words about real work. Say what a thing does, never what it "leverages".
+- Numbers over adjectives. "Ship a working pipeline in six weeks" beats
+  "rapidly deliver best-in-class solutions".
+- Confident, never loud. Short declaratives. The work speaks.
+- First and second person: "we" (dylo) and "you" (the client). Never faceless
+  third-person corporate.
+
+Recurring lines: _We make dílo — not robota._ · _Software, made._ ·
+_Made, not churned._

@@ -1,0 +1,39 @@
+/* dylo — Catalyst compatibility layer.
+ *
+ * Only for apps built on the Catalyst UI Kit (dylo, pss-platform and anything
+ * from the AxLabs boilerplate). Catalyst hard-codes Tailwind's `zinc` scale for
+ * neutrals and `blue` for the accent and focus rings. Rather than fork every
+ * Catalyst component, this remaps those two scales onto the dylo palette, so
+ * every existing zinc-* / blue-* utility already in the app resolves to
+ * Ink / Bone / Graphite / Oxide.
+ *
+ * Import after dylo-theme.css:
+ *
+ *   @import 'tailwindcss';
+ *   @import './dylo/dylo-theme.css';
+ *   @import './dylo/dylo-catalyst.css';
+ *
+ * The intermediate steps are interpolated between the six dylo neutrals;
+ * only the commented lines are real brand tokens.
+ */
+
+@theme {
+  /* Warm neutrals — replaces zinc. */
+  --color-zinc-50: #f6f3ec; /* paper */
+  --color-zinc-100: #ece6d8; /* bone */
+  --color-zinc-200: #dfd7c6;
+  --color-zinc-300: #d8cfbc; /* line */
+  --color-zinc-400: #b3aa9c;
+  --color-zinc-500: #8e857a; /* concrete */
+  --color-zinc-600: #6b635a;
+  --color-zinc-700: #4e4842;
+  --color-zinc-800: #3a352f; /* graphite */
+  --color-zinc-900: #26221e;
+  --color-zinc-950: #1b1714; /* ink */
+
+  /* Accent — replaces blue on primary actions and focus rings. */
+  --color-blue-400: #b0654a;
+  --color-blue-500: #9a5236; /* oxide */
+  --color-blue-600: #8a492f;
+  --color-blue-700: #7e4029; /* oxide-deep */
+}

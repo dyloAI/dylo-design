@@ -1,0 +1,48 @@
+{
+  "name": "dylo-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The dylo design system — brand tokens, Tailwind theme, React components and brand assets, published as a shadcn source registry.",
+  "homepage": "https://github.com/dyloAI/dylo-design#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyloAI/dylo-design.git"
+  },
+  "packageManager": "pnpm@11.2.2",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "registry:validate": "shadcn registry validate ./registry.json"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.0",
+    "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "shadcn": "^4.16.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
+  }
+}

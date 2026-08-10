@@ -1,0 +1,91 @@
+/* dylo — Tailwind v4 theme.
+ *
+ * Maps the raw tokens onto Tailwind utilities: bg-ink, text-oxide, border-line,
+ * font-mono, shadow-block, rounded-md.
+ *
+ * Import once, after Tailwind:
+ *
+ *   @import 'tailwindcss';
+ *   @import './dylo/dylo-theme.css';
+ *
+ * `@theme inline` emits the var() reference into the utility rather than
+ * copying the value, so redefining a --dylo-* token anywhere in :root
+ * retargets every utility at runtime. That is what makes the next/font
+ * override in AGENTS.md work.
+ */
+
+@import './dylo-tokens.css';
+
+@theme inline {
+  /* Colour. The full palette is exposed; oxide is the only accent and the
+     "once per view" rule is a review rule, not something CSS can enforce. */
+  --color-ink: var(--dylo-ink);
+  --color-graphite: var(--dylo-graphite);
+  --color-concrete: var(--dylo-concrete);
+  --color-line: var(--dylo-line);
+  --color-bone: var(--dylo-bone);
+  --color-paper: var(--dylo-paper);
+  --color-oxide: var(--dylo-oxide);
+  --color-oxide-deep: var(--dylo-oxide-deep);
+
+  /* Type. Space Grotesk is the default sans, so unstyled text is already
+     on-brand and `font-sans` is rarely needed in markup. */
+  --font-sans: var(--dylo-font-display);
+  --font-mono: var(--dylo-font-mono);
+
+  --text-display: var(--dylo-text-display);
+  --text-display--line-height: var(--dylo-leading-tight);
+  --text-display--letter-spacing: -0.03em;
+  --text-h1: var(--dylo-text-h1);
+  --text-h1--line-height: 1.05;
+  --text-h1--letter-spacing: var(--dylo-tracking-tight);
+  --text-h2: var(--dylo-text-h2);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: var(--dylo-tracking-tight);
+  --text-h3: var(--dylo-text-h3);
+  --text-h3--line-height: 1.3;
+
+  --tracking-tight: var(--dylo-tracking-tight);
+  --tracking-mono: var(--dylo-tracking-mono);
+  --tracking-eyebrow: var(--dylo-tracking-eyebrow);
+
+  /* Radii. Deliberately overrides Tailwind's defaults — in dylo,
+     `rounded-md` means the 8px panel corner, not Tailwind's 6px. */
+  --radius-sm: var(--dylo-radius-sm);
+  --radius-md: var(--dylo-radius-md);
+  --radius-lg: var(--dylo-radius-lg);
+
+  /* Shadows. `shadow-block` is the signature stamped-plate offset. */
+  --shadow-sm: var(--dylo-shadow-sm);
+  --shadow-md: var(--dylo-shadow-md);
+  --shadow-lg: var(--dylo-shadow-lg);
+  --shadow-block: var(--dylo-shadow-block);
+  --shadow-block-sm: var(--dylo-shadow-block-sm);
+  --shadow-block-seated: var(--dylo-shadow-block-seated);
+}
+
+@layer base {
+  /* Bone page, ink text, Space Grotesk — the foundation, applied once. */
+  body {
+    background-color: var(--dylo-surface-page);
+    color: var(--dylo-text-strong);
+    font-family: var(--dylo-font-display);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility grid-paper {
+  /* The faint 1px engineering grid. The only pattern in the system. */
+  background-image:
+    linear-gradient(var(--dylo-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dylo-grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility grid-paper-reversed {
+  /* Same grid on ink surfaces. */
+  background-image:
+    linear-gradient(var(--dylo-grid-line-reversed) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dylo-grid-line-reversed) 1px, transparent 1px);
+  background-size: 48px 48px;
+}

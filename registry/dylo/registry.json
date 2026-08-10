@@ -1,0 +1,118 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "dylo theme",
+      "description": "Design tokens plus the Tailwind v4 mapping that turns them into utilities: bg-ink, text-oxide, border-line, font-mono, shadow-block. Start here in every project.",
+      "files": [
+        {
+          "path": "theme/dylo-tokens.css",
+          "type": "registry:file",
+          "target": "~/src/styles/dylo/dylo-tokens.css"
+        },
+        {
+          "path": "theme/dylo-theme.css",
+          "type": "registry:file",
+          "target": "~/src/styles/dylo/dylo-theme.css"
+        }
+      ]
+    },
+    {
+      "name": "catalyst-theme",
+      "type": "registry:theme",
+      "title": "dylo theme for Catalyst",
+      "description": "Remaps Tailwind's zinc and blue scales onto the dylo palette so every existing Catalyst component renders warm. Import after dylo-theme.css.",
+      "registryDependencies": ["dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "theme/dylo-catalyst.css",
+          "type": "registry:file",
+          "target": "~/src/styles/dylo/dylo-catalyst.css"
+        }
+      ]
+    },
+    {
+      "name": "fonts",
+      "type": "registry:item",
+      "title": "dylo webfonts",
+      "description": "Space Grotesk and Space Mono over the Google Fonts CDN, for consumers without a font pipeline. Must be the first line of your stylesheet. Next.js apps should use next/font instead.",
+      "files": [
+        {
+          "path": "theme/dylo-fonts.css",
+          "type": "registry:file",
+          "target": "~/src/styles/dylo/dylo-fonts.css"
+        }
+      ]
+    },
+    {
+      "name": "eyebrow",
+      "type": "registry:ui",
+      "title": "Eyebrow",
+      "description": "The mono section label with an oxide tick. The brand's most recognizable device, and the one that spends the view's single accent.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [{ "path": "ui/eyebrow.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Foundry-stamped action. An ink plate with a hard block shadow that seats on press.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [{ "path": "ui/button.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text field with a mono uppercase label and the oxide focus ring. Stays a Server Component.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [{ "path": "ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Status or technical chip in mono type. Square-ish, part of the engineered layer.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [{ "path": "ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "The signature foundry panel: ink border plus a hard block-shadow offset, barely rounded.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/eyebrow"],
+      "files": [{ "path": "ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "website-kit",
+      "type": "registry:block",
+      "title": "Marketing site",
+      "description": "The dylo homepage in six composable sections: sticky nav, hero on the engineering grid, work grid, studio steps, contact form and footer.",
+      "registryDependencies": [
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/button",
+        "dyloAI/dylo-design/badge",
+        "dyloAI/dylo-design/card",
+        "dyloAI/dylo-design/eyebrow",
+        "dyloAI/dylo-design/input",
+        "dyloAI/dylo-design/brand-assets"
+      ],
+      "files": [
+        { "path": "blocks/website/index.tsx", "type": "registry:component", "target": "~/src/components/website/index.tsx" },
+        { "path": "blocks/website/header.tsx", "type": "registry:component", "target": "~/src/components/website/header.tsx" },
+        { "path": "blocks/website/hero.tsx", "type": "registry:component", "target": "~/src/components/website/hero.tsx" },
+        { "path": "blocks/website/work-section.tsx", "type": "registry:component", "target": "~/src/components/website/work-section.tsx" },
+        { "path": "blocks/website/studio-section.tsx", "type": "registry:component", "target": "~/src/components/website/studio-section.tsx" },
+        { "path": "blocks/website/contact-section.tsx", "type": "registry:component", "target": "~/src/components/website/contact-section.tsx" },
+        { "path": "blocks/website/footer.tsx", "type": "registry:component", "target": "~/src/components/website/footer.tsx" }
+      ]
+    }
+  ]
+}

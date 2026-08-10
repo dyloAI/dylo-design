@@ -1,0 +1,10 @@
+# pnpm settings (pnpm >= 10 reads these from pnpm-workspace.yaml even for
+# non-workspace projects). See https://pnpm.io/settings.
+
+# Explicit per-package allowlist for postinstall scripts. pnpm 11 blocks build
+# scripts by default (true = run, false = silently skip); anything not listed
+# fails the install with ERR_PNPM_IGNORED_BUILDS.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

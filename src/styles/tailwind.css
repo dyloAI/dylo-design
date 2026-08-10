@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+/* The design system itself. Consumers import the published copy of this file;
+   the docs site imports it straight from the registry, so what you see on the
+   site is exactly what gets installed. */
+@import '../../registry/dylo/theme/dylo-theme.css';
+
+@source '../../registry';
+
+/* Fonts come from next/font (see src/app/layout.tsx) rather than the Google
+   Fonts CDN. Retargeting the two font tokens is all it takes: the theme maps
+   them with `@theme inline`, so `font-sans` and `font-mono` emit these var()
+   references and pick up the self-hosted families at runtime. This is the
+   override documented for consumers in AGENTS.md. */
+:root {
+  --dylo-font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  --dylo-font-mono: var(--font-space-mono), 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+@layer base {
+  /* Docs chrome only, not part of the distributed theme. Links are ink with a
+     hairline underline that thickens on hover — oxide is reserved so the one
+     accent per view stays spendable on content. */
+  a {
+    color: var(--dylo-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--dylo-line);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  a:hover {
+    text-decoration-color: var(--dylo-ink);
+  }
+}

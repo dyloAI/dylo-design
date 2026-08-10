@@ -1,0 +1,16 @@
+/* dylo — webfonts over the Google Fonts CDN.
+ *
+ * For static HTML, email and any consumer without a font pipeline. CSS
+ * requires @import to precede every other rule, so this must be the FIRST
+ * line of your stylesheet — ahead of `@import 'tailwindcss'`:
+ *
+ *   @import './dylo/dylo-fonts.css';
+ *   @import 'tailwindcss';
+ *   @import './dylo/dylo-theme.css';
+ *
+ * Next.js apps should skip this file and use next/font instead, which
+ * self-hosts the same two families and avoids a render-blocking request to a
+ * third party. See AGENTS.md.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
