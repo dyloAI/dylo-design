@@ -18,6 +18,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://design.dylo.dev'),
   title: {
     default: 'dylo — design system',
     template: '%s · dylo design system',
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
-      <body className="min-h-dvh">
+      <body className="bg-bone text-ink min-h-dvh">
         <div className="lg:grid lg:grid-cols-[260px_1fr]">
           <SiteNav />
           <main className="min-w-0">{children}</main>

@@ -54,6 +54,12 @@ const FONT_OVERRIDE = `:root {
   --dylo-font-mono: var(--font-space-mono), 'Space Mono', ui-monospace, monospace;
 }`
 
+const BODY_CLASSES = `// Light-only site:
+<body className="bg-bone text-ink">
+
+// App with dark mode — the Catalyst layer already maps these to Bone and Ink:
+<body className="bg-zinc-100 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-100">`
+
 export default function InstallPage() {
   return (
     <Page>
@@ -103,6 +109,13 @@ export default function InstallPage() {
             <code>{REGISTRY}/fonts</code> instead and import it as the very first line of the stylesheet.
           </p>
         </Prose>
+      </Section>
+
+      <Section
+        title="5. Set the page surface"
+        description="The theme puts Space Grotesk on body but deliberately leaves the surface colours to you — a hard background on body would defeat an app's dark-mode toggle."
+      >
+        <CodeBlock code={BODY_CLASSES} language="app/layout.tsx" />
       </Section>
 
       <Section

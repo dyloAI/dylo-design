@@ -65,10 +65,16 @@
 }
 
 @layer base {
-  /* Bone page, ink text, Space Grotesk — the foundation, applied once. */
+  /* Space Grotesk everywhere, so unstyled text is already on-brand and
+     `font-sans` is rarely needed in markup.
+
+     Surface colours are deliberately NOT set here. An app with dark mode --
+     every Catalyst app -- needs the page to follow its own theme toggle, and a
+     hard `background-color` on body would defeat it. Set the pair yourself:
+     `bg-bone text-ink` on a light-only site, or Catalyst's usual
+     `bg-zinc-100 dark:bg-zinc-950`, which the compatibility layer already
+     resolves to Bone and Ink. */
   body {
-    background-color: var(--dylo-surface-page);
-    color: var(--dylo-text-strong);
     font-family: var(--dylo-font-display);
     -webkit-font-smoothing: antialiased;
   }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "dylo",
-  "homepage": "https://github.com/dyloAI/dylo-design",
+  "homepage": "https://design.dylo.dev",
   "include": ["registry/dylo/registry.json"],
   "items": [
     {

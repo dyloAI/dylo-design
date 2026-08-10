@@ -89,6 +89,14 @@ other rule, so a token file cannot do it. Two supported setups:
 - **Anything else.** Install the `fonts` item and make it the first line of the
   stylesheet, ahead of `@import 'tailwindcss'`.
 
+### Page surface
+
+The theme puts Space Grotesk on `body` but sets **no** background or text
+colour there — a hard `background-color` on `body` would defeat an app's
+dark-mode toggle. Set the pair yourself: `bg-bone text-ink` on a light-only
+site, or Catalyst's usual `bg-zinc-100 dark:bg-zinc-950`, which the
+compatibility layer already resolves to Bone and Ink.
+
 ### Inherit the rules
 
 ```bash

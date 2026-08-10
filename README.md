@@ -8,7 +8,7 @@ The name plays on Czech: **_dílo_** — a crafted work, an opus — set against
 "robot". The whole brand runs on that one contrast: **we make _dílo_, not
 robota.** Authored work, never anonymous output.
 
-Docs site: **[design.dylo.ai](https://design.dylo.ai)** · Agent contract:
+Docs site: **[design.dylo.dev](https://design.dylo.dev)** · Agent contract:
 [AGENTS.md](AGENTS.md)
 
 ---
@@ -42,7 +42,7 @@ That gives you `bg-ink`, `text-oxide`, `border-line`, `font-mono`,
 `shadow-block`, `rounded-md` and the rest, all resolving to dylo values.
 
 Full instructions, including fonts and the Catalyst compatibility layer, are on
-the [Install page](https://design.dylo.ai/install).
+the [Install page](https://design.dylo.dev/install).
 
 ### Items
 
