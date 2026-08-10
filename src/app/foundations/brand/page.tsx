@@ -28,6 +28,8 @@ const LOCKUPS = [
 const MEET_BACKGROUNDS = [
   { file: 'dylo-meet-background-bone.png', name: 'Bone' },
   { file: 'dylo-meet-background-ink.png', name: 'Ink' },
+  { file: 'dylo-meet-background-bone-mirrored.png', name: 'Bone, mirrored' },
+  { file: 'dylo-meet-background-ink-mirrored.png', name: 'Ink, mirrored' },
 ] as const
 
 const MARKS = [
@@ -146,9 +148,17 @@ export default function BrandPage() {
         </div>
         <Prose>
           <p className="mt-4">
+            <strong className="text-ink">Use the plain pair unless you have checked otherwise.</strong> Meet composites
+            the background into your outgoing stream and then mirrors only your own self-view, so a wordmark that reads
+            backwards to you reads correctly to everyone else. The mirrored pair is pre-flipped for the setups that
+            mirror the outgoing stream as well — some virtual cameras, and Zoom with <em>Mirror my video</em> left on.
+            Picking it when you did not need it reverses the mark for the whole call.
+          </p>
+          <p>
             The lockup is deliberately much larger than a page equivalent — a call tile is commonly rendered around
             480px wide, so the image is seen at roughly quarter scale. Regenerate them from{' '}
-            <code>brand-templates/meet-background.html</code>; the capture recipe is in the comment at the top.
+            <code>brand-templates/meet-background.html</code>; the capture recipe is in the comment at the top, and{' '}
+            <code>?mirror</code> produces the flipped pair from the same frames.
           </p>
         </Prose>
       </Section>

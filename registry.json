@@ -71,6 +71,16 @@
           "path": "public/brand/dylo-meet-background-ink.png",
           "type": "registry:file",
           "target": "~/public/brand/dylo-meet-background-ink.png"
+        },
+        {
+          "path": "public/brand/dylo-meet-background-bone-mirrored.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-meet-background-bone-mirrored.png"
+        },
+        {
+          "path": "public/brand/dylo-meet-background-ink-mirrored.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-meet-background-ink-mirrored.png"
         }
       ]
     },

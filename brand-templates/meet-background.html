@@ -15,13 +15,25 @@
 
          The two frames are stacked edge to edge at exactly 1920x1080 with no
          page chrome, so regenerating them is a viewport capture at that size
-         with no scaling:
+         with no scaling. Adding ?mirror flips both, which is where the
+         -mirrored pair comes from — same frames, so the two can never drift:
 
            agent-browser set viewport 1920 1080
            agent-browser open file://.../meet-background.html
            agent-browser screenshot dylo-meet-background-bone.png
            agent-browser eval "window.scrollTo(0, 1080)"
            agent-browser screenshot dylo-meet-background-ink.png
+           agent-browser open "file://.../meet-background.html?mirror"
+           agent-browser screenshot dylo-meet-background-bone-mirrored.png
+           agent-browser eval "window.scrollTo(0, 1080)"
+           agent-browser screenshot dylo-meet-background-ink-mirrored.png
+
+         The unmirrored pair is the default and the one that is correct for the
+         people on the call: Meet composites the background into the outgoing
+         stream and then mirrors only your self-view, so a wordmark that reads
+         backwards to you reads correctly to everyone else. The -mirrored pair
+         is for the setups that flip the outgoing stream too — some virtual
+         cameras, and Zoom with "Mirror my video" left on.
 
          Two constraints drive the layout, and both come from how the image is
          actually seen rather than from how it looks at full size:
@@ -87,6 +99,11 @@
           linear-gradient(90deg, var(--dylo-grid-line-reversed) 1px, transparent 1px);
       }
 
+      /* ?mirror pre-flips the frame so it survives a stream that mirrors. */
+      body.mirrored .frame {
+        transform: scaleX(-1);
+      }
+
       /* The lockup is the only thing placed on the frame. */
       .lockup {
         height: 150px;
@@ -137,5 +154,11 @@
         </text>
       </svg>
     </div>
+
+    <script>
+      if (new URLSearchParams(location.search).has('mirror')) {
+        document.body.classList.add('mirrored')
+      }
+    </script>
   </body>
 </html>
