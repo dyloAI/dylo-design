@@ -143,6 +143,7 @@ not yet support TypeScript 7.
 | `rules/`                      | The Cursor rule and ESLint config shipped by `agent-rules`.                              |
 | `src/`                        | The docs site. Not distributed.                                                          |
 | `public/brand/`               | Brand assets. Served by the site _and_ shipped by `brand-assets`.                        |
+| `brand-templates/`            | HTML sources for the rendered brand assets. Capture recipe is in each file.              |
 | `design-source/`              | The raw Claude Design export. See below.                                                 |
 
 ### Adding or changing a component

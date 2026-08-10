@@ -8,7 +8,7 @@
       "name": "brand-assets",
       "type": "registry:item",
       "title": "Brand assets",
-      "description": "The keystone mark, logo lockups and app icons, in SVG and PNG. Installs into public/brand/, which is where the components expect them.",
+      "description": "The keystone mark, logo lockups, app icons and the video-call backgrounds, in SVG and PNG. Installs into public/brand/, which is where the components expect them.",
       "files": [
         {
           "path": "public/brand/dylo-logo-horizontal.svg",
@@ -61,6 +61,16 @@
           "path": "public/brand/dylo-app-icon-oxide.png",
           "type": "registry:file",
           "target": "~/public/brand/dylo-app-icon-oxide.png"
+        },
+        {
+          "path": "public/brand/dylo-meet-background-bone.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-meet-background-bone.png"
+        },
+        {
+          "path": "public/brand/dylo-meet-background-ink.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-meet-background-ink.png"
         }
       ]
     },

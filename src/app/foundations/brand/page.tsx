@@ -25,6 +25,11 @@ const LOCKUPS = [
   },
 ] as const
 
+const MEET_BACKGROUNDS = [
+  { file: 'dylo-meet-background-bone.png', name: 'Bone' },
+  { file: 'dylo-meet-background-ink.png', name: 'Ink' },
+] as const
+
 const MARKS = [
   { file: 'dylo-mark.svg', name: 'Keystone mark', use: 'Monochrome ink.', tone: 'light' },
   { file: 'dylo-mark-accent.svg', name: 'Keystone, accented', use: 'The keystone stone in oxide.', tone: 'light' },
@@ -109,6 +114,43 @@ export default function BrandPage() {
             </div>
           ))}
         </div>
+      </Section>
+
+      <Section
+        title="Video call background"
+        description="1920×1080, for Google Meet, Zoom or Teams. Everything sits in a top band: the person takes the centre and the lower third, and Meet puts the participant name chip in the bottom-left."
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          {MEET_BACKGROUNDS.map((background) => (
+            <figure key={background.file} className="m-0 overflow-hidden rounded-sm border border-line">
+              <a href={`/brand/${background.file}`} download>
+                {/* eslint-disable-next-line @next/next/no-img-element -- fixed specimen of the asset itself */}
+                <img
+                  src={`/brand/${background.file}`}
+                  alt={`dylo ${background.name} video call background`}
+                  className="block w-full"
+                />
+              </a>
+              <figcaption className="flex items-baseline justify-between gap-3 border-t border-line p-4">
+                <span className="text-[14px] font-semibold text-ink">{background.name}</span>
+                <a
+                  href={`/brand/${background.file}`}
+                  download
+                  className="font-mono text-[11px] tracking-eyebrow text-concrete uppercase"
+                >
+                  Download
+                </a>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <Prose>
+          <p className="mt-4">
+            The type is deliberately much larger than a page equivalent — a call tile is commonly rendered around 480px
+            wide, so the image is seen at roughly quarter scale. Regenerate them from{' '}
+            <code>brand-templates/meet-background.html</code>; the capture recipe is in the comment at the top.
+          </p>
+        </Prose>
       </Section>
 
       <Section title="Rules">
