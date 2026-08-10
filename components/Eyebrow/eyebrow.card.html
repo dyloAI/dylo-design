@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" viewport="700x170" subtitle="Mono section label with oxide tick" name="Eyebrow" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{ margin:0; font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .cell{ padding:22px 26px; }
+  .a{ background:var(--surface-card, #F6F3EC); border-bottom:1px solid var(--hairline, #D8CFBC); }
+  .b{ background:var(--dylo-ink, #1B1714); }
+  .eb{ display:inline-flex; align-items:center; gap:11px; font-weight:700; font-size:12px; letter-spacing:0.24em; }
+  .tick{ width:10px; height:10px; background:var(--dylo-oxide, #9A5236); display:inline-block; }
+  .hd{ font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:700; letter-spacing:-0.02em; font-size:30px; margin:10px 0 0; }
+</style>
+</head>
+<body>
+  <div class="cell a">
+    <span class="eb" style="color:var(--text-muted, #8E857A);"><span class="tick"></span>THE IDEA</span>
+    <div class="hd" style="color:var(--dylo-ink, #1B1714);">We make dílo.</div>
+  </div>
+  <div class="cell b">
+    <span class="eb" style="color:var(--dylo-bone, #ECE6D8);"><span class="tick"></span>VOICE &amp; TONE</span>
+    <div class="hd" style="color:var(--dylo-bone, #ECE6D8);">Precise. Engineered. Bold.</div>
+  </div>
+</body>
+</html>

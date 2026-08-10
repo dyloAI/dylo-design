@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x160" subtitle="Bone & paper surfaces, hairline rule" name="Surfaces" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{ margin:0; background:var(--dylo-graphite, #3A352F); font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .row{ display:flex; gap:16px; padding:20px; }
+  .sw{ flex:1; display:flex; flex-direction:column; }
+  .chip{ height:74px; border:1px solid var(--hairline, #D8CFBC); }
+  .nm{ font-size:13px; color:var(--dylo-bone, #ECE6D8); margin-top:10px; font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:600; }
+  .hx{ font-size:11px; color:#A79D8E; margin-top:3px; letter-spacing:0.04em; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--dylo-bone, #ECE6D8);"></div><div class="nm">Bone</div><div class="hx">#ECE6D8 · page</div></div>
+    <div class="sw"><div class="chip" style="background:var(--dylo-paper, #F6F3EC);"></div><div class="nm">Paper</div><div class="hx">#F6F3EC · cards</div></div>
+    <div class="sw"><div class="chip" style="background:var(--dylo-line, #D8CFBC);"></div><div class="nm">Line</div><div class="hx">#D8CFBC · hairlines</div></div>
+  </div>
+</body>
+</html>

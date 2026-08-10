@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="700x140" subtitle="Status & technical chips" name="Badge" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-card, #F6F3EC); font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .wrap{ padding:26px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .b{ display:inline-flex; align-items:center; font-weight:700; font-size:11px; letter-spacing:0.1em; padding:5px 9px; border-radius:var(--radius-sm, 4px); }
+  .default{ background:var(--dylo-bone, #ECE6D8); color:var(--dylo-ink, #1B1714); border:1px solid var(--dylo-ink, #1B1714); }
+  .solid{ background:var(--dylo-ink, #1B1714); color:var(--dylo-bone, #ECE6D8); border:1px solid var(--dylo-ink, #1B1714); }
+  .accent{ background:var(--dylo-oxide, #9A5236); color:var(--dylo-paper, #F6F3EC); border:1px solid var(--dylo-oxide, #9A5236); }
+  .muted{ background:transparent; color:var(--dylo-concrete, #8E857A); border:1px solid var(--dylo-line, #D8CFBC); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="b default">DATA</span>
+    <span class="b solid">SHIPPED</span>
+    <span class="b accent">NEW</span>
+    <span class="b muted">v0.3</span>
+  </div>
+</body>
+</html>

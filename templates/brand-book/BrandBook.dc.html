@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="dylo Brand Book" description="14-page brand book: idea, name, logo system, colour, type, voice, applications" -->
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="./ds-base.js"></script>
+<style>
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:#CFC9BD; scroll-snap-type:y proximity; }
+  #dylo-book{ display:flex; flex-direction:column; align-items:center; gap:22px; padding:26px clamp(12px,3vw,44px) 70px; }
+  .dylo-frame{ width:100%; max-width:1180px; aspect-ratio:1920/1080; overflow:hidden; background:#1B1714; box-shadow:0 10px 34px rgba(33,28,25,0.22); scroll-snap-align:center; }
+  .dylo-page{ width:1920px; height:1080px; transform-origin:0 0; transform:scale(0.6135); }
+  @media print{
+    @page{ size:letter landscape; margin:0.32in; }
+    html,body{ background:#fff !important; scroll-snap-type:none !important; }
+    #dylo-book{ padding:0 !important; gap:0 !important; }
+    .dylo-frame{ max-width:none !important; width:1000px !important; aspect-ratio:auto !important; height:562px !important; box-shadow:none !important; break-after:page; page-break-after:always; }
+    .dylo-page{ transform:scale(0.5208) !important; }
+  }
+</style>
+</helmet>
+
+<div id="dylo-book">
+
+  <!-- 01 · COVER -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Cover" style="background:#1B1714; background-image:linear-gradient(rgba(236,230,216,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(236,230,216,0.05) 1px,transparent 1px); background-size:48px 48px; font-family:'Space Grotesk',sans-serif; padding:84px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">DYLO — VISUAL IDENTITY</span>
+      <span style="font:400 16px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A;">BRAND BOOK · 2026</span>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:26px;">
+      <svg viewBox="0 0 64 56" width="190" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+      <div style="font:700 184px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#ECE6D8;">dylo</div>
+      <div style="width:56px; height:4px; background:#9A5236;"></div>
+      <div style="font:400 23px/1 'Space Mono',monospace; letter-spacing:0.08em; color:#B7AE9F;">We make d&iacute;lo &mdash; not robota.</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#6F665B; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em;">
+      <span>DESIGN SYSTEM &amp; BRAND BOOK</span>
+      <span>01 / 14</span>
+    </div>
+  </section></div>
+
+  <!-- 02 · THE IDEA -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="The idea" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">THE IDEA</span></div>
+    <div style="flex:1; display:flex; align-items:center; gap:80px;">
+      <div style="flex:1.1;">
+        <h1 style="margin:0; font:700 96px/0.98 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#1B1714;">We make <span style="color:#9A5236;">d&iacute;lo</span>,<br>not robota.</h1>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:24px;">
+        <p style="margin:0; font:400 25px/1.55 'Space Grotesk',sans-serif; color:#46403A;"><strong style="font-weight:600; color:#1B1714;">Robota</strong> is the old Czech word for forced, repetitive, anonymous toil &mdash; it's where the word &ldquo;robot&rdquo; comes from.</p>
+        <p style="margin:0; font:400 25px/1.55 'Space Grotesk',sans-serif; color:#46403A;"><strong style="font-weight:600; color:#1B1714;">D&iacute;lo</strong> is its opposite: an authored, crafted, singular <em style="font-style:normal; border-bottom:2px solid #9A5236;">work</em> &mdash; an opus, a made thing someone puts their name to.</p>
+        <p style="margin:0; font:400 25px/1.55 'Space Grotesk',sans-serif; color:#46403A;">A software factory that builds the second, never the first.</p>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:6px;">
+          <span style="font:700 14px/1.4 'Space Mono',monospace; letter-spacing:0.08em; color:#8E857A; border:1px solid #C9C0AE; padding:9px 13px;">ROBOTA · forced · repetitive · anonymous</span>
+          <span style="font:700 22px/1 'Space Grotesk',sans-serif; color:#9A5236;">&rarr;</span>
+          <span style="font:700 14px/1.4 'Space Mono',monospace; letter-spacing:0.08em; color:#3A332E; border:1px solid #1B1714; padding:9px 13px;">D&Iacute;LO · authored · crafted · singular</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>02 / 14</span></div>
+  </section></div>
+
+  <!-- 03 · THE NAME -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="The name" style="background:#F6F3EC; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">THE NAME</span></div>
+    <div style="flex:1; display:flex; align-items:center; gap:70px;">
+      <div style="flex:1; border-right:1px solid #D8CFBC; padding-right:70px;">
+        <div style="font:700 130px/0.9 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#1B1714;">d&iacute;lo</div>
+        <div style="display:flex; gap:18px; align-items:baseline; margin-top:14px; font:400 22px/1 'Space Mono',monospace; color:#8E857A;"><span>/ &#712;&#599;i&#720;lo /</span><span style="color:#C9C0AE;">·</span><span>noun, Czech</span></div>
+        <p style="margin:26px 0 0; font:500 30px/1.4 'Space Grotesk',sans-serif; color:#1B1714;">a work; a created thing; an opus; a body of work.</p>
+        <div style="margin-top:24px; font:400 19px/1.7 'Space Mono',monospace; color:#6F665B;">um&#283;leck&eacute; d&iacute;lo &mdash; a work of art<br>&#382;ivotn&iacute; d&iacute;lo &mdash; a life's work</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:34px;">
+        <div>
+          <div style="font:700 15px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A; margin-bottom:12px;">THE OPPOSITE</div>
+          <p style="margin:0; font:400 23px/1.5 'Space Grotesk',sans-serif; color:#46403A;"><strong style="font-weight:600; color:#1B1714;">robota</strong> &mdash; forced labour, drudgery. Coined into &ldquo;robot&rdquo; by the Czech writer Karel &#268;apek in his 1920s play <em>R.U.R.</em></p>
+        </div>
+        <div style="background:#1B1714; padding:34px 36px; display:flex; gap:26px; align-items:center;">
+          <svg viewBox="0 0 64 56" width="96" aria-hidden="true" style="flex:none;"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+          <p style="margin:0; font:400 19px/1.55 'Space Grotesk',sans-serif; color:#D7CFC0;">Our mark is the <strong style="color:#fff; font-weight:600;">keystone</strong> &mdash; the last, most exact stone that makes an arch stand. Not more bricks; the crafted piece the whole system holds onto.</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>03 / 14</span></div>
+  </section></div>
+
+  <!-- 04 · LOGO MASTER -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Logo master" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — MASTER LOCKUP</span></div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:40px;">
+      <div style="display:flex; align-items:center; gap:36px;">
+        <svg viewBox="0 0 64 56" width="200" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+        <div style="font:700 200px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#1B1714;">dylo</div>
+      </div>
+      <div style="font:400 19px/1.5 'Space Mono',monospace; letter-spacing:0.04em; color:#8E857A; text-align:center;">Primary horizontal lockup &middot; keystone mark + wordmark &middot; monochrome is the default</div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>04 / 14</span></div>
+  </section></div>
+
+  <!-- 05 · THE MARK -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="The mark" style="background:#F6F3EC; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — THE MARK</span></div>
+    <div style="flex:1; display:flex; align-items:center; gap:80px;">
+      <div style="flex:1; display:flex; justify-content:center; align-items:center; background-image:linear-gradient(rgba(27,23,20,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(27,23,20,0.06) 1px,transparent 1px); background-size:34px 34px; border:1px solid #E4DBC9; align-self:stretch; position:relative;">
+        <svg viewBox="0 0 64 56" width="340" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+        <span style="position:absolute; left:24px; top:54px; font:400 14px/1.4 'Space Mono',monospace; color:#A99F8E;">voussoir</span>
+        <span style="position:absolute; right:24px; bottom:54px; font:400 14px/1.4 'Space Mono',monospace; color:#A99F8E;">voussoir</span>
+        <span style="position:absolute; left:50%; top:24px; transform:translateX(-50%); font:700 14px/1.4 'Space Mono',monospace; color:#9A5236;">keystone</span>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:24px;">
+        <h2 style="margin:0; font:700 46px/1.05 'Space Grotesk',sans-serif; letter-spacing:-0.02em; color:#1B1714;">The crafted piece that locks the arch.</h2>
+        <p style="margin:0; font:400 23px/1.55 'Space Grotesk',sans-serif; color:#46403A;">Two flanking stones &mdash; the <strong style="font-weight:600;color:#1B1714;">voussoirs</strong> &mdash; carry the ink. The <strong style="font-weight:600;color:#9A5236;">keystone</strong>, the d&iacute;lo, carries the single accent. Colour marks the made thing.</p>
+        <div style="font:400 17px/1.9 'Space Mono',monospace; color:#6F665B; border-top:1px solid #D8CFBC; padding-top:20px;">GEOMETRY &middot; 3 stones, hairline reveals<br>ACCENT &middot; keystone only &middot; #9A5236<br>INK &middot; voussoirs &middot; #1B1714</div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>05 / 14</span></div>
+  </section></div>
+
+  <!-- 06 · LOCKUPS -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Lockups" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — LOCKUPS &amp; VARIATIONS</span></div>
+    <div style="flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:24px; margin:28px 0;">
+      <div style="background:#F6F3EC; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:18px; position:relative;">
+        <div style="display:flex; align-items:center; gap:18px;"><svg viewBox="0 0 64 56" width="80" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:700 80px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#1B1714;">dylo</span></div>
+        <span style="position:absolute; left:22px; bottom:18px; font:700 12px/1 'Space Mono',monospace; letter-spacing:0.12em; color:#A99F8E;">HORIZONTAL — PRIMARY</span>
+      </div>
+      <div style="background:#F6F3EC; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; position:relative;">
+        <svg viewBox="0 0 64 56" width="74" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+        <span style="font:700 64px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#1B1714;">dylo</span>
+        <span style="position:absolute; left:22px; bottom:18px; font:700 12px/1 'Space Mono',monospace; letter-spacing:0.12em; color:#A99F8E;">STACKED</span>
+      </div>
+      <div style="background:#F6F3EC; border:1px solid #E4DBC9; display:flex; justify-content:center; align-items:center; position:relative;">
+        <svg viewBox="0 0 64 56" width="120" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+        <span style="position:absolute; left:22px; bottom:18px; font:700 12px/1 'Space Mono',monospace; letter-spacing:0.12em; color:#A99F8E;">MARK ONLY</span>
+      </div>
+      <div style="background:#1B1714; display:flex; justify-content:center; align-items:center; gap:18px; position:relative;">
+        <svg viewBox="0 0 64 56" width="74" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg>
+        <span style="font:700 74px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#ECE6D8;">dylo</span>
+        <span style="position:absolute; left:22px; bottom:18px; font:700 12px/1 'Space Mono',monospace; letter-spacing:0.12em; color:#6F665B;">REVERSED — ON INK</span>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>06 / 14</span></div>
+  </section></div>
+
+  <!-- 07 · CLEAR SPACE & SIZES -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Clearance" style="background:#F6F3EC; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — CLEAR SPACE &amp; MINIMUMS</span></div>
+    <div style="flex:1; display:flex; align-items:center; gap:80px;">
+      <div style="flex:1; align-self:stretch; display:flex; justify-content:center; align-items:center; background:#ECE6D8; border:1px solid #E4DBC9;">
+        <div style="position:relative; padding:64px;">
+          <div style="position:absolute; inset:0; border:1.5px dashed #B9A98C;"></div>
+          <div style="display:flex; align-items:center; gap:24px;"><svg viewBox="0 0 64 56" width="110" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:700 110px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#1B1714;">dylo</span></div>
+          <span style="position:absolute; left:26px; top:50%; transform:translateY(-50%); font:700 22px/1 'Space Mono',monospace; color:#9A5236;">x</span>
+          <span style="position:absolute; top:26px; left:50%; transform:translateX(-50%); font:700 22px/1 'Space Mono',monospace; color:#9A5236;">x</span>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:30px;">
+        <div>
+          <div style="font:700 15px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A; margin-bottom:12px;">CLEAR SPACE</div>
+          <p style="margin:0; font:400 23px/1.5 'Space Grotesk',sans-serif; color:#46403A;">Keep clear space of at least <strong style="color:#9A5236; font-weight:600;">x</strong> on every side, where <strong style="color:#1B1714;font-weight:600;">x = the height of the keystone</strong>. Nothing crowds the mark.</p>
+        </div>
+        <div style="border-top:1px solid #D8CFBC; padding-top:24px;">
+          <div style="font:700 15px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A; margin-bottom:16px;">MINIMUM SIZES</div>
+          <div style="display:flex; flex-direction:column; gap:14px; font:400 20px/1.4 'Space Grotesk',sans-serif; color:#1B1714;">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #E4DBC9; padding-bottom:12px;"><span>Digital — lockup</span><span style="font-family:'Space Mono',monospace; color:#6F665B;">&ge; 96px wide</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #E4DBC9; padding-bottom:12px;"><span>Digital — mark</span><span style="font-family:'Space Mono',monospace; color:#6F665B;">&ge; 24px</span></div>
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #E4DBC9; padding-bottom:12px;"><span>Print — lockup</span><span style="font-family:'Space Mono',monospace; color:#6F665B;">&ge; 28mm wide</span></div>
+            <div style="display:flex; justify-content:space-between;"><span>Favicon</span><span style="font-family:'Space Mono',monospace; color:#6F665B;">mark only</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>07 / 14</span></div>
+  </section></div>
+
+  <!-- 08 · ICON -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="App icon" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — APP ICON &amp; FAVICON</span></div>
+    <div style="flex:1; display:flex; align-items:center; gap:64px;">
+      <div style="display:flex; align-items:flex-end; gap:30px;">
+        <div style="width:200px; height:200px; border-radius:44px; background:#1B1714; display:flex; align-items:center; justify-content:center; box-shadow:0 18px 40px rgba(27,23,20,0.22);"><svg viewBox="0 0 64 56" width="118" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg></div>
+        <div style="width:120px; height:120px; border-radius:26px; background:#9A5236; display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 64 56" width="72" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#F6E7DC"/></svg></div>
+      </div>
+      <div style="display:flex; align-items:flex-end; gap:20px;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><div style="width:64px;height:64px;border-radius:14px;background:#1B1714;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 64 56" width="38" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg></div><span style="font:400 12px 'Space Mono',monospace; color:#8E857A;">64</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><div style="width:48px;height:48px;border-radius:11px;background:#1B1714;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 64 56" width="29" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg></div><span style="font:400 12px 'Space Mono',monospace; color:#8E857A;">48</span></div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px;"><div style="width:32px;height:32px;border-radius:8px;background:#1B1714;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 64 56" width="20" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#ECE6D8"/></svg></div><span style="font:400 12px 'Space Mono',monospace; color:#8E857A;">16</span></div>
+      </div>
+      <p style="flex:1; margin:0; font:400 21px/1.55 'Space Grotesk',sans-serif; color:#46403A;">The mark holds at favicon scale. The keystone keeps its accent where there's room; at 16px it collapses to a clean monochrome to stay crisp.</p>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>08 / 14</span></div>
+  </section></div>
+
+  <!-- 09 · MISUSE -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Misuse" style="background:#F6F3EC; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">LOGO — MISUSE</span></div>
+    <div style="flex:1; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:1fr 1fr; gap:22px; margin:28px 0;">
+      <div style="background:#ECE6D8; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 56" width="150" height="58" preserveAspectRatio="none" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#7E4029;">&#10005;&nbsp; Don't stretch or distort</span></div>
+      <div style="background:#ECE6D8; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 56" width="84" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#2E7D8C"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#2E7D8C"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#C8A02D"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#7E4029;">&#10005;&nbsp; Don't recolour</span></div>
+      <div style="background:#ECE6D8; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 56" width="84" style="transform:rotate(18deg);" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#7E4029;">&#10005;&nbsp; Don't rotate</span></div>
+      <div style="background:#ECE6D8; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 56" width="84" style="filter:drop-shadow(4px 5px 3px rgba(0,0,0,0.4));" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#7E4029;">&#10005;&nbsp; Don't add effects</span></div>
+      <div style="background:#ECE6D8; border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 70" width="84" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236" transform="translate(0,14)"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#7E4029;">&#10005;&nbsp; Don't rearrange the stones</span></div>
+      <div style="background:linear-gradient(45deg,#7a6, #c84, #46a); border:1px solid #E4DBC9; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; padding:20px;"><svg viewBox="0 0 64 56" width="84" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:600 16px/1.3 'Space Grotesk',sans-serif; color:#fff;">&#10005;&nbsp; Don't sit on busy backgrounds</span></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>09 / 14</span></div>
+  </section></div>
+
+  <!-- 10 · COLOUR -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Colour" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">COLOUR</span></div>
+      <span style="font:500 22px/1 'Space Grotesk',sans-serif; color:#1B1714;">Monochrome, with one molten note.</span>
+    </div>
+    <div style="flex:1; display:flex; gap:20px; margin:34px 0;">
+      <div style="flex:1; display:flex; flex-direction:column; background:#1B1714;"><div style="flex:1;"></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#ECE6D8;">Ink</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#9A9082; margin-top:8px;">#1B1714<br>text · mark</div></div></div>
+      <div style="flex:1; display:flex; flex-direction:column; background:#3A352F;"><div style="flex:1;"></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#ECE6D8;">Graphite</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#9A9082; margin-top:8px;">#3A352F<br>body · dark UI</div></div></div>
+      <div style="flex:1; display:flex; flex-direction:column; background:#8E857A;"><div style="flex:1;"></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#1B1714;">Concrete</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#2C2823; margin-top:8px;">#8E857A<br>captions · meta</div></div></div>
+      <div style="flex:1; display:flex; flex-direction:column; background:#ECE6D8; border:1px solid #D8CFBC;"><div style="flex:1;"></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#1B1714;">Bone</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#8E857A; margin-top:8px;">#ECE6D8<br>page</div></div></div>
+      <div style="flex:1; display:flex; flex-direction:column; background:#F6F3EC; border:1px solid #D8CFBC;"><div style="flex:1;"></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#1B1714;">Paper</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#8E857A; margin-top:8px;">#F6F3EC<br>cards</div></div></div>
+      <div style="flex:1.2; display:flex; flex-direction:column; background:#9A5236; outline:3px solid #1B1714; outline-offset:4px;"><div style="flex:1; display:flex; align-items:flex-start; justify-content:flex-end; padding:16px;"><span style="font:700 12px/1 'Space Mono',monospace; letter-spacing:0.12em; color:#F6E7DC;">ACCENT</span></div><div style="padding:20px;"><div style="font:600 21px/1 'Space Grotesk',sans-serif; color:#F6E7DC;">Oxide</div><div style="font:400 14px/1.6 'Space Mono',monospace; color:#E4C3B2; margin-top:8px;">#9A5236<br>the keystone</div></div></div>
+    </div>
+    <p style="margin:0 0 18px; font:400 19px/1.5 'Space Grotesk',sans-serif; color:#46403A; max-width:1100px;">Ink and bone do ninety-five percent of the work. <strong style="color:#9A5236; font-weight:600;">Oxide appears once per view</strong> &mdash; the keystone, a single link, one number that matters. Restraint is the brand.</p>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>10 / 14</span></div>
+  </section></div>
+
+  <!-- 11 · TYPOGRAPHY -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Typography" style="background:#F6F3EC; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">TYPOGRAPHY</span></div>
+    <div style="flex:1; display:flex; gap:48px; margin:30px 0;">
+      <div style="flex:1; background:#ECE6D8; border:1px solid #E4DBC9; padding:40px; display:flex; flex-direction:column;">
+        <div style="font:700 150px/0.8 'Space Grotesk',sans-serif; color:#1B1714;">Aa</div>
+        <div style="font:600 30px/1 'Space Grotesk',sans-serif; color:#1B1714; margin-top:24px;">Space Grotesk</div>
+        <div style="font:400 17px/1.6 'Space Grotesk',sans-serif; color:#46403A; margin-top:12px;">Display, headlines, body and UI. Regular, Medium, SemiBold, Bold.</div>
+        <div style="flex:1;"></div>
+        <div style="font:400 22px/1.3 'Space Grotesk',sans-serif; color:#8E857A; margin-top:24px; border-top:1px solid #D8CFBC; padding-top:18px;">ABCDEFG abcdefg 0123456789</div>
+      </div>
+      <div style="flex:1; background:#ECE6D8; border:1px solid #E4DBC9; padding:40px; display:flex; flex-direction:column;">
+        <div style="font:700 150px/0.8 'Space Mono',monospace; color:#1B1714;">Aa</div>
+        <div style="font:600 30px/1 'Space Grotesk',sans-serif; color:#1B1714; margin-top:24px;">Space Mono</div>
+        <div style="font:400 17px/1.6 'Space Grotesk',sans-serif; color:#46403A; margin-top:12px;">The technical layer &mdash; eyebrows, labels, data, code. Regular &amp; Bold.</div>
+        <div style="flex:1;"></div>
+        <div style="font:400 20px/1.3 'Space Mono',monospace; color:#8E857A; margin-top:24px; border-top:1px solid #D8CFBC; padding-top:18px;">ABCDEFG abcdefg 0123456789</div>
+      </div>
+      <div style="flex:0.85; display:flex; flex-direction:column; gap:0;">
+        <div style="font:700 15px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A; margin-bottom:18px;">SCALE</div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E4DBC9; padding:14px 0;"><span style="font:700 34px/1 'Space Grotesk'; color:#1B1714;">Display</span><span style="font:400 13px 'Space Mono'; color:#8E857A;">80/700</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E4DBC9; padding:14px 0;"><span style="font:700 28px/1 'Space Grotesk'; color:#1B1714;">Headline</span><span style="font:400 13px 'Space Mono'; color:#8E857A;">48/700</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E4DBC9; padding:14px 0;"><span style="font:600 22px/1 'Space Grotesk'; color:#1B1714;">Subhead</span><span style="font:400 13px 'Space Mono'; color:#8E857A;">28/600</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E4DBC9; padding:14px 0;"><span style="font:400 18px/1 'Space Grotesk'; color:#1B1714;">Body copy</span><span style="font:400 13px 'Space Mono'; color:#8E857A;">16/400</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0;"><span style="font:400 15px/1 'Space Mono'; letter-spacing:0.1em; color:#1B1714;">LABEL · MONO</span><span style="font:400 13px 'Space Mono'; color:#8E857A;">12/400</span></div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>11 / 14</span></div>
+  </section></div>
+
+  <!-- 12 · VOICE & TONE -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Voice and tone" style="background:#1B1714; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">VOICE &amp; TONE</span></div>
+    <h1 style="margin:18px 0 0; font:700 76px/0.98 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#ECE6D8;">Precise. Engineered. Bold.</h1>
+    <div style="flex:1; display:flex; gap:48px; align-items:center;">
+      <div style="flex:1; display:flex; flex-direction:column; gap:22px;">
+        <p style="margin:0; font:400 23px/1.55 'Space Grotesk',sans-serif; color:#C7BEB1;">We talk like engineers who care about the craft: plain words about real work, exact numbers, no hedging and no buzzwords. Confident, never loud.</p>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; gap:14px; align-items:baseline;"><span style="font:700 14px 'Space Mono'; color:#9A5236; letter-spacing:0.1em;">01</span><span style="font:500 21px/1.4 'Space Grotesk'; color:#ECE6D8;">Say what it does, not what it leverages.</span></div>
+          <div style="display:flex; gap:14px; align-items:baseline;"><span style="font:700 14px 'Space Mono'; color:#9A5236; letter-spacing:0.1em;">02</span><span style="font:500 21px/1.4 'Space Grotesk'; color:#ECE6D8;">Numbers over adjectives.</span></div>
+          <div style="display:flex; gap:14px; align-items:baseline;"><span style="font:700 14px 'Space Mono'; color:#9A5236; letter-spacing:0.1em;">03</span><span style="font:500 21px/1.4 'Space Grotesk'; color:#ECE6D8;">Lowercase the brand. Capitalise the work.</span></div>
+        </div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:18px;">
+        <div style="background:#241F1B; border-left:3px solid #5E8B6B; padding:22px 26px;"><div style="font:700 13px 'Space Mono'; letter-spacing:0.14em; color:#7FA98B; margin-bottom:10px;">WE SAY</div><p style="margin:0; font:400 21px/1.45 'Space Grotesk'; color:#ECE6D8;">&ldquo;We'll ship a working data pipeline in six weeks, then iterate.&rdquo;</p></div>
+        <div style="background:#241F1B; border-left:3px solid #7E4029; padding:22px 26px;"><div style="font:700 13px 'Space Mono'; letter-spacing:0.14em; color:#B5704F; margin-bottom:10px;">WE DON'T</div><p style="margin:0; font:400 21px/1.45 'Space Grotesk'; color:#9B9085;">&ldquo;We leverage synergies to ideate best-in-class solutions.&rdquo;</p></div>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#6F665B; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #3A352F; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>12 / 14</span></div>
+  </section></div>
+
+  <!-- 13 · APPLICATIONS -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Applications" style="background:#ECE6D8; font-family:'Space Grotesk',sans-serif; padding:96px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; align-items:center; gap:13px;"><span style="width:11px; height:11px; background:#9A5236; display:inline-block;"></span><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">APPLICATIONS</span></div>
+    <div style="flex:1; display:grid; grid-template-columns:1.1fr 0.7fr 1.2fr; gap:24px; margin:30px 0;">
+      <div style="background:#1B1714; border-radius:6px; padding:34px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
+        <div style="display:flex; align-items:center; gap:13px;"><svg viewBox="0 0 64 56" width="48" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:700 42px/0.8 'Space Grotesk'; letter-spacing:-0.05em; color:#ECE6D8;">dylo</span></div>
+        <div><div style="font:600 19px/1.3 'Space Grotesk'; color:#ECE6D8;">Jan Nov&aacute;k</div><div style="font:400 14px/1.6 'Space Mono'; color:#9A9082; margin-top:6px;">FOUNDER &middot; hello@dylo.dev</div></div>
+        <span style="position:absolute; right:30px; bottom:30px; font:400 12px 'Space Mono'; color:#6F665B;">BUSINESS CARD</span>
+      </div>
+      <div style="background:#F6F3EC; border:1px solid #E4DBC9; border-radius:6px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; position:relative; padding:24px;">
+        <div style="width:118px; height:118px; border-radius:27px; background:#1B1714; display:flex; align-items:center; justify-content:center; box-shadow:0 12px 26px rgba(27,23,20,0.2);"><svg viewBox="0 0 64 56" width="70" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg></div>
+        <span style="font:500 16px 'Space Grotesk'; color:#1B1714;">dylo</span>
+        <span style="position:absolute; left:20px; bottom:18px; font:400 12px 'Space Mono'; color:#A99F8E;">APP ICON</span>
+      </div>
+      <div style="background:#F6F3EC; border:1px solid #E4DBC9; border-radius:6px; overflow:hidden; display:flex; flex-direction:column; position:relative;">
+        <div style="background:#ECE6D8; border-bottom:1px solid #E4DBC9; padding:11px 16px; display:flex; align-items:center; gap:8px;"><span style="width:11px;height:11px;border-radius:50%;background:#C9C0AE;"></span><span style="width:11px;height:11px;border-radius:50%;background:#C9C0AE;"></span><span style="width:11px;height:11px;border-radius:50%;background:#C9C0AE;"></span><span style="margin-left:12px; font:400 12px 'Space Mono'; color:#8E857A;">dylo.dev</span></div>
+        <div style="flex:1; padding:26px; display:flex; flex-direction:column;">
+          <div style="display:flex; align-items:center; justify-content:space-between;"><div style="display:flex; align-items:center; gap:10px;"><svg viewBox="0 0 64 56" width="34" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:700 28px/0.8 'Space Grotesk'; letter-spacing:-0.04em; color:#1B1714;">dylo</span></div><div style="display:flex; gap:18px; font:500 14px 'Space Grotesk'; color:#46403A;"><span>Work</span><span>Studio</span><span style="color:#9A5236;">Start a project</span></div></div>
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center;"><div style="font:700 38px/1.05 'Space Grotesk'; letter-spacing:-0.02em; color:#1B1714;">Software, made.</div><div style="font:400 16px/1.5 'Space Grotesk'; color:#6F665B; margin-top:10px;">Apps &amp; data solutions for teams that want a d&iacute;lo, not a robota.</div></div>
+        </div>
+        <span style="position:absolute; right:18px; bottom:16px; font:400 12px 'Space Mono'; color:#A99F8E;">WEB</span>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; color:#8E857A; font:400 15px/1 'Space Mono',monospace; letter-spacing:0.14em; border-top:1px solid #D8CFBC; padding-top:22px;"><span>DYLO — BRAND BOOK</span><span>13 / 14</span></div>
+  </section></div>
+
+  <!-- 14 · CLOSING -->
+  <div class="dylo-frame"><section class="dylo-page" data-screen-label="Closing" style="background:#1B1714; background-image:linear-gradient(rgba(236,230,216,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(236,230,216,0.05) 1px,transparent 1px); background-size:48px 48px; font-family:'Space Grotesk',sans-serif; padding:84px 110px; display:flex; flex-direction:column; overflow:hidden;">
+    <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font:700 17px/1 'Space Mono',monospace; letter-spacing:0.24em; color:#8E857A;">DYLO — BRAND BOOK</span><span style="font:400 16px/1 'Space Mono',monospace; letter-spacing:0.16em; color:#8E857A;">14 / 14</span></div>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:30px;">
+      <div style="display:flex; align-items:center; gap:30px;"><svg viewBox="0 0 64 56" width="120" aria-hidden="true"><path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"/><path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"/><path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"/></svg><span style="font:700 128px/0.8 'Space Grotesk',sans-serif; letter-spacing:-0.05em; color:#ECE6D8;">dylo</span></div>
+      <h1 style="margin:0; font:700 64px/1 'Space Grotesk',sans-serif; letter-spacing:-0.03em; color:#9A5236;">Made, not churned.</h1>
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; color:#8E857A; font:400 17px/1.6 'Space Mono',monospace; letter-spacing:0.06em; border-top:1px solid #3A352F; padding-top:26px;"><span>hello@dylo.dev<br>dylo.dev</span><span style="text-align:right;">&copy; 2026 dylo<br>a d&iacute;lo</span></div>
+  </section></div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      document.querySelectorAll('.dylo-frame').forEach((frame) => {
+        const page = frame.firstElementChild;
+        if (!page) return;
+        const s = frame.clientWidth / 1920;
+        page.style.transform = 'scale(' + s + ')';
+      });
+    };
+    this._fit = fit;
+    fit();
+    requestAnimationFrame(fit);
+    setTimeout(fit, 60);
+    window.addEventListener('resize', fit);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fit); }
+  }
+  componentWillUnmount() {
+    if (this._fit) window.removeEventListener('resize', this._fit);
+  }
+}
+</script>
+</body>
+</html>

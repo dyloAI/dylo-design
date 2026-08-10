@@ -1,0 +1,25 @@
+/* dylo — type. Space Grotesk for everything human; Space Mono for the technical layer. */
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body:    'Space Grotesk', system-ui, sans-serif;
+  --font-mono:    'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  --fw-regular: 400; /* @kind other */
+  --fw-medium:  500; /* @kind other */
+  --fw-semibold:600; /* @kind other */
+  --fw-bold:    700; /* @kind other */
+
+  /* scale */
+  --text-display: clamp(44px, 6vw, 80px);
+  --text-h1:      clamp(30px, 4vw, 48px);
+  --text-h2:      28px;
+  --text-h3:      20px;
+  --text-body-sz: 16px;
+  --text-small:   13px;
+  --text-mono-sz: 12px;
+
+  --leading-tight: 1.02;
+  --leading-body:  1.6;
+  --tracking-tight:-0.02em;  /* display/headlines */
+  --tracking-mono: 0.08em;   /* eyebrows, labels */
+}

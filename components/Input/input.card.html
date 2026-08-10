@@ -1,0 +1,35 @@
+<!-- @dsCard group="Components" viewport="700x210" subtitle="Field with mono label · oxide focus" name="Input" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-card, #F6F3EC); font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); }
+  .wrap{ padding:24px; display:flex; gap:20px; }
+  .f{ flex:1; display:flex; flex-direction:column; gap:7px; }
+  label{ font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); font-weight:700; font-size:11px; letter-spacing:0.14em; color:var(--dylo-concrete, #8E857A); }
+  .in{ font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-size:15px; color:var(--dylo-ink, #1B1714); background:var(--dylo-paper, #F6F3EC); border:1px solid var(--dylo-ink, #1B1714); border-radius:var(--radius-sm, 4px); padding:11px 13px; }
+  .in.focus{ border-color:var(--dylo-oxide, #9A5236); box-shadow:0 0 0 3px rgba(154,82,54,0.16); }
+  .ph{ color:var(--dylo-concrete, #8E857A); }
+  .hint{ font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); font-size:11px; color:var(--dylo-concrete, #8E857A); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="f">
+      <label>WORK EMAIL</label>
+      <div class="in focus">you@company.com</div>
+      <span class="hint">Focused — oxide ring</span>
+    </div>
+    <div class="f">
+      <label>PROJECT</label>
+      <div class="in"><span class="ph">What are we building?</span></div>
+      <span class="hint">Default</span>
+    </div>
+  </div>
+</body>
+</html>

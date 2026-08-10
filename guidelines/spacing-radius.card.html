@@ -1,0 +1,29 @@
+<!-- @dsCard group="Spacing" viewport="700x190" subtitle="Radii + the signature block shadow" name="Radius & shadow" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-page, #ECE6D8); font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .wrap{ padding:24px; display:flex; gap:26px; align-items:center; }
+  .s{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .box{ width:66px; height:66px; background:var(--surface-card, #F6F3EC); border:1px solid var(--dylo-ink, #1B1714); }
+  .lb{ font-size:11px; color:var(--text-muted, #8E857A); text-align:center; }
+  .lb b{ color:var(--text-strong, #1B1714); display:block; font-size:12px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="s"><div class="box" style="border-radius:0;"></div><div class="lb"><b>none</b>0px</div></div>
+    <div class="s"><div class="box" style="border-radius:4px;"></div><div class="lb"><b>sm</b>4px</div></div>
+    <div class="s"><div class="box" style="border-radius:8px;"></div><div class="lb"><b>md</b>8px</div></div>
+    <div class="s"><div class="box" style="border-radius:14px;"></div><div class="lb"><b>lg</b>14px</div></div>
+    <div class="s"><div class="box" style="border-radius:999px; width:40px;"></div><div class="lb"><b>pill</b>chips</div></div>
+    <div class="s" style="margin-left:12px;"><div class="box" style="border-radius:4px; box-shadow:6px 6px 0 rgba(27,23,20,0.16);"></div><div class="lb"><b>block</b>6·6·0</div></div>
+  </div>
+</body>
+</html>

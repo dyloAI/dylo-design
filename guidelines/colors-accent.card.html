@@ -1,0 +1,33 @@
+<!-- @dsCard group="Colors" viewport="700x180" subtitle="The one accent — used once per view" name="Oxide accent" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-card, #F6F3EC); font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .wrap{ display:flex; gap:20px; padding:20px; align-items:stretch; }
+  .sw{ width:150px; display:flex; flex-direction:column; }
+  .chip{ height:96px; border:1px solid var(--hairline, #D8CFBC); }
+  .nm{ font-size:13px; color:var(--text-strong, #1B1714); margin-top:10px; font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:600; }
+  .hx{ font-size:11px; color:var(--text-muted, #8E857A); margin-top:3px; letter-spacing:0.04em; }
+  .note{ flex:1; border-left:1px solid var(--hairline, #D8CFBC); padding-left:20px; display:flex; flex-direction:column; justify-content:center; }
+  .rule{ font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:600; font-size:16px; color:var(--text-strong, #1B1714); }
+  .sub{ font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:400; font-size:13px; line-height:1.5; color:var(--text-body, #3A352F); margin-top:8px; }
+  .tick{ display:inline-block; width:11px; height:11px; background:var(--accent, #9A5236); margin-right:8px; vertical-align:middle; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="sw"><div class="chip" style="background:var(--dylo-oxide, #9A5236);"></div><div class="nm">Oxide</div><div class="hx">#9A5236 · accent</div></div>
+    <div class="sw"><div class="chip" style="background:var(--dylo-oxide-deep, #7E4029);"></div><div class="nm">Oxide deep</div><div class="hx">#7E4029 · press</div></div>
+    <div class="note">
+      <div class="rule"><span class="tick"></span>One molten note.</div>
+      <div class="sub">Oxide appears <b>once per view</b> — the keystone, a single link, or the one number that matters. Never a second hue. Restraint is the brand.</div>
+    </div>
+  </div>
+</body>
+</html>

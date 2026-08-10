@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x160" subtitle="Warm monochrome — carries ~95% of the work" name="Ink & neutrals" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-card, #F6F3EC); font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); }
+  .row{ display:flex; gap:0; padding:20px; }
+  .sw{ flex:1; display:flex; flex-direction:column; }
+  .chip{ height:74px; border:1px solid var(--hairline, #D8CFBC); }
+  .nm{ font-size:13px; color:var(--text-strong, #1B1714); margin-top:10px; font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:600; }
+  .hx{ font-size:11px; color:var(--text-muted, #8E857A); margin-top:3px; letter-spacing:0.04em; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--dylo-ink, #1B1714);"></div><div class="nm">Ink</div><div class="hx">#1B1714 · text · mark</div></div>
+    <div class="sw" style="margin-left:16px;"><div class="chip" style="background:var(--dylo-graphite, #3A352F);"></div><div class="nm">Graphite</div><div class="hx">#3A352F · body · dark UI</div></div>
+    <div class="sw" style="margin-left:16px;"><div class="chip" style="background:var(--dylo-concrete, #8E857A);"></div><div class="nm">Concrete</div><div class="hx">#8E857A · captions · meta</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x210" subtitle="Primary / secondary / ghost · sizes · disabled" name="Button" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-card, #F6F3EC); font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); }
+  .wrap{ padding:24px; display:flex; flex-direction:column; gap:18px; }
+  .row{ display:flex; align-items:center; gap:14px; }
+  .btn{ font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight:600; letter-spacing:-0.01em; line-height:1; display:inline-flex; align-items:center; gap:8px; border:1px solid var(--dylo-ink, #1B1714); border-radius:var(--radius-sm, 4px); padding:11px 20px; font-size:15px; }
+  .primary{ background:var(--dylo-ink, #1B1714); color:var(--dylo-bone, #ECE6D8); box-shadow:4px 4px 0 rgba(27,23,20,0.18); }
+  .secondary{ background:var(--dylo-bone, #ECE6D8); color:var(--dylo-ink, #1B1714); box-shadow:4px 4px 0 rgba(27,23,20,0.14); }
+  .ghost{ background:transparent; color:var(--dylo-ink, #1B1714); border-color:transparent; }
+  .sm{ padding:7px 13px; font-size:13px; }
+  .lg{ padding:15px 28px; font-size:17px; }
+  .disabled{ background:var(--dylo-concrete, #8E857A); color:var(--dylo-bone, #ECE6D8); border-color:var(--dylo-concrete, #8E857A); box-shadow:none; opacity:0.6; }
+  .seated{ transform:translate(3px,3px); box-shadow:1px 1px 0 rgba(27,23,20,0.20); }
+  .lab{ font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); font-size:11px; letter-spacing:0.12em; color:var(--text-muted, #8E857A); width:70px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row"><span class="lab">VARIANT</span>
+      <span class="btn primary">Start a project</span>
+      <span class="btn secondary">View work</span>
+      <span class="btn ghost">Cancel</span>
+    </div>
+    <div class="row"><span class="lab">SIZE</span>
+      <span class="btn primary sm">Small</span>
+      <span class="btn primary">Medium</span>
+      <span class="btn primary lg">Large</span>
+    </div>
+    <div class="row"><span class="lab">STATE</span>
+      <span class="btn primary seated">Pressed</span>
+      <span class="btn primary disabled">Disabled</span>
+    </div>
+  </div>
+</body>
+</html>

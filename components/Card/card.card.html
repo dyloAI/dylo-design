@@ -1,0 +1,36 @@
+<!-- @dsCard group="Components" viewport="700x300" subtitle="The signature foundry panel — border + block shadow" name="Card" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{ margin:0; background:var(--surface-page, #ECE6D8); font-family:var(--font-display, 'Space Grotesk', system-ui, sans-serif); }
+  .wrap{ padding:26px; display:flex; gap:22px; align-items:stretch; }
+  .card{ flex:1; border:1px solid var(--dylo-ink, #1B1714); border-radius:var(--radius-md, 8px); box-shadow:6px 6px 0 rgba(27,23,20,0.12); padding:26px; }
+  .light{ background:var(--dylo-paper, #F6F3EC); color:var(--dylo-ink, #1B1714); }
+  .ink{ background:var(--dylo-ink, #1B1714); color:var(--dylo-bone, #ECE6D8); }
+  .eb{ display:inline-flex; align-items:center; gap:10px; font-family:var(--font-mono, 'Space Mono', ui-monospace, monospace); font-weight:700; font-size:11px; letter-spacing:0.2em; }
+  .tick{ width:9px; height:9px; background:var(--dylo-oxide, #9A5236); display:inline-block; }
+  h3{ margin:12px 0 0; font-weight:700; letter-spacing:-0.02em; font-size:23px; line-height:1.1; }
+  p{ margin:10px 0 0; font-size:15px; line-height:1.55; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card light">
+      <span class="eb" style="color:var(--text-muted, #8E857A);"><span class="tick"></span>APPROACH</span>
+      <h3>Ship, then iterate.</h3>
+      <p style="color:var(--dylo-graphite, #3A352F);">A working data pipeline in six weeks, then refined against real use.</p>
+    </div>
+    <div class="card ink">
+      <span class="eb" style="color:var(--dylo-bone, #ECE6D8);"><span class="tick"></span>THE PROMISE</span>
+      <h3>Made, not churned.</h3>
+      <p style="color:#C7BEB1;">Every engagement leaves you a dílo — an authored, owned piece of work.</p>
+    </div>
+  </div>
+</body>
+</html>

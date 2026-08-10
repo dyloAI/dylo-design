@@ -1,0 +1,25 @@
+/* dylo — colour. Monochrome foundry palette + one molten-oxide accent. */
+:root {
+  /* base — warm neutrals */
+  --dylo-ink:       #1B1714; /* primary: text, the mark */
+  --dylo-graphite:  #3A352F; /* secondary ink / dark surfaces */
+  --dylo-concrete:  #8E857A; /* muted: captions, metadata */
+  --dylo-line:      #D8CFBC; /* hairlines on bone */
+  --dylo-bone:      #ECE6D8; /* primary surface / paper */
+  --dylo-paper:     #F6F3EC; /* lighter surface / cards */
+
+  /* accent — the keystone. Used sparingly: one molten note. */
+  --dylo-oxide:     #9A5236;
+  --dylo-oxide-deep:#7E4029; /* pressed / hover */
+
+  /* semantic aliases */
+  --text-strong:  var(--dylo-ink);
+  --text-body:    var(--dylo-graphite);
+  --text-muted:   var(--dylo-concrete);
+  --surface-page: var(--dylo-bone);
+  --surface-card: var(--dylo-paper);
+  --surface-ink:  var(--dylo-ink);
+  --hairline:     var(--dylo-line);
+  --accent:       var(--dylo-oxide);
+  --accent-press: var(--dylo-oxide-deep);
+}
