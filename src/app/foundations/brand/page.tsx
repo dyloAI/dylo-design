@@ -118,7 +118,7 @@ export default function BrandPage() {
 
       <Section
         title="Video call background"
-        description="1920×1080, for Google Meet, Zoom or Teams. Everything sits in a top band: the person takes the centre and the lower third, and Meet puts the participant name chip in the bottom-left."
+        description="1920×1080, for Google Meet, Zoom or Teams. The lockup sits in the top-left: the person takes the centre and the lower third, and Meet puts the participant name chip in the bottom-left."
       >
         <div className="grid gap-4 sm:grid-cols-2">
           {MEET_BACKGROUNDS.map((background) => (
@@ -146,8 +146,8 @@ export default function BrandPage() {
         </div>
         <Prose>
           <p className="mt-4">
-            The type is deliberately much larger than a page equivalent — a call tile is commonly rendered around 480px
-            wide, so the image is seen at roughly quarter scale. Regenerate them from{' '}
+            The lockup is deliberately much larger than a page equivalent — a call tile is commonly rendered around
+            480px wide, so the image is seen at roughly quarter scale. Regenerate them from{' '}
             <code>brand-templates/meet-background.html</code>; the capture recipe is in the comment at the top.
           </p>
         </Prose>

@@ -26,13 +26,13 @@
          Two constraints drive the layout, and both come from how the image is
          actually seen rather than from how it looks at full size:
 
-         1. Everything sits in a top band. The person occupies the centre and
+         1. The lockup sits in the top-left. The person occupies the centre and
             the lower third, and Meet puts the participant name chip in the
-            bottom-left of the tile, so the top corners are the only reliably
+            bottom-left of the tile, so that corner is the only reliably
             visible area.
-         2. Everything is far larger than page equivalents. A tile is commonly
+         2. It is far larger than a page equivalent. A tile is commonly
             rendered around 480px wide, so this is seen at roughly quarter
-            scale — page-sized type would land at about 4px. */
+            scale — a page-sized lockup would land at about 18px tall. */
 
       :root {
         --dylo-ink: #1b1714;
@@ -65,7 +65,8 @@
       .frame {
         width: 1920px;
         height: 1080px;
-        padding: 192px;
+        /* One grid cell in from the corner. */
+        padding: 96px;
         /* The engineering grid at 96px, two of the system's 48px cells. At
            quarter scale that reads the way 48px reads on a page; 48px here
            would collapse into moire. */
@@ -86,81 +87,55 @@
           linear-gradient(90deg, var(--dylo-grid-line-reversed) 1px, transparent 1px);
       }
 
-      /* The top band. Nothing else is placed on the frame. */
-      .band {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 96px;
-      }
-
+      /* The lockup is the only thing placed on the frame. */
       .lockup {
         height: 150px;
         width: auto;
         display: block;
-        flex: none;
-      }
-
-      .tagline {
-        margin: 0;
-        font-family: 'Space Mono', ui-monospace, monospace;
-        font-weight: 700;
-        font-size: 34px;
-        line-height: 1;
-        letter-spacing: var(--dylo-tracking-eyebrow);
-        text-transform: uppercase;
-        color: var(--dylo-concrete);
-        text-align: right;
       }
     </style>
   </head>
   <body>
     <div class="frame frame--bone">
-      <div class="band">
-        <svg class="lockup" viewBox="0 0 236.4 96" role="img" aria-label="dylo">
-          <g transform="translate(-4.1,13) scale(1.25)">
-            <path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"></path>
-            <path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"></path>
-            <path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"></path>
-          </g>
-          <text
-            x="83.6"
-            y="72"
-            font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif"
-            font-weight="700"
-            font-size="74"
-            letter-spacing="-3.5"
-            fill="#1B1714"
-          >
-            dylo
-          </text>
-        </svg>
-        <p class="tagline">We make dílo — not robota</p>
-      </div>
+      <svg class="lockup" viewBox="0 0 236.4 96" role="img" aria-label="dylo">
+        <g transform="translate(-4.1,13) scale(1.25)">
+          <path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#1B1714"></path>
+          <path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#1B1714"></path>
+          <path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"></path>
+        </g>
+        <text
+          x="83.6"
+          y="72"
+          font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif"
+          font-weight="700"
+          font-size="74"
+          letter-spacing="-3.5"
+          fill="#1B1714"
+        >
+          dylo
+        </text>
+      </svg>
     </div>
 
     <div class="frame frame--ink">
-      <div class="band">
-        <svg class="lockup" viewBox="0 0 236.4 96" role="img" aria-label="dylo">
-          <g transform="translate(-4.1,13) scale(1.25)">
-            <path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"></path>
-            <path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"></path>
-            <path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"></path>
-          </g>
-          <text
-            x="83.6"
-            y="72"
-            font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif"
-            font-weight="700"
-            font-size="74"
-            letter-spacing="-3.5"
-            fill="#ECE6D8"
-          >
-            dylo
-          </text>
-        </svg>
-        <p class="tagline">We make dílo — not robota</p>
-      </div>
+      <svg class="lockup" viewBox="0 0 236.4 96" role="img" aria-label="dylo">
+        <g transform="translate(-4.1,13) scale(1.25)">
+          <path d="M10.5,18 L22.5,12.6 L27,48 L15.5,43.5 Z" fill="#ECE6D8"></path>
+          <path d="M53.5,18 L41.5,12.6 L37,48 L48.5,43.5 Z" fill="#ECE6D8"></path>
+          <path d="M24,12 L40,12 L35.5,48 L28.5,48 Z" fill="#9A5236"></path>
+        </g>
+        <text
+          x="83.6"
+          y="72"
+          font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif"
+          font-weight="700"
+          font-size="74"
+          letter-spacing="-3.5"
+          fill="#ECE6D8"
+        >
+          dylo
+        </text>
+      </svg>
     </div>
   </body>
 </html>
