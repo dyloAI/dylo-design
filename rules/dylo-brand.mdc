@@ -41,9 +41,10 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 
 ## Which layer to build on
 
-Catalyst-based apps (`dylo`, `pss-platform`, anything from the AxLabs
-boilerplate) install the dylo theme plus the Catalyst compatibility layer, which
-remaps Tailwind's `zinc` and `blue` scales onto the dylo palette. In those apps:
+**Product apps** (internal dylo apps, client apps, `dylo-templates/*`) install
+`theme` + `catalyst-theme`. Auth screens and app shell live in **dylo-starter**
+(Catalyst) — do not replace them with foundry `auth-kit` / `app-shell` from this
+registry.
 
 - Keep using Catalyst primitives. **Do not fork Catalyst's Button, Input or
   Badge to make them on-brand** — the theme already did that, and a fork will
@@ -53,8 +54,8 @@ remaps Tailwind's `zinc` and `blue` scales onto the dylo palette. In those apps:
 - Reach into the dylo registry only for what Catalyst lacks: `Eyebrow` and the
   foundry `Card`.
 
-Everywhere else — marketing sites, static mocks, one-off artifacts — install the
-dylo components and use them directly.
+**Marketing / brand collateral** — sites, static mocks, proposals — install the
+foundry dylo components and use them directly.
 
 Install with the shadcn CLI, do not clone the repo:
 

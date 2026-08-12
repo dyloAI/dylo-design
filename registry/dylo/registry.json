@@ -141,6 +141,76 @@
           "target": "~/src/components/website/footer.tsx"
         }
       ]
+    },
+    {
+      "name": "auth-kit",
+      "type": "registry:block",
+      "title": "Auth (docs / marketing only)",
+      "description": "Foundry demo of sign-in, sign-up and forgot-password. Product apps must use Catalyst auth from dylo-starter — do not install this kit into templates or client apps.",
+      "registryDependencies": [
+        "utils",
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/button",
+        "dyloAI/dylo-design/input",
+        "dyloAI/dylo-design/brand-assets"
+      ],
+      "files": [
+        {
+          "path": "blocks/auth/index.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/index.tsx"
+        },
+        {
+          "path": "blocks/auth/auth-layout.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/auth-layout.tsx"
+        },
+        {
+          "path": "blocks/auth/auth-card.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/auth-card.tsx"
+        },
+        {
+          "path": "blocks/auth/sign-in.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/sign-in.tsx"
+        },
+        {
+          "path": "blocks/auth/sign-up.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/sign-up.tsx"
+        },
+        {
+          "path": "blocks/auth/forgot-password.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/auth/forgot-password.tsx"
+        }
+      ]
+    },
+    {
+      "name": "app-shell",
+      "type": "registry:block",
+      "title": "App shell (docs / marketing only)",
+      "description": "Foundry demo of sidebar chrome. Product apps must use Catalyst SidebarLayout from dylo-starter — do not install this kit into templates or client apps.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/brand-assets"],
+      "files": [
+        {
+          "path": "blocks/app-shell/index.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/app-shell/index.tsx"
+        },
+        {
+          "path": "blocks/app-shell/sidebar.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/app-shell/sidebar.tsx"
+        },
+        {
+          "path": "blocks/app-shell/sidebar-layout.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/app-shell/sidebar-layout.tsx"
+        }
+      ]
     }
   ]
 }

@@ -34,6 +34,8 @@ export const navigation: NavSection[] = [
     items: [
       { title: 'Marketing site', href: '/kits/website' },
       { title: 'Brand book', href: '/brand-book' },
+      { title: 'Auth (demo)', href: '/kits/auth' },
+      { title: 'App shell (demo)', href: '/kits/app-shell' },
     ],
   },
 ]

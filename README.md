@@ -55,6 +55,7 @@ the [Install page](https://design.dylo.dev/install).
 | `brand-assets`                            | Keystone mark, logo lockups and app icons into `public/brand/`.           |
 | `agent-rules`                             | Cursor brand rule plus the ESLint adherence config.                       |
 | `website-kit`                             | The marketing site in six composable sections.                            |
+| `auth-kit` / `app-shell`                  | Docs/marketing demos only — product apps use Catalyst in dylo-starter.    |
 
 Pin published install commands to a tag so consumers never pick up an
 unreviewed change:
@@ -65,15 +66,16 @@ pnpm dlx shadcn@latest add dyloAI/dylo-design/button#v1.0.0
 
 ### Which layer do I use?
 
-Catalyst-based apps — `dylo`, `pss-platform`, anything from the AxLabs
-boilerplate — install `theme` + `catalyst-theme` and **keep using Catalyst
-primitives**. The compatibility layer remaps Tailwind's `zinc` and `blue`
-scales, so every existing `zinc-800` renders Graphite and every focus ring is
-Oxide. Do not fork Catalyst's Button, Input or Badge to make them on-brand; take
-only `Eyebrow` and the foundry `Card`, which Catalyst has no equivalent for.
+**Product apps** (internal dylo, client apps, `dylo-templates/*`) install
+`theme` + `catalyst-theme` and keep Catalyst from **dylo-starter** (including
+auth pages and app shell). Do not install foundry `auth-kit` / `app-shell` into
+those apps. Optional from this registry: `Eyebrow` and foundry `Card`.
 
-Everything else — marketing sites, static mocks, one-off artifacts — installs
-the dylo components and uses them directly.
+**Marketing / brand collateral** installs foundry components and `website-kit`.
+
+Pin theme installs to a tag. After a design-system release, bump starter and
+templates — not already-cloned client apps. Product UI changes sync
+starter → templates via `dylo-starter/scripts/sync-from-starter.mjs`.
 
 ---
 
@@ -125,9 +127,9 @@ the site cannot drift from what a consumer installs.
 ### Layout
 
 ```
-registry/dylo/theme/    Tokens, the Tailwind mapping, the Catalyst layer
-registry/dylo/ui/       The five components — canonical source
-registry/dylo/blocks/   The marketing site sections
+registry/dylo/theme/    Tokens, Tailwind mapping, Catalyst remap (primary product)
+registry/dylo/ui/       Foundry marketing components
+registry/dylo/blocks/   website-kit; auth/app-shell demos are docs-only
 registry.json           Root catalogue for the shadcn CLI
 rules/                  Cursor rule + ESLint config shipped by `agent-rules`
 src/                    The docs site

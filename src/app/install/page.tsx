@@ -122,19 +122,25 @@ export default function InstallPage() {
       </Section>
 
       <Section
-        title="Catalyst projects"
-        description="dylo, pss-platform and anything from the AxLabs boilerplate. Catalyst hard-codes Tailwind's zinc and blue scales, so the compatibility layer remaps those two onto the dylo palette and every existing zinc-* utility in the app comes out warm."
+        title="Product apps (Catalyst + templates)"
+        description="Internal dylo apps, client apps, and everything under dylo-templates. Install theme + catalyst-theme; keep Catalyst auth and shell from dylo-starter. Pin to a tag so templates do not float on main."
       >
-        <Command>{install('catalyst-theme')}</Command>
+        <div className="space-y-3">
+          <Command>{`${install('theme')}#v1.0.0`}</Command>
+          <Command>{`${install('catalyst-theme')}#v1.0.0`}</Command>
+        </div>
         <Prose>
           <p className="mt-4">
-            Do not fork Catalyst&rsquo;s Button, Input or Badge to make them on-brand — the theme already does it. Reach
-            into this system only for what Catalyst lacks: the <code>Eyebrow</code> and the foundry <code>Card</code>.
+            Do not fork Catalyst&rsquo;s Button, Input or Badge to make them on-brand — the theme already does it. Do not
+            install foundry <code>auth-kit</code> or <code>app-shell</code> into product apps; those demos are for
+            marketing docs only. Reach into this system for what Catalyst lacks: the <code>Eyebrow</code> and the foundry{' '}
+            <code>Card</code>. After a design-system release, re-install the pinned theme in starter and each template —
+            client clones are not updated automatically.
           </p>
         </Prose>
       </Section>
 
-      <Section title="Components, assets and the rest">
+      <Section title="Marketing components, assets and kits">
         <div className="space-y-3">
           <Command>{install('button')}</Command>
           <Command>{install('brand-assets')}</Command>

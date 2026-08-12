@@ -7,11 +7,13 @@ export const metadata: Metadata = {
   description: 'How a coding agent should consume the dylo design system.',
 }
 
-const DECISION = `Is the app built on Catalyst (dylo, pss-platform, AxLabs boilerplate)?
-├─ Yes → install "theme" + "catalyst-theme". Use Catalyst primitives.
-│        Take only Eyebrow and Card from here — Catalyst has no equivalent.
-└─ No  → install "theme" + the components you need.
-         Marketing sites, static mocks and one-off artifacts: use them all.`
+const DECISION = `Is this a product app (dylo, client app, dylo-templates/*)?
+├─ Yes → install "theme" + "catalyst-theme".
+│        Keep Catalyst from dylo-starter (auth + shell included).
+│        Do NOT install foundry auth-kit / app-shell.
+│        Optional: Eyebrow, foundry Card.
+└─ No  → marketing / brand collateral:
+         install "theme" + foundry components / website-kit.`
 
 export default function AgentsPage() {
   return (

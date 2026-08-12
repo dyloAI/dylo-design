@@ -8,8 +8,8 @@ other repositories that consume the dylo design system.
 
 ## What this repo is
 
-The dylo design system, and the docs site that documents it. Two audiences share
-one source of truth:
+The dylo **brand and theme** system, plus marketing/foundry UI, and the docs site
+that documents it. Two audiences share one source of truth:
 
 - **The docs site** at `src/app/` imports components straight out of `registry/`.
   There is no copy step, so a preview on the site cannot drift from what a
@@ -17,6 +17,10 @@ one source of truth:
 - **The registry** at `registry/` plus [registry.json](registry.json) is a
   shadcn _source registry_. Because the repo is public, the shadcn CLI installs
   from it directly — no npm package, no registry server, no `shadcn build`.
+
+This repo does **not** own product app chrome (Catalyst Button, Sidebar, auth
+pages, application shell). Those live in **dylo-starter** and sync into other
+templates from there. See [Product apps and templates](#product-apps-and-templates).
 
 Stack: Next.js 16 (App Router) + React 19, Tailwind CSS v4, TypeScript, pnpm 11,
 deployed on Vercel. Same stack as the apps that consume it.
@@ -34,7 +38,7 @@ pnpm dlx shadcn@latest view dyloAI/dylo-design/card     # inspect before install
 pnpm dlx shadcn@latest add dyloAI/dylo-design/theme     # install
 ```
 
-Pin published commands to a tag — `...add dyloAI/dylo-design/button#v1.0.0` — so
+Pin published commands to a tag — `...add dyloAI/dylo-design/theme#v1.0.0` — so
 a consumer never picks up an unreviewed change.
 
 The CLI needs a `components.json` in the consuming project. Write it by hand.
@@ -46,11 +50,14 @@ in Radix, which you do not want in a Catalyst project.
 This is the decision agents get wrong most often.
 
 ```
-Is the app built on Catalyst? (dylo, pss-platform, AxLabs boilerplate)
-├─ Yes → install "theme" + "catalyst-theme". Keep using Catalyst primitives.
-│        Take only Eyebrow and Card from here — Catalyst has no equivalent.
-└─ No  → install "theme" + the components you need.
-         Marketing sites, static mocks, one-off artifacts: use them all.
+Is this a product app (internal dylo app, client app, or dylo-templates/*)?
+├─ Yes → install "theme" + "catalyst-theme".
+│        Keep Catalyst primitives from the template (dylo-starter lineage).
+│        Auth screens and app shell live in the template — do not replace them
+│        with foundry auth-kit / app-shell from this registry.
+│        Optional from here: Eyebrow, foundry Card (Catalyst has no equivalent).
+└─ No  → marketing site, brand collateral, static mock, proposal surface:
+         install "theme" + the foundry components / website-kit you need.
 ```
 
 **Do not fork Catalyst's Button, Input or Badge to make them look on-brand.**
@@ -58,12 +65,29 @@ The `catalyst-theme` item remaps Tailwind's `zinc` and `blue` scales onto the
 dylo palette, so every `zinc-800` in the app already renders Graphite and every
 focus ring is already Oxide. A fork only creates something to keep in sync.
 
+### Product apps and templates
+
+```
+dylo-design          → theme, brand-assets, agent-rules, marketing UI
+         ↓ pin shadcn add
+dylo-starter         → canonical Catalyst + auth + app shell
+         ↓ allowlist sync (dylo-starter/scripts/sync-from-starter.mjs)
+space / numbers / sales
+         ↓ clone once
+client apps          → diverge freely; no required sync
+```
+
+- **Style / brand updates** → bump pinned `theme` + `catalyst-theme` in starter
+  and templates.
+- **Product UI updates** (Catalyst, auth, shell patterns) → change starter, then
+  run the template sync script. Client clones are not updated automatically.
+
 ### Import order
 
 ```css
 @import 'tailwindcss';
 @import './dylo/dylo-theme.css';
-@import './dylo/dylo-catalyst.css'; /* Catalyst apps only */
+@import './dylo/dylo-catalyst.css'; /* product / Catalyst apps */
 ```
 
 ### Fonts
@@ -108,6 +132,21 @@ raw hex values, Tailwind's default palette and emoji — so drift is caught by t
 linter instead of in review. Catalyst apps should use the
 `dyloAdherenceCatalyst` export, which keeps `zinc-*` and `blue-*` legal.
 
+### Releasing theme changes
+
+When tokens or the Catalyst remap change:
+
+1. Land the change on `main` of this repo.
+2. Tag a release (`vX.Y.Z`).
+3. In **dylo-starter** and each template, re-install with the pin:
+   `pnpm dlx shadcn@latest add dyloAI/dylo-design/theme#vX.Y.Z` (and
+   `catalyst-theme` the same way).
+4. Open PRs in those template repos. Do **not** chase already-cloned client apps.
+
+After Catalyst / auth / shell changes in **dylo-starter**, run
+`node scripts/sync-from-starter.mjs <name>` from **dylo-starter** (see that
+repo's TEMPLATE.md).
+
 ---
 
 ## If you are working _in_ this repo
@@ -136,8 +175,8 @@ not yet support TypeScript 7.
 | Path                          | What it is                                                                               |
 | ----------------------------- | ---------------------------------------------------------------------------------------- |
 | `registry/dylo/theme/`        | Tokens, the Tailwind mapping, the Catalyst layer, the CDN font import.                   |
-| `registry/dylo/ui/`           | The five components. Canonical source — this is what consumers get.                      |
-| `registry/dylo/blocks/`       | The marketing site sections.                                                             |
+| `registry/dylo/ui/`           | Foundry marketing components (Button, Input, Card, Badge, Eyebrow).                      |
+| `registry/dylo/blocks/`       | Marketing kits (`website-kit`). Foundry auth/app-shell demos are docs-only.              |
 | `registry/dylo/registry.json` | Item definitions for everything under `registry/dylo/`. Paths are relative to this file. |
 | `registry.json`               | Root catalogue: metadata, `include`, plus the brand-asset and agent-rule items.          |
 | `rules/`                      | The Cursor rule and ESLint config shipped by `agent-rules`.                              |
@@ -150,8 +189,8 @@ not yet support TypeScript 7.
 
 1. Edit the `.tsx` in `registry/dylo/ui/`. Tailwind classes only — no inline
    styles, so consumers can override with `className`.
-2. Keep it a Server Component unless it genuinely needs state. Only
-   `contact-section.tsx` is `'use client'` today.
+2. Keep it a Server Component unless it genuinely needs state. Client blocks
+   today: contact form and the docs-only auth / app-shell demos.
 3. Use `cva` for variants, `cn()` for merging, and a `data-slot` attribute.
 4. Add the item to `registry/dylo/registry.json`. Cross-component imports use
    `@/registry/dylo/ui/<name>` so the CLI can rewrite them to the consumer's
@@ -161,6 +200,10 @@ not yet support TypeScript 7.
    The page renders live examples and reads the source from disk, so nothing else
    needs touching.
 6. Run the three gates.
+
+Foundry `ui/` and `website-kit` are for **marketing / brand collateral**. Do not
+grow a parallel product component set here — product apps use Catalyst in
+dylo-starter.
 
 ### Token changes
 
@@ -198,10 +241,13 @@ These bind you whether you are working here or in a consuming repo.
   carried by the Badge's mono type and border weight.
 - **Two families only.** Space Grotesk for anything human, Space Mono for the
   technical layer, uppercase with wide tracking.
-- **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide.
+- **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide
+  (foundry / marketing). Product Catalyst apps use Heroicons as shipped.
 - **No raw hex.** Use `bg-ink`, `text-oxide`, `border-line`, `shadow-block`, or
-  `var(--dylo-*)` outside Tailwind.
-- **Cards are stamped plates.** Ink border plus `shadow-block`, barely rounded.
+  `var(--dylo-*)` outside Tailwind. Catalyst apps may keep `zinc-*` / `blue-*`
+  when `catalyst-theme` is installed.
+- **Cards are stamped plates.** Ink border plus `shadow-block`, barely rounded
+  (foundry marketing Card).
 - **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
   no glass. The only pattern is the 48px engineering grid (`grid-paper`).
 - **Mechanical motion.** 120–180ms, linear to ease-out. Press shifts the element

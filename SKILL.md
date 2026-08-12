@@ -36,9 +36,11 @@ Mono, the keystone mark.
   already spends it: its tick is the accent. Never a second hue.
 - Two fonts only: Space Grotesk (human) and Space Mono (technical labels,
   uppercase, wide tracking).
-- No emoji. Line icons only, 2px stroke (Lucide).
+- No emoji. Line icons only, 2px stroke (Lucide on foundry surfaces; Heroicons
+  in Catalyst product apps).
 - Never a raw hex value in code. Use `bg-ink` / `text-oxide` / `border-line`, or
-  `var(--dylo-*)` outside Tailwind.
+  `var(--dylo-*)` outside Tailwind. Catalyst apps may use `zinc-*` / `blue-*`
+  when `catalyst-theme` is installed.
 - Cards are stamped plates: ink border plus a hard block-shadow offset, barely
   rounded. Not soft floating cards.
 - The keystone mark is fixed — never recolour, rotate, restack or add effects.
@@ -49,10 +51,12 @@ Mono, the keystone mark.
 ## Where things live
 
 - `registry/dylo/theme/` — tokens, the Tailwind v4 theme, the Catalyst
-  compatibility layer, and the CDN font import.
-- `registry/dylo/ui/` — Button, Input, Card, Badge, Eyebrow as TypeScript React
-  components styled with Tailwind.
+  compatibility layer, and the CDN font import. **Primary product of this repo.**
+- `registry/dylo/ui/` — foundry marketing components (Button, Input, Card, Badge,
+  Eyebrow).
 - `registry/dylo/blocks/website/` — the marketing site in six sections.
+- `registry/dylo/blocks/auth/` and `app-shell/` — **docs / marketing demos only**.
+  Product apps use Catalyst auth + shell from **dylo-starter**.
 - `public/brand/` — the keystone mark and logo lockups, SVG and PNG.
 - `public/brand-book/` — the 14-page brand book, ready to open or print.
 - `rules/` — the Cursor brand rule and the ESLint adherence config.
@@ -61,9 +65,16 @@ Mono, the keystone mark.
 
 ## Choosing a layer
 
-Catalyst-based apps (`dylo`, `pss-platform`, the AxLabs boilerplate) install the
-theme plus the Catalyst layer and keep using Catalyst primitives — **do not fork
-them to make them on-brand**, the theme already did that. Take only `Eyebrow`
-and the foundry `Card` from here.
+**Product apps** (dylo, client apps, anything from `dylo-templates/*`):
 
-Everything else uses the dylo components directly.
+- Install `theme` + `catalyst-theme`.
+- Keep Catalyst primitives, auth pages, and app shell from **dylo-starter**.
+- Do not install foundry `auth-kit` / `app-shell` into those apps.
+- Optional: `Eyebrow` and foundry `Card` when Catalyst has no equivalent.
+
+**Marketing / brand collateral** (sites, mocks, proposals, docs):
+
+- Install `theme` plus foundry components / `website-kit` as needed.
+
+Do **not** fork Catalyst Button, Input or Badge to make them on-brand — the
+theme already did that.

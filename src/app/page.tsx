@@ -71,6 +71,11 @@ export default function OverviewPage() {
             ['Components', '/components/button', 'Button, Input, Card, Badge, Eyebrow — live, with source.'],
             ['Marketing site kit', '/kits/website', 'The dylo homepage, in composable sections.'],
             ['Brand book', '/brand-book', 'Fourteen pages: idea, name, logo system, colour, type, voice.'],
+            [
+              'Product apps',
+              '/agents',
+              'Use Catalyst + theme from dylo-starter — not foundry auth/shell kits.',
+            ],
           ].map(([title, href, detail]) => (
             <li key={href} className="border-b border-line pb-2 last:border-b-0">
               <Link href={href} className="font-medium text-ink">
