@@ -38,4 +38,8 @@ export const navigation: NavSection[] = [
       { title: 'App shell (demo)', href: '/kits/app-shell' },
     ],
   },
+  {
+    title: 'Brand brief',
+    items: [{ title: 'Brief de marca', href: '/brief-de-marca' }],
+  },
 ]
