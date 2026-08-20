@@ -130,9 +130,8 @@ Copy [.env.example](.env.example) to `.env.local`. One variable:
 | `BRAND_BRIEF_PASSWORD` | Passphrase for the gated brand brief at `/brief-de-marca`. Read only by [src/env.ts](src/env.ts), which throws at import if it is missing — so it has to be set in Vercel before a deploy. |
 
 `/brief-de-marca` is the brand brief for studios quoting the identity work. It
-sits in the sidebar as its own section, stays `noindex`, and is behind that one
-passphrase; the cookie it sets carries a SHA-256 of the passphrase, never the
-passphrase.
+is the first sidebar link, stays `noindex`, and is behind that one passphrase;
+the cookie it sets carries a SHA-256 of the passphrase, never the passphrase.
 
 The docs site imports components straight out of `registry/`, so a preview on
 the site cannot drift from what a consumer installs.

@@ -1,5 +1,12 @@
 export type NavItem = { title: string; href: string }
-export type NavSection = { title: string; items: NavItem[] }
+export type NavSection = {
+  title: string
+  items: NavItem[]
+  /** Closed until the current page is one of the items, or the heading is opened. */
+  collapsible?: boolean
+}
+
+export const brandBrief: NavItem = { title: 'Brand brief', href: '/brief-de-marca' }
 
 export const navigation: NavSection[] = [
   {
@@ -21,6 +28,7 @@ export const navigation: NavSection[] = [
   },
   {
     title: 'Components',
+    collapsible: true,
     items: [
       { title: 'Button', href: '/components/button' },
       { title: 'Input', href: '/components/input' },
@@ -31,15 +39,12 @@ export const navigation: NavSection[] = [
   },
   {
     title: 'Kits',
+    collapsible: true,
     items: [
       { title: 'Marketing site', href: '/kits/website' },
       { title: 'Brand book', href: '/brand-book' },
       { title: 'Auth (demo)', href: '/kits/auth' },
       { title: 'App shell (demo)', href: '/kits/app-shell' },
     ],
-  },
-  {
-    title: 'Brand brief',
-    items: [{ title: 'Brief de marca', href: '/brief-de-marca' }],
   },
 ]
