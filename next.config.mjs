@@ -18,6 +18,12 @@ const nextConfig = {
         headers: [...securityHeaders, { key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
       },
       {
+        // Private document shared by link. The page metadata says the same thing;
+        // the header covers crawlers that never parse the HTML.
+        source: '/brief-de-marca/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
         // Registry items are fetched cross-origin by the shadcn CLI.
         source: '/r/:path*',
         headers: [
