@@ -145,6 +145,7 @@ registry/dylo/blocks/   website-kit; auth/app-shell demos are docs-only
 registry.json           Root catalogue for the shadcn CLI
 rules/                  Cursor rule + ESLint config shipped by `agent-rules`
 src/                    The docs site
+docs/                   Working plans (scale-up, brand brief). Not on the site.
 public/brand/           Brand assets, served and shipped
 design-source/          The raw Claude Design export. Reference only.
 ```
