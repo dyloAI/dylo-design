@@ -13,7 +13,7 @@ function required(name: string): string {
 }
 
 export const env = {
-  /** Passphrase for the gated brand brief at /brief-de-marca. */
+  /** Passphrase for the gated brief and plan pages. */
   BRAND_BRIEF_PASSWORD: required('BRAND_BRIEF_PASSWORD'),
   /** `pnpm dev` serves plain HTTP, so a `Secure` cookie could not be set locally. */
   IS_PRODUCTION: process.env.NODE_ENV === 'production',

@@ -18,9 +18,17 @@ const nextConfig = {
         headers: [...securityHeaders, { key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
       },
       {
-        // Private document shared by link. The page metadata says the same thing;
+        // Private documents shared by link. The page metadata says the same thing;
         // the header covers crawlers that never parse the HTML.
+        source: '/brief-de-marca',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
         source: '/brief-de-marca/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
+        source: '/plans/:path*',
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
       },
       {
