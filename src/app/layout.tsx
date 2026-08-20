@@ -1,4 +1,5 @@
 import { SiteNav } from '@/components/site-nav'
+import { env } from '@/env'
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
 import { Space_Grotesk, Space_Mono } from 'next/font/google'
@@ -36,6 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SiteNav />
           <main className="min-w-0">{children}</main>
         </div>
+        {/* dylo feedback widget — point at a preview, mark what's wrong, it lands
+            as a thread in dylo. Never production. https://app.dylo.dev/widget/install.md */}
+        {env.FEEDBACK_WIDGET_ENABLED ? <script defer src="https://app.dylo.dev/widget/v1.js" /> : null}
       </body>
     </html>
   )
