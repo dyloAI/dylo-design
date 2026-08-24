@@ -1,6 +1,6 @@
 'use client'
 
-import { brandBrief, navigation, type NavItem, type NavSection } from '@/lib/navigation'
+import { navigation, type NavItem, type NavSection } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
@@ -21,10 +21,6 @@ export function SiteNav() {
       </div>
 
       <nav aria-label="Design system" className="px-6 pt-2 pb-6">
-        <div className="mb-7">
-          <NavLink item={brandBrief} pathname={pathname} />
-        </div>
-
         {navigation.map((section) => (
           <NavSectionBlock key={section.title} section={section} pathname={pathname} />
         ))}

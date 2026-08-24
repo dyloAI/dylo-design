@@ -7,9 +7,8 @@ import { env } from '@/env'
  * with no CORS involved.
  *
  * The key is set on Preview and Development only, so this route is inert in
- * production. There is no session to gate on here — the site is public and the
- * gate only covers the brief — so dylo's per-project rate limit (10 reports an
- * hour) plus the key's origin allowlist are what bound abuse.
+ * production. The site is public, so dylo's per-project rate limit (10 reports
+ * an hour) plus the key's origin allowlist are what bound abuse.
  *
  * Full instructions: https://app.dylo.dev/widget/install.md
  */
