@@ -6,18 +6,7 @@ export type NavSection = {
   collapsible?: boolean
 }
 
-export const brandBrief: NavItem = { title: 'Brand brief', href: '/brief-de-marca' }
-
 export const navigation: NavSection[] = [
-  {
-    title: 'Plans',
-    collapsible: true,
-    items: [
-      { title: 'Working brief', href: '/plans/brand-brief' },
-      { title: 'Scale-up plan', href: '/plans/scale-up' },
-      { title: 'Action list', href: '/plans/actions' },
-    ],
-  },
   {
     title: 'Start',
     items: [

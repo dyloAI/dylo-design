@@ -116,22 +116,20 @@ pnpm dev
 | Command                  | Purpose                                                           |
 | ------------------------ | ----------------------------------------------------------------- |
 | `pnpm dev`               | Docs site on `http://localhost:3000`.                             |
-| `pnpm build`             | Production build. Every route is static except the gated pages. |
+| `pnpm build`             | Production build. Every route is static.                      |
 | `pnpm lint`              | ESLint.                                                           |
 | `pnpm typecheck`         | `tsc --noEmit`.                                                   |
 | `pnpm registry:validate` | Validate the registry before publishing.                          |
 
 ### Environment
 
-Copy [.env.example](.env.example) to `.env.local`. One variable:
+No required secrets. Optional for local/preview feedback:
 
-| Variable               | Purpose                                                                                                                                                                                    |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `BRAND_BRIEF_PASSWORD` | Passphrase for the gated brief and plan pages. Read only by [src/env.ts](src/env.ts), which throws at import if it is missing — so it has to be set in Vercel before a deploy. |
+| Variable            | Purpose                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------ |
+| `DYLO_FEEDBACK_KEY` | Project feedback key (`dylo_fb_…`). Unset in production so the ingest route stays inert. |
 
-`/brief-de-marca` and `/plans/*` share that one passphrase. They stay `noindex`.
-The cookie carries a SHA-256 of the passphrase, never the passphrase, and is
-valid on every gated path after one unlock.
+Copy [.env.example](.env.example) to `.env.local` when you need the widget locally.
 
 The docs site imports components straight out of `registry/`, so a preview on
 the site cannot drift from what a consumer installs.
@@ -145,7 +143,6 @@ registry/dylo/blocks/   website-kit; auth/app-shell demos are docs-only
 registry.json           Root catalogue for the shadcn CLI
 rules/                  Cursor rule + ESLint config shipped by `agent-rules`
 src/                    The docs site
-docs/                   Working plans. Source for the gated `/plans/*` pages.
 public/brand/           Brand assets, served and shipped
 design-source/          The raw Claude Design export. Reference only.
 ```

@@ -165,18 +165,6 @@ repo's TEMPLATE.md).
 **Run `pnpm typecheck`, `pnpm lint` and `pnpm registry:validate` before
 declaring a task done.**
 
-### Internal plans
-
-Working documents for the brand and the Nov 2026 → Oct 2027 scale-up. Read
-them when the work is about positioning, the catalog, the brand partner, or
-what gets quoted next. The markdown in `docs/` is the source; the site serves
-them behind the same passphrase as `/brief-de-marca`.
-
-- [docs/scale-up-plan.md](docs/scale-up-plan.md) — `/plans/scale-up`
-- [docs/scale-up-actions.md](docs/scale-up-actions.md) — `/plans/actions`
-- [docs/brand-brief.md](docs/brand-brief.md) — `/plans/brand-brief`
-  The studio-facing page is `/brief-de-marca`.
-
 Use `pnpm`. The lockfile is `pnpm-lock.yaml` and the version is pinned in
 `packageManager`. Note that `eslint` is held at v9 and `typescript` at v6:
 `eslint-config-next` does not yet run on ESLint 10, and `typescript-eslint` does
@@ -195,7 +183,6 @@ not yet support TypeScript 7.
 | `src/`                        | The docs site. Not distributed.                                                          |
 | `public/brand/`               | Brand assets. Served by the site _and_ shipped by `brand-assets`.                        |
 | `brand-templates/`            | HTML sources for the rendered brand assets. Capture recipe is in each file.              |
-| `docs/`                       | Working plans. Source for the gated `/plans/*` pages. Not shipped by the registry.       |
 | `design-source/`              | The raw Claude Design export. See below.                                                 |
 
 ### Adding or changing a component
