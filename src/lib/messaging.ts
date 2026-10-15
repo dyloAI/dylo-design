@@ -4,14 +4,11 @@
  *
  * Facts come from the brand brief. A TODO marks a gap. Do not fill a gap
  * with a number, a client, or a competitor that the brief does not give.
+ *
+ * dylo has no tagline. Use `pitch.oneLine`, or the wordmark dylo.
  */
 
 export type Localized = { en: string; es: string }
-
-export const tagline: Localized = {
-  en: 'Software, made.',
-  es: 'Software, hecho.',
-}
 
 export const legal: Localized = {
   en: 'dylo is a brand of Ax42 S.L.',

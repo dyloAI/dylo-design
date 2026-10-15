@@ -8,7 +8,6 @@ import {
   pillars,
   pitch,
   positioning,
-  tagline,
   todos,
   type Localized,
 } from '@/lib/messaging'
@@ -39,8 +38,8 @@ export default function MessagingPage() {
     <Page>
       <PageHeader
         eyebrow="Foundations"
-        title={tagline.en}
-        lead="The words we use with an owner or a director. English and Spanish. The line under the logo is Software, made. In Spanish, Software, hecho."
+        title={pitch.oneLine.en}
+        lead="The words we use with an owner or a director. English and Spanish. dylo has no tagline. The line we use is the pitch."
       />
 
       <Section title="Positioning" description={legal.en}>

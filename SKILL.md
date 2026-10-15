@@ -26,7 +26,7 @@ production code depending on the need.
 ## dylo in one line
 
 dylo is a technology provider. We build and look after web apps for companies
-with 1 to 500 people and no tech team. The line is **Software, made.** Warm
+with 1 to 500 people and no tech team. dylo has no tagline. Warm
 monochrome, one oxide accent, Space Grotesk and Space Mono, the keystone mark.
 
 ## Non-negotiables
