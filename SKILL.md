@@ -58,7 +58,9 @@ monochrome, one oxide accent, Space Grotesk and Space Mono, the keystone mark.
 - `registry/dylo/blocks/auth/` and `app-shell/` — **docs / marketing demos only**.
   Product apps use Catalyst auth + shell from **dylo-starter**.
 - `public/brand/` — the keystone mark and logo lockups, SVG and PNG.
-- `public/brand-book/` — the 14-page brand book, ready to open or print.
+- `public/brand-book/` — the 15-page brand book, ready to open or print.
+- `src/lib/messaging.ts` — the messaging framework, in English and Spanish.
+  The docs page is `/foundations/messaging`.
 - `rules/` — the Cursor brand rule and the ESLint adherence config.
 - `design-source/` — the raw Claude Design export this was built from. Reference
   only; not maintained.

@@ -70,7 +70,12 @@ export default function OverviewPage() {
             ['Foundations', '/foundations/colour', 'Colour, type, space, shape and the brand marks.'],
             ['Components', '/components/button', 'Button, Input, Card, Badge, Eyebrow — live, with source.'],
             ['Marketing site kit', '/kits/website', 'The dylo homepage, in composable sections.'],
-            ['Brand book', '/brand-book', 'Fourteen pages: idea, name, logo system, colour, type, voice.'],
+            [
+              'Messaging',
+              '/foundations/messaging',
+              'Positioning, pitch, pillars, and objections, in English and Spanish.',
+            ],
+            ['Brand book', '/brand-book', 'Fifteen pages: idea, name, logo, colour, type, voice, messaging.'],
             ['Product apps', '/agents', 'Use Catalyst + theme from dylo-starter — not foundry auth/shell kits.'],
           ].map(([title, href, detail]) => (
             <li key={href} className="border-b border-line pb-2 last:border-b-0">

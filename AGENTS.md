@@ -293,6 +293,18 @@ the footer, and anywhere a single brand line is needed.
 4. For companies without a tech team. / Para empresas sin equipo técnico.
 5. We build it. We look after it. / Lo construimos. Lo mantenemos.
 
+#### Messaging
+
+The framework is [`src/lib/messaging.ts`](src/lib/messaging.ts), rendered at
+`/foundations/messaging`. Use that file for customer-facing copy. Do not
+invent a price, a client, or a competitor to fill a TODO.
+
+One-line pitch: "A dylo engineer builds and looks after your web app, and you
+agree the price and the date first."
+
+Pillars: a dylo engineer on the platform; a product we already know; a price
+and a date first; the code is yours. dylo is a brand of Ax42 S.L.
+
 #### Tone by channel
 
 **Website.** The primary tagline, then one or two sentences: who it is for,

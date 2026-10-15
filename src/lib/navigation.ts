@@ -22,6 +22,7 @@ export const navigation: NavSection[] = [
       { title: 'Type', href: '/foundations/type' },
       { title: 'Space & shape', href: '/foundations/space' },
       { title: 'Brand marks', href: '/foundations/brand' },
+      { title: 'Messaging', href: '/foundations/messaging' },
     ],
   },
   {
