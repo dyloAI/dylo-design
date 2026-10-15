@@ -1,4 +1,4 @@
-repo: dyloAI/dyld-design
+repo: dyloAI/dylo-design
 branch: main
 
 ## Last sync
@@ -12,4 +12,4 @@ date: 2026-08-10T00:00:00Z
 ## Screen map
 | Project screen | Source |
 | --- | --- |
-| (none) | `dyloAI/dyld-design` was unreadable at sync time — no screens were built from it. Re-sync once the repo has pushed content. |
+| (none) | `dyloAI/dylo-design` was unreadable at sync time — no screens were built from it. Re-sync once the repo has pushed content. |

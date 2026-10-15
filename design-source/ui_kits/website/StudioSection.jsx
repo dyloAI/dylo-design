@@ -1,15 +1,15 @@
 const { Eyebrow: EyebrowS } = window.Dylo;
 const STEPS = [
-  { n: '01', t: 'Scope', d: 'A two-day sprint to define the one problem worth solving first.' },
-  { n: '02', t: 'Build', d: 'An AI-native team ships a working product in weeks, not quarters.' },
-  { n: '03', t: 'Iterate', d: 'We stay on as the work runs, tightening what matters.' },
+  { n: '01', t: 'Scope', d: 'We agree what the app does, what it costs, and when it will be ready.' },
+  { n: '02', t: 'Build', d: 'We build the web app. Most first versions are ready in weeks, on the date we agreed.' },
+  { n: '03', t: 'Look after', d: 'After it ships, we keep it running. Fixes and small changes stay with us.' },
 ];
 function StudioSection() {
   return (
     <section id="studio" style={{ padding: '84px 32px', background: 'var(--dylo-ink)' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <EyebrowS tone="light">How we work</EyebrowS>
-        <h2 style={{ margin: '18px 0 44px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 40, letterSpacing: '-0.02em', color: 'var(--dylo-bone)' }}>Precise. Engineered. Bold.</h2>
+        <h2 style={{ margin: '18px 0 44px', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 40, letterSpacing: '-0.02em', color: 'var(--dylo-bone)' }}>Scope, build, look after.</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 40 }}>
           {STEPS.map((s) => (
             <div key={s.n} style={{ borderTop: '1px solid var(--dylo-graphite)', paddingTop: 20 }}>

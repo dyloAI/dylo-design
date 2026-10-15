@@ -21,18 +21,18 @@ export default function TypePage() {
         <Preview className="block">
           <p className="m-0 text-display font-bold">Software, made.</p>
           <p className="mt-4 mb-0 max-w-[52ch] text-[16px]/[1.6] text-graphite">
-            We write like engineers who care about the craft. Plain words about real work, numbers instead of
-            adjectives, short declaratives. The work speaks; we do not oversell it.
+            We write in plain words. A price, a date, a short sentence. Numbers carry the claim, and we do not oversell
+            it.
           </p>
         </Preview>
       </Section>
 
       <Section
         title="Space Mono"
-        description="The technical layer — eyebrows, labels, data, metadata, timestamps. Uppercase with wide tracking. This is what makes the system read as engineered rather than merely minimal."
+        description="The technical layer — eyebrows, labels, data, metadata, timestamps. Uppercase with wide tracking. Use it for a label, a date, or a figure."
       >
         <Preview className="block">
-          <Eyebrow>AI-native software factory</Eyebrow>
+          <Eyebrow>Technology provider</Eyebrow>
           <div className="mt-5 flex flex-wrap gap-6">
             {[
               ['Shipped', '6 weeks'],

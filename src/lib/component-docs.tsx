@@ -133,8 +133,8 @@ export const componentDocs: ComponentDoc[] = [
           </Card>
         </Preview>
         <Preview label="Ink" tone="ink" className="block">
-          <Card tone="ink" eyebrow="How we work" title="Precise. Engineered. Bold.">
-            An AI-native team ships a working product in weeks, not quarters.
+          <Card tone="ink" eyebrow="How we work" title="Software, made.">
+            A working web app in six weeks. The price is in the quote, and we look after it once it is live.
           </Card>
         </Preview>
         <Preview label="Flat" className="block">

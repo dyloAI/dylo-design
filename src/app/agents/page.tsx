@@ -66,8 +66,8 @@ export default function AgentsPage() {
               cards.
             </li>
             <li>
-              Write like an engineer: plain words, numbers instead of adjectives, short declaratives. Never
-              &ldquo;leverage synergies&rdquo;.
+              Write calm and plain: a price, a date, numbers instead of adjectives, short sentences. We and you.
+              Lowercase dylo. No emoji. The full voice guide is in the brand rule.
             </li>
           </ul>
         </Prose>

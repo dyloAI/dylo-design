@@ -256,9 +256,84 @@ These bind you whether you are working here or in a consuming repo.
 
 ### Voice
 
-Precise, engineered, bold. Plain words about real work — never "leverages".
-Numbers over adjectives. Short declaratives. First and second person: "we"
-(dylo) and "you" (the client).
+Calm and trustworthy. Plain words. We say what it costs and when it will be
+ready. Honest, short, and free of hype.
+
+dylo is a technology provider. We build and look after web apps for companies
+with 1 to 500 employees and no tech team. The buyer is an owner or a director.
+The name comes from the Czech word _dílo_, a piece of work. The line we use is
+**Software, made.**
+
+Call dylo a technology provider. In anything a customer reads, do not call it
+an agency, a consultancy, or a software factory, and do not mention AI.
+
+#### How we write
+
+- Plain and reassuring. Short sentences. Say the thing, then stop.
+- Honest. If a date is not known yet, say so. Do not imply a promise we cannot
+  keep.
+- Clear about cost and time. A price and a date belong in the first
+  explanation.
+- Numbers over adjectives. "A working web app in six weeks" is the form to use.
+- First and second person: "we" (dylo) and "you" (the client).
+- The brand is lowercase: `dylo`. The work is capitalised: a Dílo.
+- No emoji. Ever.
+- No buzzwords: leverage, synergy, best-in-class, cutting-edge, seamless,
+  unlock, supercharge.
+
+#### Taglines
+
+Use one line. Do not stack them. The primary is the line under the logo, in
+the footer, and anywhere a single brand line is needed.
+
+1. **Software, made.** — primary. Spanish: **Software, hecho.**
+2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
+3. A clear price. A date you can plan around. / Un precio claro. Una fecha para
+   planificar.
+4. For companies without a tech team. / Para empresas sin equipo técnico.
+5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+
+#### Tone by channel
+
+**Website.** The primary tagline, then one or two sentences: who it is for,
+that we build the app and look after it, and that the price and the date come
+first.
+
+**Proposals and quotes.** Name the app, the price, what is included, and the
+date. Say what looking after it costs after launch. Every claim that can be a
+number should be a number.
+
+**Email.** Write as you would to a director you have already met. One subject,
+one ask. If you are waiting on them, say what you need and by when.
+
+**Social.** One fact: a price range, a timeline, or who it is for. No emoji.
+When a post needs a line under the logo, use the primary tagline.
+
+#### English
+
+Do: "We will build the web app in six weeks. The price is in the quote, and we
+look after it once it is live."
+
+Don't: "We leverage synergies to deliver best-in-class digital transformation."
+
+Do: "You do not need a tech team. We build the app, then we keep it running."
+
+Don't: "Supercharge your workflow with a seamless AI-native platform."
+
+#### Spanish
+
+Same rules: plain, short, a price and a date. Use "usted" with an owner or
+director unless they have already used "tú". The brand stays lowercase: dylo.
+The primary line in Spanish is "Software, hecho."
+
+Do: "Le construimos la aplicación web en seis semanas. El precio está en el
+presupuesto, y la mantenemos cuando ya está en uso."
+
+Don't: "Potenciamos sinergias para una transformación digital de primer nivel."
+
+Do: "No necesita un equipo técnico. La construimos y la mantenemos."
+
+Don't: "Impulse su negocio con una plataforma innovadora de última generación."
 
 <!-- BEGIN:nextjs-agent-rules -->
 

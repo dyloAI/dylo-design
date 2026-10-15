@@ -72,7 +72,7 @@ export default function BrandPage() {
       <PageHeader
         eyebrow="Foundations"
         title="Brand marks"
-        lead="The mark is a keystone: two voussoirs in ink and the keystone itself in oxide — the crafted piece that locks the arch."
+        lead="The mark is a keystone. Two side stones are ink. The centre stone is oxide, and it is the only accent."
       />
 
       <Section title="Install the assets" description="Drops every SVG and PNG into public/brand/.">

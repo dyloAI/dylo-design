@@ -1,4 +1,4 @@
-/** Ink footer with the reversed lockup and the line the brand runs on. */
+/** Ink footer with the reversed lockup and the primary tagline. */
 export function Footer() {
   return (
     <footer className="border-t border-graphite bg-ink px-8 py-10">
@@ -6,7 +6,7 @@ export function Footer() {
         {/* eslint-disable-next-line @next/next/no-img-element -- portable to non-Next consumers */}
         <img src="/brand/dylo-logo-horizontal-reversed.svg" alt="dylo" className="h-5" />
         <span className="font-mono text-[12px] tracking-mono text-concrete">
-          We make dílo — not robota. · © {new Date().getFullYear()} dylo
+          Software, made. · © {new Date().getFullYear()} dylo
         </span>
       </div>
     </footer>

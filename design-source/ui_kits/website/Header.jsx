@@ -7,7 +7,7 @@ function Header() {
         <img src="../../assets/dylo-logo-horizontal.svg" alt="dylo" style={{ height: 26 }} />
         <nav style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
           <a href="#work" style={navStyle}>Work</a>
-          <a href="#studio" style={navStyle}>Studio</a>
+          <a href="#studio" style={navStyle}>How we work</a>
           <a href="#start" style={{ textDecoration: 'none' }}><Button variant="primary" size="sm">Start a project</Button></a>
         </nav>
       </div>

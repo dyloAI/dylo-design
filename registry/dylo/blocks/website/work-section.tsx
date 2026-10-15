@@ -4,7 +4,7 @@ import { Eyebrow } from '@/registry/dylo/ui/eyebrow'
 
 const PROJECTS = [
   { name: 'Inventory OS', industry: 'Retail', desc: 'Real-time stock and reorder automation across 40 storefronts.' },
-  { name: 'Claims Copilot', industry: 'Insurance', desc: 'AI-assisted claims intake that cut review time by 70%.' },
+  { name: 'Claims desk', industry: 'Insurance', desc: 'Claims intake that cut review time by 70%.' },
   { name: 'Route Planner', industry: 'Logistics', desc: 'Daily dispatch optimizer for a 120-vehicle delivery fleet.' },
 ]
 
@@ -14,7 +14,7 @@ export function WorkSection() {
     <section id="work" className="bg-paper px-8 py-[84px]">
       <div className="mx-auto max-w-[1180px]">
         <Eyebrow>Selected work</Eyebrow>
-        <h2 className="mt-[18px] mb-10 text-[40px] font-bold tracking-tight text-ink">Dílo, delivered.</h2>
+        <h2 className="mt-[18px] mb-10 text-[40px] font-bold tracking-tight text-ink">Web apps we have shipped.</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {PROJECTS.map((project) => (
             <Card key={project.name} className="flex flex-col items-start gap-3.5">
