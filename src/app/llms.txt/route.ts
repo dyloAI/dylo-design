@@ -14,7 +14,7 @@ export function GET() {
     '',
     'Tokens, Tailwind v4 theme, React components and brand assets for dylo, a technology provider.',
     'Brand line: Software, made. Spanish: Software, hecho. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI.',
-    "Messaging framework: /foundations/messaging — positioning, one-line pitch, 30-second pitch, four pillars, objection answers, in English and Spanish. Default offer: dylo hosts the app and looks after it for one monthly fee. The fee amount is not published. Holding the code in the customer's own accounts is an option on request. dylo is a brand of Ax42 S.L.",
+    'Messaging framework: /foundations/messaging — positioning, one-line pitch, 30-second pitch, four pillars, objection answers, in English and Spanish. A one-off fee pays for the build. Hosting and maintenance start from €30 a month, up to a few hundred euros for a more complex app such as a 3D configurator. The customer can take the app elsewhere whenever they want, and dylo hands it over. dylo is a brand of Ax42 S.L.',
     `Source registry: ${REGISTRY} (${REPO_URL}). Install with the shadcn CLI: pnpm dlx shadcn@latest add ${REGISTRY}/<item>`,
     '',
     '## Non-negotiables',
