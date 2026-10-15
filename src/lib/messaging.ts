@@ -19,18 +19,18 @@ export const legal: Localized = {
 }
 
 export const positioning: Localized = {
-  en: 'dylo is a technology provider for companies with 1 to 500 people and no technology team. The buyer is the owner, a director, or a manager who owns the result. You and a dylo engineer define the system and look after it, on the dylo platform. We start with a narrow product we already build: a quote or product configurator, data extraction and analysis, or an operations platform.',
-  es: 'dylo es un proveedor de tecnología para empresas de 1 a 500 personas sin equipo técnico. Quien compra es el propietario, un director, o un gerente que responde del resultado. Usted y un ingeniero de dylo definen el sistema y lo mantienen, en la plataforma de dylo. Empezamos por un producto concreto que ya construimos: un configurador de presupuestos o de producto, extracción y análisis de datos, o una plataforma de operaciones.',
+  en: 'dylo is a technology provider for companies with 1 to 500 people and no technology team. The buyer is the owner, a director, or a manager who owns the result. You and a dylo engineer define the system on the dylo platform. We start with a narrow product we already build: a quote or product configurator, data extraction and analysis, or an operations platform. When it is live, we host it and look after the service. If you want the code in your own accounts, you can ask. That is an option.',
+  es: 'dylo es un proveedor de tecnología para empresas de 1 a 500 personas sin equipo técnico. Quien compra es el propietario, un director, o un gerente que responde del resultado. Usted y un ingeniero de dylo definen el sistema en la plataforma de dylo. Empezamos por un producto concreto que ya construimos: un configurador de presupuestos o de producto, extracción y análisis de datos, o una plataforma de operaciones. Cuando ya está en uso, lo alojamos y mantenemos el servicio. Si quiere el código en sus propias cuentas, puede pedirlo. Es una opción.',
 }
 
 export const pitch = {
   oneLine: {
-    en: 'A dylo engineer builds and looks after your web app, and you agree the price and the date first.',
-    es: 'Un ingeniero de dylo construye y mantiene su aplicación web, y el precio y la fecha se acuerdan antes.',
+    en: 'A dylo engineer builds your web app, and we host it and look after it for one monthly fee.',
+    es: 'Un ingeniero de dylo construye su aplicación web, y la alojamos y la mantenemos por una cuota al mes.',
   } satisfies Localized,
   thirtySeconds: {
-    en: 'You run a company of 1 to 500 people, and you do not have a tech team. dylo is your technology provider. You work with a dylo engineer on our platform. We usually start from a product we already know: a configurator for quotes, a way to get the data out of the files you already have, or an operations platform for the work your team repeats. The price and the date are agreed before we start. The code sits in your own accounts from the first day. When it is live, we look after it.',
-    es: 'Usted dirige una empresa de 1 a 500 personas, y no tiene equipo técnico. dylo es su proveedor de tecnología. Trabaja con un ingeniero de dylo en nuestra plataforma. Solemos empezar por un producto que ya conocemos: un configurador de presupuestos, una forma de sacar los datos de los archivos que ya tiene, o una plataforma de operaciones para el trabajo que su equipo repite. El precio y la fecha se acuerdan antes de empezar. El código está en sus propias cuentas desde el primer día. Cuando ya está en uso, lo mantenemos.',
+    en: 'You run a company of 1 to 500 people, and you do not have a tech team. dylo is your technology provider. You work with a dylo engineer on our platform. We usually start from a product we already know: a configurator for quotes, a way to get the data out of the files you already have, or an operations platform for the work your team repeats. The price and the date are agreed before we start. When it is live, we host it and look after it. Hosting, the database, updates, monitoring, and fixes are one monthly fee.',
+    es: 'Usted dirige una empresa de 1 a 500 personas, y no tiene equipo técnico. dylo es su proveedor de tecnología. Trabaja con un ingeniero de dylo en nuestra plataforma. Solemos empezar por un producto que ya conocemos: un configurador de presupuestos, una forma de sacar los datos de los archivos que ya tiene, o una plataforma de operaciones para el trabajo que su equipo repite. El precio y la fecha se acuerdan antes de empezar. Cuando ya está en uso, lo alojamos y lo mantenemos. El alojamiento, la base de datos, las actualizaciones, la monitorización y las correcciones son una cuota al mes.',
   } satisfies Localized,
 }
 
@@ -47,12 +47,12 @@ export const pillars: Pillar[] = [
       es: 'Un ingeniero de dylo, en la plataforma',
     },
     body: {
-      en: 'You and a dylo engineer define the system on the dylo platform, and you look after it together after it ships. You are not left waiting on a project.',
-      es: 'Usted y un ingeniero de dylo definen el sistema en la plataforma de dylo, y lo mantienen juntos cuando ya está en uso. No se queda esperando un proyecto.',
+      en: 'You and a dylo engineer define the system on the dylo platform. We host it and run it after it ships. You do not need your own accounts, and you are not left waiting on a project.',
+      es: 'Usted y un ingeniero de dylo definen el sistema en la plataforma de dylo. Nosotros lo alojamos y lo hacemos funcionar cuando ya está en uso. No necesita cuentas propias, y no se queda esperando un proyecto.',
     },
     proof: {
-      en: 'From the first day, the code is in your GitHub, on your Vercel, and on your Neon. The engineer stays with the system, so it is not a box you were handed.',
-      es: 'Desde el primer día, el código está en su GitHub, en su Vercel y en su Neon. El ingeniero sigue con el sistema, así que no es una caja que le entregamos.',
+      en: 'An insulation contractor of about 50 people had no technology team. The quote was on 12 April 2026, and a first version was in production on 17 April.',
+      es: 'Un contratista de aislamiento de unas 50 personas no tenía equipo técnico. El presupuesto fue el 12 de abril de 2026, y una primera versión estaba en producción el 17 de abril.',
     },
   },
   {
@@ -85,16 +85,16 @@ export const pillars: Pillar[] = [
   },
   {
     title: {
-      en: 'The system is yours',
-      es: 'El sistema es suyo',
+      en: 'One monthly fee',
+      es: 'Una cuota al mes',
     },
     body: {
-      en: 'The code is yours from the first day. Every quote says there is no lock-in. We still look after the system.',
-      es: 'El código es suyo desde el primer día. Cada presupuesto dice que no hay atadura. Nosotros seguimos manteniendo el sistema.',
+      en: 'We host the app and look after the service: hosting, the database, updates, monitoring, and fixes. That is one monthly fee. You do not run the servers. If you want the code in your own accounts, you can ask. That is an option, not the usual way.',
+      es: 'Alojamos la aplicación y mantenemos el servicio: el alojamiento, la base de datos, las actualizaciones, la monitorización y las correcciones. Eso es una cuota al mes. Usted no gestiona los servidores. Si quiere el código en sus propias cuentas, puede pedirlo. Es una opción, no la forma habitual.',
     },
     proof: {
-      en: 'A quote calculator has been in production since December 2024, and we still look after it. A façades team replaced a no-code form tool, Jotform, with inspection reports that are theirs: a branded PDF, sent by email and filed. That work was delivered, accepted, and closed.',
-      es: 'Una calculadora de presupuestos está en producción desde diciembre de 2024, y seguimos manteniéndola. Un equipo de fachadas sustituyó un formulario sin código, Jotform, por informes de inspección que son suyos: un PDF con su marca, enviado por correo y archivado. Ese trabajo se entregó, se aceptó y se cerró.',
+      en: 'A quote calculator has been in production since December 2024, and we still look after it. A façades team replaced a no-code form tool, Jotform, with inspection reports: a branded PDF, sent by email and filed. That work was delivered, accepted, and closed.',
+      es: 'Una calculadora de presupuestos está en producción desde diciembre de 2024, y seguimos manteniéndola. Un equipo de fachadas sustituyó un formulario sin código, Jotform, por informes de inspección: un PDF con su marca, enviado por correo y archivado. Ese trabajo se entregó, se aceptó y se cerró.',
     },
   },
 ]
@@ -111,8 +111,8 @@ export const objections: Objection[] = [
       es: '¿Sois una agencia?',
     },
     answer: {
-      en: 'No. We are a technology provider. You work with a dylo engineer on our platform. The code sits in your accounts from the first day.',
-      es: 'No. Somos un proveedor de tecnología. Usted trabaja con un ingeniero de dylo en nuestra plataforma. El código está en sus cuentas desde el primer día.',
+      en: 'No. We are a technology provider. You work with a dylo engineer on our platform. We host the app and look after it.',
+      es: 'No. Somos un proveedor de tecnología. Usted trabaja con un ingeniero de dylo en nuestra plataforma. Nosotros alojamos la aplicación y la mantenemos.',
     },
   },
   {
@@ -131,8 +131,8 @@ export const objections: Objection[] = [
       es: '¿Y si desapareces?',
     },
     answer: {
-      en: 'The code is in your GitHub, on your Vercel, and on your Neon, from the first day. Every quote says there is no lock-in. A quote calculator has been in production since December 2024, and we still look after it. You also keep a dylo engineer, so the system is not a box we handed over and left.',
-      es: 'El código está en su GitHub, en su Vercel y en su Neon, desde el primer día. Cada presupuesto dice que no hay atadura. Una calculadora de presupuestos está en producción desde diciembre de 2024, y seguimos manteniéndola. Además sigue con un ingeniero de dylo, así que el sistema no es una caja que le entregamos y dejamos.',
+      en: 'We host the app and look after it: hosting, the database, updates, monitoring, and fixes, for one monthly fee. A quote calculator has been in production since December 2024, and we still look after it. You also keep a dylo engineer, so the system is not a box we handed over and left. If you want the code in your own accounts, you can ask. That is an option. It is not how we usually work.',
+      es: 'Alojamos la aplicación y la mantenemos: el alojamiento, la base de datos, las actualizaciones, la monitorización y las correcciones, por una cuota al mes. Una calculadora de presupuestos está en producción desde diciembre de 2024, y seguimos manteniéndola. Además sigue con un ingeniero de dylo, así que el sistema no es una caja que le entregamos y dejamos. Si quiere el código en sus propias cuentas, puede pedirlo. Es una opción. No es la forma habitual.',
     },
   },
   {
@@ -148,8 +148,8 @@ export const objections: Objection[] = [
 ]
 
 export const about: Localized = {
-    en: 'The name dylo comes from the Czech word dílo, a crafted work: the finished piece, not the hours. That is the work of a technology provider. You get a system that is yours, with a price and a date, built and looked after by a dylo engineer.',
-    es: 'El nombre dylo viene de la palabra checa dílo, una obra hecha: el trabajo terminado, no las horas. Ese es el trabajo de un proveedor de tecnología. Usted recibe un sistema que es suyo, con un precio y una fecha, construido y mantenido por un ingeniero de dylo.',
+  en: 'The name dylo comes from the Czech word dílo, a crafted work: the finished piece, not the hours. That is the work of a technology provider. You get a system with a price and a date, built by a dylo engineer, and looked after by us for one monthly fee.',
+  es: 'El nombre dylo viene de la palabra checa dílo, una obra hecha: el trabajo terminado, no las horas. Ese es el trabajo de un proveedor de tecnología. Usted recibe un sistema con un precio y una fecha, construido por un ingeniero de dylo, y mantenido por nosotros por una cuota al mes.',
 }
 
 /** Customer words, in Spanish. The English is our gloss, not a second quote. */
@@ -188,5 +188,7 @@ export const todos: string[] = [
   'TODO: The catalog of named products and their prices. It is not written yet. Do not turn €550–€1,800, or three weeks, into a price for every product.',
   'TODO: A customer view of the platform. It is not live. Do not say the customer already signs in to manage the lifecycle. Today the engineer works with them.',
   'TODO: How many companies work this way. The brief does not give a count. Do not invent one.',
-  'TODO: The saving against the no-code form. The brief says the replacement is theirs, and that the work was delivered, accepted, and closed. It does not give the two prices. Do not invent a saving.',
+  'TODO: The saving against the no-code form. The brief says the work was delivered, accepted, and closed. It does not give the two prices. Do not invent a saving.',
+  'TODO: The monthly fee. Do not invent an amount. The public line is one monthly fee, covering hosting, the database, updates, monitoring, and fixes.',
+  "TODO: Taking data with you. The brief tied leaving to the code in the customer's own accounts, which is now an option on request. It does not describe an export from a service dylo hosts. Do not promise that a hosted customer can take their data with them until that is written.",
 ]

@@ -299,11 +299,13 @@ The framework is [`src/lib/messaging.ts`](src/lib/messaging.ts), rendered at
 `/foundations/messaging`. Use that file for customer-facing copy. Do not
 invent a price, a client, or a competitor to fill a TODO.
 
-One-line pitch: "A dylo engineer builds and looks after your web app, and you
-agree the price and the date first."
+One-line pitch: "A dylo engineer builds your web app, and we host it and look
+after it for one monthly fee."
 
 Pillars: a dylo engineer on the platform; a product we already know; a price
-and a date first; the code is yours. dylo is a brand of Ax42 S.L.
+and a date first; one monthly fee. The fee amount is a TODO. Do not invent
+it. Holding the code in the customer's own accounts is an option on request,
+not the headline. dylo is a brand of Ax42 S.L.
 
 #### Tone by channel
 
