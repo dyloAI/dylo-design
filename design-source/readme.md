@@ -108,7 +108,7 @@ This is the full component inventory carried over from the source brand system �
 **Specimen cards** (`guidelines/`) — populate the Design System tab (groups: Brand, Colors, Type, Spacing).
 
 **Templates** (`templates/`)
-- `templates/brand-book/` — the 14-page dylo Brand Book (idea, name, logo system, colour, type, voice, applications) as a starting-point template.
+- `templates/brand-book/` — the 15-page dylo Brand Book (idea, name, logo system, colour, type, voice, messaging, applications) as a starting-point template.
 
 **UI kits** (`ui_kits/`)
 - `ui_kits/website/` — the dylo marketing site: sticky nav, hero, work grid, process section, contact form with live submit state. The one product surface this system needs for itself; no other product screens exist in the source material (see caveats).

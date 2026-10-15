@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Brand book',
-  description: 'Fourteen pages: the idea, the name, the logo system, colour, type, voice and applications.',
+  description: 'Fifteen pages: the idea, the name, the logo system, colour, type, voice, messaging and applications.',
 }
 
 export default function BrandBookPage() {
@@ -12,7 +12,7 @@ export default function BrandBookPage() {
       <PageHeader
         eyebrow="Kit"
         title="Brand book"
-        lead="Fourteen pages covering the idea, the name, the logo system, colour, type, voice and applications. Use it to bring someone new onto the brand, or as the starting point for a client-facing deck."
+        lead="Fifteen pages covering the idea, the name, the logo system, colour, type, voice, messaging and applications. Use it to bring someone new onto the brand, or as the starting point for a client-facing deck."
       />
 
       <Section title="The document">
