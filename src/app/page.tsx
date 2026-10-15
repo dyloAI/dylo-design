@@ -1,4 +1,5 @@
 import { Command, Page, PageHeader, Prose, Section } from '@/components/docs'
+import { pitch } from '@/lib/messaging'
 import { install, REPO_URL } from '@/lib/registry'
 import { Card } from '@/registry/dylo/ui/card'
 import Link from 'next/link'
@@ -17,7 +18,7 @@ export default function OverviewPage() {
     <Page>
       <PageHeader
         eyebrow="dylo design system"
-        title="Software, made."
+        title="dylo"
         lead={
           <>
             The tokens, Tailwind theme, components and brand assets behind dylo. Install any piece straight from GitHub
@@ -49,7 +50,7 @@ export default function OverviewPage() {
       </Section>
 
       <Section title="The idea">
-        <Card eyebrow="Why dylo" title="Software, made.">
+        <Card eyebrow="Why dylo" title={pitch.oneLine.en}>
           <Prose>
             <p className="m-0">
               dylo is a technology provider. We build web apps for companies with 1 to 500 people and no tech team, and

@@ -19,7 +19,7 @@ export default function TypePage() {
         description="Display through body and UI. Tighten tracking as size grows — -0.02em on headlines, -0.03em on display."
       >
         <Preview className="block">
-          <p className="m-0 text-display font-bold">Software, made.</p>
+          <p className="m-0 text-display font-bold">dylo</p>
           <p className="mt-4 mb-0 max-w-[52ch] text-[16px]/[1.6] text-graphite">
             We write in plain words. A price, a date, a short sentence. Numbers carry the claim, and we do not oversell
             it.

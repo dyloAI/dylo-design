@@ -133,7 +133,11 @@ export const componentDocs: ComponentDoc[] = [
           </Card>
         </Preview>
         <Preview label="Ink" tone="ink" className="block">
-          <Card tone="ink" eyebrow="How we work" title="Software, made.">
+          <Card
+            tone="ink"
+            eyebrow="How we work"
+            title="A dylo engineer builds your web app for a one-off fee, and we look after it from €30 a month."
+          >
             A working web app in six weeks. The price is in the quote, and we look after it once it is live.
           </Card>
         </Preview>

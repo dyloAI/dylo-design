@@ -405,7 +405,7 @@ function Footer() {
       letterSpacing: '0.08em',
       color: '#8E857A'
     }
-  }, "Software, made. \xB7 \xA9 2026 dylo")));
+  }, "\xA9 2026 dylo")));
 }
 window.Footer = Footer;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/Footer.jsx", error: String((e && e.message) || e) }); }
@@ -501,14 +501,15 @@ function Hero() {
   }, /*#__PURE__*/React.createElement(EyebrowH, null, "Technology provider"), /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
+      maxWidth: '18em',
       fontFamily: 'var(--font-display)',
       fontWeight: 700,
-      letterSpacing: '-0.03em',
-      fontSize: 'clamp(44px,6vw,84px)',
-      lineHeight: 0.98,
+      letterSpacing: '-0.02em',
+      fontSize: 'clamp(30px,3.2vw,44px)',
+      lineHeight: 1.15,
       color: 'var(--dylo-ink)'
     }
-  }, "Software, made."), /*#__PURE__*/React.createElement("p", {
+  }, "A dylo engineer builds your web app for a one-off fee, and we look after it from \u20AC30 a month."), /*#__PURE__*/React.createElement("p", {
     style: {
       margin: 0,
       maxWidth: 620,

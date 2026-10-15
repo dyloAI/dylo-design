@@ -4,8 +4,8 @@ The tokens, Tailwind theme, React components and brand assets behind **dylo**,
 a technology provider. We build and look after web apps for companies with
 1 to 500 employees and no tech team.
 
-The name comes from the Czech word **_dílo_**, a piece of work. The brand line
-is **Software, made.**
+The name comes from the Czech word **_dílo_**, a piece of work. dylo has no
+tagline.
 
 Docs site: **[design.dylo.dev](https://design.dylo.dev)** · Agent contract:
 [AGENTS.md](AGENTS.md)

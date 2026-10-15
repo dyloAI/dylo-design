@@ -1,6 +1,6 @@
 # dylo — Design System
 
-**dylo** is a technology provider. We build and look after web apps for companies with 1 to 500 employees and no tech team. The buyer is an owner or a director. The name comes from the Czech word **_dílo_**, a piece of work. The brand line is **Software, made.**
+**dylo** is a technology provider. We build and look after web apps for companies with 1 to 500 employees and no tech team. The buyer is an owner or a director. The name comes from the Czech word **_dílo_**, a piece of work. dylo has no tagline. Use the one-line pitch, or the wordmark.
 
 This project **is** the design system — a folder the compiler reads to ship tokens, fonts, assets, and components to consumers. Link `styles.css` to pick up the whole foundation.
 
@@ -20,17 +20,9 @@ This project **is** the design system — a folder the compiler reads to ship to
 - **No emoji.** Ever. The technical-mono layer carries any texture we need.
 - **No buzzwords:** leverage, synergy, best-in-class, cutting-edge, seamless, unlock, supercharge.
 
-**Taglines.** Use one. The primary is **Software, made.** Spanish: **Software, hecho.**
-
-1. Software, made. / Software, hecho. *(primary)*
-2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
-3. A clear price. A date you can plan around. / Un precio claro. Una fecha para planificar.
-4. For companies without a tech team. / Para empresas sin equipo técnico.
-5. We build it. We look after it. / Lo construimos. Lo mantenemos.
-
 **Tone by channel**
 
-- **Website.** The primary tagline, then who it is for, that we build the app and look after it, and that the price and the date come first.
+- **Website.** The one-line pitch, then who it is for, that we build the app and look after it, and that the price and the date come first. There is no tagline under the logo. Use the wordmark.
 - **Proposals and quotes.** Name the app, the price, what is included, and the date. Say what looking after it costs after launch.
 - **Email.** One subject, one ask, written to a director you have already met. If you are waiting, say what you need and by when.
 - **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
@@ -38,7 +30,6 @@ This project **is** the design system — a folder the compiler reads to ship to
 **Examples**
 - ✅ "We will build the web app in six weeks. The price is in the quote, and we look after it once it is live."
 - ✅ "Le construimos la aplicación web en seis semanas. El precio está en el presupuesto, y la mantenemos cuando ya está en uso."
-- ✅ "Software, made."
 - ❌ "We leverage synergies to ideate best-in-class solutions."
 - ❌ "Potenciamos sinergias para una transformación digital de primer nivel."
 - ❌ "Supercharge your data journey!"

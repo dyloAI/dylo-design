@@ -13,7 +13,7 @@ export function GET() {
     '# dylo design system',
     '',
     'Tokens, Tailwind v4 theme, React components and brand assets for dylo, a technology provider.',
-    'Brand line: Software, made. Spanish: Software, hecho. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI.',
+    'dylo has no tagline. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI. The one-line pitch is: A dylo engineer builds your web app for a one-off fee, and we look after it from €30 a month.',
     'Messaging framework: /foundations/messaging — positioning, one-line pitch, 30-second pitch, four pillars, objection answers, in English and Spanish. A one-off fee pays for the build. Hosting and maintenance start from €30 a month, up to a few hundred euros for a more complex app such as a 3D configurator. The customer can take the app elsewhere whenever they want, and dylo hands it over. dylo is a brand of Ax42 S.L.',
     `Source registry: ${REGISTRY} (${REPO_URL}). Install with the shadcn CLI: pnpm dlx shadcn@latest add ${REGISTRY}/<item>`,
     '',
