@@ -1,9 +1,13 @@
 import { Eyebrow } from '@/registry/dylo/ui/eyebrow'
 
 const STEPS = [
-  { n: '01', title: 'Scope', body: 'A two-day sprint to define the one problem worth solving first.' },
-  { n: '02', title: 'Build', body: 'An AI-native team ships a working product in weeks, not quarters.' },
-  { n: '03', title: 'Iterate', body: 'We stay on as the work runs, tightening what matters.' },
+  { n: '01', title: 'Scope', body: 'We agree what the app does, what it costs, and when it will be ready.' },
+  {
+    n: '02',
+    title: 'Build',
+    body: 'We build the web app. Most first versions are ready in weeks, on the date we agreed.',
+  },
+  { n: '03', title: 'Look after', body: 'After it ships, we keep it running. Fixes and small changes stay with us.' },
 ]
 
 /** Ink surface. Structural rules instead of cards — content sits on hairlines. */
@@ -12,7 +16,7 @@ export function StudioSection() {
     <section id="studio" className="bg-ink px-8 py-[84px]">
       <div className="mx-auto max-w-[1180px]">
         <Eyebrow tone="light">How we work</Eyebrow>
-        <h2 className="mt-[18px] mb-11 text-[40px] font-bold tracking-tight text-bone">Precise. Engineered. Bold.</h2>
+        <h2 className="mt-[18px] mb-11 text-[40px] font-bold tracking-tight text-bone">Scope, build, look after.</h2>
         <div className="grid gap-10 md:grid-cols-3">
           {STEPS.map((step) => (
             <div key={step.n} className="border-t border-graphite pt-5">

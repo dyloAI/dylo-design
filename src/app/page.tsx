@@ -49,16 +49,16 @@ export default function OverviewPage() {
       </Section>
 
       <Section title="The idea">
-        <Card eyebrow="Why dylo" title="We make dílo — not robota.">
+        <Card eyebrow="Why dylo" title="Software, made.">
           <Prose>
             <p className="m-0">
-              The name plays on Czech: <em>dílo</em>, a crafted work, an opus — set against <em>robota</em>, the word
-              for forced, repetitive drudgery that gave English &ldquo;robot&rdquo;. The whole brand runs on that one
-              contrast. Authored work, never anonymous output.
+              dylo is a technology provider. We build web apps for companies with 1 to 500 people and no tech team, and
+              we look after them once they are in use. The buyer is usually an owner or a director.
             </p>
             <p className="m-0">
-              Visually that becomes an industrial foundry: warm monochrome, structural grids, hairlines and stamped
-              plates, with a single molten note of oxide. Restraint is the brand.
+              A small app costs less than most owners expect. We say the price and the date before any work starts. The
+              visual system stays quiet around that: warm monochrome, structural grids, hairlines and stamped plates,
+              with a single note of oxide.
             </p>
           </Prose>
         </Card>
@@ -71,11 +71,7 @@ export default function OverviewPage() {
             ['Components', '/components/button', 'Button, Input, Card, Badge, Eyebrow — live, with source.'],
             ['Marketing site kit', '/kits/website', 'The dylo homepage, in composable sections.'],
             ['Brand book', '/brand-book', 'Fourteen pages: idea, name, logo system, colour, type, voice.'],
-            [
-              'Product apps',
-              '/agents',
-              'Use Catalyst + theme from dylo-starter — not foundry auth/shell kits.',
-            ],
+            ['Product apps', '/agents', 'Use Catalyst + theme from dylo-starter — not foundry auth/shell kits.'],
           ].map(([title, href, detail]) => (
             <li key={href} className="border-b border-line pb-2 last:border-b-0">
               <Link href={href} className="font-medium text-ink">

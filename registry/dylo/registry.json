@@ -94,7 +94,7 @@
       "name": "website-kit",
       "type": "registry:block",
       "title": "Marketing site",
-      "description": "The dylo homepage in six composable sections: sticky nav, hero on the engineering grid, work grid, studio steps, contact form and footer.",
+      "description": "The dylo homepage in six composable sections: sticky nav, hero on the engineering grid, work grid, how we work, contact form and footer.",
       "registryDependencies": [
         "dyloAI/dylo-design/theme",
         "dyloAI/dylo-design/button",

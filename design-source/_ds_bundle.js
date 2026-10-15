@@ -405,7 +405,7 @@ function Footer() {
       letterSpacing: '0.08em',
       color: '#8E857A'
     }
-  }, "We make d\xEDlo \u2014 not robota. \xB7 \xA9 2026 dylo")));
+  }, "Software, made. \xB7 \xA9 2026 dylo")));
 }
 window.Footer = Footer;
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/website/Footer.jsx", error: String((e && e.message) || e) }); }
@@ -462,7 +462,7 @@ function Header() {
   }, "Work"), /*#__PURE__*/React.createElement("a", {
     href: "#studio",
     style: navStyle
-  }, "Studio"), /*#__PURE__*/React.createElement("a", {
+  }, "How we work"), /*#__PURE__*/React.createElement("a", {
     href: "#start",
     style: {
       textDecoration: 'none'
@@ -498,7 +498,7 @@ function Hero() {
       gap: 26,
       alignItems: 'flex-start'
     }
-  }, /*#__PURE__*/React.createElement(EyebrowH, null, "AI-native software factory"), /*#__PURE__*/React.createElement("h1", {
+  }, /*#__PURE__*/React.createElement(EyebrowH, null, "Technology provider"), /*#__PURE__*/React.createElement("h1", {
     style: {
       margin: 0,
       fontFamily: 'var(--font-display)',
@@ -517,7 +517,7 @@ function Hero() {
       lineHeight: 1.55,
       color: 'var(--text-body)'
     }
-  }, "Apps & data solutions for SMBs that want a d\xEDlo \u2014 a crafted work \u2014 not a robota. We ship production software with an AI-native team, fast."), /*#__PURE__*/React.createElement("div", {
+  }, "We build and look after web apps for companies with 1 to 500 people and no tech team. You get a price and a date before we start."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 14,
@@ -552,15 +552,15 @@ const {
 const STEPS = [{
   n: '01',
   t: 'Scope',
-  d: 'A two-day sprint to define the one problem worth solving first.'
+  d: 'We agree what the app does, what it costs, and when it will be ready.'
 }, {
   n: '02',
   t: 'Build',
-  d: 'An AI-native team ships a working product in weeks, not quarters.'
+  d: 'We build the web app. Most first versions are ready in weeks, on the date we agreed.'
 }, {
   n: '03',
-  t: 'Iterate',
-  d: 'We stay on as the work runs, tightening what matters.'
+  t: 'Look after',
+  d: 'After it ships, we keep it running. Fixes and small changes stay with us.'
 }];
 function StudioSection() {
   return /*#__PURE__*/React.createElement("section", {
@@ -585,7 +585,7 @@ function StudioSection() {
       letterSpacing: '-0.02em',
       color: 'var(--dylo-bone)'
     }
-  }, "Precise. Engineered. Bold."), /*#__PURE__*/React.createElement("div", {
+  }, "Scope, build, look after."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
@@ -638,9 +638,9 @@ const PROJECTS = [{
   industry: 'RETAIL',
   desc: 'Real-time stock &amp; reorder automation across 40 storefronts.'
 }, {
-  name: 'Claims Copilot',
+  name: 'Claims desk',
   industry: 'INSURANCE',
-  desc: 'AI-assisted claims intake that cut review time by 70%.'
+  desc: 'Claims intake that cut review time by 70%.'
 }, {
   name: 'Route Planner',
   industry: 'LOGISTICS',
@@ -667,7 +667,7 @@ function WorkSection() {
       letterSpacing: '-0.02em',
       color: 'var(--dylo-ink)'
     }
-  }, "D\xEDlo, delivered."), /*#__PURE__*/React.createElement("div", {
+  }, "Web apps we have shipped."), /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',

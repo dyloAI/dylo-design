@@ -1,31 +1,47 @@
 # dylo — Design System
 
-**dylo** is an AI-native software factory for SMBs — it also serves startups and enterprise. The name plays on Czech: **_dílo_** — a crafted work, an opus — set against **_robota_**, the word for forced, repetitive drudgery that gave English "robot." The whole brand runs on that one contrast: **we make _dílo_, not robota.** Authored work, never anonymous output.
+**dylo** is a technology provider. We build and look after web apps for companies with 1 to 500 employees and no tech team. The buyer is an owner or a director. The name comes from the Czech word **_dílo_**, a piece of work. The brand line is **Software, made.**
 
 This project **is** the design system — a folder the compiler reads to ship tokens, fonts, assets, and components to consumers. Link `styles.css` to pick up the whole foundation.
 
-> **Sources.** Brand foundation (tokens, components, guideline specimens, brand book) was authored from scratch in an earlier design pass and imported here from an attached local codebase (`Dylo brand system design-3/`) — no external Figma. A GitHub repo, `dyloAI/dyld-design`, was also provided as a design-system reference; at the time of this build it returned empty (no default-branch tree, no readable files), so nothing could be imported from it. If it's populated later, re-run a sync to pull real product screens from it: https://github.com/dyloAI/dyld-design — exploring it further may reveal actual product UI worth recreating in a dedicated UI kit.
+> **Sources.** Brand foundation (tokens, components, guideline specimens, brand book) was authored from scratch in an earlier design pass and imported here from an attached local codebase (`Dylo brand system design-3/`) — no external Figma. A GitHub repo, `dyloAI/dylo-design`, was also provided as a design-system reference; at the time of this build it returned empty (no default-branch tree, no readable files), so nothing could be imported from it. If it's populated later, re-run a sync to pull real product screens from it: https://github.com/dyloAI/dylo-design — exploring it further may reveal actual product UI worth recreating in a dedicated UI kit.
 
 ---
 
 ## Content fundamentals
 
-**Voice: precise, engineered, bold.** We write like engineers who care about the craft.
+**Voice: calm and trustworthy.** Plain words. We say what it costs and when it will be ready. Honest, short, and free of hype. Call dylo a technology provider. In anything a customer reads, do not call it an agency, a consultancy, or a software factory, and do not mention AI.
 
-- **Plain words about real work.** Say what a thing *does*, not what it "leverages." No buzzwords, no hedging.
-- **Numbers over adjectives.** "Ship a working pipeline in six weeks" beats "rapidly deliver best-in-class solutions."
-- **Confident, never loud.** Short declaratives. We don't oversell; the work speaks.
-- **Casing is a rule, not a style.** The brand is always lowercase — **dylo**. The *work* is capitalised — a Dílo. This mirrors the idea: the company is humble, the craft is honored.
-- **First / second person:** "we" (dylo) and "you" (the client). Never faceless third-person corporate.
-- **No emoji.** Ever. The technical-mono layer carries any "texture" we need.
+- **Plain and reassuring.** Short sentences. Say the thing, then stop.
+- **Clear about cost and time.** A price and a date belong in the first explanation. If a date is not known yet, say so.
+- **Numbers over adjectives.** "A working web app in six weeks" is the form to use.
+- **Casing is a rule, not a style.** The brand is always lowercase — **dylo**. The *work* is capitalised — a Dílo.
+- **First / second person:** "we" (dylo) and "you" (the client).
+- **No emoji.** Ever. The technical-mono layer carries any texture we need.
+- **No buzzwords:** leverage, synergy, best-in-class, cutting-edge, seamless, unlock, supercharge.
+
+**Taglines.** Use one. The primary is **Software, made.** Spanish: **Software, hecho.**
+
+1. Software, made. / Software, hecho. *(primary)*
+2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
+3. A clear price. A date you can plan around. / Un precio claro. Una fecha para planificar.
+4. For companies without a tech team. / Para empresas sin equipo técnico.
+5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+
+**Tone by channel**
+
+- **Website.** The primary tagline, then who it is for, that we build the app and look after it, and that the price and the date come first.
+- **Proposals and quotes.** Name the app, the price, what is included, and the date. Say what looking after it costs after launch.
+- **Email.** One subject, one ask, written to a director you have already met. If you are waiting, say what you need and by when.
+- **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
 
 **Examples**
-- ✅ "We'll ship a working data pipeline in six weeks, then iterate."
-- ✅ "Software, made." · "Made, not churned." · "We make dílo — not robota."
+- ✅ "We will build the web app in six weeks. The price is in the quote, and we look after it once it is live."
+- ✅ "Le construimos la aplicación web en seis semanas. El precio está en el presupuesto, y la mantenemos cuando ya está en uso."
+- ✅ "Software, made."
 - ❌ "We leverage synergies to ideate best-in-class solutions."
-- ❌ "🚀 Supercharge your data journey!"
-
-Recurring lines: *We make dílo — not robota.* / *Software, made.* / *Made, not churned.* / *The crafted piece that locks the arch.*
+- ❌ "Potenciamos sinergias para una transformación digital de primer nivel."
+- ❌ "Supercharge your data journey!"
 
 ---
 
@@ -95,7 +111,7 @@ This is the full component inventory carried over from the source brand system �
 - `templates/brand-book/` — the 14-page dylo Brand Book (idea, name, logo system, colour, type, voice, applications) as a starting-point template.
 
 **UI kits** (`ui_kits/`)
-- `ui_kits/website/` — the dylo marketing site: sticky nav, hero, work grid, studio/process section, contact form with live submit state. The one product surface this factory needs for itself; no other product screens exist in the source material (see caveats).
+- `ui_kits/website/` — the dylo marketing site: sticky nav, hero, work grid, process section, contact form with live submit state. The one product surface this system needs for itself; no other product screens exist in the source material (see caveats).
 
 **Skill**
 - `SKILL.md` — how an agent (including Claude Code) should use this system.

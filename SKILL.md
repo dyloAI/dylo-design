@@ -25,9 +25,9 @@ production code depending on the need.
 
 ## dylo in one line
 
-We make **dílo** (a crafted work) — not **robota** (drudgery). An industrial
-foundry aesthetic: warm monochrome, one oxide accent, Space Grotesk + Space
-Mono, the keystone mark.
+dylo is a technology provider. We build and look after web apps for companies
+with 1 to 500 people and no tech team. The line is **Software, made.** Warm
+monochrome, one oxide accent, Space Grotesk and Space Mono, the keystone mark.
 
 ## Non-negotiables
 

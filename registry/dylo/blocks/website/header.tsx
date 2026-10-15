@@ -18,7 +18,7 @@ export function Header() {
             Work
           </a>
           <a href="#studio" className="text-[15px] font-medium text-graphite no-underline hover:text-ink">
-            Studio
+            How we work
           </a>
           <a href="#start" className={buttonVariants({ variant: 'primary', size: 'sm', className: 'no-underline' })}>
             Start a project

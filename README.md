@@ -1,12 +1,11 @@
 # dylo — design system
 
 The tokens, Tailwind theme, React components and brand assets behind **dylo**,
-an AI-native software factory for SMBs.
+a technology provider. We build and look after web apps for companies with
+1 to 500 employees and no tech team.
 
-The name plays on Czech: **_dílo_** — a crafted work, an opus — set against
-**_robota_**, the word for forced, repetitive drudgery that gave English
-"robot". The whole brand runs on that one contrast: **we make _dílo_, not
-robota.** Authored work, never anonymous output.
+The name comes from the Czech word **_dílo_**, a piece of work. The brand line
+is **Software, made.**
 
 Docs site: **[design.dylo.dev](https://design.dylo.dev)** · Agent contract:
 [AGENTS.md](AGENTS.md)
@@ -88,8 +87,8 @@ hue.
 
 **Type.** Two families. Space Grotesk for everything human, tightening tracking
 as size grows. Space Mono for the technical layer — eyebrows, labels, data —
-uppercase with wide tracking. The mono layer is what makes it read
-"engineered".
+uppercase with wide tracking. The mono layer is what marks a label, a date, or
+a figure.
 
 **Shape.** Mostly square: panels at 4–8px, pills only for small status chips.
 Hairlines on bone, full ink borders on foundry cards. The signature is a bone
@@ -99,8 +98,10 @@ soft floating card.
 **Motion.** Minimal and mechanical. 120–180ms, linear to ease-out. Press shifts
 the element down and right into its own shadow so the plate seats. No bounces.
 
-**Voice.** Precise, engineered, bold. Plain words about real work, numbers
-instead of adjectives, short declaratives. No emoji, ever.
+**Voice.** Calm and trustworthy. Plain words, a price and a date, numbers
+instead of adjectives, short sentences. We and you. Lowercase dylo. No emoji.
+The full guide, in English and Spanish, is in
+[rules/dylo-brand.mdc](rules/dylo-brand.mdc).
 
 ---
 
@@ -113,20 +114,20 @@ pnpm install
 pnpm dev
 ```
 
-| Command                  | Purpose                                                           |
-| ------------------------ | ----------------------------------------------------------------- |
-| `pnpm dev`               | Docs site on `http://localhost:3000`.                             |
-| `pnpm build`             | Production build. Every route is static.                      |
-| `pnpm lint`              | ESLint.                                                           |
-| `pnpm typecheck`         | `tsc --noEmit`.                                                   |
-| `pnpm registry:validate` | Validate the registry before publishing.                          |
+| Command                  | Purpose                                  |
+| ------------------------ | ---------------------------------------- |
+| `pnpm dev`               | Docs site on `http://localhost:3000`.    |
+| `pnpm build`             | Production build. Every route is static. |
+| `pnpm lint`              | ESLint.                                  |
+| `pnpm typecheck`         | `tsc --noEmit`.                          |
+| `pnpm registry:validate` | Validate the registry before publishing. |
 
 ### Environment
 
 No required secrets. Optional for local/preview feedback:
 
-| Variable            | Purpose                                                                                          |
-| ------------------- | ------------------------------------------------------------------------------------------------ |
+| Variable            | Purpose                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------- |
 | `DYLO_FEEDBACK_KEY` | Project feedback key (`dylo_fb_…`). Unset in production so the ingest route stays inert. |
 
 Copy [.env.example](.env.example) to `.env.local` when you need the widget locally.

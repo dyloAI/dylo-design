@@ -12,7 +12,8 @@ export function GET() {
   const body = list([
     '# dylo design system',
     '',
-    'Tokens, Tailwind v4 theme, React components and brand assets for dylo — an AI-native software factory.',
+    'Tokens, Tailwind v4 theme, React components and brand assets for dylo, a technology provider.',
+    'Brand line: Software, made. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI.',
     `Source registry: ${REGISTRY} (${REPO_URL}). Install with the shadcn CLI: pnpm dlx shadcn@latest add ${REGISTRY}/<item>`,
     '',
     '## Non-negotiables',

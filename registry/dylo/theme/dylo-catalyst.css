@@ -1,7 +1,7 @@
 /* dylo — Catalyst compatibility layer.
  *
- * Only for apps built on the Catalyst UI Kit (dylo, pss-platform and anything
- * from the AxLabs boilerplate). Catalyst hard-codes Tailwind's `zinc` scale for
+ * Only for apps built on the Catalyst UI Kit (dylo product apps and templates
+ * from dylo-starter). Catalyst hard-codes Tailwind's `zinc` scale for
  * neutrals and `blue` for the accent and focus rings. Rather than fork every
  * Catalyst component, this remaps those two scales onto the dylo palette, so
  * every existing zinc-* / blue-* utility already in the app resolves to

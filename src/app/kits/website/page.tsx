@@ -5,7 +5,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Marketing site',
-  description: 'The dylo homepage as composable sections: sticky nav, hero, work grid, studio, contact form, footer.',
+  description:
+    'The dylo homepage as composable sections: sticky nav, hero, work grid, how we work, contact form, footer.',
 }
 
 export default function WebsiteKitPage() {
