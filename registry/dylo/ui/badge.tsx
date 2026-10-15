@@ -14,7 +14,7 @@ const badgeVariants = cva(
         default: 'border-ink bg-bone text-ink',
         solid: 'border-ink bg-ink text-bone',
         accent: 'border-oxide bg-oxide text-paper',
-        muted: 'border-line bg-transparent text-concrete',
+        muted: 'border-line bg-transparent text-graphite',
       },
     },
     defaultVariants: {

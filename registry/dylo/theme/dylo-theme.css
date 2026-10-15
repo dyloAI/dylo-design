@@ -36,6 +36,9 @@
   --text-display: var(--dylo-text-display);
   --text-display--line-height: var(--dylo-leading-tight);
   --text-display--letter-spacing: -0.03em;
+  --text-hero: var(--dylo-text-hero);
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.03em;
   --text-h1: var(--dylo-text-h1);
   --text-h1--line-height: 1.05;
   --text-h1--letter-spacing: var(--dylo-tracking-tight);
@@ -48,6 +51,12 @@
   --tracking-tight: var(--dylo-tracking-tight);
   --tracking-mono: var(--dylo-tracking-mono);
   --tracking-eyebrow: var(--dylo-tracking-eyebrow);
+
+  --max-width-measure: var(--dylo-measure);
+
+  --duration-fast: var(--dylo-duration-fast);
+  --duration-reveal: var(--dylo-duration-reveal);
+  --ease-dylo-out: var(--dylo-ease-out);
 
   /* Radii. Deliberately overrides Tailwind's defaults — in dylo,
      `rounded-md` means the 8px panel corner, not Tailwind's 6px. */
@@ -94,4 +103,23 @@
     linear-gradient(var(--dylo-grid-line-reversed) 1px, transparent 1px),
     linear-gradient(90deg, var(--dylo-grid-line-reversed) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+/* Scroll reveal: opacity plus an 8px rise. Apply the class when the element
+   should enter. Reduced motion leaves it in its resting (visible) state. */
+@keyframes dylo-reveal {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: dylo-reveal var(--dylo-duration-reveal) var(--dylo-ease-out) both;
+  }
 }

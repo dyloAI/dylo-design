@@ -8,9 +8,9 @@ globs: ["**/*.tsx", "**/*.jsx", "**/*.css", "**/*.mdx"]
 
 dylo is a technology provider. We build and look after web apps for companies
 with 1 to 500 employees and no tech team. The buyer is an owner or a director.
-The name comes from the Czech word _dílo_, a piece of work. The line we use is
-_Software, made._ The visual system is an industrial foundry: warm monochrome,
-structural, utilitarian, with a single molten note.
+The name comes from the Czech word _dílo_, a piece of work. dylo has no
+tagline. The visual system is warm monochrome, editorial in type and space,
+with a single oxide note.
 
 Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 `/llms.txt` on the docs site.
@@ -29,14 +29,23 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 - **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide.
 - **No raw hex, ever.** Use the theme utilities: `bg-ink`, `text-oxide`,
   `border-line`, `shadow-block`. Outside Tailwind, `var(--dylo-*)`.
-- **Cards are stamped plates.** Ink border plus the hard block-shadow offset
-  (`shadow-block`), barely rounded. Not soft floating cards.
+- **Two panels.** `Card` `variant="plate"` is the stamped plate: an ink border
+  plus `shadow-block`. Reserve it for the primary action and for a product
+  mock. `variant="editorial"` is the quiet panel: a hairline `border-line`,
+  Paper, no shadow. Marketing copy uses editorial. The default stays `plate`
+  so existing apps do not change.
 - **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
   no glass or blur. The only pattern is the 48px engineering grid
   (`grid-paper`). The one translucent touch is the oxide focus ring on fields.
-- **Mechanical motion.** 120–180ms, linear to ease-out. Hover darkens; press
-  shifts down and right into the shadow so the plate seats. No bounces, no
-  float loops, and never fade an interactive element to mush.
+- **Concrete is not text on Bone or Paper.** `#8E857A` on `#ECE6D8` is about
+  2.9:1 and fails WCAG AA. Use it for rules, borders and disabled states.
+  Secondary text is Graphite. On Ink, text is Bone.
+- **Motion.** Interaction uses `--dylo-duration-fast` (150ms) and
+  `--dylo-ease-out`. Hover darkens; a plate press shifts down and right into
+  its shadow. A scroll reveal uses the `reveal` utility: opacity plus an 8px
+  rise over `--dylo-duration-reveal` (400ms), and it does nothing when the
+  user prefers reduced motion. No bounces, no float loops, and never fade an
+  interactive element.
 - **Never redraw the keystone mark.** Use the files in `public/brand/`. No
   rotating, recolouring, restacking or effects.
 
@@ -87,17 +96,12 @@ an agency, a consultancy, or a software factory, and do not mention AI.
 - No buzzwords: leverage, synergy, best-in-class, cutting-edge, seamless,
   unlock, supercharge.
 
-### Taglines
+### No tagline
 
-Use one line. Do not stack them. The primary is the line under the logo, in
-the footer, and anywhere a single brand line is needed.
-
-1. **Software, made.** — primary. Spanish: **Software, hecho.**
-2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
-3. A clear price. A date you can plan around. / Un precio claro. Una fecha para
-   planificar.
-4. For companies without a tech team. / Para empresas sin equipo técnico.
-5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+dylo has no tagline. Do not write "Software, made.", "Software, hecho.", or a
+line under the logo. The promise is the one-line pitch: a one-off fee, then
+from €30 a month. The footer carries the legal line: dylo is a brand of Ax42
+S.L.
 
 ### Messaging
 
@@ -125,9 +129,8 @@ dylo is a brand of Ax42 S.L.
 
 ### Tone by channel
 
-**Website.** The primary tagline, then one or two sentences: who it is for,
-that we build the app and look after it, and that the price and the date come
-first.
+**Website.** The one-line pitch, then who it is for, that we build the app and
+look after it, and that the price and the date come first. No tagline.
 
 **Proposals and quotes.** Name the app, the price, what is included, and the
 date. Say what looking after it costs after launch. Every claim that can be a
@@ -137,7 +140,7 @@ number should be a number.
 one ask. If you are waiting on them, say what you need and by when.
 
 **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
-When a post needs a line under the logo, use the primary tagline.
+Do not add a tagline under the logo.
 
 ### English
 
@@ -154,7 +157,9 @@ Don't: "Supercharge your workflow with a seamless AI-native platform."
 
 Same rules: plain, short, a price and a date. Use "usted" with an owner or
 director unless they have already used "tú". The brand stays lowercase: dylo.
-The primary line in Spanish is "Software, hecho."
+There is no Spanish tagline. The pitch uses usted: "Un ingeniero de dylo
+construye su aplicación web por un pago único, y la mantenemos desde 30 € al
+mes."
 
 Do: "Le construimos la aplicación web en seis semanas. El precio está en el
 presupuesto, y la mantenemos cuando ya está en uso."

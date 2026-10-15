@@ -26,8 +26,9 @@ production code depending on the need.
 ## dylo in one line
 
 dylo is a technology provider. We build and look after web apps for companies
-with 1 to 500 people and no tech team. The line is **Software, made.** Warm
-monochrome, one oxide accent, Space Grotesk and Space Mono, the keystone mark.
+with 1 to 500 people and no tech team. There is no tagline. The promise is a
+one-off fee, then from €30 a month. Warm monochrome, one oxide accent, Space
+Grotesk and Space Mono, the keystone mark.
 
 ## Non-negotiables
 
@@ -41,12 +42,16 @@ monochrome, one oxide accent, Space Grotesk and Space Mono, the keystone mark.
 - Never a raw hex value in code. Use `bg-ink` / `text-oxide` / `border-line`, or
   `var(--dylo-*)` outside Tailwind. Catalyst apps may use `zinc-*` / `blue-*`
   when `catalyst-theme` is installed.
-- Cards are stamped plates: ink border plus a hard block-shadow offset, barely
-  rounded. Not soft floating cards.
+- Two panels. `plate` is the stamped plate (ink border, `shadow-block`) for the
+  primary action and product mocks. `editorial` is a hairline, Paper, no
+  shadow, for marketing copy. The default stays `plate`.
+- Concrete (`#8E857A`) is not text on Bone or Paper. It fails WCAG AA there.
+  Secondary text is Graphite.
 - The keystone mark is fixed — never recolour, rotate, restack or add effects.
   Use the files in `public/brand/`.
-- Motion is mechanical: 120–180ms, linear to ease-out. Press seats the element
-  into its own shadow. No bounces.
+- Motion: 150ms for interaction (`--dylo-duration-fast`). The `reveal` utility
+  is opacity plus an 8px rise over 400ms, off under `prefers-reduced-motion`.
+  No bounces.
 
 ## Where things live
 

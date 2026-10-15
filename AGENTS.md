@@ -246,12 +246,19 @@ These bind you whether you are working here or in a consuming repo.
 - **No raw hex.** Use `bg-ink`, `text-oxide`, `border-line`, `shadow-block`, or
   `var(--dylo-*)` outside Tailwind. Catalyst apps may keep `zinc-*` / `blue-*`
   when `catalyst-theme` is installed.
-- **Cards are stamped plates.** Ink border plus `shadow-block`, barely rounded
-  (foundry marketing Card).
+- **Two panels.** `Card` `variant="plate"` is the stamped plate: an ink border
+  plus `shadow-block`. Reserve it for the primary action and for a product
+  mock. `variant="editorial"` is a hairline `border-line`, Paper, no shadow.
+  The default stays `plate`.
+- **Concrete is not text on Bone or Paper.** It is about 2.9:1 on Bone and
+  fails WCAG AA. Rules, borders and disabled states only. Secondary text is
+  Graphite.
 - **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
   no glass. The only pattern is the 48px engineering grid (`grid-paper`).
-- **Mechanical motion.** 120–180ms, linear to ease-out. Press shifts the element
-  into its own shadow. No bounces, no float loops.
+- **Motion.** Interaction is `--dylo-duration-fast` (150ms) and
+  `--dylo-ease-out`. A plate press seats into its shadow. The `reveal` utility
+  is opacity plus an 8px rise over 400ms, and it is off under
+  `prefers-reduced-motion`. No bounces, no float loops.
 - **Never redraw the keystone mark.** Use the files in `public/brand/`.
 
 ### Voice
@@ -261,8 +268,8 @@ ready. Honest, short, and free of hype.
 
 dylo is a technology provider. We build and look after web apps for companies
 with 1 to 500 employees and no tech team. The buyer is an owner or a director.
-The name comes from the Czech word _dílo_, a piece of work. The line we use is
-**Software, made.**
+The name comes from the Czech word _dílo_, a piece of work. dylo has no
+tagline. The promise is the one-line pitch.
 
 Call dylo a technology provider. In anything a customer reads, do not call it
 an agency, a consultancy, or a software factory, and do not mention AI.
@@ -281,17 +288,11 @@ an agency, a consultancy, or a software factory, and do not mention AI.
 - No buzzwords: leverage, synergy, best-in-class, cutting-edge, seamless,
   unlock, supercharge.
 
-#### Taglines
+#### No tagline
 
-Use one line. Do not stack them. The primary is the line under the logo, in
-the footer, and anywhere a single brand line is needed.
-
-1. **Software, made.** — primary. Spanish: **Software, hecho.**
-2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
-3. A clear price. A date you can plan around. / Un precio claro. Una fecha para
-   planificar.
-4. For companies without a tech team. / Para empresas sin equipo técnico.
-5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+dylo has no tagline. Do not write "Software, made.", "Software, hecho.", or a
+line under the logo. The promise is the one-line pitch. The footer carries the
+legal line: dylo is a brand of Ax42 S.L.
 
 #### Messaging
 
@@ -310,9 +311,8 @@ hand it over. dylo is a brand of Ax42 S.L.
 
 #### Tone by channel
 
-**Website.** The primary tagline, then one or two sentences: who it is for,
-that we build the app and look after it, and that the price and the date come
-first.
+**Website.** The one-line pitch, then who it is for, that we build the app and
+look after it, and that the price and the date come first. No tagline.
 
 **Proposals and quotes.** Name the app, the price, what is included, and the
 date. Say what looking after it costs after launch. Every claim that can be a
@@ -322,7 +322,7 @@ number should be a number.
 one ask. If you are waiting on them, say what you need and by when.
 
 **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
-When a post needs a line under the logo, use the primary tagline.
+Do not add a tagline under the logo.
 
 #### English
 
@@ -339,7 +339,7 @@ Don't: "Supercharge your workflow with a seamless AI-native platform."
 
 Same rules: plain, short, a price and a date. Use "usted" with an owner or
 director unless they have already used "tú". The brand stays lowercase: dylo.
-The primary line in Spanish is "Software, hecho."
+There is no Spanish tagline. Use the pitch, with usted.
 
 Do: "Le construimos la aplicación web en seis semanas. El precio está en el
 presupuesto, y la mantenemos cuando ya está en uso."

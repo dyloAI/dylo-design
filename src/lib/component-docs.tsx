@@ -118,7 +118,7 @@ export const componentDocs: ComponentDoc[] = [
   {
     slug: 'card',
     name: 'Card',
-    lead: 'The signature foundry panel: a paper or ink surface with a full ink border and a hard block-shadow offset. A stamped plate, never a soft floating card.',
+    lead: 'Two panels. Plate is the stamped plate: ink border and a hard block shadow, for a primary action or a product mock. Editorial is a hairline, Paper, and no shadow, for marketing copy. The default stays plate.',
     source: 'dylo/ui/card.tsx',
     usage: `import { Card } from '@/components/ui/card'
 
@@ -133,23 +133,36 @@ export const componentDocs: ComponentDoc[] = [
           </Card>
         </Preview>
         <Preview label="Ink" tone="ink" className="block">
-          <Card tone="ink" eyebrow="How we work" title="Software, made.">
-            A working web app in six weeks. The price is in the quote, and we look after it once it is live.
+          <Card tone="ink" eyebrow="How we work" title="From €30 a month">
+            A one-off fee pays for the build. Then we host it and look after it.
+          </Card>
+        </Preview>
+        <Preview label="Editorial" className="block">
+          <Card variant="editorial" eyebrow="The monthly fee" title="From €30 a month">
+            Hairline border, Paper, no shadow. Use this for marketing copy. The block shadow stays on the primary action
+            and on a product mock.
           </Card>
         </Preview>
         <Preview label="Flat" className="block">
           <Card elevated={false} title="No block shadow">
-            Use the flat panel when cards sit inside another bordered surface and the offsets would collide.
+            Use the flat plate when cards sit inside another bordered surface and the offsets would collide.
           </Card>
         </Preview>
       </>
     ),
     props: [
       {
+        name: 'variant',
+        type: "'plate' | 'editorial'",
+        default: "'plate'",
+        description: 'Plate is the stamped offset. Editorial is a hairline on Paper, with no shadow.',
+      },
+      {
         name: 'tone',
         type: "'light' | 'ink'",
         default: "'light'",
-        description: 'Paper panel with ink text, or the reverse.',
+        description:
+          'Paper panel with ink text, or the reverse. Editorial on ink keeps the hairline and drops the shadow.',
       },
       { name: 'elevated', type: 'boolean', default: 'true', description: 'The hard block-shadow offset.' },
       {
