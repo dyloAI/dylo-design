@@ -16,14 +16,14 @@ function Swatch({ token, reversed }: { token: ColourToken; reversed?: boolean })
       <div className="border-t border-line p-4">
         <div className="flex items-baseline justify-between gap-3">
           <span className="text-[15px] font-semibold text-ink">{token.name}</span>
-          <code className="font-mono text-[11px] text-concrete uppercase">{token.value}</code>
+          <code className="font-mono text-[11px] text-graphite uppercase">{token.value}</code>
         </div>
         <p className="mt-1.5 mb-2 text-[13px]/[1.5] text-graphite">{token.role}</p>
         <div className="flex flex-wrap gap-2">
           <code className="rounded-sm bg-bone px-1.5 py-0.5 font-mono text-[11px] text-graphite">{token.token}</code>
           <code className="rounded-sm bg-bone px-1.5 py-0.5 font-mono text-[11px] text-graphite">{token.utility}</code>
         </div>
-        {reversed && <p className="mt-2 mb-0 text-[12px] text-concrete">Pairs with bone text.</p>}
+        {reversed && <p className="mt-2 mb-0 text-[12px] text-graphite">Pairs with bone text.</p>}
       </div>
     </div>
   )
@@ -78,6 +78,12 @@ export default function ColourPage() {
             <li>
               <strong className="text-ink">Dark means Ink.</strong> Dark surfaces are Ink with Bone text — not black,
               not a neutral grey. The warmth is what makes the monochrome read as material rather than default.
+            </li>
+            <li>
+              <strong className="text-ink">Concrete is not text on Bone or Paper.</strong> Concrete on Bone is about
+              2.9:1, which fails WCAG AA even for large text. Use it for rules, borders and disabled states. Secondary
+              text is Graphite. Oxide on Bone is about 4.6:1 and on Paper about 5.2:1, so it can be large text, but it
+              is still the one accent.
             </li>
           </ul>
         </Prose>

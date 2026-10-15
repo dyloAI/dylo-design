@@ -21,21 +21,21 @@ export function Input({ className, containerClassName, label, hint, ...props }: 
   return (
     <label data-slot="input-field" className={cn('flex flex-col gap-[7px]', containerClassName)}>
       {label && (
-        <span className="font-mono text-[11px] font-bold tracking-[0.14em] text-concrete uppercase">{label}</span>
+        <span className="font-mono text-[11px] font-bold tracking-[0.14em] text-graphite uppercase">{label}</span>
       )}
       <input
         data-slot="input"
         className={cn(
           'rounded-sm border border-ink bg-paper px-[13px] py-[11px] text-[15px] text-ink',
-          'placeholder:text-concrete',
-          'transition-[border-color,box-shadow] duration-[120ms] ease-out',
+          'placeholder:text-graphite',
+          'duration-fast transition-[border-color,box-shadow] ease-dylo-out',
           'focus:border-oxide focus:ring-[3px] focus:ring-oxide/16 focus:outline-none',
           'disabled:cursor-not-allowed disabled:bg-bone disabled:opacity-60',
           className
         )}
         {...props}
       />
-      {hint && <span className="font-mono text-[11px] tracking-[0.02em] text-concrete">{hint}</span>}
+      {hint && <span className="font-mono text-[11px] tracking-[0.02em] text-graphite">{hint}</span>}
     </label>
   )
 }

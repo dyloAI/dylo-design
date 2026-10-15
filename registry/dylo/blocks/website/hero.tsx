@@ -1,13 +1,15 @@
 import { buttonVariants } from '@/registry/dylo/ui/button'
 import { Eyebrow } from '@/registry/dylo/ui/eyebrow'
 
-/** Bone hero on the engineering grid. One display line, no gradient, no image. */
+/** Bone hero on the engineering grid. The pitch is the headline. No tagline. */
 export function Hero() {
   return (
     <section className="bg-bone grid-paper px-8 pt-24 pb-[84px]">
       <div className="mx-auto flex max-w-[1180px] flex-col items-start gap-6">
         <Eyebrow>Technology provider</Eyebrow>
-        <h1 className="m-0 text-display font-bold">Software, made.</h1>
+        <h1 className="m-0 max-w-measure text-hero font-bold">
+          A dylo engineer builds your web app for a one-off fee, and we look after it from €30 a month.
+        </h1>
         <p className="m-0 max-w-[620px] text-[20px]/[1.55] text-graphite">
           We build and look after web apps for companies with 1 to 500 people and no tech team. You get a price and a
           date before we start.

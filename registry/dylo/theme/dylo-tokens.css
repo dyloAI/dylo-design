@@ -16,7 +16,7 @@
   /* Colour — warm monochrome carries ~95% of the work. */
   --dylo-ink: #1b1714; /* primary: text, the mark */
   --dylo-graphite: #3a352f; /* secondary ink / dark surfaces */
-  --dylo-concrete: #8e857a; /* muted: captions, metadata */
+  --dylo-concrete: #8e857a; /* rules, borders, disabled. ~2.9:1 on bone — not text. */
   --dylo-line: #d8cfbc; /* hairlines on bone */
   --dylo-bone: #ece6d8; /* primary surface */
   --dylo-paper: #f6f3ec; /* lighter surface / cards */
@@ -28,7 +28,8 @@
   /* Semantic aliases. Prefer these in product code. */
   --dylo-text-strong: var(--dylo-ink);
   --dylo-text-body: var(--dylo-graphite);
-  --dylo-text-muted: var(--dylo-concrete);
+  /* Secondary text is graphite. Concrete fails WCAG AA on bone and paper. */
+  --dylo-text-muted: var(--dylo-graphite);
   --dylo-surface-page: var(--dylo-bone);
   --dylo-surface-card: var(--dylo-paper);
   --dylo-surface-ink: var(--dylo-ink);
@@ -40,8 +41,10 @@
   --dylo-font-display: 'Space Grotesk', system-ui, sans-serif;
   --dylo-font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
 
-  /* Scale. Display and h1 fluid; everything below fixed. */
+  /* Scale. Display is a short line. Hero is a sentence-length promise.
+   * Do not set both as competing headlines on one page. */
   --dylo-text-display: clamp(44px, 6vw, 80px);
+  --dylo-text-hero: clamp(34px, 4.4vw, 60px);
   --dylo-text-h1: clamp(30px, 4vw, 48px);
   --dylo-text-h2: 28px;
   --dylo-text-h3: 20px;
@@ -54,6 +57,15 @@
   --dylo-tracking-tight: -0.02em; /* display / headlines */
   --dylo-tracking-mono: 0.08em; /* eyebrows, labels */
   --dylo-tracking-eyebrow: 0.24em; /* the mono section label */
+
+  /* Reading measure for a paragraph, not a headline. */
+  --dylo-measure: 40rem;
+
+  /* Motion. Interaction stays fast. A reveal may be slower, and it is
+   * opacity plus a short rise — never a bounce. */
+  --dylo-duration-fast: 150ms;
+  --dylo-duration-reveal: 400ms;
+  --dylo-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Space — 4px base. Matches Tailwind's default rhythm, so this scale is
    * provided for non-Tailwind consumers and is deliberately NOT mapped onto

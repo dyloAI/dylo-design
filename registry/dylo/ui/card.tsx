@@ -4,22 +4,36 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
 /**
- * The signature foundry panel: a paper or ink surface with a full ink border
- * and a hard block-shadow offset, like a stamped plate. Barely rounded, never
- * soft-floating.
+ * Two panels.
+ *
+ * `plate` is the stamped plate: an ink border and a hard block-shadow offset.
+ * Reserve it for a primary action's container and for a product mock.
+ *
+ * `editorial` is the quiet panel: a hairline Line border, Paper, no shadow.
+ * It is the default surface for marketing copy. The default variant stays
+ * `plate`, so existing apps do not change.
  */
-const cardVariants = cva('rounded-md border border-ink p-8', {
+const cardVariants = cva('rounded-md border p-8', {
   variants: {
+    variant: {
+      plate: 'border-ink',
+      editorial: 'border-line bg-paper text-ink shadow-none',
+    },
     tone: {
       light: 'bg-paper text-ink',
       ink: 'bg-ink text-bone',
     },
     elevated: {
-      true: 'shadow-block',
+      true: '',
       false: 'shadow-none',
     },
   },
+  compoundVariants: [
+    { variant: 'plate', elevated: true, class: 'shadow-block' },
+    { variant: 'editorial', tone: 'ink', class: 'border-graphite bg-ink text-bone shadow-none' },
+  ],
   defaultVariants: {
+    variant: 'plate',
     tone: 'light',
     elevated: true,
   },
@@ -32,11 +46,11 @@ export interface CardProps extends Omit<React.ComponentProps<'div'>, 'title'>, V
   title?: React.ReactNode
 }
 
-export function Card({ className, tone, elevated, eyebrow, title, children, ...props }: CardProps) {
+export function Card({ className, variant, tone, elevated, eyebrow, title, children, ...props }: CardProps) {
   const dark = tone === 'ink'
 
   return (
-    <div data-slot="card" className={cn(cardVariants({ tone, elevated }), className)} {...props}>
+    <div data-slot="card" className={cn(cardVariants({ variant, tone, elevated }), className)} {...props}>
       {eyebrow && (
         <div className="mb-3.5">
           <Eyebrow tone={dark ? 'light' : 'dark'}>{eyebrow}</Eyebrow>

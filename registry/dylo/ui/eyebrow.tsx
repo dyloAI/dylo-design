@@ -8,13 +8,16 @@ import * as React from 'react'
  *
  * The tick is the accent, so a view with an Eyebrow has already spent its one
  * oxide note — don't add a second.
+ *
+ * The label is graphite on light surfaces. Concrete is about 2.9:1 on bone
+ * and fails WCAG AA, so it is not used for text there.
  */
 const eyebrowVariants = cva(
   'inline-flex items-center gap-[11px] font-mono text-[12px] font-bold tracking-eyebrow uppercase',
   {
     variants: {
       tone: {
-        dark: 'text-concrete',
+        dark: 'text-graphite',
         light: 'text-bone',
       },
     },

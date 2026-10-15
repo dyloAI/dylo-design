@@ -99,9 +99,13 @@ export default function SpacePage() {
       <Section title="Motion">
         <Prose>
           <p className="m-0">
-            Minimal and mechanical: 120–180ms, linear to ease-out. Hover darkens slightly. Press shifts the element down
-            and right into its own shadow, so the plate seats against the page. No bounces, no float loops, and never
-            fade an interactive element to mush.
+            Interaction uses <code>--dylo-duration-fast</code> (150ms) and <code>--dylo-ease-out</code>. Hover darkens.
+            A plate press shifts down and right into its own shadow. No bounces, and never fade an interactive element.
+          </p>
+          <p>
+            <code>reveal</code> is the scroll entrance: opacity plus an 8px rise over{' '}
+            <code>--dylo-duration-reveal</code> (400ms). It does nothing when the user prefers reduced motion, and the
+            element stays visible. Do not put it on the first screen.
           </p>
         </Prose>
       </Section>
