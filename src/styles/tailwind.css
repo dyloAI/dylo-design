@@ -7,29 +7,29 @@
 
 @source '../../registry';
 
-/* Fonts come from next/font (see src/app/layout.tsx) rather than the Google
-   Fonts CDN. Retargeting the two font tokens is all it takes: the theme maps
-   them with `@theme inline`, so `font-sans` and `font-mono` emit these var()
-   references and pick up the self-hosted families at runtime. This is the
-   override documented for consumers in AGENTS.md. */
+/* Fonts come from next/font (see src/app/layout.tsx) rather than a CDN.
+   Retargeting the font tokens is all it takes: the theme maps them with
+   `@theme inline`, so `font-sans`, `font-display`, `font-serif` and
+   `font-mono` emit these var() references and pick up the self-hosted
+   families at runtime. This is the override documented in AGENTS.md. */
 :root {
-  --dylo-font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
-  --dylo-font-mono: var(--font-space-mono), 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --dylo-font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --dylo-font-display: var(--font-geist), 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --dylo-font-serif: var(--font-playfair), 'Playfair Display', ui-serif, Georgia, serif;
+  --dylo-font-mono: var(--font-commit-mono), 'Commit Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
 @layer base {
-  /* Docs chrome only, not part of the distributed theme. Links are ink with a
-     hairline underline that thickens on hover — oxide is reserved so the one
-     accent per view stays spendable on content. */
-  a {
-    color: var(--dylo-ink);
+  /* Docs chrome only, not part of the distributed theme. */
+  .prose-docs a {
+    color: var(--dylo-gray-12);
     text-decoration: underline;
-    text-decoration-color: var(--dylo-line);
+    text-decoration-color: var(--dylo-gray-a4);
     text-underline-offset: 3px;
-    transition: text-decoration-color 120ms ease;
+    transition: text-decoration-color 150ms ease;
   }
 
-  a:hover {
-    text-decoration-color: var(--dylo-ink);
+  .prose-docs a:hover {
+    text-decoration-color: var(--dylo-gray-12);
   }
 }

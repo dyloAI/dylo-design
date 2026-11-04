@@ -1,97 +1,487 @@
-/* dylo — Tailwind v4 theme.
+/* dylo — Tailwind v4 theme (v2).
  *
- * Maps the raw tokens onto Tailwind utilities: bg-ink, text-oxide, border-line,
- * font-mono, shadow-block, rounded-md.
+ * Maps the raw tokens onto Tailwind utilities:
+ *   bg-background, text-emphasis, text-default, border-default, bg-interactive,
+ *   bg-gray-1..12, border-slate-6, text-green-11, bg-success, font-display ...
+ *
+ * Headline sizes are arbitrary values (text-[3.5rem]) rather than named
+ * tokens: tailwind-merge reads an unknown text-* name as a colour and would
+ * drop the colour class next to it.
  *
  * Import once, after Tailwind:
  *
  *   @import 'tailwindcss';
  *   @import './dylo/dylo-theme.css';
  *
+ * Dark mode is class-driven: put `dark` on <html> (or any ancestor) and every
+ * token flips. `dark:` variants follow the same class.
+ *
  * `@theme inline` emits the var() reference into the utility rather than
- * copying the value, so redefining a --dylo-* token anywhere in :root
- * retargets every utility at runtime. That is what makes the next/font
- * override in AGENTS.md work.
+ * copying the value, so the light/dark switch and the next/font override in
+ * AGENTS.md both work at runtime.
  */
 
 @import './dylo-tokens.css';
 
-@theme inline {
-  /* Colour. The full palette is exposed; oxide is the only accent and the
-     "once per view" rule is a review rule, not something CSS can enforce. */
-  --color-ink: var(--dylo-ink);
-  --color-graphite: var(--dylo-graphite);
-  --color-concrete: var(--dylo-concrete);
-  --color-line: var(--dylo-line);
-  --color-bone: var(--dylo-bone);
-  --color-paper: var(--dylo-paper);
-  --color-oxide: var(--dylo-oxide);
-  --color-oxide-deep: var(--dylo-oxide-deep);
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *)));
 
-  /* Type. Space Grotesk is the default sans, so unstyled text is already
-     on-brand and `font-sans` is rarely needed in markup. */
-  --font-sans: var(--dylo-font-display);
+@theme inline {
+  /* Surfaces. */
+  --color-background: var(--dylo-background);
+  --color-canvas: var(--dylo-canvas);
+  --color-surface: var(--dylo-base);
+  --color-accent: var(--dylo-accent);
+  --color-accent-hover: var(--dylo-accent-hover);
+  --color-on-accent: var(--dylo-on-accent);
+  --color-overlay: var(--dylo-overlay);
+  --color-placeholder: var(--dylo-placeholder);
+  --color-scrim: var(--dylo-scrim);
+  --color-emphasis: var(--dylo-gray-12);
+  --color-muted: var(--dylo-gray-8);
+  --color-elevated: var(--dylo-gray-2);
+  --color-interactive-hover: var(--dylo-gray-a3);
+
+  /* Scales. Neutral gray is solid (gray-N) and translucent (gray-aN). Every
+     other scale is translucent only, so slate-6 is a hairline on any surface. */
+  --color-gray-1: var(--dylo-gray-1);
+  --color-gray-2: var(--dylo-gray-2);
+  --color-gray-3: var(--dylo-gray-3);
+  --color-gray-4: var(--dylo-gray-4);
+  --color-gray-5: var(--dylo-gray-5);
+  --color-gray-6: var(--dylo-gray-6);
+  --color-gray-7: var(--dylo-gray-7);
+  --color-gray-8: var(--dylo-gray-8);
+  --color-gray-9: var(--dylo-gray-9);
+  --color-gray-10: var(--dylo-gray-10);
+  --color-gray-11: var(--dylo-gray-11);
+  --color-gray-12: var(--dylo-gray-12);
+  --color-gray-a1: var(--dylo-gray-a1);
+  --color-gray-a2: var(--dylo-gray-a2);
+  --color-gray-a3: var(--dylo-gray-a3);
+  --color-gray-a4: var(--dylo-gray-a4);
+  --color-gray-a5: var(--dylo-gray-a5);
+  --color-gray-a6: var(--dylo-gray-a6);
+  --color-gray-a7: var(--dylo-gray-a7);
+  --color-gray-a8: var(--dylo-gray-a8);
+  --color-gray-a9: var(--dylo-gray-a9);
+  --color-gray-a10: var(--dylo-gray-a10);
+  --color-gray-a11: var(--dylo-gray-a11);
+  --color-gray-a12: var(--dylo-gray-a12);
+
+  --color-slate-1: var(--dylo-slate-a1);
+  --color-slate-2: var(--dylo-slate-a2);
+  --color-slate-3: var(--dylo-slate-a3);
+  --color-slate-4: var(--dylo-slate-a4);
+  --color-slate-5: var(--dylo-slate-a5);
+  --color-slate-6: var(--dylo-slate-a6);
+  --color-slate-7: var(--dylo-slate-a7);
+  --color-slate-8: var(--dylo-slate-a8);
+  --color-slate-9: var(--dylo-slate-a9);
+  --color-slate-10: var(--dylo-slate-a10);
+  --color-slate-11: var(--dylo-slate-a11);
+  --color-slate-12: var(--dylo-slate-a12);
+
+  --color-green-1: var(--dylo-green-a1);
+  --color-green-2: var(--dylo-green-a2);
+  --color-green-3: var(--dylo-green-a3);
+  --color-green-4: var(--dylo-green-a4);
+  --color-green-5: var(--dylo-green-a5);
+  --color-green-6: var(--dylo-green-a6);
+  --color-green-7: var(--dylo-green-a7);
+  --color-green-8: var(--dylo-green-a8);
+  --color-green-9: var(--dylo-green-a9);
+  --color-green-10: var(--dylo-green-a10);
+  --color-green-11: var(--dylo-green-a11);
+  --color-green-12: var(--dylo-green-a12);
+
+  --color-red-1: var(--dylo-red-a1);
+  --color-red-2: var(--dylo-red-a2);
+  --color-red-3: var(--dylo-red-a3);
+  --color-red-4: var(--dylo-red-a4);
+  --color-red-5: var(--dylo-red-a5);
+  --color-red-6: var(--dylo-red-a6);
+  --color-red-7: var(--dylo-red-a7);
+  --color-red-8: var(--dylo-red-a8);
+  --color-red-9: var(--dylo-red-a9);
+  --color-red-10: var(--dylo-red-a10);
+  --color-red-11: var(--dylo-red-a11);
+  --color-red-12: var(--dylo-red-a12);
+
+  --color-amber-1: var(--dylo-amber-a1);
+  --color-amber-2: var(--dylo-amber-a2);
+  --color-amber-3: var(--dylo-amber-a3);
+  --color-amber-4: var(--dylo-amber-a4);
+  --color-amber-5: var(--dylo-amber-a5);
+  --color-amber-6: var(--dylo-amber-a6);
+  --color-amber-7: var(--dylo-amber-a7);
+  --color-amber-8: var(--dylo-amber-a8);
+  --color-amber-9: var(--dylo-amber-a9);
+  --color-amber-10: var(--dylo-amber-a10);
+  --color-amber-11: var(--dylo-amber-a11);
+  --color-amber-12: var(--dylo-amber-a12);
+
+  --color-orange-1: var(--dylo-orange-a1);
+  --color-orange-2: var(--dylo-orange-a2);
+  --color-orange-3: var(--dylo-orange-a3);
+  --color-orange-4: var(--dylo-orange-a4);
+  --color-orange-5: var(--dylo-orange-a5);
+  --color-orange-6: var(--dylo-orange-a6);
+  --color-orange-7: var(--dylo-orange-a7);
+  --color-orange-8: var(--dylo-orange-a8);
+  --color-orange-9: var(--dylo-orange-a9);
+  --color-orange-10: var(--dylo-orange-a10);
+  --color-orange-11: var(--dylo-orange-a11);
+  --color-orange-12: var(--dylo-orange-a12);
+
+  --color-blue-1: var(--dylo-blue-a1);
+  --color-blue-2: var(--dylo-blue-a2);
+  --color-blue-3: var(--dylo-blue-a3);
+  --color-blue-4: var(--dylo-blue-a4);
+  --color-blue-5: var(--dylo-blue-a5);
+  --color-blue-6: var(--dylo-blue-a6);
+  --color-blue-7: var(--dylo-blue-a7);
+  --color-blue-8: var(--dylo-blue-a8);
+  --color-blue-9: var(--dylo-blue-a9);
+  --color-blue-10: var(--dylo-blue-a10);
+  --color-blue-11: var(--dylo-blue-a11);
+  --color-blue-12: var(--dylo-blue-a12);
+
+  --color-violet-1: var(--dylo-violet-a1);
+  --color-violet-2: var(--dylo-violet-a2);
+  --color-violet-3: var(--dylo-violet-a3);
+  --color-violet-4: var(--dylo-violet-a4);
+  --color-violet-5: var(--dylo-violet-a5);
+  --color-violet-6: var(--dylo-violet-a6);
+  --color-violet-7: var(--dylo-violet-a7);
+  --color-violet-8: var(--dylo-violet-a8);
+  --color-violet-9: var(--dylo-violet-a9);
+  --color-violet-10: var(--dylo-violet-a10);
+  --color-violet-11: var(--dylo-violet-a11);
+  --color-violet-12: var(--dylo-violet-a12);
+
+  /* Type. */
+  --font-sans: var(--dylo-font-sans);
+  --font-display: var(--dylo-font-display);
+  --font-serif: var(--dylo-font-serif);
   --font-mono: var(--dylo-font-mono);
 
-  --text-display: var(--dylo-text-display);
-  --text-display--line-height: var(--dylo-leading-tight);
-  --text-display--letter-spacing: -0.03em;
-  --text-h1: var(--dylo-text-h1);
-  --text-h1--line-height: 1.05;
-  --text-h1--letter-spacing: var(--dylo-tracking-tight);
-  --text-h2: var(--dylo-text-h2);
-  --text-h2--line-height: 1.15;
-  --text-h2--letter-spacing: var(--dylo-tracking-tight);
-  --text-h3: var(--dylo-text-h3);
-  --text-h3--line-height: 1.3;
+  --text-2xs: 0.625rem;
+  --text-2xs--line-height: 1rem;
 
-  --tracking-tight: var(--dylo-tracking-tight);
-  --tracking-mono: var(--dylo-tracking-mono);
-  --tracking-eyebrow: var(--dylo-tracking-eyebrow);
+  /* Motion. */
+  --ease-dylo: var(--dylo-ease-out);
+  --ease-drawer: var(--dylo-ease-drawer);
 
-  /* Radii. Deliberately overrides Tailwind's defaults — in dylo,
-     `rounded-md` means the 8px panel corner, not Tailwind's 6px. */
-  --radius-sm: var(--dylo-radius-sm);
-  --radius-md: var(--dylo-radius-md);
-  --radius-lg: var(--dylo-radius-lg);
+  /* Shadows. `shadow-glow` is the soft halo under a hovered call to action. */
+  --shadow-glow: var(--dylo-shadow-glow);
+  --shadow-popover: 0 8px 30px -4px #0000003d, 0 0 0 1px var(--dylo-gray-a3);
+  --shadow-dialog: 0 24px 64px -12px #00000066, 0 0 0 1px var(--dylo-gray-a3);
 
-  /* Shadows. `shadow-block` is the signature stamped-plate offset. */
-  --shadow-sm: var(--dylo-shadow-sm);
-  --shadow-md: var(--dylo-shadow-md);
-  --shadow-lg: var(--dylo-shadow-lg);
-  --shadow-block: var(--dylo-shadow-block);
-  --shadow-block-sm: var(--dylo-shadow-block-sm);
-  --shadow-block-seated: var(--dylo-shadow-block-seated);
+  --container-inbox: 105rem;
 }
 
-@layer base {
-  /* Space Grotesk everywhere, so unstyled text is already on-brand and
-     `font-sans` is rarely needed in markup.
+@theme {
+  --animate-plop: plop 1s ease-in-out 0.1s infinite;
+  --animate-plop2: plop 1s ease-in-out 0.25s infinite;
+  --animate-plop3: plop 1s ease-in-out 0.4s infinite;
+  --animate-slide-down-fade: open-slide-down-fade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up-fade: open-slide-up-fade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scale-up-fade: open-scale-up-fade 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in: fade-in 200ms ease-out;
+  --animate-fade-out: fade-out 150ms ease-in;
+  --animate-hero: hero-text-slide-up-fade 1s ease-in-out both;
+  --animate-marquee: scroll-x 40s linear infinite;
+  --animate-caret: caret-blink 1.25s ease-out infinite;
+  --animate-accordion-down: accordion-down 300ms ease-in-out;
+  --animate-accordion-up: accordion-up 300ms ease-in-out;
+  --animate-sheet-right: sheet-in-right 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-left: sheet-in-left 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-bottom: sheet-in-bottom 500ms cubic-bezier(0.32, 0.72, 0, 1);
 
-     Surface colours are deliberately NOT set here. An app with dark mode --
-     every Catalyst app -- needs the page to follow its own theme toggle, and a
-     hard `background-color` on body would defeat it. Set the pair yourself:
-     `bg-bone text-ink` on a light-only site, or Catalyst's usual
-     `bg-zinc-100 dark:bg-zinc-950`, which the compatibility layer already
-     resolves to Bone and Ink. */
-  body {
-    font-family: var(--dylo-font-display);
-    -webkit-font-smoothing: antialiased;
+  @keyframes plop {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    20% {
+      opacity: 1;
+    }
+  }
+  @keyframes open-slide-down-fade {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes open-slide-up-fade {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes open-scale-up-fade {
+    from {
+      opacity: 0;
+      transform: scale(0.98) translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes hero-text-slide-up-fade {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scroll-x {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 32px));
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes sheet-in-right {
+    from {
+      transform: translateX(calc(100% + 0.5rem));
+    }
+  }
+  @keyframes sheet-in-left {
+    from {
+      transform: translateX(calc(-100% - 0.5rem));
+    }
+  }
+  @keyframes sheet-in-bottom {
+    from {
+      transform: translateY(calc(100% + 0.5rem));
+    }
+  }
+  @keyframes caret-blink {
+    0%,
+    70%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    50% {
+      opacity: 0;
+    }
   }
 }
 
-@utility grid-paper {
-  /* The faint 1px engineering grid. The only pattern in the system. */
-  background-image:
-    linear-gradient(var(--dylo-grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--dylo-grid-line) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* Semantic utilities. Each name maps one role to one step, and the same word
+   means a different step for text and for borders, so these are utilities
+   rather than colours. */
+@utility text-default {
+  color: var(--dylo-gray-11);
+}
+@utility border-default {
+  border-color: var(--dylo-gray-3);
+}
+@utility bg-subtle {
+  background-color: var(--dylo-gray-1);
+}
+@utility border-subtle {
+  border-color: var(--dylo-gray-2);
+}
+@utility bg-interactive {
+  background-color: var(--dylo-gray-a2);
+}
+@utility border-interactive {
+  border-color: var(--dylo-gray-a3);
+}
+@utility ring-focus {
+  --tw-ring-color: var(--dylo-gray-a2);
+}
+@utility ring-accent {
+  --tw-ring-color: var(--dylo-ring-accent);
 }
 
-@utility grid-paper-reversed {
-  /* Same grid on ink surfaces. */
+@utility bg-success {
+  background-color: var(--dylo-green-a3);
+}
+@utility text-success {
+  color: var(--dylo-green-a11);
+}
+@utility border-success {
+  border-color: var(--dylo-green-a6);
+}
+@utility border-success-subtle {
+  border-color: var(--dylo-green-a4);
+}
+@utility bg-warning {
+  background-color: var(--dylo-amber-a3);
+}
+@utility text-warning {
+  color: var(--dylo-amber-a11);
+}
+@utility border-warning {
+  border-color: var(--dylo-amber-a6);
+}
+@utility border-warning-subtle {
+  border-color: var(--dylo-amber-a4);
+}
+@utility bg-error {
+  background-color: var(--dylo-red-a3);
+}
+@utility bg-error-hover {
+  background-color: var(--dylo-red-a5);
+}
+@utility text-error {
+  color: var(--dylo-red-a11);
+}
+@utility border-error {
+  border-color: var(--dylo-red-a6);
+}
+@utility border-error-subtle {
+  border-color: var(--dylo-red-a4);
+}
+@utility ring-error {
+  --tw-ring-color: var(--dylo-red-a7);
+}
+@utility bg-info {
+  background-color: var(--dylo-blue-a3);
+}
+@utility text-info {
+  color: var(--dylo-blue-a11);
+}
+@utility border-info {
+  border-color: var(--dylo-blue-a6);
+}
+@utility border-info-subtle {
+  border-color: var(--dylo-blue-a4);
+}
+
+/* Display type. Stylistic sets for the display face, and the soft fade the
+   largest headlines carry from full strength to half. */
+@utility effect-font-styling {
+  font-feature-settings:
+    'ss01' on,
+    'ss03' on,
+    'ss04' on,
+    'ss05' on;
+}
+@utility effect-font-gradient {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(to bottom right, var(--dylo-text-gradient-from) 30%, var(--dylo-text-gradient-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Glass: the marketing call to action and the auth fields. Translucent fill,
+   a 2px hairline, and a heavy backdrop blur. */
+@utility glass {
+  color: var(--dylo-glass-text);
+  border: 2px solid var(--dylo-glass-border);
+  background-image: var(--dylo-glass-fill);
+  background-origin: border-box;
+  backdrop-filter: blur(25px);
+}
+
+/* A 1px highlight that fades in from both ends, used on the top edge of
+   marketing panels. Position it with absolute utilities. */
+@utility glow-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--dylo-glow-line) 50%, transparent 100%);
+}
+
+/* The soft light that falls from a glow-line onto the panel below it. */
+@utility spotlight {
+  background: radial-gradient(var(--dylo-gray-a3) 0%, transparent 70%);
+  mask-image: linear-gradient(to bottom, transparent 50%, black 50%);
+}
+
+/* Fades a bordered panel into the page towards its bottom edge, so the side
+   borders dissolve instead of ending. Put it on an absolute overlay. */
+@utility fade-edges {
+  background-image: linear-gradient(to bottom, transparent 0%, var(--dylo-background) 70%);
+}
+
+/* The faint square grid behind canvases and empty states. */
+@utility grid-canvas {
   background-image:
-    linear-gradient(var(--dylo-grid-line-reversed) 1px, transparent 1px),
-    linear-gradient(90deg, var(--dylo-grid-line-reversed) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(var(--dylo-gray-a2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--dylo-gray-a2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@layer base {
+  /* Inter everywhere, so unstyled text is already on-brand.
+
+     Surface colours are deliberately NOT set here: a hard background on body
+     would defeat an app's own theme toggle. Put `bg-background text-emphasis`
+     on <body> yourself. */
+  body {
+    font-family: var(--dylo-font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--dylo-gray-a3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero,
+  .animate-marquee {
+    animation: none;
+  }
+
+  /* Overlays still open and close, but without travel. */
+  [class*='animate-'] {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

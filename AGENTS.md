@@ -8,12 +8,14 @@ other repositories that consume the dylo design system.
 
 ## What this repo is
 
-The dylo **brand and theme** system, plus marketing/foundry UI, and the docs site
-that documents it. Two audiences share one source of truth:
+The dylo **brand and theme** system (v2): light and dark tokens, the Tailwind
+mapping, Radix-based React components, a dashboard kit and a marketing kit,
+plus the docs site that documents them. Two audiences share one source of truth:
 
 - **The docs site** at `src/app/` imports components straight out of `registry/`.
   There is no copy step, so a preview on the site cannot drift from what a
-  consumer installs.
+  consumer installs. Every component page renders its examples in both themes,
+  and `/kits` renders every dashboard section and marketing page full-size.
 - **The registry** at `registry/` plus [registry.json](registry.json) is a
   shadcn _source registry_. Because the repo is public, the shadcn CLI installs
   from it directly — no npm package, no registry server, no `shadcn build`.
@@ -22,8 +24,8 @@ This repo does **not** own product app chrome (Catalyst Button, Sidebar, auth
 pages, application shell). Those live in **dylo-starter** and sync into other
 templates from there. See [Product apps and templates](#product-apps-and-templates).
 
-Stack: Next.js 16 (App Router) + React 19, Tailwind CSS v4, TypeScript, pnpm 11,
-deployed on Vercel. Same stack as the apps that consume it.
+Stack: Next.js 16 (App Router) + React 19, Tailwind CSS v4, Radix UI,
+TypeScript, pnpm 11, deployed on Vercel. Same stack as the apps that consume it.
 
 ---
 
@@ -33,17 +35,17 @@ You are in another repo and need dylo-branded UI. **Do not clone this
 repository.** Install the pieces you need:
 
 ```bash
-pnpm dlx shadcn@latest list dyloAI/dylo-design          # everything available
-pnpm dlx shadcn@latest view dyloAI/dylo-design/card     # inspect before installing
-pnpm dlx shadcn@latest add dyloAI/dylo-design/theme     # install
+pnpm dlx shadcn@latest list dyloAI/dylo-design # everything available
+pnpm dlx shadcn@latest view dyloAI/dylo-design/dialog # inspect before installing
+pnpm dlx shadcn@latest add dyloAI/dylo-design/theme # install
 ```
 
-Pin published commands to a tag — `...add dyloAI/dylo-design/theme#v1.0.0` — so
+Pin published commands to a tag — `...add dyloAI/dylo-design/theme#v2.0.0` — so
 a consumer never picks up an unreviewed change.
 
 The CLI needs a `components.json` in the consuming project. Write it by hand.
-Running `shadcn init` in an existing app rewrites the global stylesheet and pulls
-in Radix, which you do not want in a Catalyst project.
+Running `shadcn init` in an existing app rewrites the global stylesheet, which
+you do not want in a Catalyst project.
 
 ### Which layer do I use?
 
@@ -52,29 +54,30 @@ This is the decision agents get wrong most often.
 ```
 Is this a product app (internal dylo app, client app, or dylo-templates/*)?
 ├─ Yes → install "theme" + "catalyst-theme".
-│        Keep Catalyst primitives from the template (dylo-starter lineage).
-│        Auth screens and app shell live in the template — do not replace them
-│        with foundry auth-kit / app-shell from this registry.
-│        Optional from here: Eyebrow, foundry Card (Catalyst has no equivalent).
-└─ No  → marketing site, brand collateral, static mock, proposal surface:
-         install "theme" + the foundry components / website-kit you need.
+│ Keep Catalyst primitives, auth screens and the app shell from the
+│ template (dylo-starter lineage).
+│ Use "dashboard-kit" as the visual reference and borrow components
+│ Catalyst lacks (CodeBlock, Callout, EmptyState, Chart, Toast).
+│ Do not install it as a second app shell.
+└─ No → marketing site, brand collateral, static mock, proposal surface:
+ install "theme" + the components and "marketing-kit" you need.
 ```
 
 **Do not fork Catalyst's Button, Input or Badge to make them look on-brand.**
 The `catalyst-theme` item remaps Tailwind's `zinc` and `blue` scales onto the
-dylo palette, so every `zinc-800` in the app already renders Graphite and every
-focus ring is already Oxide. A fork only creates something to keep in sync.
+dylo grays, so every `zinc-800` in the app already renders a dylo gray and every
+focus ring is already neutral. A fork only creates something to keep in sync.
 
 ### Product apps and templates
 
 ```
-dylo-design          → theme, brand-assets, agent-rules, marketing UI
-         ↓ pin shadcn add
-dylo-starter         → canonical Catalyst + auth + app shell
-         ↓ allowlist sync (dylo-starter/scripts/sync-from-starter.mjs)
+dylo-design → theme, brand-assets, agent-rules, components, kits
+ ↓ pin shadcn add
+dylo-starter → canonical Catalyst + auth + app shell
+ ↓ allowlist sync (dylo-starter/scripts/sync-from-starter.mjs)
 space / numbers / sales
-         ↓ clone once
-client apps          → diverge freely; no required sync
+ ↓ clone once
+client apps → diverge freely; no required sync
 ```
 
 - **Style / brand updates** → bump pinned `theme` + `catalyst-theme` in starter
@@ -90,36 +93,52 @@ client apps          → diverge freely; no required sync
 @import './dylo/dylo-catalyst.css'; /* product / Catalyst apps */
 ```
 
+### Themes
+
+Light is the default (`:root`). Put `dark` on `<html>` and every token flips;
+`dark:` variants follow the same class. A `.light` or `.dark` wrapper forces a
+theme for one section, which is how the docs render both panes side by side.
+Persist the choice in `localStorage` and apply it with a small inline script
+in `<head>` so the page never flashes the wrong theme — the
+[Install page](https://design.dylo.dev/install) has the script, and
+[src/components/theme-toggle.tsx](src/components/theme-toggle.tsx) is a worked
+light / dark / system control.
+
 ### Fonts
 
 The theme does **not** load webfonts — CSS requires `@import` to precede every
-other rule, so a token file cannot do it. Two supported setups:
+other rule, so a token file cannot do it. Four families: Inter (interface),
+Geist (headings), Playfair Display (the marketing headline) and Commit Mono
+(code). Two supported setups:
 
-- **Next.js (preferred).** Load Space Grotesk and Space Mono with `next/font`,
-  put the variables on `<html>`, then retarget the two tokens after the theme
-  import:
+- **Next.js (preferred).** Load Inter, Geist and Playfair Display with
+  `next/font/google` and Commit Mono with `next/font/local`, put the variables
+  on `<html>`, then retarget the tokens after the theme import:
 
   ```css
   :root {
-    --dylo-font-display: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
-    --dylo-font-mono: var(--font-space-mono), 'Space Mono', ui-monospace, monospace;
+    --dylo-font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --dylo-font-display: var(--font-geist), 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --dylo-font-serif: var(--font-playfair), 'Playfair Display', ui-serif, Georgia, serif;
+    --dylo-font-mono: var(--font-commit-mono), 'Commit Mono', ui-monospace, monospace;
   }
   ```
 
   This works because the theme maps fonts with `@theme inline`, so `font-mono`
   emits `var(--dylo-font-mono)` rather than a copied value. See
-  [src/styles/tailwind.css](src/styles/tailwind.css) for the worked example.
+  [src/styles/tailwind.css](src/styles/tailwind.css) and
+  [src/app/layout.tsx](src/app/layout.tsx) for the worked example.
 
 - **Anything else.** Install the `fonts` item and make it the first line of the
   stylesheet, ahead of `@import 'tailwindcss'`.
 
 ### Page surface
 
-The theme puts Space Grotesk on `body` but sets **no** background or text
-colour there — a hard `background-color` on `body` would defeat an app's
-dark-mode toggle. Set the pair yourself: `bg-bone text-ink` on a light-only
-site, or Catalyst's usual `bg-zinc-100 dark:bg-zinc-950`, which the
-compatibility layer already resolves to Bone and Ink.
+The theme puts Inter on `body` but sets **no** background or text colour
+there — a hard `background-color` on `body` would defeat an app's theme
+toggle. Put `bg-background text-emphasis` on `<body>` yourself, or keep
+Catalyst's usual `bg-white lg:bg-zinc-100 dark:bg-zinc-950`, which the
+compatibility layer resolves to the dylo grays.
 
 ### Inherit the rules
 
@@ -128,9 +147,10 @@ pnpm dlx shadcn@latest add dyloAI/dylo-design/agent-rules
 ```
 
 Installs the brand rule into `.cursor/rules/` and an ESLint config that fails
-raw hex values, Tailwind's default palette and emoji — so drift is caught by the
-linter instead of in review. Catalyst apps should use the
-`dyloAdherenceCatalyst` export, which keeps `zinc-*` and `blue-*` legal.
+raw hex values, Tailwind's default 50 to 950 palette, emoji and off-system font
+families — so drift is caught by the linter instead of in review. Catalyst apps
+should use the `dyloAdherenceCatalyst` export, which keeps `zinc-*` and
+`blue-*` legal.
 
 ### Releasing theme changes
 
@@ -157,7 +177,7 @@ repo's TEMPLATE.md).
 | ------------------------ | ---------------------------------------------------------- |
 | `pnpm dev`               | Docs site on `http://localhost:3000`.                      |
 | `pnpm build`             | Production build. Every route is static.                   |
-| `pnpm lint`              | ESLint flat config.                                        |
+| `pnpm lint`              | ESLint flat config, including the shipped adherence rules. |
 | `pnpm typecheck`         | `tsc --noEmit`. Treat as a gate.                           |
 | `pnpm registry:validate` | Validate `registry.json`, its includes and its file paths. |
 | `pnpm format`            | Prettier.                                                  |
@@ -172,61 +192,70 @@ not yet support TypeScript 7.
 
 ### Layout
 
-| Path                          | What it is                                                                               |
-| ----------------------------- | ---------------------------------------------------------------------------------------- |
-| `registry/dylo/theme/`        | Tokens, the Tailwind mapping, the Catalyst layer, the CDN font import.                   |
-| `registry/dylo/ui/`           | Foundry marketing components (Button, Input, Card, Badge, Eyebrow).                      |
-| `registry/dylo/blocks/`       | Marketing kits (`website-kit`). Foundry auth/app-shell demos are docs-only.              |
-| `registry/dylo/registry.json` | Item definitions for everything under `registry/dylo/`. Paths are relative to this file. |
-| `registry.json`               | Root catalogue: metadata, `include`, plus the brand-asset and agent-rule items.          |
-| `rules/`                      | The Cursor rule and ESLint config shipped by `agent-rules`.                              |
-| `src/`                        | The docs site. Not distributed.                                                          |
-| `public/brand/`               | Brand assets. Served by the site _and_ shipped by `brand-assets`.                        |
-| `brand-templates/`            | HTML sources for the rendered brand assets. Capture recipe is in each file.              |
-| `design-source/`              | The raw Claude Design export. See below.                                                 |
+| Path                              | What it is                                                                               |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| `registry/dylo/theme/`            | Light and dark tokens, the Tailwind mapping, the Catalyst layer, the CDN font import.    |
+| `registry/dylo/ui/`               | One file per component, Radix underneath anything interactive.                           |
+| `registry/dylo/blocks/dashboard/` | The dashboard kit: shell, every section page, dialogs, sheets, auth. Data in `data.ts`.  |
+| `registry/dylo/blocks/marketing/` | The marketing kit: header, hero, feature panels, pricing, FAQ, blog, footer, docs shell. |
+| `registry/dylo/registry.json`     | Item definitions for everything under `registry/dylo/`. Paths are relative to this file. |
+| `registry.json`                   | Root catalogue: metadata, `include`, plus the brand-asset and agent-rule items.          |
+| `rules/`                          | The Cursor rule and ESLint config shipped by `agent-rules`.                              |
+| `src/`                            | The docs site. Not distributed. Component docs live in `src/lib/component-docs/`.        |
+| `src/app/(kits)/`                 | Full-page kit routes: `/kits/dashboard/*`, `/kits/marketing/*`, `/kits/auth/*`.          |
+| `public/brand/`                   | Brand assets. Served by the site _and_ shipped by `brand-assets`.                        |
+| `brand-templates/`                | HTML sources for the rendered brand assets. Capture recipe is in each file.              |
+| `design-source/`                  | The raw Claude Design export of v1. See below.                                           |
 
 ### Adding or changing a component
 
 1. Edit the `.tsx` in `registry/dylo/ui/`. Tailwind classes only — no inline
    styles, so consumers can override with `className`.
-2. Keep it a Server Component unless it genuinely needs state. Client blocks
-   today: contact form and the docs-only auth / app-shell demos.
-3. Use `cva` for variants, `cn()` for merging, and a `data-slot` attribute.
-4. Add the item to `registry/dylo/registry.json`. Cross-component imports use
+2. Keep it a Server Component unless it needs state or a Radix primitive. Mark
+   client files with `'use client'`, and keep functions and icon components on
+   the client side of the boundary: they cannot be passed as props from a
+   Server Component.
+3. Use `cva` for variants, `cn()` for merging, and a `data-slot` attribute. Use
+   semantic utilities so the component needs no `dark:` variant.
+4. Add the item to `registry/dylo/registry.json`, with `radix-ui` in
+   `dependencies` when it uses one. Cross-component imports use
    `@/registry/dylo/ui/<name>` so the CLI can rewrite them to the consumer's
    aliases; `cn` is imported from `@/lib/utils` and declared as the built-in
-   `utils` registry dependency.
-5. Add or update the entry in [src/lib/component-docs.tsx](src/lib/component-docs.tsx).
-   The page renders live examples and reads the source from disk, so nothing else
-   needs touching.
+   `utils` registry dependency. The item `description` is the lead on the docs
+   page.
+5. Add or update the entry in the matching group file under
+   [src/lib/component-docs/](src/lib/component-docs/) and the nav group in
+   [src/lib/navigation.ts](src/lib/navigation.ts). The page renders the
+   examples in both themes and reads the source from disk.
 6. Run the three gates.
-
-Foundry `ui/` and `website-kit` are for **marketing / brand collateral**. Do not
-grow a parallel product component set here — product apps use Catalyst in
-dylo-starter.
 
 ### Token changes
 
-`registry/dylo/theme/dylo-tokens.css` holds raw values; `dylo-theme.css` maps
-them onto Tailwind. Change the value in one place only. Every token is prefixed
+`registry/dylo/theme/dylo-tokens.css` holds raw values, light under `:root` and
+dark under `.dark`; `dylo-theme.css` maps them onto Tailwind. Change the value
+in one place only, and change both themes together. Every token is prefixed
 `--dylo-` so it can never collide with a consumer's variables.
 
-The spacing scale is deliberately **not** mapped into Tailwind — remapping the
-numeric utilities would quietly change what `p-5` means. Radii and shadows _are_
-overridden on purpose: in dylo, `rounded-md` is the 8px panel corner.
+Two traps when adding to the Tailwind mapping:
+
+- **Never name a colour after a text size.** A `--color-base` makes
+  `text-base` set the colour as well as the size. Surfaces use names such as
+  `surface`, `canvas` and `elevated`.
+- **Never add a named `--text-*` size.** tailwind-merge reads an unknown
+  `text-*` as a colour and drops the colour class beside it. Headlines use
+  arbitrary values (`text-[3.5rem]`).
+
+The spacing scale is deliberately **not** remapped — that would quietly change
+what `p-5` means. The 12-step scales are mapped as `gray-1` … `gray-12` and
+`gray-a1` … `gray-a12`, which never collide with Tailwind's 50 to 950 steps.
 
 ### design-source/
 
-The unmodified Claude Design export the system was built from: the original
+The unmodified Claude Design export the v1 system was built from: the original
 `.jsx` components, the guideline specimen cards, the brand book and the
-`_ds_*` build artifacts. It is **not** maintained and **not** linted. Keep it so
-a future Claude Design sync has somewhere to land, and so the generated origin
-of the brand stays legible. The first commit in this repo is that export,
-untouched.
-
-The one exception is the brand book, which is copied to `public/brand-book/` so
-the docs site can embed it. Its `ds-base.js` there is a deliberate no-op — see
-the comment in the file.
+`_ds_*` build artifacts. It is **not** maintained, **not** linted and no longer
+describes the current visual system. Keep it so the generated origin of the
+brand stays legible. The first commit in this repo is that export, untouched.
 
 ---
 
@@ -235,24 +264,36 @@ the comment in the file.
 These bind you whether you are working here or in a consuming repo.
 
 - **The brand is lowercase.** Always `dylo`. The work is capitalised: a Dílo.
-- **One accent per view.** Oxide appears exactly once. An `<Eyebrow>` already
-  spends it — its tick is the accent.
-- **Never a second hue.** No green for success, no red for danger. Status is
-  carried by the Badge's mono type and border weight.
-- **Two families only.** Space Grotesk for anything human, Space Mono for the
-  technical layer, uppercase with wide tracking.
-- **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide
-  (foundry / marketing). Product Catalyst apps use Heroicons as shipped.
-- **No raw hex.** Use `bg-ink`, `text-oxide`, `border-line`, `shadow-block`, or
-  `var(--dylo-*)` outside Tailwind. Catalyst apps may keep `zinc-*` / `blue-*`
-  when `catalyst-theme` is installed.
-- **Cards are stamped plates.** Ink border plus `shadow-block`, barely rounded
-  (foundry marketing Card).
-- **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
-  no glass. The only pattern is the 48px engineering grid (`grid-paper`).
-- **Mechanical motion.** 120–180ms, linear to ease-out. Press shifts the element
-  into its own shadow. No bounces, no float loops.
-- **Never redraw the keystone mark.** Use the files in `public/brand/`.
+- **Both themes, always.** Build with semantic utilities (`bg-background`,
+  `text-emphasis`, `text-default`, `border-gray-a3`, `bg-interactive`) so a
+  component needs no `dark:` variant, and check every surface in both themes.
+- **The accent is monochrome.** `bg-accent text-on-accent` is black on light
+  and white on dark. One primary action per view.
+- **Hue carries status, and only status.** Green success, amber warning, red
+  error, blue information: `text-success`, `bg-warning`, `border-error`,
+  `text-info`, or a 1 to 12 step (`green-9`, `red-a11`). Never Tailwind's
+  default 50 to 950 palette, and never hue as decoration. Catalyst apps may
+  keep `zinc-*` / `blue-*` when `catalyst-theme` is installed.
+- **No raw hex.** Use a utility, or `var(--dylo-*)` outside Tailwind.
+- **Four families, each with one job.** Inter for the interface, Geist medium
+  for headings, Playfair Display for the one large marketing headline, Commit
+  Mono for code, IDs and keys.
+- **No emoji. Ever.** Lucide line icons at 16px in the interface. Product
+  Catalyst apps use Heroicons as shipped.
+- **Shape.** 32px controls with `rounded-xl`; `rounded-2xl` panels with a
+  `border-gray-a3` hairline; `rounded-3xl` marketing feature panels with
+  `border-slate-6`. Only overlays carry a shadow (`shadow-popover`,
+  `shadow-dialog`).
+- **Two buttons, two places.** `Button` is the product control. `CtaButton`
+  (glass) is for marketing pages and auth screens only.
+- **Effects are for marketing.** `glass`, `glow-line`, `spotlight`,
+  `fade-edges` and `effect-font-gradient` belong on marketing surfaces. The
+  dashboard is flat.
+- **Motion.** Interaction is 150 to 200ms with `ease-dylo`. Overlays fade and
+  scale in from 98%; sheets slide over 500ms with `ease-drawer`. All of it
+  collapses to 1ms under `prefers-reduced-motion`. No bounces, no float loops.
+- **Never redraw the mark.** Use `<Logo>` or the files in `public/brand/`; the
+  interface uses the monochrome files.
 
 ### Voice
 
@@ -261,8 +302,8 @@ ready. Honest, short, and free of hype.
 
 dylo is a technology provider. We build and look after web apps for companies
 with 1 to 500 employees and no tech team. The buyer is an owner or a director.
-The name comes from the Czech word _dílo_, a piece of work. The line we use is
-**Software, made.**
+The name comes from the Czech word _dílo_, a piece of work. dylo has no
+tagline. The promise is the one-line pitch.
 
 Call dylo a technology provider. In anything a customer reads, do not call it
 an agency, a consultancy, or a software factory, and do not mention AI.
@@ -281,17 +322,11 @@ an agency, a consultancy, or a software factory, and do not mention AI.
 - No buzzwords: leverage, synergy, best-in-class, cutting-edge, seamless,
   unlock, supercharge.
 
-#### Taglines
+#### No tagline
 
-Use one line. Do not stack them. The primary is the line under the logo, in
-the footer, and anywhere a single brand line is needed.
-
-1. **Software, made.** — primary. Spanish: **Software, hecho.**
-2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
-3. A clear price. A date you can plan around. / Un precio claro. Una fecha para
-   planificar.
-4. For companies without a tech team. / Para empresas sin equipo técnico.
-5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+dylo has no tagline. Do not write "Software, made.", "Software, hecho.", or a
+line under the logo. The promise is the one-line pitch. The footer carries the
+legal line: dylo is a brand of Ax42 S.L.
 
 #### Messaging
 
@@ -310,9 +345,8 @@ hand it over. dylo is a brand of Ax42 S.L.
 
 #### Tone by channel
 
-**Website.** The primary tagline, then one or two sentences: who it is for,
-that we build the app and look after it, and that the price and the date come
-first.
+**Website.** The one-line pitch, then who it is for, that we build the app and
+look after it, and that the price and the date come first. No tagline.
 
 **Proposals and quotes.** Name the app, the price, what is included, and the
 date. Say what looking after it costs after launch. Every claim that can be a
@@ -322,7 +356,7 @@ number should be a number.
 one ask. If you are waiting on them, say what you need and by when.
 
 **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
-When a post needs a line under the logo, use the primary tagline.
+Do not add a tagline under the logo.
 
 #### English
 
@@ -339,7 +373,7 @@ Don't: "Supercharge your workflow with a seamless AI-native platform."
 
 Same rules: plain, short, a price and a date. Use "usted" with an owner or
 director unless they have already used "tú". The brand stays lowercase: dylo.
-The primary line in Spanish is "Software, hecho."
+There is no Spanish tagline. Use the pitch, with usted.
 
 Do: "Le construimos la aplicación web en seis semanas. El precio está en el
 presupuesto, y la mantenemos cuando ya está en uso."

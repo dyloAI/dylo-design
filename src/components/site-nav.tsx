@@ -1,44 +1,78 @@
 'use client'
 
+import { ThemeToggle } from '@/components/theme-toggle'
 import { navigation, type NavItem, type NavSection } from '@/lib/navigation'
 import { cn } from '@/lib/utils'
-import { ChevronDown } from 'lucide-react'
+import { Logo } from '@/registry/dylo/ui/logo'
+import { ChevronRight, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 export function SiteNav() {
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+  const [syncedPath, setSyncedPath] = useState(pathname)
+  if (syncedPath !== pathname) {
+    setSyncedPath(pathname)
+    setOpen(false)
+  }
 
   return (
-    <div className="border-line bg-bone lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-r">
-      <div className="flex items-center gap-3 border-b border-line px-6 py-5 lg:border-b-0">
-        <Link href="/" className="flex items-center gap-3 no-underline">
-          {/* eslint-disable-next-line @next/next/no-img-element -- SVG lockup, nothing to optimise */}
-          <img src="/brand/dylo-logo-horizontal.svg" alt="dylo" className="h-[22px]" />
-          <span className="font-mono text-[10px] tracking-eyebrow text-concrete uppercase">Design</span>
+    <div className="border-gray-a3 bg-background lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-r">
+      <div className="flex items-center justify-between gap-3 border-b border-gray-a3 px-5 py-4 lg:border-b-0">
+        <Link href="/" className="flex items-center gap-2.5">
+          <Logo variant="lockup" className="h-7" />
+          <span className="rounded-md border border-gray-a4 px-1.5 py-0.5 font-mono text-2xs tracking-wide text-gray-11 uppercase">
+            Design
+          </span>
         </Link>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? 'Close navigation' : 'Open navigation'}
+          aria-expanded={open}
+          className="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-default hover:bg-interactive-hover lg:hidden"
+        >
+          {open ? <X className="size-4" /> : <Menu className="size-4" />}
+        </button>
       </div>
 
-      <nav aria-label="Design system" className="px-6 pt-2 pb-6">
-        {navigation.map((section) => (
-          <NavSectionBlock key={section.title} section={section} pathname={pathname} />
-        ))}
-      </nav>
+      <div className={cn('lg:block', open ? 'block' : 'hidden')}>
+        <div className="px-5 pt-1 pb-4">
+          <ThemeToggle />
+        </div>
+        <nav aria-label="Design system" className="px-3 pb-8">
+          {navigation.map((section, i) => {
+            const previous = navigation[i - 1]
+            return (
+              <div key={section.title} className={cn(!section.collapsible && previous?.collapsible && 'mt-6')}>
+                {section.collapsible && !previous?.collapsible ? (
+                  <p className="mb-1 px-2 text-xs font-medium text-gray-10">Components</p>
+                ) : null}
+                <NavSectionBlock section={section} pathname={pathname} />
+              </div>
+            )
+          })}
+        </nav>
+      </div>
     </div>
   )
 }
 
 function NavLink({ item, pathname }: { item: NavItem; pathname: string }) {
-  const active = pathname === item.href
+  const active =
+    pathname === item.href || (item.href !== '/' && item.href !== '/kits' && pathname.startsWith(`${item.href}/`))
 
   return (
     <Link
       href={item.href}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        '-mx-2 block rounded-sm px-2 py-1.5 text-[14px] no-underline transition-colors duration-150 ease-out',
-        active ? 'bg-ink font-medium text-bone' : 'text-graphite hover:bg-ink/6'
+        'flex h-8 items-center rounded-lg px-2 text-sm transition-colors duration-150',
+        active
+          ? 'bg-interactive-hover font-medium text-emphasis'
+          : 'text-default hover:bg-interactive hover:text-emphasis'
       )}
     >
       {item.title}
@@ -56,14 +90,10 @@ function NavSectionBlock({ section, pathname }: { section: NavSection; pathname:
     setOverride(null)
   }
 
-  const open = override ?? containsCurrent
-
-  const heading = (
-    <span className="font-mono text-[10px] font-bold tracking-eyebrow text-concrete uppercase">{section.title}</span>
-  )
+  const open = !section.collapsible || (override ?? containsCurrent)
 
   const list = (
-    <ul className="m-0 list-none space-y-0.5 p-0">
+    <ul className={cn('flex flex-col gap-0.5', section.collapsible && 'ml-2 border-l border-gray-a3 pl-2')}>
       {section.items.map((item) => (
         <li key={item.href}>
           <NavLink item={item} pathname={pathname} />
@@ -74,30 +104,26 @@ function NavSectionBlock({ section, pathname }: { section: NavSection; pathname:
 
   if (!section.collapsible) {
     return (
-      <div className="mb-7">
-        <p className="mb-3">{heading}</p>
+      <div className="mb-6">
+        <p className="mb-1 px-2 text-xs font-medium text-gray-10">{section.title}</p>
         {list}
       </div>
     )
   }
 
   return (
-    <div className={open ? 'mb-7' : 'mb-4'}>
+    <div className={open ? 'mb-2' : 'mb-0.5'}>
       <button
         type="button"
         aria-expanded={open}
         onClick={() => setOverride(!open)}
         className={cn(
-          '-mx-2 flex w-[calc(100%+1rem)] items-center justify-between rounded-sm px-2 py-1 text-left hover:bg-ink/6',
-          open && 'mb-3'
+          'flex h-8 w-full cursor-pointer items-center justify-between rounded-lg px-2 text-left text-sm text-default hover:bg-interactive hover:text-emphasis',
+          open && 'mb-1'
         )}
       >
-        {heading}
-        <ChevronDown
-          aria-hidden
-          strokeWidth={2}
-          className={cn('size-3.5 text-concrete transition-transform duration-150 ease-out', open && 'rotate-180')}
-        />
+        {section.title}
+        <ChevronRight aria-hidden className={cn('size-3.5 transition-transform duration-150', open && 'rotate-90')} />
       </button>
       {open ? list : null}
     </div>

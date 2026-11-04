@@ -8,11 +8,6 @@
 
 export type Localized = { en: string; es: string }
 
-export const tagline: Localized = {
-  en: 'Software, made.',
-  es: 'Software, hecho.',
-}
-
 export const legal: Localized = {
   en: 'dylo is a brand of Ax42 S.L.',
   es: 'dylo es una marca de Ax42 S.L.',
@@ -108,7 +103,7 @@ export const objections: Objection[] = [
   {
     question: {
       en: 'Are you an agency?',
-      es: '¿Sois una agencia?',
+      es: '¿Son ustedes una agencia?',
     },
     answer: {
       en: 'No. We are a technology provider. You work with a dylo engineer on our platform. We host the app and look after it.',
@@ -118,7 +113,7 @@ export const objections: Objection[] = [
   {
     question: {
       en: 'Why does it cost so little?',
-      es: '¿Por qué tan barato?',
+      es: '¿Por qué cuesta tan poco?',
     },
     answer: {
       en: 'A catalog product is a later build of a line we already run, not a first project. The same configurator pattern has been sold four times, from €550 to €1,800. You pay for that later build.',
@@ -128,7 +123,7 @@ export const objections: Objection[] = [
   {
     question: {
       en: 'What if you disappear?',
-      es: '¿Y si desapareces?',
+      es: '¿Y si dylo desaparece?',
     },
     answer: {
       en: 'We host the app and look after it from €30 a month. A quote calculator has been in production since December 2024, and we still look after it. You can take the app elsewhere whenever you want. We hand it over.',
@@ -138,7 +133,7 @@ export const objections: Objection[] = [
   {
     question: {
       en: 'We are a very particular case.',
-      es: 'Somos muy específicos.',
+      es: 'El nuestro es un caso muy particular.',
     },
     answer: {
       en: 'A narrow product is the point. The scoping sprint costs €500 and takes two days. It shows whether we fit. If you build, that €500 is credited in full.',

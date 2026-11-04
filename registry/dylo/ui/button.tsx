@@ -1,54 +1,112 @@
 import { cn } from '@/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { Slot } from 'radix-ui'
 import * as React from 'react'
 
 /**
- * Foundry-stamped action. The primary is an ink plate with a hard block shadow
- * that seats on press — the button shifts down and right into its own shadow,
- * like a stamp meeting the page. No bounce, no fade.
+ * The interface action. `primary` is the solid accent (black in light, white
+ * in dark), `secondary` the translucent gray control, `ghost` text only.
+ * The default size is the 32px control the dashboard is built from.
  */
 const buttonVariants = cva(
   [
-    'inline-flex items-center justify-center gap-2 whitespace-nowrap',
-    'rounded-sm border leading-none font-semibold tracking-[-0.01em]',
-    'transition-[transform,box-shadow,background-color] duration-[120ms] ease-out',
-    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oxide',
-    'disabled:border-concrete disabled:bg-concrete disabled:text-bone',
-    'disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none',
-    'disabled:translate-x-0 disabled:translate-y-0',
+    'relative inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap select-none',
+    'border transition duration-200 ease-in-out',
+    'focus-visible:ring-2 focus-visible:outline-hidden',
+    'disabled:cursor-not-allowed disabled:opacity-70 aria-disabled:cursor-not-allowed aria-disabled:opacity-70',
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ],
   {
     variants: {
       variant: {
         primary: [
-          'border-ink bg-ink text-bone hover:bg-graphite',
-          'shadow-block-sm active:translate-x-[3px] active:translate-y-[3px] active:shadow-block-seated',
+          'border-transparent bg-accent font-semibold text-on-accent ring-accent',
+          'not-disabled:hover:bg-accent-hover focus-visible:bg-accent-hover',
         ],
         secondary: [
-          'border-ink bg-bone text-ink hover:bg-paper',
-          'shadow-block-sm active:translate-x-[3px] active:translate-y-[3px] active:shadow-block-seated',
+          'border-interactive bg-interactive font-medium text-default ring-focus [&_svg]:text-default',
+          'not-disabled:hover:bg-interactive-hover not-disabled:hover:text-emphasis aria-expanded:bg-interactive-hover data-[state=open]:bg-interactive-hover',
         ],
-        // No plate, so nothing to seat: ghost darkens instead of shifting.
-        ghost: 'border-transparent bg-transparent text-ink hover:bg-ink/6',
+        ghost: [
+          'border-transparent bg-transparent font-medium text-default ring-focus [&_svg]:text-default',
+          'not-disabled:hover:bg-interactive-hover not-disabled:hover:text-emphasis aria-expanded:bg-interactive-hover data-[state=open]:bg-interactive-hover',
+        ],
+        destructive: [
+          'border-error-subtle bg-error font-semibold text-error ring-error',
+          'not-disabled:hover:bg-error-hover',
+        ],
       },
       size: {
-        sm: 'px-[13px] py-[7px] text-[13px]',
-        md: 'px-5 py-[11px] text-[15px]',
-        lg: 'px-7 py-[15px] text-[17px]',
+        xs: 'h-6 gap-1 rounded-lg px-2 text-xs',
+        sm: 'h-8 gap-1 rounded-xl px-3 text-sm',
+        md: 'h-10 gap-1.5 rounded-xl px-4 text-sm',
+        lg: 'h-12 gap-2 rounded-2xl px-5 text-base',
       },
     },
     defaultVariants: {
-      variant: 'primary',
-      size: 'md',
+      variant: 'secondary',
+      size: 'sm',
     },
   }
 )
 
-export interface ButtonProps extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {}
-
-export function Button({ className, variant, size, type = 'button', ...props }: ButtonProps) {
+/** The three-dot loading indicator Buttons show while `loading`. */
+export function LoadingDots({ className }: { className?: string }) {
   return (
-    <button data-slot="button" type={type} className={cn(buttonVariants({ variant, size }), className)} {...props} />
+    <span data-slot="loading-dots" aria-hidden className={cn('inline-flex items-center gap-1', className)}>
+      <span className="size-1 animate-plop rounded-full bg-current" />
+      <span className="size-1 animate-plop2 rounded-full bg-current" />
+      <span className="size-1 animate-plop3 rounded-full bg-current" />
+    </span>
+  )
+}
+
+export interface ButtonProps extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
+  /** Render the child element (a link, usually) with the button's styles. */
+  asChild?: boolean
+  /** Keeps the width, hides the label and shows the loading dots. */
+  loading?: boolean
+}
+
+export function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  loading = false,
+  disabled,
+  type = 'button',
+  children,
+  ...props
+}: ButtonProps) {
+  const classes = cn(buttonVariants({ variant, size }), className)
+
+  if (asChild) {
+    return (
+      <Slot.Root data-slot="button" className={classes} {...props}>
+        {children}
+      </Slot.Root>
+    )
+  }
+
+  return (
+    <button
+      data-slot="button"
+      type={type}
+      disabled={disabled || loading}
+      aria-busy={loading || undefined}
+      className={classes}
+      {...props}
+    >
+      {loading ? (
+        <span className="absolute inset-0 flex items-center justify-center">
+          <LoadingDots />
+        </span>
+      ) : null}
+      <span className={cn('inline-flex min-w-0 items-center justify-center gap-[inherit]', loading && 'opacity-0')}>
+        {children}
+      </span>
+    </button>
   )
 }
 

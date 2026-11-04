@@ -8,9 +8,10 @@ globs: ["**/*.tsx", "**/*.jsx", "**/*.css", "**/*.mdx"]
 
 dylo is a technology provider. We build and look after web apps for companies
 with 1 to 500 employees and no tech team. The buyer is an owner or a director.
-The name comes from the Czech word _dílo_, a piece of work. The line we use is
-_Software, made._ The visual system is an industrial foundry: warm monochrome,
-structural, utilitarian, with a single molten note.
+The name comes from the Czech word _dílo_, a piece of work. dylo has no
+tagline. The visual system is quiet and monochrome, in a light and a dark
+theme: near-black on near-white, or white on black, with hue reserved for
+status.
 
 Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 `/llms.txt` on the docs site.
@@ -18,45 +19,62 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 ## Non-negotiables
 
 - **The brand is lowercase.** Always `dylo`. The work is capitalised: a Dílo.
-- **One accent per view.** Oxide (`--dylo-oxide`, `#9A5236`) appears exactly
-  once — the keystone, one link, or the single number that matters. An
-  `<Eyebrow>` already spends it: its tick is the accent.
-- **Never a second hue.** No green for success, no red for danger. Status is
-  carried by the Badge's mono type and border weight.
-- **Two families only.** Space Grotesk for anything human, Space Mono for the
-  technical layer — eyebrows, labels, data, metadata — uppercase with wide
-  tracking. Never a third.
-- **No emoji. Ever.** Line icons only, 2px square-cut stroke, from Lucide.
-- **No raw hex, ever.** Use the theme utilities: `bg-ink`, `text-oxide`,
-  `border-line`, `shadow-block`. Outside Tailwind, `var(--dylo-*)`.
-- **Cards are stamped plates.** Ink border plus the hard block-shadow offset
-  (`shadow-block`), barely rounded. Not soft floating cards.
-- **Flat and opaque.** No gradients as decoration, no photographic backgrounds,
-  no glass or blur. The only pattern is the 48px engineering grid
-  (`grid-paper`). The one translucent touch is the oxide focus ring on fields.
-- **Mechanical motion.** 120–180ms, linear to ease-out. Hover darkens; press
-  shifts down and right into the shadow so the plate seats. No bounces, no
-  float loops, and never fade an interactive element to mush.
-- **Never redraw the keystone mark.** Use the files in `public/brand/`. No
+- **Both themes, always.** Light tokens sit on `:root`, dark ones under
+  `.dark` on `<html>`. Build with the semantic utilities (`bg-background`,
+  `text-emphasis`, `text-default`, `border-gray-a3`, `bg-interactive`) and a
+  component never needs a `dark:` variant. Check every surface in both
+  themes before calling it done.
+- **The accent is monochrome.** `bg-accent text-on-accent` is black on light
+  and white on dark. One primary action per view; everything else is a
+  `secondary` or `ghost` Button.
+- **Hue carries status, and only status.** Green for success, amber for
+  warning, red for error, blue for information: `text-success`, `bg-warning`,
+  `border-error`, `text-info`, or a step of the 1 to 12 scales (`green-9`,
+  `red-a11`). Never decorate with hue, and never use Tailwind's default 50 to
+  950 palette: it has no dark counterpart.
+- **No raw hex.** Use a utility, or `var(--dylo-*)` outside Tailwind. A hex
+  value does not flip with the theme.
+- **Four families, each with one job.** Inter (`font-sans`) for the
+  interface. Geist medium (`font-display`) for headings. Playfair Display
+  (`font-serif`) for the one large marketing headline per page. Commit Mono
+  (`font-mono`) for code, IDs and keys. Never a fifth.
+- **No emoji. Ever.** Lucide line icons at 16px (`size-4`) in the interface.
+- **Shape.** Controls are 32px tall (`h-8`) with `rounded-xl`; panels are
+  `rounded-2xl` with a `border-gray-a3` hairline; marketing feature panels are
+  `rounded-3xl` with `border-slate-6`. Overlays carry `shadow-popover` or
+  `shadow-dialog`; nothing else floats.
+- **Two buttons, two places.** `Button` is the product control. `CtaButton`
+  (glass) is for marketing pages and auth screens only. Never put glass in
+  the product.
+- **Effects are for marketing.** `glass`, `glow-line`, `spotlight`,
+  `fade-edges` and `effect-font-gradient` belong on marketing surfaces. The
+  dashboard is flat: borders and gray steps, no blur, no gradients.
+- **Motion.** Interaction is `--dylo-duration-fast` (150ms) to
+  `--dylo-duration-base` (200ms) with `ease-dylo`. Overlays fade and scale in
+  from 98%; sheets slide over 500ms with `ease-drawer`. The hero fade runs
+  once. Everything collapses to 1ms under `prefers-reduced-motion`. No
+  bounces, no float loops.
+- **Never redraw the mark.** Use `<Logo>` or the files in `public/brand/`.
+  The interface uses the monochrome files (`-mono`, `-mono-reversed`); no
   rotating, recolouring, restacking or effects.
 
 ## Which layer to build on
 
 **Product apps** (internal dylo apps, client apps, `dylo-templates/*`) install
-`theme` + `catalyst-theme`. Auth screens and app shell live in **dylo-starter**
-(Catalyst) — do not replace them with foundry `auth-kit` / `app-shell` from this
-registry.
+`theme` + `catalyst-theme`. Auth screens and the app shell live in
+**dylo-starter** (Catalyst).
 
 - Keep using Catalyst primitives. **Do not fork Catalyst's Button, Input or
-  Badge to make them on-brand** — the theme already did that, and a fork will
-  drift.
+  Badge to make them on-brand** — the compatibility layer already did that,
+  and a fork will drift.
 - `zinc-*` and `blue-*` utilities are correct there; they resolve to the dylo
-  palette.
-- Reach into the dylo registry only for what Catalyst lacks: `Eyebrow` and the
-  foundry `Card`.
+  grays. Lint with `dyloAdherenceCatalyst`.
+- The `dashboard-kit` is the visual reference for product screens — list
+  pages, details, dialogs, empty states. Borrow its patterns and individual
+  components; do not install it as a second app shell.
 
-**Marketing / brand collateral** — sites, static mocks, proposals — install the
-foundry dylo components and use them directly.
+**Marketing / brand collateral** — sites, static mocks, proposals — install
+`theme`, the components you need and `marketing-kit`, and use them directly.
 
 Install with the shadcn CLI, do not clone the repo:
 
@@ -87,17 +105,12 @@ an agency, a consultancy, or a software factory, and do not mention AI.
 - No buzzwords: leverage, synergy, best-in-class, cutting-edge, seamless,
   unlock, supercharge.
 
-### Taglines
+### No tagline
 
-Use one line. Do not stack them. The primary is the line under the logo, in
-the footer, and anywhere a single brand line is needed.
-
-1. **Software, made.** — primary. Spanish: **Software, hecho.**
-2. Web apps, built and looked after. / Aplicaciones web, hechas y mantenidas.
-3. A clear price. A date you can plan around. / Un precio claro. Una fecha para
-   planificar.
-4. For companies without a tech team. / Para empresas sin equipo técnico.
-5. We build it. We look after it. / Lo construimos. Lo mantenemos.
+dylo has no tagline. Do not write "Software, made.", "Software, hecho.", or a
+line under the logo. The promise is the one-line pitch: a one-off fee, then
+from €30 a month. The footer carries the legal line: dylo is a brand of Ax42
+S.L.
 
 ### Messaging
 
@@ -125,9 +138,8 @@ dylo is a brand of Ax42 S.L.
 
 ### Tone by channel
 
-**Website.** The primary tagline, then one or two sentences: who it is for,
-that we build the app and look after it, and that the price and the date come
-first.
+**Website.** The one-line pitch, then who it is for, that we build the app and
+look after it, and that the price and the date come first. No tagline.
 
 **Proposals and quotes.** Name the app, the price, what is included, and the
 date. Say what looking after it costs after launch. Every claim that can be a
@@ -137,7 +149,7 @@ number should be a number.
 one ask. If you are waiting on them, say what you need and by when.
 
 **Social.** One fact: a price range, a timeline, or who it is for. No emoji.
-When a post needs a line under the logo, use the primary tagline.
+Do not add a tagline under the logo.
 
 ### English
 
@@ -154,7 +166,9 @@ Don't: "Supercharge your workflow with a seamless AI-native platform."
 
 Same rules: plain, short, a price and a date. Use "usted" with an owner or
 director unless they have already used "tú". The brand stays lowercase: dylo.
-The primary line in Spanish is "Software, hecho."
+There is no Spanish tagline. The pitch uses usted: "Un ingeniero de dylo
+construye su aplicación web por un pago único, y la mantenemos desde 30 € al
+mes."
 
 Do: "Le construimos la aplicación web en seis semanas. El precio está en el
 presupuesto, y la mantenemos cuando ya está en uso."

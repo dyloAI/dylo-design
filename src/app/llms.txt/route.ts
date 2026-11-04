@@ -1,82 +1,95 @@
-import { componentDocs } from '@/lib/component-docs'
+import { componentGroups, componentTitle } from '@/lib/navigation'
 import { REGISTRY, REPO_URL } from '@/lib/registry'
-import { accents, neutrals, radii, shadows, typeScale } from '@/lib/tokens'
+import {
+  borderRoles,
+  fontFamilies,
+  motionTokens,
+  shadows,
+  statusRoles,
+  surfaceRoles,
+  textRoles,
+  type Role,
+} from '@/lib/tokens'
+import registry from '@/registry/dylo/registry.json'
+import catalogue from '../../../registry.json'
 
 export const dynamic = 'force-static'
 
-function list(lines: string[]) {
-  return lines.join('\n')
-}
+const describe = (name: string) =>
+  [...registry.items, ...catalogue.items].find((item) => item.name === name)?.description ?? ''
+
+const role = (r: Role) => `- ${r.utility} (${r.token}): light ${r.light}, dark ${r.dark} — ${r.role}`
 
 export function GET() {
-  const body = list([
-    '# dylo design system',
+  const body = [
+    '# dylo design system (v2)',
     '',
-    'Tokens, Tailwind v4 theme, React components and brand assets for dylo, a technology provider.',
-    'Brand line: Software, made. Spanish: Software, hecho. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI.',
-    'Messaging framework: /foundations/messaging — positioning, one-line pitch, 30-second pitch, four pillars, objection answers, in English and Spanish. A one-off fee pays for the build. Hosting and maintenance start from €30 a month, up to a few hundred euros for a more complex app such as a 3D configurator. The customer can take the app elsewhere whenever they want, and dylo hands it over. dylo is a brand of Ax42 S.L.',
-    `Source registry: ${REGISTRY} (${REPO_URL}). Install with the shadcn CLI: pnpm dlx shadcn@latest add ${REGISTRY}/<item>`,
+    'Tokens, a Tailwind v4 theme in light and dark, Radix-based React components, product and marketing kits, and brand assets for dylo, a technology provider.',
+    'dylo has no tagline. The promise is the one-line pitch: a dylo engineer builds your web app for a one-off fee, and we look after it from €30 a month. Voice is calm and plain: a price, a date, no hype. Public copy does not mention AI.',
+    'Messaging framework: /foundations/messaging, in English and Spanish. dylo is a brand of Ax42 S.L.',
+    `Source registry: ${REGISTRY} (${REPO_URL}). Install with the shadcn CLI: pnpm dlx shadcn@latest add ${REGISTRY}/<item>#v2.0.0`,
     '',
     '## Non-negotiables',
     '',
     '- The brand name is always lowercase: dylo. The work is capitalised: a Dílo.',
-    '- Exactly one oxide accent per view. Never introduce a second hue.',
-    '- Two type families only: Space Grotesk (human) and Space Mono (technical, uppercase, wide tracking).',
-    '- No emoji, ever. Line icons only, 2px stroke (Lucide).',
-    '- Cards are stamped plates: ink border plus a hard block-shadow offset, barely rounded.',
-    '- Motion is mechanical: 120-180ms, linear to ease-out. No bounces, no float loops.',
-    '- Never write a raw hex value. Use the theme utilities.',
+    '- Light and dark are both first-class. Light on :root and .light, dark under .dark. Use the semantic utilities so components need no dark: variants.',
+    '- The accent is black in light and white in dark (bg-accent text-on-accent). One primary action per view.',
+    '- Hue carries status only: success green, warning amber, error red, info blue. Violet and orange are the opened and clicked email events.',
+    "- Colour utilities use steps 1 to 12 (gray-a3, green-9) or a semantic name. Never Tailwind's 50 to 950 palette, never raw hex.",
+    '- No emoji, ever. Lucide icons at 16px.',
+    '- Inter for the interface, Geist medium for headings, Playfair Display for one marketing headline, Commit Mono for code and IDs.',
+    '- Motion: 150 to 200ms for interaction, 500ms for sheets. Off under prefers-reduced-motion.',
     '',
     '## Registry items',
     '',
-    '- theme — design tokens plus the Tailwind v4 mapping. Start here in every project.',
-    '- catalyst-theme — remaps Tailwind zinc/blue onto the dylo palette for Catalyst apps.',
-    '- fonts — Google Fonts CDN import, for consumers without a font pipeline.',
-    '- brand-assets — logo lockups, keystone mark and app icons into public/brand/.',
-    '- agent-rules — brand rule for .cursor/rules plus the adherence ESLint config.',
-    '- website-kit — the marketing site in six composable sections.',
-    '- auth-kit / app-shell — docs/marketing demos only. Product apps use Catalyst auth+shell from dylo-starter.',
-    ...componentDocs.map((doc) => `- ${doc.slug} — ${doc.lead.split('.')[0]}.`),
-    '',
-    '## Colour tokens',
-    '',
-    ...[...neutrals, ...accents].map(
-      (token) => `- ${token.name}: ${token.value} · ${token.token} · ${token.utility} — ${token.role}`
+    ...['theme', 'catalyst-theme', 'fonts', 'brand-assets', 'agent-rules', 'dashboard-kit', 'marketing-kit'].map(
+      (name) => `- ${name} — ${describe(name)}`
     ),
-    '',
-    '## Type',
-    '',
-    '- Sans: Space Grotesk, via --dylo-font-display / font-sans. Set on body, so unstyled text is already correct.',
-    '- Mono: Space Mono, via --dylo-font-mono / font-mono. Uppercase, tracking 0.08em (0.24em for eyebrows).',
-    ...typeScale.map((step) => `- ${step.name}: ${step.value} · ${step.utility} — ${step.note}`),
-    '',
-    '## Shape',
-    '',
-    ...radii.map((radius) => `- ${radius.utility}: ${radius.value} — ${radius.use}`),
-    ...shadows.map((shadow) => `- ${shadow.utility}: ${shadow.value} — ${shadow.use}`),
-    '- grid-paper / grid-paper-reversed: the 48px engineering grid, the only pattern in the system.',
     '',
     '## Components',
     '',
-    ...componentDocs.flatMap((doc) => [
-      `### ${doc.name} (${doc.source})`,
-      doc.lead,
-      ...doc.props.map(
-        (prop) => `- ${prop.name}: ${prop.type}${prop.default ? ` = ${prop.default}` : ''} — ${prop.description}`
-      ),
+    ...componentGroups.flatMap((group) => [
+      `### ${group.title}`,
+      ...group.slugs.map((slug) => `- ${slug} (${componentTitle(slug)}) — ${describe(slug)} Docs: /components/${slug}`),
       '',
     ]),
+    '## Surfaces',
+    '',
+    ...surfaceRoles().map(role),
+    '',
+    '## Text',
+    '',
+    ...textRoles().map(role),
+    '',
+    '## Borders',
+    '',
+    ...borderRoles().map(role),
+    '',
+    '## Status',
+    '',
+    ...statusRoles().map((s) => `- ${s.name} (${s.hue}): text-${s.name}, bg-${s.name}, border-${s.name} — ${s.use}`),
+    '',
+    '## Type',
+    '',
+    ...fontFamilies().map((f) => `- ${f.utility}: ${f.name} (${f.token}) — ${f.role}`),
+    '',
+    '## Shape and motion',
+    '',
+    '- Radius: Tailwind defaults. rounded-xl for controls, rounded-2xl for cards, dialogs and code blocks.',
+    ...shadows().map((s) => `- ${s.utility} — ${s.role}`),
+    ...motionTokens().map((m) => `- ${m.token}: ${m.value} — ${m.role}`),
+    '',
     '## Choosing a layer',
     '',
-    'Product apps (dylo, client apps, dylo-templates/*): install theme + catalyst-theme. Keep Catalyst auth and shell',
-    'from dylo-starter. Do not install foundry auth-kit / app-shell. Optional: Eyebrow and foundry Card.',
+    'Product apps (dylo, client apps, dylo-templates/*): install theme + catalyst-theme. Keep Catalyst, auth and the shell',
+    'from dylo-starter. The dashboard kit is the visual reference for product screens.',
     '',
-    'Marketing / brand collateral: install theme plus foundry components / website-kit.',
+    'Marketing and brand collateral: install theme plus the components and the marketing-kit sections you need.',
     '',
     'Theme releases: tag dylo-design, then re-install the pinned theme in starter and templates. Product UI changes:',
     'edit dylo-starter, run scripts/sync-from-starter.mjs. Client clones are not auto-updated.',
     '',
-  ])
+  ].join('\n')
 
   return new Response(body, {
     headers: {

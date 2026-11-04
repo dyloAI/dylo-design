@@ -1,16 +1,11 @@
-/* dylo — webfonts over the Google Fonts CDN.
+/* dylo — webfonts over CDNs, for consumers without a font pipeline.
  *
- * For static HTML, email and any consumer without a font pipeline. CSS
- * requires @import to precede every other rule, so this must be the FIRST
- * line of your stylesheet — ahead of `@import 'tailwindcss'`:
+ * Must be the FIRST line of your stylesheet, ahead of `@import 'tailwindcss'`:
+ * CSS only honours @import before every other rule. Next.js apps should load
+ * the same families with next/font instead (see AGENTS.md).
  *
- *   @import './dylo/dylo-fonts.css';
- *   @import 'tailwindcss';
- *   @import './dylo/dylo-theme.css';
- *
- * Next.js apps should skip this file and use next/font instead, which
- * self-hosts the same two families and avoids a render-blocking request to a
- * third party. See AGENTS.md.
+ * Inter (interface), Geist (display headings), Playfair Display (the largest
+ * marketing headline) and Commit Mono (code). All four are open-licence.
  */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5/index.css');
