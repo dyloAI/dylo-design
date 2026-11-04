@@ -22,12 +22,12 @@ server in the path.
 # What is available
 pnpm dlx shadcn@latest list dyloAI/dylo-design
 
-# The one item most projects need: tokens + the Tailwind v4 theme
+# The one item most projects need: light and dark tokens + the Tailwind v4 theme
 pnpm dlx shadcn@latest add dyloAI/dylo-design/theme
 
 # Inspect anything before it touches your working tree
-pnpm dlx shadcn@latest view dyloAI/dylo-design/card
-pnpm dlx shadcn@latest add dyloAI/dylo-design/card --dry-run
+pnpm dlx shadcn@latest view dyloAI/dylo-design/dialog
+pnpm dlx shadcn@latest add dyloAI/dylo-design/dialog --dry-run
 ```
 
 Then, in your stylesheet:
@@ -37,40 +37,42 @@ Then, in your stylesheet:
 @import './dylo/dylo-theme.css';
 ```
 
-That gives you `bg-ink`, `text-oxide`, `border-line`, `font-mono`,
-`shadow-block`, `rounded-md` and the rest, all resolving to dylo values.
+That gives you `bg-background`, `text-emphasis`, `text-default`,
+`border-gray-a3`, `bg-interactive`, the 1 to 12 gray and status scales, the
+four font families and the marketing effects, all resolving to dylo values in
+light and dark. Put `dark` on `<html>` to switch.
 
-Full instructions, including fonts and the Catalyst compatibility layer, are on
-the [Install page](https://design.dylo.dev/install).
+Full instructions, including fonts, the theme switch and the Catalyst
+compatibility layer, are on the [Install page](https://design.dylo.dev/install).
 
 ### Items
 
-| Item                                      | What it installs                                                          |
-| ----------------------------------------- | ------------------------------------------------------------------------- |
-| `theme`                                   | Design tokens plus the Tailwind v4 mapping. Start here.                   |
-| `catalyst-theme`                          | Remaps Tailwind `zinc`/`blue` onto the dylo palette for Catalyst apps.    |
-| `fonts`                                   | Space Grotesk + Space Mono over the CDN, for consumers without next/font. |
-| `button` `input` `card` `badge` `eyebrow` | The components, as TypeScript source you own.                             |
-| `brand-assets`                            | Keystone mark, logo lockups and app icons into `public/brand/`.           |
-| `agent-rules`                             | Cursor brand rule plus the ESLint adherence config.                       |
-| `website-kit`                             | The marketing site in six composable sections.                            |
-| `auth-kit` / `app-shell`                  | Docs/marketing demos only — product apps use Catalyst in dylo-starter.    |
+| Item                                  | What it installs                                                                           |
+| ------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `theme`                               | Light and dark tokens plus the Tailwind v4 mapping. Start here.                            |
+| `catalyst-theme`                      | Remaps Tailwind `zinc`/`blue` onto the dylo grays for Catalyst apps.                       |
+| `fonts`                               | Inter, Geist, Playfair Display and Commit Mono over CDNs, for consumers without next/font. |
+| `button` `dialog` `table` `toast` ... | 42 components, as TypeScript source you own, Radix underneath.                             |
+| `dashboard-kit`                       | Every product section as a page: shell, lists, details, dialogs, metrics, settings, auth.  |
+| `marketing-kit`                       | The marketing site: header, hero, features, pricing, FAQ, blog, changelog, docs shell.     |
+| `brand-assets`                        | The mark and logo lockups (monochrome and colour), app icons, call backgrounds.            |
+| `agent-rules`                         | Cursor brand rule plus the ESLint adherence config.                                        |
 
 Pin published install commands to a tag so consumers never pick up an
 unreviewed change:
 
 ```bash
-pnpm dlx shadcn@latest add dyloAI/dylo-design/button#v1.0.0
+pnpm dlx shadcn@latest add dyloAI/dylo-design/button#v2.0.0
 ```
 
 ### Which layer do I use?
 
 **Product apps** (internal dylo, client apps, `dylo-templates/*`) install
 `theme` + `catalyst-theme` and keep Catalyst from **dylo-starter** (including
-auth pages and app shell). Do not install foundry `auth-kit` / `app-shell` into
-those apps. Optional from this registry: `Eyebrow` and foundry `Card`.
+auth pages and app shell). The `dashboard-kit` is the visual reference for
+product screens, not a second app shell; borrow the components Catalyst lacks.
 
-**Marketing / brand collateral** installs foundry components and `website-kit`.
+**Marketing / brand collateral** installs the components and `marketing-kit`.
 
 Pin theme installs to a tag. After a design-system release, bump starter and
 templates — not already-cloned client apps. Product UI changes sync
@@ -80,23 +82,22 @@ starter → templates via `dylo-starter/scripts/sync-from-starter.mjs`.
 
 ## The system in brief
 
-**Colour.** Warm monochrome does about 95% of the work: Ink `#1B1714`,
-Graphite, Concrete, on Bone `#ECE6D8` / Paper surfaces. Exactly one accent —
-Oxide `#9A5236`, a muted rust — and it appears **once per view**. Never a second
-hue.
+**Colour.** Monochrome in two themes: near-black text on a near-white page, or
+white on black. Neutrals run on a 12-step gray scale with a translucent twin,
+so a hairline (`border-gray-a3`) sits on any surface. The accent is black in
+light and white in dark. Hue carries status only: green, amber, red and blue.
 
-**Type.** Two families. Space Grotesk for everything human, tightening tracking
-as size grows. Space Mono for the technical layer — eyebrows, labels, data —
-uppercase with wide tracking. The mono layer is what marks a label, a date, or
-a figure.
+**Type.** Inter for the interface. Geist medium for headings. Playfair Display
+for the one large marketing headline. Commit Mono for code, IDs and keys.
 
-**Shape.** Mostly square: panels at 4–8px, pills only for small status chips.
-Hairlines on bone, full ink borders on foundry cards. The signature is a bone
-panel with an ink border and a hard block-shadow offset — a stamped plate, not a
-soft floating card.
+**Shape.** 32px controls with 12px corners, 16px panel corners with a hairline,
+24px marketing feature panels. Only overlays cast a shadow.
 
-**Motion.** Minimal and mechanical. 120–180ms, linear to ease-out. Press shifts
-the element down and right into its own shadow so the plate seats. No bounces.
+**Effects.** Marketing surfaces get glass calls to action, a fading highlight
+line, a soft spotlight and a gradient headline. The dashboard stays flat.
+
+**Motion.** 150 to 200ms for interaction, overlays that fade and scale in from
+98%, sheets that slide over 500ms. All of it collapses under reduced motion.
 
 **Voice.** Calm and trustworthy. Plain words, a price and a date, numbers
 instead of adjectives, short sentences. We and you. Lowercase dylo. No emoji.
@@ -138,18 +139,18 @@ the site cannot drift from what a consumer installs.
 ### Layout
 
 ```
-registry/dylo/theme/    Tokens, Tailwind mapping, Catalyst remap (primary product)
-registry/dylo/ui/       Foundry marketing components
-registry/dylo/blocks/   website-kit; auth/app-shell demos are docs-only
-registry.json           Root catalogue for the shadcn CLI
-rules/                  Cursor rule + ESLint config shipped by `agent-rules`
-src/                    The docs site
-public/brand/           Brand assets, served and shipped
-design-source/          The raw Claude Design export. Reference only.
+registry/dylo/theme/              Light and dark tokens, Tailwind mapping, Catalyst remap
+registry/dylo/ui/                 Components, Radix underneath anything interactive
+registry/dylo/blocks/dashboard/   dashboard-kit
+registry/dylo/blocks/marketing/   marketing-kit
+registry.json                     Root catalogue for the shadcn CLI
+rules/                            Cursor rule + ESLint config shipped by `agent-rules`
+src/                              The docs site, including full-page kit routes at /kits
+public/brand/                     Brand assets, served and shipped
+design-source/                    The raw Claude Design export of v1. Reference only.
 ```
 
-`design-source/` holds the unmodified Claude Design output the system was built
-from, including the original `.jsx` components and the guideline specimen cards.
-It is not maintained — it exists so a future sync has somewhere to land and so
-the origin of the brand stays legible. The first commit in this repo is that
-export, untouched.
+`design-source/` holds the unmodified Claude Design output the first version of
+the system was built from. It is not maintained and no longer describes the
+current visual system — it exists so the origin of the brand stays legible. The
+first commit in this repo is that export, untouched.

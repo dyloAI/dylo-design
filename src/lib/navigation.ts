@@ -6,6 +6,53 @@ export type NavSection = {
   collapsible?: boolean
 }
 
+/** Every registry primitive, grouped as the sidebar and the overview show them. */
+export const componentGroups: { title: string; slugs: string[] }[] = [
+  { title: 'Actions', slugs: ['button', 'icon-button', 'cta-button', 'button-group', 'link'] },
+  {
+    title: 'Forms',
+    slugs: [
+      'input',
+      'textarea',
+      'field',
+      'select',
+      'combobox',
+      'checkbox',
+      'radio-group',
+      'switch',
+      'slider',
+      'search',
+      'date-range-picker',
+    ],
+  },
+  {
+    title: 'Overlays',
+    slugs: ['dialog', 'alert-dialog', 'sheet', 'popover', 'dropdown-menu', 'context-menu', 'tooltip', 'toast'],
+  },
+  { title: 'Feedback', slugs: ['badge', 'callout', 'progress', 'skeleton', 'empty-state'] },
+  { title: 'Data display', slugs: ['table', 'toolbar', 'pagination', 'chart', 'card', 'avatar', 'code-block', 'kbd'] },
+  { title: 'Navigation and layout', slugs: ['tabs', 'breadcrumb', 'accordion', 'separator', 'logo'] },
+]
+
+export const componentTitles: Record<string, string> = {
+  'alert-dialog': 'Alert dialog',
+  'button-group': 'Button group',
+  'code-block': 'Code block',
+  'context-menu': 'Context menu',
+  'cta-button': 'CTA button',
+  'date-range-picker': 'Date range picker',
+  'dropdown-menu': 'Dropdown menu',
+  'empty-state': 'Empty state',
+  'icon-button': 'Icon button',
+  'radio-group': 'Radio group',
+  field: 'Field and label',
+  link: 'Text link',
+}
+
+export function componentTitle(slug: string) {
+  return componentTitles[slug] ?? slug.charAt(0).toUpperCase() + slug.slice(1)
+}
+
 export const navigation: NavSection[] = [
   {
     title: 'Start',
@@ -13,6 +60,7 @@ export const navigation: NavSection[] = [
       { title: 'Overview', href: '/' },
       { title: 'Install', href: '/install' },
       { title: 'For agents', href: '/agents' },
+      { title: 'All components', href: '/components' },
     ],
   },
   {
@@ -20,30 +68,23 @@ export const navigation: NavSection[] = [
     items: [
       { title: 'Colour', href: '/foundations/colour' },
       { title: 'Type', href: '/foundations/type' },
-      { title: 'Space & shape', href: '/foundations/space' },
+      { title: 'Space, shape and motion', href: '/foundations/space' },
       { title: 'Brand marks', href: '/foundations/brand' },
       { title: 'Messaging', href: '/foundations/messaging' },
     ],
   },
-  {
-    title: 'Components',
+  ...componentGroups.map((group) => ({
+    title: group.title,
     collapsible: true,
-    items: [
-      { title: 'Button', href: '/components/button' },
-      { title: 'Input', href: '/components/input' },
-      { title: 'Card', href: '/components/card' },
-      { title: 'Badge', href: '/components/badge' },
-      { title: 'Eyebrow', href: '/components/eyebrow' },
-    ],
-  },
+    items: group.slugs.map((slug) => ({ title: componentTitle(slug), href: `/components/${slug}` })),
+  })),
   {
     title: 'Kits',
-    collapsible: true,
     items: [
-      { title: 'Marketing site', href: '/kits/website' },
-      { title: 'Brand book', href: '/brand-book' },
-      { title: 'Auth (demo)', href: '/kits/auth' },
-      { title: 'App shell (demo)', href: '/kits/app-shell' },
+      { title: 'All kit pages', href: '/kits' },
+      { title: 'Dashboard', href: '/kits/dashboard/emails' },
+      { title: 'Marketing site', href: '/kits/marketing' },
+      { title: 'Auth screens', href: '/kits/auth/login' },
     ],
   },
 ]

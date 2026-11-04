@@ -1,9 +1,14 @@
 /**
- * dylo brand adherence — ESLint 9 flat config.
+ * dylo brand adherence — ESLint 9 flat config (v2).
  *
  * Catches the drift that code review keeps having to catch by hand: a raw hex
- * value, a colour from Tailwind's default palette sneaking a second hue into
- * the system, an emoji.
+ * value that will not flip with the theme, a step from Tailwind's default
+ * 50-950 palette instead of the dylo 1-12 scales, an emoji, a third font.
+ *
+ * Hue itself is legal: the green, red, amber, blue, orange and violet scales
+ * carry status (`text-success`, `bg-warning`, `border-error`, `green-9`). What
+ * is banned is the default palette, because `green-500` has no dark-theme
+ * counterpart and `green-9` does.
  *
  * Component prop and variant validation is deliberately absent — the
  * components are TypeScript, so `<Button variant="danger">` is already a
@@ -15,8 +20,8 @@
  *   export default defineConfig([...nextVitals, ...dyloAdherence])
  *
  * Catalyst apps use `dyloAdherenceCatalyst` instead: the compatibility layer
- * remaps Tailwind's zinc and blue scales onto the dylo palette, so `zinc-800`
- * in a Catalyst app really does render Graphite and must stay legal.
+ * remaps Tailwind's zinc and blue scales onto the dylo grays, so `zinc-800`
+ * in a Catalyst app really does render a dylo gray and must stay legal.
  */
 
 const TAILWIND_PALETTE = [
@@ -44,11 +49,22 @@ const TAILWIND_PALETTE = [
   'rose',
 ]
 
-const COLOUR_PREFIXES = 'bg|text|border|ring|outline|fill|stroke|from|via|to|decoration|divide|shadow|accent|caret'
+// Tailwind's default steps. The dylo scales use 1-12 and a1-a12, which never
+// collide with these.
+const TAILWIND_STEPS = '50|[1-9]00|950'
+
+const COLOUR_PREFIXES =
+  'bg|text|border|border-[xytrbl]|ring|ring-offset|outline|fill|stroke|from|via|to|decoration|divide|shadow|inset-shadow|inset-ring|accent|caret|placeholder'
+
+// 3, 4, 6 or 8 hex digits. Five- and seven-digit runs are left alone so an
+// anchor such as `#faded1x` is not flagged.
+const HEX = '#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})\\b'
 
 // Lead surrogates cover the emoji planes without needing the `u` flag, which
 // esquery selectors do not reliably support.
 const EMOJI = '[\\uD83C-\\uD83E][\\uDC00-\\uDFFF]|[\\u2600-\\u27BF]|\\uFE0F'
+
+const FAMILIES = 'Inter|Geist|Playfair Display|Commit Mono|var\\(--dylo-font'
 
 function rules({ allowCatalystScales }) {
   const palette = allowCatalystScales
@@ -57,25 +73,37 @@ function rules({ allowCatalystScales }) {
 
   return [
     {
-      selector: 'Literal[value=/#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?\\b/]',
-      message: 'Raw hex colour. Use a dylo token: bg-ink, text-oxide, border-line, or var(--dylo-*) outside Tailwind.',
+      selector: `Literal[value=/${HEX}/]`,
+      message:
+        'Raw hex colour. It will not flip with the theme. Use a dylo utility (bg-background, text-emphasis, border-gray-a3, text-success) or var(--dylo-*) outside Tailwind.',
     },
     {
-      selector: `Literal[value=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-\\d{2,3}\\b/]`,
+      selector: `TemplateElement[value.raw=/${HEX}/]`,
       message:
-        "Tailwind's default palette. dylo is warm monochrome with one accent — use ink, graphite, concrete, line, bone, paper or oxide.",
+        'Raw hex colour. It will not flip with the theme. Use a dylo utility (bg-background, text-emphasis, border-gray-a3, text-success) or var(--dylo-*) outside Tailwind.',
+    },
+    {
+      selector: `Literal[value=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-(${TAILWIND_STEPS})\\b/]`,
+      message:
+        "Tailwind's default palette. Use a dylo step instead (gray-11, slate-6, green-9, red-a11) or a semantic utility (text-default, bg-error).",
+    },
+    {
+      selector: `TemplateElement[value.raw=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-(${TAILWIND_STEPS})\\b/]`,
+      message:
+        "Tailwind's default palette. Use a dylo step instead (gray-11, slate-6, green-9, red-a11) or a semantic utility (text-default, bg-error).",
     },
     {
       selector: `Literal[value=/${EMOJI}/]`,
-      message: 'No emoji. The mono type layer carries whatever texture is needed.',
+      message: 'No emoji. Use a Lucide icon at 16px, or plain words.',
     },
     {
       selector: `JSXText[value=/${EMOJI}/]`,
-      message: 'No emoji. The mono type layer carries whatever texture is needed.',
+      message: 'No emoji. Use a Lucide icon at 16px, or plain words.',
     },
     {
-      selector: 'Literal[value=/font-family\\s*:\\s*(?![\'"]?(?:Space Grotesk|Space Mono|var\\(--dylo-font))/i]',
-      message: 'Only two families exist: Space Grotesk (human) and Space Mono (technical).',
+      selector: `Literal[value=/font-family\\s*:(?!\\s*['"]?(?:${FAMILIES}))/i]`,
+      message:
+        'Four families exist: Inter (interface), Geist (headings), Playfair Display (one marketing headline) and Commit Mono (code). Use font-sans, font-display, font-serif or font-mono.',
     },
   ]
 }

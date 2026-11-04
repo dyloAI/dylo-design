@@ -1,122 +1,178 @@
-export type ColourToken = {
-  name: string
-  token: string
-  value: string
-  utility: string
-  role: string
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
+
+/*
+ * The foundations pages read their values out of the theme files at build
+ * time, so a documented value can never drift from a shipped one. Only call
+ * these from server components.
+ */
+
+const themeDir = path.join(process.cwd(), 'registry', 'dylo', 'theme')
+
+type Block = Record<string, string>
+
+function declarations(body: string): Block {
+  const out: Block = {}
+  const clean = body.replace(/\/\*[\s\S]*?\*\//g, '')
+  for (const match of clean.matchAll(/(--dylo-[\w-]+)\s*:\s*([^;]+);/g)) {
+    out[match[1]!] = match[2]!.replace(/\s+/g, ' ').trim()
+  }
+  return out
 }
 
-export const neutrals: ColourToken[] = [
-  {
-    name: 'Ink',
-    token: '--dylo-ink',
-    value: '#1B1714',
-    utility: 'bg-ink',
-    role: 'Primary text, the mark, dark surfaces',
-  },
-  {
-    name: 'Graphite',
-    token: '--dylo-graphite',
-    value: '#3A352F',
-    utility: 'bg-graphite',
-    role: 'Body copy and secondary text on Bone and Paper',
-  },
-  {
-    name: 'Concrete',
-    token: '--dylo-concrete',
-    value: '#8E857A',
-    utility: 'bg-concrete',
-    role: 'Rules, borders, disabled. Not text on Bone or Paper (about 2.9:1, fails WCAG AA).',
-  },
-  { name: 'Line', token: '--dylo-line', value: '#D8CFBC', utility: 'border-line', role: 'Hairlines on bone' },
-  { name: 'Bone', token: '--dylo-bone', value: '#ECE6D8', utility: 'bg-bone', role: 'Primary page surface' },
-  {
-    name: 'Paper',
-    token: '--dylo-paper',
-    value: '#F6F3EC',
-    utility: 'bg-paper',
-    role: 'Raised surface, cards, fields',
-  },
-]
+let cache: { light: Block; dark: Block; shared: Block } | null = null
 
-export const accents: ColourToken[] = [
-  {
-    name: 'Oxide',
-    token: '--dylo-oxide',
-    value: '#9A5236',
-    utility: 'bg-oxide',
-    role: 'The one accent — once per view',
-  },
-  {
-    name: 'Oxide deep',
-    token: '--dylo-oxide-deep',
-    value: '#7E4029',
-    utility: 'bg-oxide-deep',
-    role: 'Pressed and hover states of the accent',
-  },
-]
+/** The three blocks of dylo-tokens.css: light (`:root, .light`), dark (`.dark`) and the theme-independent `:root`. */
+export function readTokens() {
+  if (cache) return cache
+  const css = readFileSync(path.join(themeDir, 'dylo-tokens.css'), 'utf8')
+  const blocks = [...css.matchAll(/(^|\n)([^{}\n][^{}]*?)\{([^}]*)\}/g)].map((m) => ({
+    selector: m[2]!.replace(/\/\*[\s\S]*?\*\//g, '').trim(),
+    body: m[3]!,
+  }))
+  const pick = (test: (selector: string) => boolean) =>
+    Object.assign({}, ...blocks.filter((b) => test(b.selector)).map((b) => declarations(b.body))) as Block
+  cache = {
+    light: pick((s) => s.includes('.light')),
+    dark: pick((s) => s === '.dark'),
+    shared: pick((s) => s === ':root'),
+  }
+  return cache
+}
 
-export const typeScale = [
-  {
-    name: 'Display',
-    utility: 'text-display',
-    value: 'clamp(44px, 6vw, 80px)',
-    note: 'A short line. Do not pair it with Hero as a second headline.',
-  },
-  {
-    name: 'Hero',
-    utility: 'text-hero',
-    value: 'clamp(34px, 4.4vw, 60px)',
-    note: 'A sentence-length promise. Tracking -0.03em. One per page.',
-  },
-  { name: 'H1', utility: 'text-h1', value: 'clamp(30px, 4vw, 48px)', note: 'Section opener.' },
-  { name: 'H2', utility: 'text-h2', value: '28px', note: 'Subsection.' },
-  { name: 'H3', utility: 'text-h3', value: '20px', note: 'Card and panel headings.' },
-  { name: 'Body', utility: 'text-[16px]', value: '16px', note: 'Default. Leading 1.6.' },
-  { name: 'Small', utility: 'text-[13px]', value: '13px', note: 'Secondary copy.' },
-  {
-    name: 'Mono',
-    utility: 'font-mono text-[12px]',
-    value: '12px',
-    note: 'Eyebrows, labels, data. Uppercase, wide tracking.',
-  },
-]
+/** Resolve one `var(--dylo-x)` hop, for values that alias another token. */
+function resolve(value: string | undefined, block: Block): string {
+  if (!value) return ''
+  const alias = value.match(/^var\((--dylo-[\w-]+)\)$/)
+  return alias ? resolve(block[alias[1]!], block) : value
+}
 
-export const spaceScale = [
-  { token: '--dylo-space-1', value: '4px' },
-  { token: '--dylo-space-2', value: '8px' },
-  { token: '--dylo-space-3', value: '12px' },
-  { token: '--dylo-space-4', value: '16px' },
-  { token: '--dylo-space-5', value: '24px' },
-  { token: '--dylo-space-6', value: '32px' },
-  { token: '--dylo-space-7', value: '48px' },
-  { token: '--dylo-space-8', value: '64px' },
-  { token: '--dylo-space-9', value: '96px' },
-]
+export type Swatch = { token: string; utility: string; light: string; dark: string }
 
-export const radii = [
-  { name: 'None', utility: 'rounded-none', value: '0px', use: 'Structural blocks, the oxide tick' },
-  { name: 'Small', utility: 'rounded-sm', value: '4px', use: 'Buttons, fields, chips' },
-  { name: 'Medium', utility: 'rounded-md', value: '8px', use: 'Panels and cards' },
-  { name: 'Large', utility: 'rounded-lg', value: '14px', use: 'Rare — large surfaces only' },
-  { name: 'Pill', utility: 'rounded-full', value: '999px', use: 'Small status chips only' },
-]
+export function scale(name: string, alpha: boolean, utilityPrefix = name): Swatch[] {
+  const { light, dark } = readTokens()
+  return Array.from({ length: 12 }, (_, i) => {
+    const token = `--dylo-${name}-${alpha ? 'a' : ''}${i + 1}`
+    return {
+      token,
+      utility: `${utilityPrefix}-${alpha && name === 'gray' ? 'a' : ''}${i + 1}`,
+      light: resolve(light[token], light),
+      dark: resolve(dark[token], dark),
+    }
+  })
+}
 
-export const shadows = [
-  {
-    name: 'Block',
-    utility: 'shadow-block',
-    value: '6px 6px 0 rgb(27 23 20 / 0.12)',
-    use: 'The plate. Primary action and product mocks, not editorial copy.',
-  },
-  { name: 'Block small', utility: 'shadow-block-sm', value: '4px 4px 0 rgb(27 23 20 / 0.18)', use: 'Buttons at rest.' },
-  {
-    name: 'Block seated',
-    utility: 'shadow-block-seated',
-    value: '1px 1px 0 rgb(27 23 20 / 0.20)',
-    use: 'Buttons on press.',
-  },
-  { name: 'Small', utility: 'shadow-sm', value: '0 1px 2px rgb(27 23 20 / 0.08)', use: 'Barely-raised surfaces.' },
-  { name: 'Medium', utility: 'shadow-md', value: '0 6px 18px rgb(27 23 20 / 0.12)', use: 'App icons.' },
-  { name: 'Large', utility: 'shadow-lg', value: '0 18px 40px rgb(27 23 20 / 0.20)', use: 'Elevated objects. Rare.' },
-]
+export type Role = { utility: string; token: string; role: string; light: string; dark: string }
+
+function role(utility: string, token: string, description: string): Role {
+  const { light, dark } = readTokens()
+  return { utility, token, role: description, light: resolve(light[token], light), dark: resolve(dark[token], dark) }
+}
+
+/** The surfaces and text roles. Reach for these before a scale step. */
+export function surfaceRoles(): Role[] {
+  return [
+    role('bg-background', '--dylo-background', 'The page.'),
+    role('bg-surface', '--dylo-base', 'Code blocks and the email preview.'),
+    role('bg-canvas', '--dylo-canvas', 'The grid behind marketing panels.'),
+    role('bg-subtle', '--dylo-gray-1', 'A recessed band: table headers, code chrome.'),
+    role('bg-elevated', '--dylo-gray-2', 'A raised panel.'),
+    role('bg-overlay', '--dylo-overlay', 'Menus, popovers and dialogs.'),
+    role('bg-scrim', '--dylo-scrim', 'Behind a dialog or sheet.'),
+    role('bg-interactive', '--dylo-gray-a2', 'The resting fill of a control.'),
+    role('bg-interactive-hover', '--dylo-gray-a3', 'The hovered or open fill of a control.'),
+    role('bg-accent', '--dylo-accent', 'The primary action. Black in light, white in dark.'),
+  ]
+}
+
+export function textRoles(): Role[] {
+  return [
+    role('text-emphasis', '--dylo-gray-12', 'Headings, primary cell text, values.'),
+    role('text-default', '--dylo-gray-11', 'Body copy and labels.'),
+    role('text-gray-10', '--dylo-gray-10', 'Hints and timestamps.'),
+    role('text-placeholder', '--dylo-placeholder', 'Placeholder text only.'),
+    role('text-on-accent', '--dylo-on-accent', 'Text on the accent fill.'),
+  ]
+}
+
+export function borderRoles(): Role[] {
+  return [
+    role('border-gray-a3', '--dylo-gray-a3', 'The hairline: tables, cards, dividers.'),
+    role('border-interactive', '--dylo-gray-a3', 'The edge of a control.'),
+    role('border-default', '--dylo-gray-3', 'A solid border where a translucent one would stack.'),
+    role('border-slate-6', '--dylo-slate-a6', 'Code block chrome.'),
+  ]
+}
+
+export type StatusRole = { name: string; hue: string; use: string; text: Role; bg: Role; border: Role }
+
+export function statusRoles(): StatusRole[] {
+  const rows = [
+    { name: 'success', hue: 'green', use: 'Delivered, verified, healthy.' },
+    { name: 'warning', hue: 'amber', use: 'Delayed, pending, close to a limit.' },
+    { name: 'error', hue: 'red', use: 'Bounced, failed, over a limit, destructive actions.' },
+    { name: 'info', hue: 'blue', use: 'Scheduled, queued, a neutral notice.' },
+  ]
+  return rows.map((r) => ({
+    ...r,
+    text: role(`text-${r.name}`, `--dylo-${r.hue}-a11`, 'Text'),
+    bg: role(`bg-${r.name}`, `--dylo-${r.hue}-a3`, 'Fill'),
+    border: role(`border-${r.name}`, `--dylo-${r.hue}-a6`, 'Border'),
+  }))
+}
+
+export function shared(token: string) {
+  return readTokens().shared[token] ?? ''
+}
+
+/** Families: role, utility and the token's stack. */
+export function fontFamilies() {
+  return [
+    { utility: 'font-sans', token: '--dylo-font-sans', name: 'Inter', role: 'The interface and body copy.' },
+    { utility: 'font-display', token: '--dylo-font-display', name: 'Geist', role: 'Section titles and page headings.' },
+    {
+      utility: 'font-serif',
+      token: '--dylo-font-serif',
+      name: 'Playfair Display',
+      role: 'The single largest marketing headline.',
+    },
+    { utility: 'font-mono', token: '--dylo-font-mono', name: 'Commit Mono', role: 'Code, IDs, keys, DNS values.' },
+  ].map((f) => ({ ...f, stack: shared(f.token) }))
+}
+
+export function motionTokens() {
+  return [
+    { token: '--dylo-duration-fast', role: 'Hover and colour changes.' },
+    { token: '--dylo-duration-base', role: 'Menus, dialogs, popovers opening.' },
+    { token: '--dylo-duration-slow', role: 'Sheets sliding in.' },
+    { token: '--dylo-ease-standard', role: 'Colour and opacity.' },
+    { token: '--dylo-ease-out', role: 'Movement that settles (ease-dylo).' },
+    { token: '--dylo-ease-drawer', role: 'Sheets (ease-drawer).' },
+  ].map((m) => ({ ...m, value: shared(m.token) }))
+}
+
+export function layoutTokens() {
+  return [
+    { token: '--dylo-header-height', role: 'The marketing header.' },
+    { token: '--dylo-sidebar-width', role: 'The dashboard sidebar.' },
+  ].map((m) => ({ ...m, value: shared(m.token) }))
+}
+
+/** Shadows are defined in dylo-theme.css, so read them from there. */
+export function shadows() {
+  const css = readFileSync(path.join(themeDir, 'dylo-theme.css'), 'utf8')
+  const { light, dark } = readTokens()
+  const roles: Record<string, string> = {
+    glow: 'The halo under a hovered call to action.',
+    popover: 'Menus, popovers, the combobox list.',
+    dialog: 'Dialogs and sheets.',
+  }
+  return Object.entries(roles).map(([name, use]) => {
+    const raw = css.match(new RegExp(`--shadow-${name}:\\s*([^;]+);`))?.[1]?.trim() ?? ''
+    const value =
+      raw === 'var(--dylo-shadow-glow)'
+        ? `light: ${light['--dylo-shadow-glow']} / dark: ${dark['--dylo-shadow-glow']}`
+        : raw
+    return { utility: `shadow-${name}`, value, role: use }
+  })
+}

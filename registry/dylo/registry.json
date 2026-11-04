@@ -5,7 +5,7 @@
       "name": "theme",
       "type": "registry:theme",
       "title": "dylo theme",
-      "description": "Design tokens plus the Tailwind v4 mapping that turns them into utilities: bg-ink, text-oxide, border-line, font-mono, shadow-block. Start here in every project.",
+      "description": "Light and dark design tokens plus the Tailwind v4 mapping: the gray and alpha scales, semantic utilities (text-default, bg-interactive, border-interactive, ring-focus, bg-success...), the display, serif and mono families, motion and the marketing effects. Start here in every project.",
       "files": [
         {
           "path": "theme/dylo-tokens.css",
@@ -23,7 +23,7 @@
       "name": "catalyst-theme",
       "type": "registry:theme",
       "title": "dylo theme for Catalyst",
-      "description": "Remaps Tailwind's zinc and blue scales onto the dylo palette so every existing Catalyst component renders warm. Import after dylo-theme.css.",
+      "description": "Remaps Tailwind's zinc and blue scales onto the dylo grays so existing Catalyst components follow the theme in light and dark. Import after dylo-theme.css.",
       "registryDependencies": ["dyloAI/dylo-design/theme"],
       "files": [
         {
@@ -37,7 +37,7 @@
       "name": "fonts",
       "type": "registry:item",
       "title": "dylo webfonts",
-      "description": "Space Grotesk and Space Mono over the Google Fonts CDN, for consumers without a font pipeline. Must be the first line of your stylesheet. Next.js apps should use next/font instead.",
+      "description": "Inter, Geist, Playfair Display and Commit Mono over public CDNs, for consumers without a font pipeline. Must be the first line of your stylesheet. Next.js apps should use next/font instead.",
       "files": [
         {
           "path": "theme/dylo-fonts.css",
@@ -47,168 +47,849 @@
       ]
     },
     {
-      "name": "eyebrow",
+      "name": "accordion",
       "type": "registry:ui",
-      "title": "Eyebrow",
-      "description": "The mono section label with an oxide tick. The brand's most recognizable device, and the one that spends the view's single accent.",
-      "dependencies": ["class-variance-authority"],
+      "title": "Accordion",
+      "description": "Stacked questions that open in place: the pricing FAQ. Each item is its own filled card; the chevron turns a quarter on open.",
+      "dependencies": ["lucide-react", "radix-ui"],
       "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
-      "files": [{ "path": "ui/eyebrow.tsx", "type": "registry:ui" }]
+      "files": [
+        {
+          "path": "ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "button",
+      "name": "alert-dialog",
       "type": "registry:ui",
-      "title": "Button",
-      "description": "Foundry-stamped action. An ink plate with a hard block shadow that seats on press.",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
-      "files": [{ "path": "ui/button.tsx", "type": "registry:ui" }]
+      "title": "Alert dialog",
+      "description": "A confirmation that cannot be dismissed by clicking outside: delete a domain, revoke a key. Say what will happen in the description.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/button"],
+      "files": [
+        {
+          "path": "ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
-      "name": "input",
+      "name": "avatar",
       "type": "registry:ui",
-      "title": "Input",
-      "description": "Text field with a mono uppercase label and the oxide focus ring. Stays a Server Component.",
+      "title": "Avatar",
+      "description": "A person (round) or a team (rounded square). The fallback shows initials on a tinted tile.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
       "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
-      "files": [{ "path": "ui/input.tsx", "type": "registry:ui" }]
+      "files": [
+        {
+          "path": "ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Status or technical chip in mono type. Square-ish, part of the engineered layer.",
+      "description": "A status or label chip. The tone carries meaning, so use each one for its status only: success (delivered, verified), warning (delayed, pending), error (bounced, failed), info (opened, clicked), neutral (queued, sent).",
       "dependencies": ["class-variance-authority"],
       "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
-      "files": [{ "path": "ui/badge.tsx", "type": "registry:ui" }]
+      "files": [
+        {
+          "path": "ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "The trail above a detail page: Domains > example.com.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button group",
+      "description": "Joins adjacent Buttons into one control: shared hairline, squared inner corners. Use for a split action or a small set of related toggles.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "The interface action. `primary` is the solid accent (black in light, white in dark), `secondary` the translucent gray control, `ghost` text only. The default size is the 32px control the dashboard is built from.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "registry:ui",
+      "title": "Callout",
+      "description": "An inline notice: a domain still verifying, a quota nearly reached, an action that cannot be undone. Icon, a sentence, an optional action.",
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/callout.tsx",
+          "type": "registry:ui"
+        }
+      ]
     },
     {
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "description": "The signature foundry panel: ink border plus a hard block-shadow offset, barely rounded.",
+      "description": "A grouped surface. `outline` is the hairline panel of the dashboard, `subtle` the filled one (FAQ items, stat tiles), `feature` the large marketing panel with a highlight across its top edge.",
       "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/eyebrow"],
-      "files": [{ "path": "ui/card.tsx", "type": "registry:ui" }]
-    },
-    {
-      "name": "website-kit",
-      "type": "registry:block",
-      "title": "Marketing site",
-      "description": "The dylo homepage in six composable sections: sticky nav, hero on the engineering grid, work grid, how we work, contact form and footer.",
-      "registryDependencies": [
-        "dyloAI/dylo-design/theme",
-        "dyloAI/dylo-design/button",
-        "dyloAI/dylo-design/badge",
-        "dyloAI/dylo-design/card",
-        "dyloAI/dylo-design/eyebrow",
-        "dyloAI/dylo-design/input",
-        "dyloAI/dylo-design/brand-assets"
-      ],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
       "files": [
         {
-          "path": "blocks/website/index.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/index.tsx"
-        },
-        {
-          "path": "blocks/website/header.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/header.tsx"
-        },
-        {
-          "path": "blocks/website/hero.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/hero.tsx"
-        },
-        {
-          "path": "blocks/website/work-section.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/work-section.tsx"
-        },
-        {
-          "path": "blocks/website/studio-section.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/studio-section.tsx"
-        },
-        {
-          "path": "blocks/website/contact-section.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/contact-section.tsx"
-        },
-        {
-          "path": "blocks/website/footer.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/website/footer.tsx"
+          "path": "ui/card.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "auth-kit",
-      "type": "registry:block",
-      "title": "Auth (docs / marketing only)",
-      "description": "Foundry demo of sign-in, sign-up and forgot-password. Product apps must use Catalyst auth from dylo-starter — do not install this kit into templates or client apps.",
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Lightweight SVG charts for metrics: no chart library, server-rendered. Series colour comes from `currentColor`, so set it with a text utility (text-gray-12 for the main series, text-green-9 for deliverability).",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A 16px square check. Checked and indeterminate fill with the accent.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code block",
+      "description": "Code in the system's mono face: inline Code, a CopyButton, line-numbered CodeLines with grayscale highlighting, and the framed CodeBlock with framework tabs and a copy button.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "A searchable single choice for long lists: sending domain, audience, template. Arrow keys move, Enter picks, Escape closes.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/popover"],
+      "files": [
+        {
+          "path": "ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context menu",
+      "description": "The right-click menu. Same surface and items as DropdownMenu.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": [
+        "utils",
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/dropdown-menu",
+        "dyloAI/dylo-design/popover"
+      ],
+      "files": [
+        {
+          "path": "ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cta-button",
+      "type": "registry:ui",
+      "title": "CTA button",
+      "description": "The marketing call to action. `glass` is a translucent pane with a 2px hairline that fills solid and gains a soft glow on hover; `ghost` is the quiet secondary beside it. Use it on marketing pages and auth screens, not inside the product, where Button is the control.",
+      "dependencies": ["class-variance-authority", "lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/cta-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date range picker",
+      "description": "The list filter for time: a preset (\"Last 15 days\") or a custom from / to pair. Dates are ISO strings (yyyy-mm-dd).",
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "utils",
         "dyloAI/dylo-design/theme",
         "dyloAI/dylo-design/button",
         "dyloAI/dylo-design/input",
-        "dyloAI/dylo-design/brand-assets"
+        "dyloAI/dylo-design/popover"
       ],
       "files": [
         {
-          "path": "blocks/auth/index.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/index.tsx"
-        },
-        {
-          "path": "blocks/auth/auth-layout.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/auth-layout.tsx"
-        },
-        {
-          "path": "blocks/auth/auth-card.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/auth-card.tsx"
-        },
-        {
-          "path": "blocks/auth/sign-in.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/sign-in.tsx"
-        },
-        {
-          "path": "blocks/auth/sign-up.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/sign-up.tsx"
-        },
-        {
-          "path": "blocks/auth/forgot-password.tsx",
-          "type": "registry:component",
-          "target": "~/src/components/auth/forgot-password.tsx"
+          "path": "ui/date-range-picker.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "app-shell",
-      "type": "registry:block",
-      "title": "App shell (docs / marketing only)",
-      "description": "Foundry demo of sidebar chrome. Product apps must use Catalyst SidebarLayout from dylo-starter — do not install this kit into templates or client apps.",
-      "dependencies": ["lucide-react"],
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A modal for a focused task: create an API key, add a domain, add a webhook. Header, body and a footer with the actions right-aligned.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown menu",
+      "description": "The action menu behind every \"...\" and the team switcher. Items are 32px, 8px-rounded, with an optional 16px icon and a trailing shortcut.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/popover"],
+      "files": [
+        {
+          "path": "ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty state",
+      "description": "What a list shows before it has rows: an icon tile, a title, one sentence and the action that fills it. Sits on the faint canvas grid.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/empty-state.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field and label",
+      "description": "The label above a control: 14px, secondary text, no uppercase.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "Icon button",
+      "description": "A square action that holds one icon: row menus, copy, close, toolbar export. Always give it an `aria-label`.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/icon-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "The text field. Translucent gray fill and hairline by default; `glass` is the larger frosted field of the auth screens. Pass `leading` or `trailing` for an icon, a prefix or an IconButton inside the field.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "A keyboard key: 20px square-ish chip, hidden on touch devices.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Text link",
+      "description": "An inline text link. `emphasis` is the bold link inside secondary copy (\"Don't have an account? Sign up\"), `underline` the legal-line link, `muted` the footer and navigation link.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/link.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "logo",
+      "type": "registry:ui",
+      "title": "Logo",
+      "description": "The monochrome dylo mark or horizontal lockup from public/brand/: black on light, the reversed white file under `.dark`. Never redraw the mark; install brand-assets.",
       "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/brand-assets"],
       "files": [
         {
-          "path": "blocks/app-shell/index.tsx",
+          "path": "ui/logo.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "The footer of a list: \"1-40 of 1,204\" on the left, previous and next on the right. Pass hrefs for links, or onPrevious / onNext for buttons.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "The floating surface: near-opaque overlay fill, blur, a hairline ring.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "A quota bar: emails sent this month, domains used. The fill turns to the warning tone past 80% and the error tone at the limit unless `tone` is set.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio group",
+      "description": "A 16px ring; the checked dot is the accent.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "type": "registry:ui",
+      "title": "Search",
+      "description": "The filter-bar search: leading magnifier, optional shortcut hint.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "utils",
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/input",
+        "dyloAI/dylo-design/kbd"
+      ],
+      "files": [
+        {
+          "path": "ui/search.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A single-choice dropdown. The trigger matches Input; the menu is the shared popover surface. Filter bars use it for date range, status and API key.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "A 1px hairline. Pass children for the centred \"or\" divider of the auth screens.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A panel that slides in from an edge: an event's detail beside the log, the mobile navigation. Uses the drawer easing.",
+      "dependencies": ["class-variance-authority", "lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A loading placeholder in the interactive fill, gently pulsing.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "A range input: a 4px rail, a gradient fill and a 20px thumb that grows on hover. Pass `marks` to label the stops underneath, as the pricing slider does.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "An on/off toggle. On fills with the accent; the thumb is the opposite tone.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "The list table. The header is a rounded, hairlined band; rows are 56px with a bottom hairline and a hover fill. `density=\"compact\"` gives the 44px rows of comparison tables and DNS records.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Switches between views of one page. `segmented` is the dashboard's Sending / Receiving control, `pill` the larger marketing toggle, `underline` the settings sub-navigation.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "A multi-line text field with the same fill, hairline and states as Input.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Transient confirmation at the bottom right: \"API key copied\", \"Domain added\". Mount <Toaster /> once, then call `toast()` from anywhere.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "The filter bar above a list: a search that takes the free width, then fixed-width filters and an action at the end. Wraps on narrow screens.",
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/toolbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A short label on hover or focus. Wrap the app (or the page) in TooltipProvider once.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils", "dyloAI/dylo-design/theme"],
+      "files": [
+        {
+          "path": "ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-kit",
+      "type": "registry:block",
+      "title": "Dashboard kit",
+      "description": "The product dashboard: sidebar shell with team switcher and status bar, and every section as a page (emails, templates, audience, inboxes, broadcasts, automations, metrics, domains, logs, API keys, webhooks, settings) with their dialogs, sheets, empty states and the auth screens. Placeholder data lives in data.ts.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": [
+        "utils",
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/alert-dialog",
+        "dyloAI/dylo-design/badge",
+        "dyloAI/dylo-design/button",
+        "dyloAI/dylo-design/callout",
+        "dyloAI/dylo-design/code-block",
+        "dyloAI/dylo-design/dialog",
+        "dyloAI/dylo-design/empty-state",
+        "dyloAI/dylo-design/field",
+        "dyloAI/dylo-design/input",
+        "dyloAI/dylo-design/select",
+        "dyloAI/dylo-design/table",
+        "dyloAI/dylo-design/avatar",
+        "dyloAI/dylo-design/card",
+        "dyloAI/dylo-design/checkbox",
+        "dyloAI/dylo-design/pagination",
+        "dyloAI/dylo-design/search",
+        "dyloAI/dylo-design/tabs",
+        "dyloAI/dylo-design/textarea",
+        "dyloAI/dylo-design/toolbar",
+        "dyloAI/dylo-design/cta-button",
+        "dyloAI/dylo-design/link",
+        "dyloAI/dylo-design/logo",
+        "dyloAI/dylo-design/separator",
+        "dyloAI/dylo-design/breadcrumb",
+        "dyloAI/dylo-design/switch",
+        "dyloAI/dylo-design/combobox",
+        "dyloAI/dylo-design/icon-button",
+        "dyloAI/dylo-design/tooltip",
+        "dyloAI/dylo-design/toast",
+        "dyloAI/dylo-design/date-range-picker",
+        "dyloAI/dylo-design/sheet",
+        "dyloAI/dylo-design/chart",
+        "dyloAI/dylo-design/dropdown-menu",
+        "dyloAI/dylo-design/progress"
+      ],
+      "files": [
+        {
+          "path": "blocks/dashboard/api-keys.tsx",
           "type": "registry:component",
-          "target": "~/src/components/app-shell/index.tsx"
+          "target": "~/src/components/dashboard/api-keys.tsx"
         },
         {
-          "path": "blocks/app-shell/sidebar.tsx",
+          "path": "blocks/dashboard/audience.tsx",
           "type": "registry:component",
-          "target": "~/src/components/app-shell/sidebar.tsx"
+          "target": "~/src/components/dashboard/audience.tsx"
         },
         {
-          "path": "blocks/app-shell/sidebar-layout.tsx",
+          "path": "blocks/dashboard/auth.tsx",
           "type": "registry:component",
-          "target": "~/src/components/app-shell/sidebar-layout.tsx"
+          "target": "~/src/components/dashboard/auth.tsx"
+        },
+        {
+          "path": "blocks/dashboard/automations.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/automations.tsx"
+        },
+        {
+          "path": "blocks/dashboard/broadcasts.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/broadcasts.tsx"
+        },
+        {
+          "path": "blocks/dashboard/data.ts",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/data.ts"
+        },
+        {
+          "path": "blocks/dashboard/domains.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/domains.tsx"
+        },
+        {
+          "path": "blocks/dashboard/emails.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/emails.tsx"
+        },
+        {
+          "path": "blocks/dashboard/inboxes.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/inboxes.tsx"
+        },
+        {
+          "path": "blocks/dashboard/index.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/index.tsx"
+        },
+        {
+          "path": "blocks/dashboard/logs.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/logs.tsx"
+        },
+        {
+          "path": "blocks/dashboard/metrics.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/metrics.tsx"
+        },
+        {
+          "path": "blocks/dashboard/parts.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/parts.tsx"
+        },
+        {
+          "path": "blocks/dashboard/settings.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/settings.tsx"
+        },
+        {
+          "path": "blocks/dashboard/shell.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/shell.tsx"
+        },
+        {
+          "path": "blocks/dashboard/status.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/status.tsx"
+        },
+        {
+          "path": "blocks/dashboard/templates.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/templates.tsx"
+        },
+        {
+          "path": "blocks/dashboard/webhooks.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/dashboard/webhooks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "marketing-kit",
+      "type": "registry:block",
+      "title": "Marketing kit",
+      "description": "Marketing site sections: sticky blurred header with menus, serif hero, logo strip, code showcase, feature grids and tab cards, testimonial marquee, closing CTA, footer, pricing (plans, usage slider, comparison tables, add-ons), FAQ, blog, changelog, customer stories, contact form and the docs shell.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": [
+        "utils",
+        "dyloAI/dylo-design/theme",
+        "dyloAI/dylo-design/avatar",
+        "dyloAI/dylo-design/button",
+        "dyloAI/dylo-design/cta-button",
+        "dyloAI/dylo-design/search",
+        "dyloAI/dylo-design/code-block",
+        "dyloAI/dylo-design/field",
+        "dyloAI/dylo-design/input",
+        "dyloAI/dylo-design/select",
+        "dyloAI/dylo-design/textarea",
+        "dyloAI/dylo-design/icon-button",
+        "dyloAI/dylo-design/logo",
+        "dyloAI/dylo-design/sheet",
+        "dyloAI/dylo-design/accordion",
+        "dyloAI/dylo-design/badge",
+        "dyloAI/dylo-design/slider",
+        "dyloAI/dylo-design/tabs",
+        "dyloAI/dylo-design/tooltip"
+      ],
+      "files": [
+        {
+          "path": "blocks/marketing/blog.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/blog.tsx"
+        },
+        {
+          "path": "blocks/marketing/changelog.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/changelog.tsx"
+        },
+        {
+          "path": "blocks/marketing/code-showcase.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/code-showcase.tsx"
+        },
+        {
+          "path": "blocks/marketing/contact.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/contact.tsx"
+        },
+        {
+          "path": "blocks/marketing/cta.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/cta.tsx"
+        },
+        {
+          "path": "blocks/marketing/customers.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/customers.tsx"
+        },
+        {
+          "path": "blocks/marketing/docs-shell.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/docs-shell.tsx"
+        },
+        {
+          "path": "blocks/marketing/faq.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/faq.tsx"
+        },
+        {
+          "path": "blocks/marketing/features.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/features.tsx"
+        },
+        {
+          "path": "blocks/marketing/footer.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/footer.tsx"
+        },
+        {
+          "path": "blocks/marketing/header.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/header.tsx"
+        },
+        {
+          "path": "blocks/marketing/hero.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/hero.tsx"
+        },
+        {
+          "path": "blocks/marketing/index.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/index.tsx"
+        },
+        {
+          "path": "blocks/marketing/logo-strip.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/logo-strip.tsx"
+        },
+        {
+          "path": "blocks/marketing/pricing.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/pricing.tsx"
+        },
+        {
+          "path": "blocks/marketing/section.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/section.tsx"
+        },
+        {
+          "path": "blocks/marketing/testimonials.tsx",
+          "type": "registry:component",
+          "target": "~/src/components/marketing/testimonials.tsx"
         }
       ]
     }

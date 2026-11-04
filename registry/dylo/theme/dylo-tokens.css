@@ -1,106 +1,329 @@
-/* dylo — design tokens.
+/* dylo — design tokens (v2).
  *
- * Raw values only, as plain CSS custom properties on :root. This file has no
- * Tailwind dependency, so it also drives static HTML, email and one-off
- * artifacts. dylo-theme.css maps these onto Tailwind utilities.
+ * Raw values only. dylo-theme.css maps them onto Tailwind. Change a value
+ * here and nowhere else.
  *
- * Every token is prefixed --dylo- so it can never collide with a consumer's
- * own variables or with Tailwind's theme namespace.
- *
- * This file does not load the webfonts — CSS requires @import to precede all
- * other rules, so it cannot be done from here. Use next/font (see AGENTS.md)
- * or import dylo-fonts.css as the very first line of your stylesheet.
+ * Light is the default (`:root`, `.light`); dark applies under `.dark` on any
+ * ancestor, normally <html>. Every scale is 12 steps:
+ *   1-2   app and subtle backgrounds
+ *   3-5   component backgrounds and hover / pressed states
+ *   6-8   borders and separators
+ *   9-10  solid fills
+ *   11-12 secondary and primary text
+ * Alpha scales (`-a`) are translucent so they sit on any surface.
  */
 
+:root,
+.light {
+  color-scheme: light;
+
+  /* Neutral. A true gray in light, a faintly cool gray in dark. */
+  --dylo-gray-1: #f0f0f0;
+  --dylo-gray-2: #eeeeee;
+  --dylo-gray-3: #d7d7d7;
+  --dylo-gray-4: #bebebe;
+  --dylo-gray-5: #989898;
+  --dylo-gray-6: #7e7e7e;
+  --dylo-gray-7: #656565;
+  --dylo-gray-8: #4c4c4c;
+  --dylo-gray-9: #414141;
+  --dylo-gray-10: #3a3a3a;
+  --dylo-gray-11: #4d4d4d;
+  --dylo-gray-12: #191919;
+
+  --dylo-gray-a1: #0000000d;
+  --dylo-gray-a2: #00000014;
+  --dylo-gray-a3: #00000026;
+  --dylo-gray-a4: #00000059;
+  --dylo-gray-a5: #00000066;
+  --dylo-gray-a6: #00000080;
+  --dylo-gray-a7: #00000099;
+  --dylo-gray-a8: #000000b2;
+  --dylo-gray-a9: #000000bd;
+  --dylo-gray-a10: #000000c3;
+  --dylo-gray-a11: #000000cc;
+  --dylo-gray-a12: #000000f2;
+
+  /* Slate: the hairline scale for borders and code chrome. */
+  --dylo-slate-a1: #00005503;
+  --dylo-slate-a2: #00005506;
+  --dylo-slate-a3: #0000330f;
+  --dylo-slate-a4: #00002d17;
+  --dylo-slate-a5: #0009321f;
+  --dylo-slate-a6: #00002f26;
+  --dylo-slate-a7: #00062e32;
+  --dylo-slate-a8: #00083046;
+  --dylo-slate-a9: #00051d74;
+  --dylo-slate-a10: #00071b7f;
+  --dylo-slate-a11: #0007149f;
+  --dylo-slate-a12: #000509e3;
+
+  /* Status hues. Each one is used only for its status. */
+  --dylo-green-a1: #00c00004;
+  --dylo-green-a2: #0099000a;
+  --dylo-green-a3: #00970016;
+  --dylo-green-a4: #009f0725;
+  --dylo-green-a5: #00930536;
+  --dylo-green-a6: #008f0a4d;
+  --dylo-green-a7: #018b0f6b;
+  --dylo-green-a8: #008d199a;
+  --dylo-green-a9: #008619b9;
+  --dylo-green-a10: #007b17c1;
+  --dylo-green-a11: #006514d5;
+  --dylo-green-a12: #002006df;
+
+  --dylo-red-a1: #ff000003;
+  --dylo-red-a2: #ff000008;
+  --dylo-red-a3: #f3000d14;
+  --dylo-red-a4: #ff000824;
+  --dylo-red-a5: #ff000632;
+  --dylo-red-a6: #f8000442;
+  --dylo-red-a7: #df000356;
+  --dylo-red-a8: #d2000571;
+  --dylo-red-a9: #db0007b7;
+  --dylo-red-a10: #d10005c1;
+  --dylo-red-a11: #c40006d3;
+  --dylo-red-a12: #55000de8;
+
+  --dylo-amber-a1: #c0800004;
+  --dylo-amber-a2: #f4d10016;
+  --dylo-amber-a3: #ffde003d;
+  --dylo-amber-a4: #ffd40063;
+  --dylo-amber-a5: #f8cf0088;
+  --dylo-amber-a6: #eab5008c;
+  --dylo-amber-a7: #dc9b009d;
+  --dylo-amber-a8: #da8a00c9;
+  --dylo-amber-a9: #ffb300c2;
+  --dylo-amber-a10: #ffb300e7;
+  --dylo-amber-a11: #ab6400;
+  --dylo-amber-a12: #341500dd;
+
+  --dylo-orange-a1: #c0400004;
+  --dylo-orange-a2: #ff8e0012;
+  --dylo-orange-a3: #ff9c0029;
+  --dylo-orange-a4: #ff91014a;
+  --dylo-orange-a5: #ff8b0065;
+  --dylo-orange-a6: #ff81007d;
+  --dylo-orange-a7: #ed6c008c;
+  --dylo-orange-a8: #e35f00aa;
+  --dylo-orange-a9: #f65e00ea;
+  --dylo-orange-a10: #ef5f00;
+  --dylo-orange-a11: #cc4e00;
+  --dylo-orange-a12: #431200e2;
+
+  --dylo-blue-a1: #0080ff04;
+  --dylo-blue-a2: #008cff0b;
+  --dylo-blue-a3: #008ff519;
+  --dylo-blue-a4: #009eff2a;
+  --dylo-blue-a5: #0093ff3d;
+  --dylo-blue-a6: #0088f653;
+  --dylo-blue-a7: #0083eb71;
+  --dylo-blue-a8: #0084e6a1;
+  --dylo-blue-a9: #0090ff;
+  --dylo-blue-a10: #0086f0fa;
+  --dylo-blue-a11: #006dcbf2;
+  --dylo-blue-a12: #002359ee;
+
+  --dylo-violet-a1: #5500aa03;
+  --dylo-violet-a2: #4900ff07;
+  --dylo-violet-a3: #4400ee0f;
+  --dylo-violet-a4: #4300ff1b;
+  --dylo-violet-a5: #3600ff26;
+  --dylo-violet-a6: #3100fb35;
+  --dylo-violet-a7: #2d01dd4a;
+  --dylo-violet-a8: #2b00d066;
+  --dylo-violet-a9: #2400b7a9;
+  --dylo-violet-a10: #2300abb2;
+  --dylo-violet-a11: #1f0099af;
+  --dylo-violet-a12: #0b0043d9;
+
+  /* Surfaces. */
+  --dylo-background: #fdfdfd;
+  --dylo-canvas: #eeeeee;
+  --dylo-base: #ffffff;
+  --dylo-accent: #000000;
+  --dylo-accent-hover: #000000e6;
+  --dylo-on-accent: #ffffff;
+  --dylo-overlay: #fffffff2;
+  --dylo-ring-accent: #00000033;
+  --dylo-placeholder: var(--dylo-gray-5);
+  --dylo-scrim: #00000066;
+
+  /* Display text gradient: solid at the top-left, half strength at the end. */
+  --dylo-text-gradient-from: #000000;
+  --dylo-text-gradient-to: #00000080;
+
+  /* Glass: the marketing call to action and the auth fields. */
+  --dylo-glass-border: #0000000d;
+  --dylo-glass-fill: linear-gradient(104deg, #0000000a 5%, #0000001a 100%);
+  --dylo-glass-text: #000000;
+  --dylo-glass-hover-fill: #000000e6;
+  --dylo-glass-hover-text: #ffffff;
+  --dylo-glow-line: #8f8f8fab;
+  --dylo-shadow-glow: 0 0 4px #0000000f, 0 1px 14px #0000001a, 0 3px 32px #00000024;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --dylo-gray-1: #141517;
+  --dylo-gray-2: #191b1e;
+  --dylo-gray-3: #212629;
+  --dylo-gray-4: #293034;
+  --dylo-gray-5: #333b3e;
+  --dylo-gray-6: #3b4345;
+  --dylo-gray-7: #434a4d;
+  --dylo-gray-8: #52595b;
+  --dylo-gray-9: #6e7679;
+  --dylo-gray-10: #878d8f;
+  --dylo-gray-11: #a1a4a5;
+  --dylo-gray-12: #f0f0f0;
+
+  --dylo-gray-a1: #16171aeb;
+  --dylo-gray-a2: #18191ce0;
+  --dylo-gray-a3: #b0c7d925;
+  --dylo-gray-a4: #caecff33;
+  --dylo-gray-a5: #d2f3ff3d;
+  --dylo-gray-a6: #d7eff847;
+  --dylo-gray-a7: #e2f5fe4d;
+  --dylo-gray-a8: #d8eaf161;
+  --dylo-gray-a9: #dceff673;
+  --dylo-gray-a10: #e8f4f880;
+  --dylo-gray-a11: #fdfeffa6;
+  --dylo-gray-a12: #fdfdfded;
+
+  --dylo-slate-a1: #00000000;
+  --dylo-slate-a2: #d8f4f609;
+  --dylo-slate-a3: #ddeaf814;
+  --dylo-slate-a4: #d3edf81d;
+  --dylo-slate-a5: #d9edfe25;
+  --dylo-slate-a6: #d6ebfd30;
+  --dylo-slate-a7: #d9edff40;
+  --dylo-slate-a8: #d9edff5d;
+  --dylo-slate-a9: #dfebfd6d;
+  --dylo-slate-a10: #e5edfd7b;
+  --dylo-slate-a11: #f1f7feb5;
+  --dylo-slate-a12: #fcfdffef;
+
+  --dylo-green-a1: #00de4505;
+  --dylo-green-a2: #29f99d0b;
+  --dylo-green-a3: #22ff991e;
+  --dylo-green-a4: #11ff992d;
+  --dylo-green-a5: #2bffa23c;
+  --dylo-green-a6: #44ffaa4b;
+  --dylo-green-a7: #50fdac5e;
+  --dylo-green-a8: #54ffad73;
+  --dylo-green-a9: #44ffa49e;
+  --dylo-green-a10: #43fea4ab;
+  --dylo-green-a11: #46fea5d4;
+  --dylo-green-a12: #bbffd7f0;
+
+  --dylo-red-a1: #f4121209;
+  --dylo-red-a2: #f22f3e11;
+  --dylo-red-a3: #ff173f2d;
+  --dylo-red-a4: #fe0a3b44;
+  --dylo-red-a5: #ff204756;
+  --dylo-red-a6: #ff3e5668;
+  --dylo-red-a7: #ff536184;
+  --dylo-red-a8: #ff5d61b0;
+  --dylo-red-a9: #fe4e54e4;
+  --dylo-red-a10: #ff6465eb;
+  --dylo-red-a11: #ff9592;
+  --dylo-red-a12: #ffd1d9;
+
+  --dylo-amber-a1: #e63c0006;
+  --dylo-amber-a2: #fd9b000d;
+  --dylo-amber-a3: #fa820022;
+  --dylo-amber-a4: #fc820032;
+  --dylo-amber-a5: #fd8b0041;
+  --dylo-amber-a6: #fd9b0051;
+  --dylo-amber-a7: #ffab2567;
+  --dylo-amber-a8: #ffae3587;
+  --dylo-amber-a9: #ffc53d;
+  --dylo-amber-a10: #ffd60a;
+  --dylo-amber-a11: #ffca16;
+  --dylo-amber-a12: #ffe7b3;
+
+  --dylo-orange-a1: #ec360007;
+  --dylo-orange-a2: #fe6d000e;
+  --dylo-orange-a3: #fb6a0025;
+  --dylo-orange-a4: #ff590039;
+  --dylo-orange-a5: #ff61004a;
+  --dylo-orange-a6: #fd75045c;
+  --dylo-orange-a7: #ff832c75;
+  --dylo-orange-a8: #fe84389d;
+  --dylo-orange-a9: #fe6d15f7;
+  --dylo-orange-a10: #ff801f;
+  --dylo-orange-a11: #ffa057;
+  --dylo-orange-a12: #ffe0c2;
+
+  --dylo-blue-a1: #004df211;
+  --dylo-blue-a2: #1166fb18;
+  --dylo-blue-a3: #0077ff3a;
+  --dylo-blue-a4: #0075ff57;
+  --dylo-blue-a5: #0081fd6b;
+  --dylo-blue-a6: #0f89fd7f;
+  --dylo-blue-a7: #2a91fe98;
+  --dylo-blue-a8: #3094feb9;
+  --dylo-blue-a9: #0090ff;
+  --dylo-blue-a10: #3b9eff;
+  --dylo-blue-a11: #70b8ff;
+  --dylo-blue-a12: #c2e6ff;
+
+  --dylo-violet-a1: #4422ff0f;
+  --dylo-violet-a2: #853ff916;
+  --dylo-violet-a3: #8354fe36;
+  --dylo-violet-a4: #7d51fd50;
+  --dylo-violet-a5: #845ffd5f;
+  --dylo-violet-a6: #8f6cfd6d;
+  --dylo-violet-a7: #9879ff83;
+  --dylo-violet-a8: #977dfea8;
+  --dylo-violet-a9: #8668ffcc;
+  --dylo-violet-a10: #9176fed7;
+  --dylo-violet-a11: #baa7ff;
+  --dylo-violet-a12: #e3defffe;
+
+  --dylo-background: #000000;
+  --dylo-canvas: #14151799;
+  --dylo-base: #000000;
+  --dylo-accent: #ffffff;
+  --dylo-accent-hover: var(--dylo-gray-12);
+  --dylo-on-accent: #000000;
+  --dylo-overlay: #000000f2;
+  --dylo-ring-accent: var(--dylo-gray-a4);
+  --dylo-placeholder: var(--dylo-gray-8);
+  --dylo-scrim: #000000b3;
+
+  --dylo-text-gradient-from: #ffffff;
+  --dylo-text-gradient-to: #ffffff80;
+
+  --dylo-glass-border: #ffffff0d;
+  --dylo-glass-fill: linear-gradient(104deg, #fdfdfd0d 5%, #f0f0e41a 100%);
+  --dylo-glass-text: #ffffff;
+  --dylo-glass-hover-fill: #ffffffe6;
+  --dylo-glass-hover-text: #000000;
+  --dylo-glow-line: #8f8f8fab;
+  --dylo-shadow-glow: 0 0 4px #ffffff0f, 0 1px 14px #ffffff1f, 0 3px 32px #ffffff2e;
+}
+
 :root {
-  /* Colour — warm monochrome carries ~95% of the work. */
-  --dylo-ink: #1b1714; /* primary: text, the mark */
-  --dylo-graphite: #3a352f; /* secondary ink / dark surfaces */
-  --dylo-concrete: #8e857a; /* rules, borders, disabled. ~2.9:1 on bone — not text. */
-  --dylo-line: #d8cfbc; /* hairlines on bone */
-  --dylo-bone: #ece6d8; /* primary surface */
-  --dylo-paper: #f6f3ec; /* lighter surface / cards */
+  /* Type. Inter for the interface, a grotesk for display headings, a serif
+     for the largest marketing headline, a mono for code and IDs. Point these
+     at next/font variables to self-host (see AGENTS.md). */
+  --dylo-font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --dylo-font-display: 'Geist', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --dylo-font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+  --dylo-font-mono: 'Commit Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
-  /* The one accent. Oxide appears once per view — never a second hue. */
-  --dylo-oxide: #9a5236;
-  --dylo-oxide-deep: #7e4029; /* pressed / hover */
-
-  /* Semantic aliases. Prefer these in product code. */
-  --dylo-text-strong: var(--dylo-ink);
-  --dylo-text-body: var(--dylo-graphite);
-  /* Secondary text is graphite. Concrete fails WCAG AA on bone and paper. */
-  --dylo-text-muted: var(--dylo-graphite);
-  --dylo-surface-page: var(--dylo-bone);
-  --dylo-surface-card: var(--dylo-paper);
-  --dylo-surface-ink: var(--dylo-ink);
-  --dylo-hairline: var(--dylo-line);
-
-  /* Type — two families only.
-   * These are ordinary runtime variables, so an app using next/font can
-   * redefine them in its own :root and every utility follows. See AGENTS.md. */
-  --dylo-font-display: 'Space Grotesk', system-ui, sans-serif;
-  --dylo-font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
-
-  /* Scale. Display is a short line. Hero is a sentence-length promise.
-   * Do not set both as competing headlines on one page. */
-  --dylo-text-display: clamp(44px, 6vw, 80px);
-  --dylo-text-hero: clamp(34px, 4.4vw, 60px);
-  --dylo-text-h1: clamp(30px, 4vw, 48px);
-  --dylo-text-h2: 28px;
-  --dylo-text-h3: 20px;
-  --dylo-text-body-size: 16px;
-  --dylo-text-small: 13px;
-  --dylo-text-mono-size: 12px;
-
-  --dylo-leading-tight: 1.02;
-  --dylo-leading-body: 1.6;
-  --dylo-tracking-tight: -0.02em; /* display / headlines */
-  --dylo-tracking-mono: 0.08em; /* eyebrows, labels */
-  --dylo-tracking-eyebrow: 0.24em; /* the mono section label */
-
-  /* Reading measure for a paragraph, not a headline. */
-  --dylo-measure: 40rem;
-
-  /* Motion. Interaction stays fast. A reveal may be slower, and it is
-   * opacity plus a short rise — never a bounce. */
+  /* Motion. */
   --dylo-duration-fast: 150ms;
-  --dylo-duration-reveal: 400ms;
-  --dylo-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dylo-duration-base: 200ms;
+  --dylo-duration-slow: 500ms;
+  --dylo-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dylo-ease-out: cubic-bezier(0.36, 0.66, 0.6, 1);
+  --dylo-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
-  /* Space — 4px base. Matches Tailwind's default rhythm, so this scale is
-   * provided for non-Tailwind consumers and is deliberately NOT mapped onto
-   * Tailwind's numeric spacing (p-5 stays 20px, not 24px). */
-  --dylo-space-1: 4px;
-  --dylo-space-2: 8px;
-  --dylo-space-3: 12px;
-  --dylo-space-4: 16px;
-  --dylo-space-5: 24px;
-  --dylo-space-6: 32px;
-  --dylo-space-7: 48px;
-  --dylo-space-8: 64px;
-  --dylo-space-9: 96px;
-
-  /* Radii — mostly square. */
-  --dylo-radius-none: 0px;
-  --dylo-radius-sm: 4px;
-  --dylo-radius-md: 8px;
-  --dylo-radius-lg: 14px;
-  --dylo-radius-pill: 999px;
-
-  /* Borders */
-  --dylo-border-hair: 1px solid var(--dylo-line);
-  --dylo-border-ink: 1px solid var(--dylo-ink);
-
-  /* Shadows — restrained. The hard block offset is the brand's real shadow:
-   * a stamped plate, not a soft floating card. */
-  --dylo-shadow-sm: 0 1px 2px rgb(27 23 20 / 0.08);
-  --dylo-shadow-md: 0 6px 18px rgb(27 23 20 / 0.12);
-  --dylo-shadow-lg: 0 18px 40px rgb(27 23 20 / 0.2);
-  --dylo-shadow-block: 6px 6px 0 rgb(27 23 20 / 0.12);
-  --dylo-shadow-block-sm: 4px 4px 0 rgb(27 23 20 / 0.18);
-  --dylo-shadow-block-seated: 1px 1px 0 rgb(27 23 20 / 0.2);
-
-  /* The engineering grid — the only "pattern" in the system. */
-  --dylo-grid-line: rgb(27 23 20 / 0.05);
-  --dylo-grid-line-reversed: rgb(236 230 216 / 0.05);
+  /* Layout. */
+  --dylo-header-height: 58px;
+  --dylo-sidebar-width: 250px;
 }
