@@ -59,12 +59,18 @@ const KEYWORDS = new Set(
 
 type Token = { kind: 'plain' | 'keyword' | 'string' | 'punct' | 'comment' | 'number' | 'fn'; text: string }
 
+/* Lossless: whatever the pattern does not recognise (an "@", a stray quote)
+   is kept as plain text, so the block always shows exactly what it was given.
+   Identifiers are any letters, not just ASCII, so "Código" stays one word. */
 function tokenize(line: string): Token[] {
   const out: Token[] = []
   const re =
-    /(\/\/.*$|#.*$)|('[^']*'|"[^"]*"|`[^`]*`)|(\b\d+(?:\.\d+)?\b)|([A-Za-z_$][\w$]*)(?=\s*\()|([A-Za-z_$][\w$]*)|([{}()[\];:.,=<>+\-*/!?&|]+)|(\s+)/g
+    /(\/\/.*$|#.*$)|('[^']*'|"[^"]*"|`[^`]*`)|(\b\d+(?:\.\d+)?\b)|([\p{L}_$][\p{L}\p{N}_$]*)(?=\s*\()|([\p{L}_$][\p{L}\p{N}_$]*)|([{}()[\];:.,=<>+\-*/!?&|]+)|(\s+)/gu
+  let last = 0
   let m: RegExpExecArray | null
   while ((m = re.exec(line))) {
+    if (m.index > last) out.push({ kind: 'plain', text: line.slice(last, m.index) })
+    last = re.lastIndex
     if (m[1]) out.push({ kind: 'comment', text: m[1] })
     else if (m[2]) out.push({ kind: 'string', text: m[2] })
     else if (m[3]) out.push({ kind: 'number', text: m[3] })
@@ -73,6 +79,7 @@ function tokenize(line: string): Token[] {
     else if (m[6]) out.push({ kind: 'punct', text: m[6] })
     else out.push({ kind: 'plain', text: m[0] })
   }
+  if (last < line.length) out.push({ kind: 'plain', text: line.slice(last) })
   return out
 }
 

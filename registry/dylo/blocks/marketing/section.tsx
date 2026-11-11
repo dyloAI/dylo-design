@@ -67,7 +67,8 @@ export function DisplayTitle({
   return (
     <Comp
       className={cn(
-        'effect-font-gradient pb-3 font-serif effect-font-styling text-[4rem] leading-[100%] tracking-[-0.01em] md:text-[6rem]',
+        // Fluid below 4rem so one long word (Spanish has many) still fits a phone.
+        'effect-font-gradient pb-3 font-serif effect-font-styling text-[clamp(2.5rem,13vw,4rem)] leading-[100%] tracking-[-0.01em] md:text-[6rem]',
         className
       )}
       {...props}

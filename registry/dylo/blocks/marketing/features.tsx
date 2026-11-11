@@ -187,7 +187,7 @@ export function FeatureSplit({
 }) {
   return (
     <Section className={cn('grid items-center gap-12 md:grid-cols-2', className)}>
-      <div className={cn('flex flex-col gap-4', reverse && 'md:order-2')}>
+      <div className={cn('flex min-w-0 flex-col gap-4', reverse && 'md:order-2')}>
         <h2 className="effect-font-gradient font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter">
           {title}
         </h2>
@@ -203,7 +203,8 @@ export function FeatureSplit({
           </ul>
         ) : null}
       </div>
-      <div className={cn(reverse && 'md:order-1')}>{visual}</div>
+      {/* min-w-0: a wide visual (a table) scrolls inside its column instead of widening the page. */}
+      <div className={cn('min-w-0', reverse && 'md:order-1')}>{visual}</div>
     </Section>
   )
 }

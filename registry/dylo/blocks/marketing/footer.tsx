@@ -32,19 +32,22 @@ export function StatusPill({
 
 /**
  * The five-column footer: address, social links and status on the left,
- * link columns on the right, with the legal line underneath.
+ * link columns on the right, with the legal line underneath. `status`
+ * defaults to the pill; pass `null` when there is no status page to link to.
  */
 export function MarketingFooter({
   address,
   socials = [],
   columns,
   legal,
+  status = <StatusPill />,
   className,
 }: {
   address: React.ReactNode
   socials?: { label: string; href: string; icon: React.ReactNode }[]
   columns: FooterColumn[]
   legal?: React.ReactNode
+  status?: React.ReactNode
   className?: string
 }) {
   return (
@@ -68,7 +71,7 @@ export function MarketingFooter({
                 ))}
               </div>
             ) : null}
-            <StatusPill />
+            {status}
           </div>
           <div className="grid w-full grid-cols-2 gap-8 lg:grid-cols-5">
             {columns.map((col) => (
@@ -79,7 +82,7 @@ export function MarketingFooter({
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="rounded-md px-1 py-0.5 text-sm text-default outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4"
+                        className="inline-block rounded-md px-1 py-0.5 text-sm text-default outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4"
                       >
                         {link.label}
                       </a>
