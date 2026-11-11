@@ -16,7 +16,7 @@ export function Section({
   return (
     <section
       data-slot="marketing-section"
-      className={cn(container, 'relative py-12 sm:py-24', bordered && 'rounded-3xl border-t border-slate-6', className)}
+      className={cn(container, 'relative py-12 sm:py-24', bordered && 'rounded-3xl border-t border-gray-a3', className)}
       {...props}
     >
       {bordered ? <GlowEdge /> : null}
@@ -88,7 +88,7 @@ export function SectionLead({ className, ...props }: React.ComponentProps<'p'>) 
 export function FeatureTitle({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
     <h3
-      className={cn('font-display effect-font-styling text-xl leading-8 text-slate-12 md:leading-none', className)}
+      className={cn('font-display effect-font-styling text-xl leading-8 text-emphasis md:leading-none', className)}
       {...props}
     />
   )
@@ -107,7 +107,7 @@ export function FadePanel({
   return (
     <div
       data-slot="fade-panel"
-      className={cn('relative flex flex-col gap-4 rounded-3xl border border-b-0 border-slate-6', className)}
+      className={cn('relative flex flex-col gap-4 rounded-3xl border border-b-0 border-gray-a3', className)}
       {...props}
     >
       {glow ? (

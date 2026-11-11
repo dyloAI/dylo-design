@@ -24,6 +24,9 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
   `text-emphasis`, `text-default`, `border-gray-a3`, `bg-interactive`) and a
   component never needs a `dark:` variant. Check every surface in both
   themes before calling it done.
+- **One neutral.** Gray is the only neutral scale: solid `gray-1` to
+  `gray-12`, translucent `gray-a1` to `gray-a12`. It carries no tint in either
+  theme. There is no slate scale; the linter fails `slate-6`.
 - **The accent is monochrome.** `bg-accent text-on-accent` is black on light
   and white on dark. One primary action per view; everything else is a
   `secondary` or `ghost` Button.
@@ -41,7 +44,7 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
 - **No emoji. Ever.** Lucide line icons at 16px (`size-4`) in the interface.
 - **Shape.** Controls are 32px tall (`h-8`) with `rounded-xl`; panels are
   `rounded-2xl` with a `border-gray-a3` hairline; marketing feature panels are
-  `rounded-3xl` with `border-slate-6`. Overlays carry `shadow-popover` or
+  `rounded-3xl` with the same hairline. Overlays carry `shadow-popover` or
   `shadow-dialog`; nothing else floats.
 - **Two buttons, two places.** `Button` is the product control. `CtaButton`
   (glass) is for marketing pages and auth screens only. Never put glass in
@@ -55,8 +58,8 @@ Full system: https://github.com/dyloAI/dylo-design · machine-readable index at
   once. Everything collapses to 1ms under `prefers-reduced-motion`. No
   bounces, no float loops.
 - **Never redraw the mark.** Use `<Logo>` or the files in `public/brand/`.
-  The interface uses the monochrome files (`-mono`, `-mono-reversed`); no
-  rotating, recolouring, restacking or effects.
+  The mark is one colour: black on light, the `-reversed` white file on dark.
+  No rotating, recolouring, pulling the two pieces apart or effects.
 
 ## Which layer to build on
 

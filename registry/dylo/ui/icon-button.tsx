@@ -21,7 +21,7 @@ const iconButtonVariants = cva(
     variants: {
       variant: {
         ghost: 'border-transparent bg-transparent',
-        outline: 'border-slate-6 bg-transparent',
+        outline: 'border-gray-a3 bg-transparent',
         secondary: 'border-interactive bg-interactive',
       },
       size: {

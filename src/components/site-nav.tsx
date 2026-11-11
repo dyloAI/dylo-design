@@ -19,8 +19,8 @@ export function SiteNav() {
   }
 
   return (
-    <div className="border-gray-a3 bg-background lg:sticky lg:top-0 lg:h-dvh lg:overflow-y-auto lg:border-r">
-      <div className="flex items-center justify-between gap-3 border-b border-gray-a3 px-5 py-4 lg:border-b-0">
+    <div className="border-gray-a3 bg-background lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:border-r">
+      <div className="flex shrink-0 items-center justify-between gap-3 border-b border-gray-a3 px-5 py-4 lg:border-b-0">
         <Link href="/" className="flex items-center gap-2.5">
           <Logo variant="lockup" className="h-7" />
           <span className="rounded-md border border-gray-a4 px-1.5 py-0.5 font-mono text-2xs tracking-wide text-gray-11 uppercase">
@@ -38,11 +38,8 @@ export function SiteNav() {
         </button>
       </div>
 
-      <div className={cn('lg:block', open ? 'block' : 'hidden')}>
-        <div className="px-5 pt-1 pb-4">
-          <ThemeToggle />
-        </div>
-        <nav aria-label="Design system" className="px-3 pb-8">
+      <div className={cn('flex-col lg:flex lg:min-h-0 lg:flex-1', open ? 'flex' : 'hidden')}>
+        <nav aria-label="Design system" className="px-3 pt-1 pb-8 lg:min-h-0 lg:flex-1 lg:overflow-y-auto">
           {navigation.map((section, i) => {
             const previous = navigation[i - 1]
             return (
@@ -55,6 +52,10 @@ export function SiteNav() {
             )
           })}
         </nav>
+        <div className="flex shrink-0 items-center justify-between gap-3 border-t border-gray-a3 px-5 py-3">
+          <span className="text-xs font-medium text-gray-10">Theme</span>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   )

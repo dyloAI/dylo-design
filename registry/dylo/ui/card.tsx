@@ -12,7 +12,7 @@ const cardVariants = cva('relative flex flex-col text-emphasis', {
     variant: {
       outline: 'rounded-2xl border border-gray-a3 bg-transparent',
       subtle: 'rounded-2xl border border-gray-3 bg-gray-1',
-      feature: 'overflow-hidden rounded-3xl border border-slate-6 bg-transparent',
+      feature: 'overflow-hidden rounded-3xl border border-gray-a3 bg-transparent',
     },
   },
   defaultVariants: { variant: 'outline' },

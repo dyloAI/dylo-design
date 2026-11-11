@@ -13,7 +13,7 @@ export type NavEntry = NavLink | { label: string; items: NavLink[] }
 
 const navTrigger = [
   'group flex h-[58px] cursor-pointer items-center gap-1.5 px-1 py-1 text-sm font-medium text-default select-none lg:px-3',
-  'outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:ring-2 focus-visible:ring-slate-7',
+  'outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4',
   'data-[state=open]:text-emphasis',
 ].join(' ')
 
@@ -28,7 +28,7 @@ function MenuPanel({ items }: { items: NavLink[] }) {
               className="flex items-start gap-3 rounded-xl p-3 outline-hidden transition-colors hover:bg-interactive-hover focus-visible:bg-interactive-hover"
             >
               {Icon ? (
-                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-slate-6 bg-linear-to-bl from-gray-a3 text-emphasis">
+                <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-gray-a3 bg-linear-to-bl from-gray-a3 text-emphasis">
                   <Icon className="size-4" />
                 </span>
               ) : null}
@@ -104,7 +104,7 @@ export function MarketingHeader({
             <a
               href={homeHref}
               aria-label="Home"
-              className="rounded-md py-1 outline-hidden focus-visible:ring-2 focus-visible:ring-slate-7"
+              className="rounded-md py-1 outline-hidden focus-visible:ring-2 focus-visible:ring-gray-a4"
             >
               <Logo />
             </a>

@@ -52,8 +52,8 @@ export function CodeShowcase({
                 >
                   <span
                     className={cn(
-                      'flex h-14 w-[3.75rem] items-center justify-center rounded-2xl border border-slate-6 transition duration-200 ease-in-out [&_svg]:size-6',
-                      'ring-focus group-focus-visible:ring-2 group-data-[active]:border-slate-8 group-data-[active]:bg-linear-to-b group-data-[active]:from-gray-a3'
+                      'flex h-14 w-[3.75rem] items-center justify-center rounded-2xl border border-gray-a3 transition duration-200 ease-in-out [&_svg]:size-6',
+                      'ring-focus group-focus-visible:ring-2 group-data-[active]:border-gray-a4 group-data-[active]:bg-linear-to-b group-data-[active]:from-gray-a3'
                     )}
                   >
                     {lang.icon}

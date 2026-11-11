@@ -10,7 +10,7 @@ function IconTile({ children, className }: { children: React.ReactNode; classNam
   return (
     <span
       className={cn(
-        'relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-6 bg-linear-to-bl from-gray-a3 text-slate-12 [&_svg]:size-[18px]',
+        'relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-a3 bg-linear-to-bl from-gray-a3 text-emphasis [&_svg]:size-[18px]',
         className
       )}
     >
@@ -38,7 +38,7 @@ export function FeatureGrid({
     <section
       className={cn(
         container,
-        'relative mt-12 overflow-hidden rounded-3xl border-t border-slate-6 py-20 sm:py-24 md:mt-0',
+        'relative mt-12 overflow-hidden rounded-3xl border-t border-gray-a3 py-20 sm:py-24 md:mt-0',
         className
       )}
     >
@@ -129,14 +129,14 @@ export function FeatureTabs({
               onClick={() => setActive(t.id)}
               className={cn(
                 'group relative flex h-[3.75rem] cursor-pointer overflow-hidden rounded-2xl p-px text-left outline-hidden md:h-[5.625rem]',
-                'bg-slate-6 ring-focus focus-visible:ring-2 data-[active]:bg-linear-to-br data-[active]:from-slate-11 data-[active]:via-slate-6 data-[active]:to-slate-6'
+                'bg-gray-a3 ring-focus focus-visible:ring-2 data-[active]:bg-linear-to-br data-[active]:from-gray-11 data-[active]:via-gray-a3 data-[active]:to-gray-a3'
               )}
             >
               <span className="relative flex h-full w-full flex-wrap items-center gap-2 rounded-[15px] bg-background px-4 py-2 group-data-[active]:bg-linear-to-b group-data-[active]:from-gray-a2 group-data-[active]:to-background md:gap-4 md:p-6">
                 <IconTile className="group-data-[active]:from-gray-a4 group-data-[active]:text-green-9 md:border">
                   {t.icon}
                 </IconTile>
-                <span className="font-display effect-font-styling text-base tracking-tighter text-slate-12">
+                <span className="font-display effect-font-styling text-base tracking-tighter text-emphasis">
                   {t.title}
                 </span>
               </span>

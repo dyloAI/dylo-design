@@ -393,7 +393,7 @@
       "name": "logo",
       "type": "registry:ui",
       "title": "Logo",
-      "description": "The monochrome dylo mark or horizontal lockup from public/brand/: black on light, the reversed white file under `.dark`. Never redraw the mark; install brand-assets.",
+      "description": "The dylo mark or horizontal lockup from public/brand/: black on light, the reversed white file under `.dark`. Never redraw the mark; install brand-assets.",
       "registryDependencies": ["utils", "dyloAI/dylo-design/theme", "dyloAI/dylo-design/brand-assets"],
       "files": [
         {

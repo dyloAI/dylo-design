@@ -100,7 +100,7 @@ export function borderRoles(): Role[] {
     role('border-gray-a3', '--dylo-gray-a3', 'The hairline: tables, cards, dividers.'),
     role('border-interactive', '--dylo-gray-a3', 'The edge of a control.'),
     role('border-default', '--dylo-gray-3', 'A solid border where a translucent one would stack.'),
-    role('border-slate-6', '--dylo-slate-a6', 'Code block chrome.'),
+    role('border-gray-a4', '--dylo-gray-a4', 'A lit edge: the hovered card, the recommended plan.'),
   ]
 }
 

@@ -51,7 +51,7 @@ text-on-accent`). One primary action per view.
 - `Button` is the product control; the glass `CtaButton` is for marketing and
   auth screens only. Marketing effects (glass, glow line, spotlight, gradient
   headline) stay off the dashboard.
-- The mark is fixed — never recolour, rotate, restack or add effects. Use
+- The mark is fixed — never recolour, rotate, pull apart or add effects. Use
   `<Logo>` or the files in `public/brand/`.
 - Motion: 150 to 200ms for interaction, overlays scale in from 98%, sheets
   slide over 500ms. Everything collapses under `prefers-reduced-motion`. No
@@ -66,8 +66,8 @@ text-on-accent`). One primary action per view.
   page, dialogs, sheets, empty states and auth screens.
 - `registry/dylo/blocks/marketing/` — the marketing kit: header, hero,
   features, pricing, FAQ, blog, changelog, footer and docs shell.
-- `public/brand/` — the mark and logo lockups, monochrome and colour, SVG and
-  PNG.
+- `public/brand/` — the mark and logo lockups, black and reversed white, SVG
+  and PNG.
 - `src/lib/messaging.ts` — the messaging framework, in English and Spanish.
   The docs page is `/foundations/messaging`.
 - `rules/` — the Cursor brand rule and the ESLint adherence config.

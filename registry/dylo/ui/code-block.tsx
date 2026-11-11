@@ -41,7 +41,7 @@ export function CopyButton({
       aria-label={copied ? 'Copied' : label}
       onClick={() => navigator.clipboard?.writeText(value).then(() => setCopied(true))}
       className={cn(
-        'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-slate-6 text-default',
+        'inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-a3 text-default',
         'ring-focus transition-colors duration-200 ease-in-out hover:bg-interactive-hover hover:text-emphasis focus-visible:ring-2 focus-visible:outline-hidden',
         className
       )}
@@ -142,13 +142,13 @@ export function CodeBlock({
   return (
     <div
       data-slot="code-block"
-      className={cn('relative w-full overflow-hidden rounded-2xl border border-slate-6 bg-surface', className)}
+      className={cn('relative w-full overflow-hidden rounded-2xl border border-gray-a3 bg-surface', className)}
     >
       <span
         aria-hidden
         className="pointer-events-none absolute top-0 right-0 z-10 hidden glow-line w-[300px] dark:block"
       />
-      <header className="flex h-14 items-center justify-between gap-2 border-b border-slate-6 px-3">
+      <header className="flex h-14 items-center justify-between gap-2 border-b border-gray-a3 px-3">
         <div role="tablist" className="flex min-w-0 items-center gap-1.5 overflow-x-auto">
           {samples.map((s, i) => {
             const selected = i === active
@@ -160,8 +160,8 @@ export function CodeBlock({
                 aria-selected={selected}
                 onClick={() => setActive(i)}
                 className={cn(
-                  'relative h-8 shrink-0 cursor-pointer rounded-lg p-px text-sm ring-slate-6 outline-hidden transition duration-200 ease-in-out focus-visible:ring-2',
-                  selected ? 'bg-linear-to-b from-slate-6 to-slate-4 text-emphasis' : 'text-default hover:text-emphasis'
+                  'relative h-8 shrink-0 cursor-pointer rounded-lg p-px text-sm ring-gray-a4 outline-hidden transition duration-200 ease-in-out focus-visible:ring-2',
+                  selected ? 'bg-linear-to-b from-gray-a3 to-gray-a2 text-emphasis' : 'text-default hover:text-emphasis'
                 )}
               >
                 <span
@@ -183,7 +183,7 @@ export function CodeBlock({
         <CodeLines code={sample.code} />
       </div>
       {footer ? (
-        <footer className="flex items-center gap-4 border-t border-slate-6 px-4 py-3 text-xs text-default">
+        <footer className="flex items-center gap-4 border-t border-gray-a3 px-4 py-3 text-xs text-default">
           {footer}
         </footer>
       ) : null}

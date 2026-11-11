@@ -55,7 +55,7 @@ compatibility layer, are on the [Install page](https://design.dylo.dev/install).
 | `button` `dialog` `table` `toast` ... | 42 components, as TypeScript source you own, Radix underneath.                             |
 | `dashboard-kit`                       | Every product section as a page: shell, lists, details, dialogs, metrics, settings, auth.  |
 | `marketing-kit`                       | The marketing site: header, hero, features, pricing, FAQ, blog, changelog, docs shell.     |
-| `brand-assets`                        | The mark and logo lockups (monochrome and colour), app icons, call backgrounds.            |
+| `brand-assets`                        | The mark and logo lockups (black, and white for dark), app icons, call backgrounds.        |
 | `agent-rules`                         | Cursor brand rule plus the ESLint adherence config.                                        |
 
 Pin published install commands to a tag so consumers never pick up an
@@ -83,7 +83,7 @@ starter → templates via `dylo-starter/scripts/sync-from-starter.mjs`.
 ## The system in brief
 
 **Colour.** Monochrome in two themes: near-black text on a near-white page, or
-white on black. Neutrals run on a 12-step gray scale with a translucent twin,
+white on black. Neutrals run on one 12-step gray scale, untinted, with a translucent twin,
 so a hairline (`border-gray-a3`) sits on any surface. The accent is black in
 light and white in dark. Hue carries status only: green, amber, red and blue.
 

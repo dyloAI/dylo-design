@@ -48,7 +48,7 @@ export function MarketingFooter({
   className?: string
 }) {
   return (
-    <div className={cn('relative z-20 overflow-hidden border-t border-slate-4 bg-background', className)}>
+    <div className={cn('relative z-20 overflow-hidden border-t border-gray-a3 bg-background', className)}>
       <GlowEdge width="w-[40%]" />
       <footer className="mx-auto flex max-w-5xl flex-col gap-12 px-6 pt-36 pb-16 md:max-w-7xl">
         <div className="flex flex-col gap-12 md:flex-row md:gap-8">
@@ -61,7 +61,7 @@ export function MarketingFooter({
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="inline-flex size-8 items-center justify-center rounded-full text-default transition duration-150 ease-in-out hover:bg-slate-3 hover:text-emphasis focus-visible:ring-2 focus-visible:ring-slate-7 focus-visible:outline-hidden [&_svg]:size-4"
+                    className="inline-flex size-8 items-center justify-center rounded-full text-default transition duration-150 ease-in-out hover:bg-gray-a2 hover:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4 focus-visible:outline-hidden [&_svg]:size-4"
                   >
                     {s.icon}
                   </a>
@@ -79,7 +79,7 @@ export function MarketingFooter({
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="rounded-md px-1 py-0.5 text-sm text-slate-11 outline-hidden transition duration-150 ease-in-out hover:text-slate-12 focus-visible:text-slate-12 focus-visible:ring-2 focus-visible:ring-slate-7"
+                        className="rounded-md px-1 py-0.5 text-sm text-default outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4"
                       >
                         {link.label}
                       </a>

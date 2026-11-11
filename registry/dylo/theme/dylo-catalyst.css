@@ -26,12 +26,12 @@
   --color-zinc-400: #989898; /* gray-5, light */
   --color-zinc-500: #7e7e7e; /* gray-6, light */
   --color-zinc-600: #4d4d4d; /* gray-11, light */
-  --color-zinc-700: #293034; /* gray-4, dark */
-  --color-zinc-800: #191b1e; /* gray-2, dark */
-  --color-zinc-900: #141517; /* gray-1, dark */
+  --color-zinc-700: #2f2f2f; /* gray-4, dark */
+  --color-zinc-800: #1b1b1b; /* gray-2, dark */
+  --color-zinc-900: #151515; /* gray-1, dark */
   --color-zinc-950: #000000; /* background, dark */
 
-  --color-blue-400: #a1a4a5; /* gray-11, dark */
+  --color-blue-400: #a3a3a3; /* gray-11, dark */
   --color-blue-500: #7e7e7e;
   --color-blue-600: #191919; /* gray-12, light */
   --color-blue-700: #000000;

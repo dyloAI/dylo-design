@@ -15,11 +15,6 @@ const scales: { title: string; description: string; swatches: Swatch[] }[] = [
     description: 'gray-a1 to a12. Fills and hairlines that sit on any surface.',
     swatches: scale('gray', true),
   },
-  {
-    title: 'Slate',
-    description: 'Translucent. Code chrome and the marketing hairlines.',
-    swatches: scale('slate', true),
-  },
   { title: 'Green', description: 'Success only.', swatches: scale('green', true) },
   { title: 'Amber', description: 'Warning only.', swatches: scale('amber', true) },
   { title: 'Red', description: 'Error and destructive only.', swatches: scale('red', true) },

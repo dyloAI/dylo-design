@@ -2,7 +2,7 @@
  *
  * Maps the raw tokens onto Tailwind utilities:
  *   bg-background, text-emphasis, text-default, border-default, bg-interactive,
- *   bg-gray-1..12, border-slate-6, text-green-11, bg-success, font-display ...
+ *   bg-gray-1..12, border-gray-a3, text-green-11, bg-success, font-display ...
  *
  * Headline sizes are arbitrary values (text-[3.5rem]) rather than named
  * tokens: tailwind-merge reads an unknown text-* name as a colour and would
@@ -41,8 +41,9 @@
   --color-elevated: var(--dylo-gray-2);
   --color-interactive-hover: var(--dylo-gray-a3);
 
-  /* Scales. Neutral gray is solid (gray-N) and translucent (gray-aN). Every
-     other scale is translucent only, so slate-6 is a hairline on any surface. */
+  /* Scales. Gray is the one neutral: solid (gray-N) and translucent (gray-aN),
+     so gray-a3 is a hairline on any surface. The status hues are translucent
+     only. */
   --color-gray-1: var(--dylo-gray-1);
   --color-gray-2: var(--dylo-gray-2);
   --color-gray-3: var(--dylo-gray-3);
@@ -67,19 +68,6 @@
   --color-gray-a10: var(--dylo-gray-a10);
   --color-gray-a11: var(--dylo-gray-a11);
   --color-gray-a12: var(--dylo-gray-a12);
-
-  --color-slate-1: var(--dylo-slate-a1);
-  --color-slate-2: var(--dylo-slate-a2);
-  --color-slate-3: var(--dylo-slate-a3);
-  --color-slate-4: var(--dylo-slate-a4);
-  --color-slate-5: var(--dylo-slate-a5);
-  --color-slate-6: var(--dylo-slate-a6);
-  --color-slate-7: var(--dylo-slate-a7);
-  --color-slate-8: var(--dylo-slate-a8);
-  --color-slate-9: var(--dylo-slate-a9);
-  --color-slate-10: var(--dylo-slate-a10);
-  --color-slate-11: var(--dylo-slate-a11);
-  --color-slate-12: var(--dylo-slate-a12);
 
   --color-green-1: var(--dylo-green-a1);
   --color-green-2: var(--dylo-green-a2);

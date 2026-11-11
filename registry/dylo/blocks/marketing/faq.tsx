@@ -14,7 +14,7 @@ export function Faq({
 }) {
   return (
     <div className={cn('mb-36', className)}>
-      <h2 className="mb-8 font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-slate-12">
+      <h2 className="mb-8 font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-emphasis">
         {title}
       </h2>
       <Accordion type="single" collapsible>

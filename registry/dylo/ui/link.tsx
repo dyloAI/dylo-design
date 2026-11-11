@@ -15,8 +15,8 @@ const textLinkVariants = cva(
       variant: {
         emphasis: 'font-semibold text-gray-12 hover:text-gray-11',
         underline: 'text-gray-11 underline underline-offset-2 hover:no-underline',
-        muted: 'text-slate-11 hover:text-slate-12 focus-visible:text-slate-12',
-        dotted: 'cursor-help text-slate-12 underline decoration-dotted underline-offset-2',
+        muted: 'text-default hover:text-emphasis focus-visible:text-emphasis',
+        dotted: 'cursor-help text-emphasis underline decoration-dotted underline-offset-2',
       },
     },
     defaultVariants: { variant: 'emphasis' },

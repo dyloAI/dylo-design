@@ -27,7 +27,7 @@ export function PlanCard({ plan, className }: { plan: Plan; className?: string }
       data-slot="plan-card"
       className={cn(
         'relative flex flex-col rounded-2xl border p-6 text-center transition-all duration-150 ease-dylo *:z-10',
-        plan.recommended ? 'border-slate-8' : 'border-slate-6',
+        plan.recommended ? 'border-gray-a4' : 'border-gray-a3',
         className
       )}
     >
@@ -42,14 +42,14 @@ export function PlanCard({ plan, className }: { plan: Plan; className?: string }
         />
       ) : null}
       <div className="relative flex items-center justify-center gap-2">
-        <h3 className="font-display effect-font-styling text-xl text-slate-12">{plan.name}</h3>
+        <h3 className="font-display effect-font-styling text-xl text-emphasis">{plan.name}</h3>
         {plan.recommended ? (
           <Badge tone="success" size="md">
             Recommended
           </Badge>
         ) : null}
       </div>
-      <p className="relative mt-4 font-display effect-font-styling text-[2.25rem] leading-tight tracking-tighter text-slate-12">
+      <p className="relative mt-4 font-display effect-font-styling text-[2.25rem] leading-tight tracking-tighter text-emphasis">
         {plan.price}
         {plan.period ? (
           <span className="ml-1 font-sans text-sm tracking-normal text-gray-11">{plan.period}</span>
@@ -159,7 +159,7 @@ export function Pricing({
 
 export type ComparisonRow = { label: string; hint?: string; values: (string | boolean)[] }
 
-/** A plan comparison table: a slate header band, 44px rows, ticks and dashes. */
+/** A plan comparison table: a tinted header band, 44px rows, ticks and dashes. */
 export function ComparisonTable({
   title,
   columns,
@@ -172,17 +172,17 @@ export function ComparisonTable({
   className?: string
 }) {
   const th =
-    'h-9 border-y border-slate-6 px-3 text-xs font-semibold text-slate-11 first:rounded-l-md first:border-l last:rounded-r-md last:border-r'
-  const td = 'h-11 truncate border-b border-slate-6 px-3 text-sm text-gray-12'
+    'h-9 border-y border-gray-a3 px-3 text-xs font-semibold text-default first:rounded-l-md first:border-l last:rounded-r-md last:border-r'
+  const td = 'h-11 truncate border-b border-gray-a3 px-3 text-sm text-gray-12'
   return (
     <TooltipProvider>
       <div className={cn('my-24 flex scroll-mt-32 flex-col gap-3', className)}>
-        <h2 className="font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-slate-12">
+        <h2 className="font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-emphasis">
           {title}
         </h2>
         <div className="relative my-2 w-full overflow-auto">
           <table className="w-max min-w-full border-separate border-spacing-0 text-left">
-            <thead className="h-9 bg-slate-3">
+            <thead className="h-9 bg-gray-a2">
               <tr>
                 <th className={th}>
                   <span className="sr-only">Feature</span>
@@ -242,7 +242,7 @@ export function AddOnPanel({
 }) {
   return (
     <div className={cn('my-24', className)}>
-      <h2 className="relative z-20 mb-8 font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-slate-12">
+      <h2 className="relative z-20 mb-8 font-display effect-font-styling text-[2.25rem] leading-[130%] tracking-tighter text-emphasis">
         {title}
       </h2>
       <div className="relative flex rounded-3xl border border-gray-3">
@@ -250,7 +250,7 @@ export function AddOnPanel({
         <div className="relative z-10 flex w-full flex-col gap-10 p-8 py-10">
           {items.map((item) => (
             <div key={item.name} className="flex flex-col">
-              <h3 className="flex flex-auto font-display effect-font-styling text-xl leading-[130%] text-slate-12">
+              <h3 className="flex flex-auto font-display effect-font-styling text-xl leading-[130%] text-emphasis">
                 {item.name} · {item.price}
               </h3>
               <p className="mt-4 mb-4 max-w-2xl text-sm leading-[1.6] text-gray-11">{item.body}</p>

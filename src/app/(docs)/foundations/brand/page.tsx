@@ -6,58 +6,46 @@ export const metadata: Metadata = { title: 'Brand marks' }
 
 const LOCKUPS = [
   {
-    file: 'dylo-logo-horizontal-mono.svg',
-    name: 'Horizontal, monochrome',
-    use: 'The interface lockup on light. The Logo component uses it.',
-    tone: 'light',
-  },
-  {
-    file: 'dylo-logo-horizontal-mono-reversed.svg',
-    name: 'Horizontal, monochrome reversed',
-    use: 'The interface lockup on dark. The Logo component swaps to it under .dark.',
-    tone: 'ink',
-  },
-  {
     file: 'dylo-logo-horizontal.svg',
-    name: 'Horizontal, colour',
-    use: 'The original lockup with the oxide keystone, for print and collateral.',
+    name: 'Horizontal',
+    use: 'The lockup on light. The Logo component uses it.',
     tone: 'light',
   },
   {
     file: 'dylo-logo-horizontal-reversed.svg',
-    name: 'Horizontal, colour reversed',
-    use: 'The original lockup on dark collateral.',
+    name: 'Horizontal, reversed',
+    use: 'The lockup on dark. The Logo component swaps to it under .dark.',
     tone: 'ink',
   },
   {
     file: 'dylo-logo-stacked.svg',
-    name: 'Stacked lockup',
+    name: 'Stacked',
     use: 'Narrow spaces where the horizontal will not fit.',
     tone: 'light',
+  },
+  {
+    file: 'dylo-logo-stacked-reversed.svg',
+    name: 'Stacked, reversed',
+    use: 'The stacked lockup on dark.',
+    tone: 'ink',
   },
 ] as const
 
 const MEET_BACKGROUNDS = [
-  { file: 'dylo-meet-background-bone.png', name: 'Bone' },
-  { file: 'dylo-meet-background-ink.png', name: 'Ink' },
-  { file: 'dylo-meet-background-bone-mirrored.png', name: 'Bone, mirrored' },
-  { file: 'dylo-meet-background-ink-mirrored.png', name: 'Ink, mirrored' },
+  { file: 'dylo-meet-background-light.png', name: 'Light' },
+  { file: 'dylo-meet-background-dark.png', name: 'Dark' },
+  { file: 'dylo-meet-background-light-mirrored.png', name: 'Light, mirrored' },
+  { file: 'dylo-meet-background-dark-mirrored.png', name: 'Dark, mirrored' },
 ] as const
 
 const MARKS = [
-  { file: 'dylo-mark-mono.svg', name: 'Keystone, monochrome', use: 'The interface mark on light.', tone: 'light' },
-  {
-    file: 'dylo-mark-mono-reversed.svg',
-    name: 'Keystone, monochrome reversed',
-    use: 'The interface mark on dark.',
-    tone: 'ink',
-  },
-  {
-    file: 'dylo-mark-accent.svg',
-    name: 'Keystone, accented',
-    use: 'The centre stone in the original oxide. For the app icon and print.',
-    tone: 'light',
-  },
+  { file: 'dylo-mark.svg', name: 'Mark', use: 'The mark on light.', tone: 'light' },
+  { file: 'dylo-mark-reversed.svg', name: 'Mark, reversed', use: 'The mark on dark.', tone: 'ink' },
+] as const
+
+const APP_ICONS = [
+  { file: 'dylo-app-icon.png', name: 'App icon' },
+  { file: 'dylo-app-icon-reversed.png', name: 'App icon, reversed' },
 ] as const
 
 function AssetTile({
@@ -94,7 +82,7 @@ export default function BrandPage() {
       <PageHeader
         eyebrow="Foundations"
         title="Brand marks"
-        lead="The mark is a keystone of three stones. It is monochrome in the interface: black on light, white on dark."
+        lead="The mark is two pieces of the same shape that lock into one square: your company and dylo. It is one colour: black on light, white on dark."
       />
 
       <Section title="Install the assets" description="Drops every SVG and PNG into public/brand/.">
@@ -113,7 +101,7 @@ export default function BrandPage() {
         title="The mark alone"
         description="For app icons, favicons and anywhere the wordmark would be illegible."
       >
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2">
           {MARKS.map((asset) => (
             <AssetTile key={asset.file} {...asset} height={48} />
           ))}
@@ -124,18 +112,30 @@ export default function BrandPage() {
         title="App icon"
         description="The tile radius is roughly 22% of its width — the platform convention, not the panel radius."
       >
-        <div className="flex flex-wrap items-end gap-6 rounded-2xl border border-gray-a3 p-8">
-          {[96, 64, 40, 24].map((size) => (
-            <div key={size} className="text-center">
-              {/* eslint-disable-next-line @next/next/no-img-element -- raster app icon, fixed sizes */}
-              <img
-                src="/brand/dylo-app-icon.png"
-                alt={`dylo app icon at ${size} pixels`}
-                className="shadow-md"
-                style={{ width: size, height: size, borderRadius: size * 0.22 }}
-              />
-              <code className="mt-2 block font-mono text-2xs text-gray-10">{size}px</code>
-            </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {APP_ICONS.map((icon) => (
+            <figure key={icon.file} className="m-0 overflow-hidden rounded-2xl border border-gray-a3">
+              <div className="flex flex-wrap items-end gap-6 p-8">
+                {[96, 64, 40, 24].map((size) => (
+                  <div key={size} className="text-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- raster app icon, fixed sizes */}
+                    <img
+                      src={`/brand/${icon.file}`}
+                      alt={`dylo ${icon.name.toLowerCase()} at ${size} pixels`}
+                      className="shadow-md"
+                      style={{ width: size, height: size, borderRadius: size * 0.22 }}
+                    />
+                    <code className="mt-2 block font-mono text-2xs text-gray-10">{size}px</code>
+                  </div>
+                ))}
+              </div>
+              <figcaption className="border-t border-gray-a3 p-4">
+                <div className="mb-2 text-sm font-medium text-emphasis">{icon.name}</div>
+                <code className="rounded-md bg-gray-a3 px-1.5 py-0.5 font-mono text-2xs text-default">
+                  /brand/{icon.file}
+                </code>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </Section>
@@ -189,19 +189,33 @@ export default function BrandPage() {
         <Prose>
           <ul className="m-0 list-disc space-y-2 pl-5">
             <li>
-              <strong>Never redraw it.</strong> Use the files. Do not rotate, recolour, restack the stones, outline it,
-              or add any effect.
+              <strong>Never redraw it.</strong> Use the files. Do not rotate, recolour, pull the two pieces apart,
+              outline it, or add any effect.
             </li>
             <li>
-              <strong>It is not an icon.</strong> The keystone does not belong to an icon family and should not be set
+              <strong>It is not an icon.</strong> The mark does not belong to an icon family and should not be set
               alongside UI icons at the same size.
             </li>
             <li>
-              <strong>Give it air.</strong> Clear space of at least the height of one voussoir on every side.
+              <strong>Give it air.</strong> Clear space of at least the width of one arm of the mark on every side.
             </li>
             <li>
-              <strong>Reversed on dark only.</strong> Never place the dark mark on a dark surface and hope; there is a
+              <strong>Reversed on dark only.</strong> Never place the black mark on a dark surface and hope; there is a
               reversed file for that, and the Logo component picks it for you.
+            </li>
+            <li>
+              <strong>One colour.</strong> Black or white. The mark never takes a hue, a gray or a gradient.
+            </li>
+            <li>
+              <strong>The wordmark is drawn.</strong> It is Geist SemiBold, outlined in the files. Do not set the word
+              in a font beside the mark.
+            </li>
+            <li>
+              <strong>
+                The <code>-mono</code> files are the same artwork.
+              </strong>{' '}
+              They keep the names version 2.0 used, so an app that already points at them picks up the new mark when it
+              re-installs the assets.
             </li>
           </ul>
         </Prose>

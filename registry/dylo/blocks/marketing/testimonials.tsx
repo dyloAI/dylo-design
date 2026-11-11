@@ -46,7 +46,7 @@ export function Testimonial({ quote, name, role, avatar, logo, className }: Quot
 
 function QuoteCard({ quote, name, role, avatar }: Quote) {
   return (
-    <li className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-slate-5 bg-linear-to-b from-gray-a3 to-transparent to-70% px-8 py-6 md:w-[450px]">
+    <li className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-gray-a3 bg-linear-to-b from-gray-a3 to-transparent to-70% px-8 py-6 md:w-[450px]">
       <span
         aria-hidden
         className="pointer-events-none absolute -top-0.5 -left-0.5 h-[calc(100%+4px)] w-[calc(100%+4px)] bg-linear-to-b from-transparent from-60% to-background"

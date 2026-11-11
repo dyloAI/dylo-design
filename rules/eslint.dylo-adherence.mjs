@@ -53,6 +53,10 @@ const TAILWIND_PALETTE = [
 // collide with these.
 const TAILWIND_STEPS = '50|[1-9]00|950'
 
+// The steps of a dylo scale that no longer exists. `slate-6` now resolves to
+// nothing, so the class would fail silently rather than at build time.
+const RETIRED_STEPS = '[1-9]|1[0-2]'
+
 const COLOUR_PREFIXES =
   'bg|text|border|border-[xytrbl]|ring|ring-offset|outline|fill|stroke|from|via|to|decoration|divide|shadow|inset-shadow|inset-ring|accent|caret|placeholder'
 
@@ -85,12 +89,22 @@ function rules({ allowCatalystScales }) {
     {
       selector: `Literal[value=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-(${TAILWIND_STEPS})\\b/]`,
       message:
-        "Tailwind's default palette. Use a dylo step instead (gray-11, slate-6, green-9, red-a11) or a semantic utility (text-default, bg-error).",
+        "Tailwind's default palette. Use a dylo step instead (gray-11, gray-a3, green-9, red-a11) or a semantic utility (text-default, bg-error).",
     },
     {
       selector: `TemplateElement[value.raw=/\\b(${COLOUR_PREFIXES})-(${palette.join('|')})-(${TAILWIND_STEPS})\\b/]`,
       message:
-        "Tailwind's default palette. Use a dylo step instead (gray-11, slate-6, green-9, red-a11) or a semantic utility (text-default, bg-error).",
+        "Tailwind's default palette. Use a dylo step instead (gray-11, gray-a3, green-9, red-a11) or a semantic utility (text-default, bg-error).",
+    },
+    {
+      selector: `Literal[value=/\\b(${COLOUR_PREFIXES})-slate-(${RETIRED_STEPS})\\b/]`,
+      message:
+        'The slate scale was folded into gray. Use border-gray-a3 for a hairline, bg-gray-a2 or bg-gray-a3 for a fill, and text-default or text-emphasis for text.',
+    },
+    {
+      selector: `TemplateElement[value.raw=/\\b(${COLOUR_PREFIXES})-slate-(${RETIRED_STEPS})\\b/]`,
+      message:
+        'The slate scale was folded into gray. Use border-gray-a3 for a hairline, bg-gray-a2 or bg-gray-a3 for a fill, and text-default or text-emphasis for text.',
     },
     {
       selector: `Literal[value=/${EMOJI}/]`,
