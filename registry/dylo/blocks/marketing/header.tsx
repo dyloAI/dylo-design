@@ -121,7 +121,10 @@ export function MarketingHeader({
                         className="-ml-0.5 size-3.5 opacity-70 transition-transform duration-200 ease-in group-data-[state=open]:translate-y-0.5"
                       />
                     </NavigationMenuPrimitive.Trigger>
-                    <NavigationMenuPrimitive.Content className="data-[motion^=from-]:animate-fade-in data-[motion^=to-]:animate-fade-out">
+                    {/* Out of flow and sized by its own panel: the viewport takes its
+                        size from this element, so it must not take its width back
+                        from the viewport. */}
+                    <NavigationMenuPrimitive.Content className="absolute top-0 left-0 w-max data-[motion^=from-]:animate-fade-in data-[motion^=to-]:animate-fade-out">
                       <MenuPanel items={entry.items} />
                     </NavigationMenuPrimitive.Content>
                   </NavigationMenuPrimitive.Item>
@@ -137,7 +140,9 @@ export function MarketingHeader({
               )}
             </NavigationMenuPrimitive.List>
             <div className="absolute top-full left-1/2 flex -translate-x-1/2 justify-center perspective-[2000px]">
-              <NavigationMenuPrimitive.Viewport className="relative mt-1 h-(--radix-navigation-menu-viewport-height) w-(--radix-navigation-menu-viewport-width) origin-top overflow-hidden rounded-2xl border border-gray-a4 bg-elevated/95 shadow-popover backdrop-blur-xl transition-[width,height] duration-300 ease-dylo data-[state=closed]:animate-fade-out data-[state=open]:animate-scale-up-fade" />
+              {/* box-content: the measured size is the panel's, so the hairline
+                  sits outside it instead of clipping 2px off the panel. */}
+              <NavigationMenuPrimitive.Viewport className="relative mt-1 box-content h-(--radix-navigation-menu-viewport-height) w-(--radix-navigation-menu-viewport-width) origin-top overflow-hidden rounded-2xl border border-gray-a4 bg-elevated/95 shadow-popover backdrop-blur-xl transition-[width,height] duration-300 ease-dylo data-[state=closed]:animate-fade-out data-[state=open]:animate-scale-up-fade" />
             </div>
           </NavigationMenuPrimitive.Root>
           <div className="flex flex-1 justify-end gap-4">
