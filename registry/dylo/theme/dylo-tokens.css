@@ -17,7 +17,9 @@
 .light {
   color-scheme: light;
 
-  /* Neutral. A true gray in light, a faintly cool gray in dark. */
+  /* Neutral. The one black and white scale: a true gray in both themes, with
+     no tint. Solid (gray-N) for text and fills, translucent (gray-aN) for
+     hairlines and fills that sit on any surface. */
   --dylo-gray-1: #f0f0f0;
   --dylo-gray-2: #eeeeee;
   --dylo-gray-3: #d7d7d7;
@@ -43,20 +45,6 @@
   --dylo-gray-a10: #000000c3;
   --dylo-gray-a11: #000000cc;
   --dylo-gray-a12: #000000f2;
-
-  /* Slate: the hairline scale for borders and code chrome. */
-  --dylo-slate-a1: #00005503;
-  --dylo-slate-a2: #00005506;
-  --dylo-slate-a3: #0000330f;
-  --dylo-slate-a4: #00002d17;
-  --dylo-slate-a5: #0009321f;
-  --dylo-slate-a6: #00002f26;
-  --dylo-slate-a7: #00062e32;
-  --dylo-slate-a8: #00083046;
-  --dylo-slate-a9: #00051d74;
-  --dylo-slate-a10: #00071b7f;
-  --dylo-slate-a11: #0007149f;
-  --dylo-slate-a12: #000509e3;
 
   /* Status hues. Each one is used only for its status. */
   --dylo-green-a1: #00c00004;
@@ -166,44 +154,31 @@
 .dark {
   color-scheme: dark;
 
-  --dylo-gray-1: #141517;
-  --dylo-gray-2: #191b1e;
-  --dylo-gray-3: #212629;
-  --dylo-gray-4: #293034;
-  --dylo-gray-5: #333b3e;
-  --dylo-gray-6: #3b4345;
-  --dylo-gray-7: #434a4d;
-  --dylo-gray-8: #52595b;
-  --dylo-gray-9: #6e7679;
-  --dylo-gray-10: #878d8f;
-  --dylo-gray-11: #a1a4a5;
+  --dylo-gray-1: #151515;
+  --dylo-gray-2: #1b1b1b;
+  --dylo-gray-3: #252525;
+  --dylo-gray-4: #2f2f2f;
+  --dylo-gray-5: #3a3a3a;
+  --dylo-gray-6: #424242;
+  --dylo-gray-7: #494949;
+  --dylo-gray-8: #585858;
+  --dylo-gray-9: #757575;
+  --dylo-gray-10: #8c8c8c;
+  --dylo-gray-11: #a3a3a3;
   --dylo-gray-12: #f0f0f0;
 
-  --dylo-gray-a1: #16171aeb;
-  --dylo-gray-a2: #18191ce0;
-  --dylo-gray-a3: #b0c7d925;
-  --dylo-gray-a4: #caecff33;
-  --dylo-gray-a5: #d2f3ff3d;
-  --dylo-gray-a6: #d7eff847;
-  --dylo-gray-a7: #e2f5fe4d;
-  --dylo-gray-a8: #d8eaf161;
-  --dylo-gray-a9: #dceff673;
-  --dylo-gray-a10: #e8f4f880;
-  --dylo-gray-a11: #fdfeffa6;
-  --dylo-gray-a12: #fdfdfded;
-
-  --dylo-slate-a1: #00000000;
-  --dylo-slate-a2: #d8f4f609;
-  --dylo-slate-a3: #ddeaf814;
-  --dylo-slate-a4: #d3edf81d;
-  --dylo-slate-a5: #d9edfe25;
-  --dylo-slate-a6: #d6ebfd30;
-  --dylo-slate-a7: #d9edff40;
-  --dylo-slate-a8: #d9edff5d;
-  --dylo-slate-a9: #dfebfd6d;
-  --dylo-slate-a10: #e5edfd7b;
-  --dylo-slate-a11: #f1f7feb5;
-  --dylo-slate-a12: #fcfdffef;
+  --dylo-gray-a1: #171717eb;
+  --dylo-gray-a2: #191919e0;
+  --dylo-gray-a3: #ffffff1c;
+  --dylo-gray-a4: #ffffff2e;
+  --dylo-gray-a5: #ffffff39;
+  --dylo-gray-a6: #ffffff41;
+  --dylo-gray-a7: #ffffff49;
+  --dylo-gray-a8: #ffffff58;
+  --dylo-gray-a9: #ffffff6a;
+  --dylo-gray-a10: #ffffff79;
+  --dylo-gray-a11: #ffffffa5;
+  --dylo-gray-a12: #ffffffeb;
 
   --dylo-green-a1: #00de4505;
   --dylo-green-a2: #29f99d0b;
@@ -284,7 +259,7 @@
   --dylo-violet-a12: #e3defffe;
 
   --dylo-background: #000000;
-  --dylo-canvas: #14151799;
+  --dylo-canvas: #15151599;
   --dylo-base: #000000;
   --dylo-accent: #ffffff;
   --dylo-accent-hover: var(--dylo-gray-12);

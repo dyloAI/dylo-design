@@ -20,15 +20,15 @@ export function Slider({
         className="relative flex h-5 w-full touch-none items-center select-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50"
         {...props}
       >
-        <SliderPrimitive.Track className="relative h-1 w-full grow overflow-hidden rounded-full bg-slate-5">
-          <SliderPrimitive.Range className="absolute h-full rounded-full bg-linear-to-r from-slate-11 to-slate-12" />
+        <SliderPrimitive.Track className="relative h-1 w-full grow overflow-hidden rounded-full bg-gray-a3">
+          <SliderPrimitive.Range className="absolute h-full rounded-full bg-linear-to-r from-gray-11 to-gray-12" />
         </SliderPrimitive.Track>
         {values.map((_, i) => (
           <SliderPrimitive.Thumb
             key={i}
             className={cn(
               'block size-5 cursor-grab rounded-full bg-gray-12 shadow-sm outline-hidden transition-transform active:cursor-grabbing',
-              'ring-slate-7 hover:scale-110 focus-visible:ring-3'
+              'ring-gray-a4 hover:scale-110 focus-visible:ring-3'
             )}
           />
         ))}

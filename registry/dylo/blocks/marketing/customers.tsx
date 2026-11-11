@@ -14,11 +14,11 @@ export function CustomerCard({ story, className }: { story: CustomerStory; class
     <a
       href={story.href}
       className={cn(
-        'group block w-full rounded-xl outline-hidden focus-visible:ring-2 focus-visible:ring-slate-6',
+        'group block w-full rounded-xl outline-hidden focus-visible:ring-2 focus-visible:ring-gray-a4',
         className
       )}
     >
-      <div className="relative flex h-96 flex-col items-center justify-center overflow-hidden rounded-xl border border-slate-6 bg-subtle transition-colors duration-300 group-hover:border-slate-8">
+      <div className="relative flex h-96 flex-col items-center justify-center overflow-hidden rounded-xl border border-gray-a3 bg-subtle transition-colors duration-300 group-hover:border-gray-a4">
         <div className="transition-transform duration-500 ease-dylo group-hover:-translate-y-6">
           {story.logo ?? (
             <span className="font-display text-3xl font-semibold tracking-tight text-gray-12">{story.name}</span>
@@ -65,11 +65,11 @@ export function CustomersGrid({
         ))}
       </div>
       {logos.length ? (
-        <ul className="mt-12 grid grid-cols-2 border-t border-l border-slate-6 sm:grid-cols-3 lg:grid-cols-4">
+        <ul className="mt-12 grid grid-cols-2 border-t border-l border-gray-a3 sm:grid-cols-3 lg:grid-cols-4">
           {logos.map((logo, i) => (
             <li
               key={i}
-              className="relative flex h-40 items-center justify-center border-r border-b border-slate-6 px-4 text-gray-11"
+              className="relative flex h-40 items-center justify-center border-r border-b border-gray-a3 px-4 text-gray-11"
             >
               {typeof logo === 'string' ? (
                 <span className="font-display text-xl font-semibold tracking-tight">{logo}</span>
@@ -102,7 +102,7 @@ export function CaseStudyHeader({
       <h1 className="mt-4 effect-font-gradient font-display effect-font-styling text-[2.75rem] leading-[115%] tracking-tighter text-balance md:text-[3.5rem]">
         {title}
       </h1>
-      <dl className="mt-10 grid grid-cols-2 gap-6 border-y border-slate-6 py-6 sm:grid-cols-4">
+      <dl className="mt-10 grid grid-cols-2 gap-6 border-y border-gray-a3 py-6 sm:grid-cols-4">
         {facts.map((f) => (
           <div key={f.label} className="flex flex-col gap-1">
             <dt className="text-xs text-gray-10">{f.label}</dt>

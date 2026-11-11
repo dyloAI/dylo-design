@@ -8,27 +8,27 @@
       "name": "brand-assets",
       "type": "registry:item",
       "title": "Brand assets",
-      "description": "The keystone mark and logo lockups (monochrome, for the interface, and the original colour files), app icons and the video-call backgrounds, in SVG and PNG. Installs into public/brand/, which is where the Logo component expects them.",
+      "description": "The dylo mark and logo lockups, black for light surfaces and white for dark, the app icons and the video-call backgrounds, in SVG and PNG. Installs into public/brand/, which is where the Logo component expects them.",
       "files": [
         {
-          "path": "public/brand/dylo-mark-mono-reversed.svg",
+          "path": "public/brand/dylo-mark.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark-mono-reversed.svg"
+          "target": "~/public/brand/dylo-mark.svg"
         },
         {
-          "path": "public/brand/dylo-mark-mono.svg",
+          "path": "public/brand/dylo-mark-reversed.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark-mono.svg"
+          "target": "~/public/brand/dylo-mark-reversed.svg"
         },
         {
-          "path": "public/brand/dylo-logo-horizontal-mono-reversed.svg",
+          "path": "public/brand/dylo-mark.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-logo-horizontal-mono-reversed.svg"
+          "target": "~/public/brand/dylo-mark.png"
         },
         {
-          "path": "public/brand/dylo-logo-horizontal-mono.svg",
+          "path": "public/brand/dylo-mark-reversed.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-logo-horizontal-mono.svg"
+          "target": "~/public/brand/dylo-mark-reversed.png"
         },
         {
           "path": "public/brand/dylo-logo-horizontal.svg",
@@ -36,14 +36,14 @@
           "target": "~/public/brand/dylo-logo-horizontal.svg"
         },
         {
-          "path": "public/brand/dylo-logo-horizontal.png",
-          "type": "registry:file",
-          "target": "~/public/brand/dylo-logo-horizontal.png"
-        },
-        {
           "path": "public/brand/dylo-logo-horizontal-reversed.svg",
           "type": "registry:file",
           "target": "~/public/brand/dylo-logo-horizontal-reversed.svg"
+        },
+        {
+          "path": "public/brand/dylo-logo-horizontal.png",
+          "type": "registry:file",
+          "target": "~/public/brand/dylo-logo-horizontal.png"
         },
         {
           "path": "public/brand/dylo-logo-horizontal-reversed.png",
@@ -56,29 +56,29 @@
           "target": "~/public/brand/dylo-logo-stacked.svg"
         },
         {
-          "path": "public/brand/dylo-mark.svg",
+          "path": "public/brand/dylo-logo-stacked-reversed.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark.svg"
+          "target": "~/public/brand/dylo-logo-stacked-reversed.svg"
         },
         {
-          "path": "public/brand/dylo-mark.png",
+          "path": "public/brand/dylo-mark-mono.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark.png"
+          "target": "~/public/brand/dylo-mark-mono.svg"
         },
         {
-          "path": "public/brand/dylo-mark-accent.svg",
+          "path": "public/brand/dylo-mark-mono-reversed.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark-accent.svg"
+          "target": "~/public/brand/dylo-mark-mono-reversed.svg"
         },
         {
-          "path": "public/brand/dylo-mark-reversed.svg",
+          "path": "public/brand/dylo-logo-horizontal-mono.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark-reversed.svg"
+          "target": "~/public/brand/dylo-logo-horizontal-mono.svg"
         },
         {
-          "path": "public/brand/dylo-mark-reversed.png",
+          "path": "public/brand/dylo-logo-horizontal-mono-reversed.svg",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-mark-reversed.png"
+          "target": "~/public/brand/dylo-logo-horizontal-mono-reversed.svg"
         },
         {
           "path": "public/brand/dylo-app-icon.png",
@@ -86,29 +86,29 @@
           "target": "~/public/brand/dylo-app-icon.png"
         },
         {
-          "path": "public/brand/dylo-app-icon-oxide.png",
+          "path": "public/brand/dylo-app-icon-reversed.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-app-icon-oxide.png"
+          "target": "~/public/brand/dylo-app-icon-reversed.png"
         },
         {
-          "path": "public/brand/dylo-meet-background-bone.png",
+          "path": "public/brand/dylo-meet-background-light.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-meet-background-bone.png"
+          "target": "~/public/brand/dylo-meet-background-light.png"
         },
         {
-          "path": "public/brand/dylo-meet-background-ink.png",
+          "path": "public/brand/dylo-meet-background-dark.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-meet-background-ink.png"
+          "target": "~/public/brand/dylo-meet-background-dark.png"
         },
         {
-          "path": "public/brand/dylo-meet-background-bone-mirrored.png",
+          "path": "public/brand/dylo-meet-background-light-mirrored.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-meet-background-bone-mirrored.png"
+          "target": "~/public/brand/dylo-meet-background-light-mirrored.png"
         },
         {
-          "path": "public/brand/dylo-meet-background-ink-mirrored.png",
+          "path": "public/brand/dylo-meet-background-dark-mirrored.png",
           "type": "registry:file",
-          "target": "~/public/brand/dylo-meet-background-ink-mirrored.png"
+          "target": "~/public/brand/dylo-meet-background-dark-mirrored.png"
         }
       ]
     },

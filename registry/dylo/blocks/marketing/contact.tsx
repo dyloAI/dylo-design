@@ -21,7 +21,7 @@ export function ContactForm({
 }) {
   const [sent, setSent] = React.useState(false)
   return (
-    <div className={cn('relative rounded-3xl border border-slate-6 bg-subtle p-6 sm:p-8', className)}>
+    <div className={cn('relative rounded-3xl border border-gray-a3 bg-subtle p-6 sm:p-8', className)}>
       <span aria-hidden className="pointer-events-none absolute top-0 left-1/2 glow-line w-[200px] -translate-x-1/2" />
       {sent ? (
         <div role="status" className="flex min-h-80 flex-col items-center justify-center gap-3 text-center">

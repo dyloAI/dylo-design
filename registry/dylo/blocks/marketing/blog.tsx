@@ -39,7 +39,7 @@ export function Authors({ authors, className }: { authors: Author[]; className?:
       <a
         href={a.href ?? '#'}
         className={cn(
-          'inline-flex items-center gap-1.5 text-sm font-medium text-inherit transition-colors hover:text-slate-12 md:gap-2',
+          'inline-flex items-center gap-1.5 text-sm font-medium text-inherit transition-colors hover:text-emphasis md:gap-2',
           className
         )}
       >
@@ -69,20 +69,20 @@ export function Authors({ authors, className }: { authors: Author[]; className?:
 export function PostCard({ post, size = 'md' }: { post: Post; size?: 'lg' | 'md' }) {
   return (
     <li className="relative flex flex-col gap-2">
-      <a href={post.href} className="group rounded-xl outline-hidden focus-visible:ring-2 focus-visible:ring-slate-6">
-        <div className="relative aspect-[811/457] w-full overflow-hidden rounded-lg border border-slate-6 transition-colors group-hover:border-slate-8 md:rounded-xl">
+      <a href={post.href} className="group rounded-xl outline-hidden focus-visible:ring-2 focus-visible:ring-gray-a4">
+        <div className="relative aspect-[811/457] w-full overflow-hidden rounded-lg border border-gray-a3 transition-colors group-hover:border-gray-a4 md:rounded-xl">
           {post.cover ?? <PostCover label={post.category} />}
         </div>
         <h2
           className={cn(
-            'mt-4 line-clamp-5 font-display effect-font-styling leading-tight tracking-tighter text-balance text-slate-12',
+            'mt-4 line-clamp-5 font-display effect-font-styling leading-tight tracking-tighter text-balance text-emphasis',
             size === 'lg' ? 'text-[2.25rem]' : 'text-xl'
           )}
         >
           {post.title}
         </h2>
       </a>
-      <div className="mt-0.5 flex items-center gap-1 text-slate-11 md:gap-1.5 lg:mt-1">
+      <div className="mt-0.5 flex items-center gap-1 text-default md:gap-1.5 lg:mt-1">
         <Authors authors={post.authors} />
         <span aria-hidden>·</span>
         <time className="text-sm">{post.date}</time>
@@ -114,7 +114,7 @@ export function CategoryPills({
           className={cn(
             buttonVariants({ variant: c === active ? 'primary' : 'secondary' }),
             'rounded-full capitalize',
-            c !== active && 'border-slate-3'
+            c !== active && 'border-gray-a2'
           )}
         >
           {c}
@@ -157,7 +157,7 @@ export function BlogIndex({
           <PostCard key={p.title} post={p} size="lg" />
         ))}
       </ul>
-      <h2 className="mt-20 mb-4 font-display effect-font-styling text-xl leading-[130%] text-slate-12">Recent posts</h2>
+      <h2 className="mt-20 mb-4 font-display effect-font-styling text-xl leading-[130%] text-emphasis">Recent posts</h2>
       <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((p) => (
           <PostCard key={p.title} post={p} />
@@ -177,12 +177,12 @@ export function BlogPost({ post, children, className }: { post: Post; children: 
       <h1 className="mt-4 effect-font-gradient font-display effect-font-styling text-[2.75rem] leading-[115%] tracking-tighter text-balance md:text-[3.5rem]">
         {post.title}
       </h1>
-      <div className="mt-6 flex items-center gap-2 text-slate-11">
+      <div className="mt-6 flex items-center gap-2 text-default">
         <Authors authors={post.authors} />
         <span aria-hidden>·</span>
         <time className="text-sm">{post.date}</time>
       </div>
-      <div className="relative mt-10 aspect-[811/457] w-full overflow-hidden rounded-xl border border-slate-6">
+      <div className="relative mt-10 aspect-[811/457] w-full overflow-hidden rounded-xl border border-gray-a3">
         {post.cover ?? <PostCover label={post.category} />}
       </div>
       <Prose className="mt-12">{children}</Prose>

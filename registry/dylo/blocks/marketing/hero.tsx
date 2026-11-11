@@ -152,7 +152,7 @@ export function FeatureHero({
       className={className}
       eyebrow={
         <span className="inline-flex items-center gap-2 text-sm text-default">
-          <span className="inline-flex size-8 items-center justify-center rounded-lg border border-slate-6 bg-linear-to-bl from-gray-a3 text-emphasis [&_svg]:size-4">
+          <span className="inline-flex size-8 items-center justify-center rounded-lg border border-gray-a3 bg-linear-to-bl from-gray-a3 text-emphasis [&_svg]:size-4">
             {icon}
           </span>
           {name}

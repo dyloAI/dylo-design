@@ -54,7 +54,7 @@ export function SubtleCta({
     <a
       href={href}
       className={cn(
-        'group relative mx-auto flex w-fit items-center gap-1 overflow-hidden rounded-full border border-gray-a3 bg-slate-4 py-2 pr-1.5 pl-3 font-display text-sm font-medium tracking-wide text-gray-11',
+        'group relative mx-auto flex w-fit items-center gap-1 overflow-hidden rounded-full border border-gray-a3 bg-gray-a2 py-2 pr-1.5 pl-3 font-display text-sm font-medium tracking-wide text-gray-11',
         'ring-focus transition-all duration-500 ease-dylo hover:text-gray-12 focus-visible:ring-2 focus-visible:outline-hidden',
         className
       )}

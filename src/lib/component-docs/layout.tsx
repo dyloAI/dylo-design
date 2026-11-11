@@ -139,7 +139,7 @@ export const layout: ComponentDoc[] = [
         name: 'variant',
         type: "'mark' | 'lockup'",
         default: "'mark'",
-        description: 'The keystone alone, or with the wordmark.',
+        description: 'The mark alone, or with the wordmark.',
       },
     ],
     notes: ['Install `brand-assets` too: the component points at the SVGs in `public/brand/`.'],

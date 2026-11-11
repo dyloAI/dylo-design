@@ -267,6 +267,9 @@ These bind you whether you are working here or in a consuming repo.
 - **Both themes, always.** Build with semantic utilities (`bg-background`,
   `text-emphasis`, `text-default`, `border-gray-a3`, `bg-interactive`) so a
   component needs no `dark:` variant, and check every surface in both themes.
+- **One neutral.** Gray is the only neutral scale: solid `gray-1` to
+  `gray-12`, translucent `gray-a1` to `gray-a12`. It carries no tint in either
+  theme. There is no slate scale.
 - **The accent is monochrome.** `bg-accent text-on-accent` is black on light
   and white on dark. One primary action per view.
 - **Hue carries status, and only status.** Green success, amber warning, red
@@ -281,8 +284,8 @@ These bind you whether you are working here or in a consuming repo.
 - **No emoji. Ever.** Lucide line icons at 16px in the interface. Product
   Catalyst apps use Heroicons as shipped.
 - **Shape.** 32px controls with `rounded-xl`; `rounded-2xl` panels with a
-  `border-gray-a3` hairline; `rounded-3xl` marketing feature panels with
-  `border-slate-6`. Only overlays carry a shadow (`shadow-popover`,
+  `border-gray-a3` hairline; `rounded-3xl` marketing feature panels with the
+  same hairline. Only overlays carry a shadow (`shadow-popover`,
   `shadow-dialog`).
 - **Two buttons, two places.** `Button` is the product control. `CtaButton`
   (glass) is for marketing pages and auth screens only.
@@ -292,8 +295,8 @@ These bind you whether you are working here or in a consuming repo.
 - **Motion.** Interaction is 150 to 200ms with `ease-dylo`. Overlays fade and
   scale in from 98%; sheets slide over 500ms with `ease-drawer`. All of it
   collapses to 1ms under `prefers-reduced-motion`. No bounces, no float loops.
-- **Never redraw the mark.** Use `<Logo>` or the files in `public/brand/`; the
-  interface uses the monochrome files.
+- **Never redraw the mark.** Use `<Logo>` or the files in `public/brand/`. The
+  mark is one colour: black on light, the reversed white file on dark.
 
 ### Voice
 
