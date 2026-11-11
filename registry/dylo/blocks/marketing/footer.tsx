@@ -82,7 +82,7 @@ export function MarketingFooter({
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="rounded-md px-1 py-0.5 text-sm text-default outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4"
+                        className="inline-block rounded-md px-1 py-0.5 text-sm text-default outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4"
                       >
                         {link.label}
                       </a>
