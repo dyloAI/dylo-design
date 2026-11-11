@@ -9,7 +9,15 @@ export type CustomerStory = { name: string; href: string; logo?: React.ReactNode
  * A tall story card: the logo centred, the summary rising in on hover, and
  * a soft light from the bottom edge.
  */
-export function CustomerCard({ story, className }: { story: CustomerStory; className?: string }) {
+export function CustomerCard({
+  story,
+  readLabel = 'Read story',
+  className,
+}: {
+  story: CustomerStory
+  readLabel?: string
+  className?: string
+}) {
   return (
     <a
       href={story.href}
@@ -28,7 +36,7 @@ export function CustomerCard({ story, className }: { story: CustomerStory; class
           {story.metric ? <span className="font-display text-xl text-gray-12">{story.metric}</span> : null}
           <p className="text-sm leading-[1.6] text-gray-11">{story.summary}</p>
           <span className="inline-flex items-center gap-1 text-sm font-medium text-gray-12">
-            Read story <ArrowUpRight className="size-3.5" />
+            {readLabel} <ArrowUpRight className="size-3.5" />
           </span>
         </div>
         <span
@@ -45,23 +53,25 @@ export function CustomersGrid({
   featured,
   stories,
   logos = [],
+  readLabel,
   className,
 }: {
   featured: CustomerStory[]
   stories: CustomerStory[]
   logos?: React.ReactNode[]
+  readLabel?: string
   className?: string
 }) {
   return (
     <div className={cn(container, 'flex flex-col gap-6 pb-24', className)}>
       <div className="grid gap-6 md:grid-cols-2">
         {featured.map((s) => (
-          <CustomerCard key={s.name} story={s} />
+          <CustomerCard key={s.name} story={s} readLabel={readLabel} />
         ))}
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {stories.map((s) => (
-          <CustomerCard key={s.name} story={s} />
+          <CustomerCard key={s.name} story={s} readLabel={readLabel} />
         ))}
       </div>
       {logos.length ? (
@@ -89,16 +99,21 @@ export function CaseStudyHeader({
   name,
   title,
   facts,
+  eyebrow = 'Customer story',
   className,
 }: {
   name: string
   title: React.ReactNode
   facts: { label: string; value: string }[]
+  /** The words before the name in the line above the headline. */
+  eyebrow?: string
   className?: string
 }) {
   return (
     <header className={cn('mx-auto w-full max-w-3xl px-6 pt-24 md:pt-32', className)}>
-      <span className="font-mono text-xs tracking-widest text-gray-10 uppercase">Customer story · {name}</span>
+      <span className="font-mono text-xs tracking-widest text-gray-10 uppercase">
+        {eyebrow} · {name}
+      </span>
       <h1 className="mt-4 effect-font-gradient font-display effect-font-styling text-[2.75rem] leading-[115%] tracking-tighter text-balance md:text-[3.5rem]">
         {title}
       </h1>

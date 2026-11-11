@@ -21,7 +21,15 @@ export type Plan = {
 }
 
 /** One plan: name, price, a line, the call to action and what it includes. */
-export function PlanCard({ plan, className }: { plan: Plan; className?: string }) {
+export function PlanCard({
+  plan,
+  recommendedLabel = 'Recommended',
+  className,
+}: {
+  plan: Plan
+  recommendedLabel?: string
+  className?: string
+}) {
   return (
     <div
       data-slot="plan-card"
@@ -45,7 +53,7 @@ export function PlanCard({ plan, className }: { plan: Plan; className?: string }
         <h3 className="font-display effect-font-styling text-xl text-emphasis">{plan.name}</h3>
         {plan.recommended ? (
           <Badge tone="success" size="md">
-            Recommended
+            {recommendedLabel}
           </Badge>
         ) : null}
       </div>
@@ -76,7 +84,15 @@ export function PlanCard({ plan, className }: { plan: Plan; className?: string }
   )
 }
 
-export function PlanGrid({ plans, className }: { plans: Plan[]; className?: string }) {
+export function PlanGrid({
+  plans,
+  recommendedLabel,
+  className,
+}: {
+  plans: Plan[]
+  recommendedLabel?: string
+  className?: string
+}) {
   return (
     <div
       className={cn(
@@ -86,7 +102,7 @@ export function PlanGrid({ plans, className }: { plans: Plan[]; className?: stri
       )}
     >
       {plans.map((p) => (
-        <PlanCard key={p.name} plan={p} />
+        <PlanCard key={p.name} plan={p} recommendedLabel={recommendedLabel} />
       ))}
     </div>
   )
@@ -159,18 +175,30 @@ export function Pricing({
 
 export type ComparisonRow = { label: string; hint?: string; values: (string | boolean)[] }
 
+/** The words the comparison table reads out. Pass any of them to translate it. */
+export type ComparisonTableLabels = { feature: string; included: string; notIncluded: string }
+
+const comparisonTableLabels: ComparisonTableLabels = {
+  feature: 'Feature',
+  included: 'Included',
+  notIncluded: 'Not included',
+}
+
 /** A plan comparison table: a tinted header band, 44px rows, ticks and dashes. */
 export function ComparisonTable({
   title,
   columns,
   rows,
+  labels,
   className,
 }: {
   title: React.ReactNode
   columns: string[]
   rows: ComparisonRow[]
+  labels?: Partial<ComparisonTableLabels>
   className?: string
 }) {
+  const t = { ...comparisonTableLabels, ...labels }
   const th =
     'h-9 border-y border-gray-a3 px-3 text-xs font-semibold text-default first:rounded-l-md first:border-l last:rounded-r-md last:border-r'
   const td = 'h-11 truncate border-b border-gray-a3 px-3 text-sm text-gray-12'
@@ -185,7 +213,7 @@ export function ComparisonTable({
             <thead className="h-9 bg-gray-a2">
               <tr>
                 <th className={th}>
-                  <span className="sr-only">Feature</span>
+                  <span className="sr-only">{t.feature}</span>
                 </th>
                 {columns.map((c) => (
                   <th key={c} className={th}>
@@ -212,9 +240,9 @@ export function ComparisonTable({
                   {row.values.map((v, i) => (
                     <td key={i} className={cn(td, 'w-1/6')}>
                       {v === true ? (
-                        <Check aria-label="Included" className="size-[18px] text-green-10" />
+                        <Check aria-label={t.included} className="size-[18px] text-green-10" />
                       ) : v === false ? (
-                        <Minus aria-label="Not included" className="size-[18px] text-gray-8" />
+                        <Minus aria-label={t.notIncluded} className="size-[18px] text-gray-8" />
                       ) : (
                         <span className="ml-1">{v}</span>
                       )}

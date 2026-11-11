@@ -11,6 +11,24 @@ import * as React from 'react'
 export type NavLink = { label: string; href: string; description?: string; icon?: LucideIcon }
 export type NavEntry = NavLink | { label: string; items: NavLink[] }
 
+/** The words the header supplies itself. Pass any of them to translate the header. */
+export type MarketingHeaderLabels = {
+  login: string
+  home: string
+  openMenu: string
+  closeMenu: string
+  /** The accessible name of the mobile navigation. */
+  main: string
+}
+
+const defaultLabels: MarketingHeaderLabels = {
+  login: 'Log in',
+  home: 'Home',
+  openMenu: 'Open main menu',
+  closeMenu: 'Close menu',
+  main: 'Main',
+}
+
 const navTrigger = [
   'group flex h-[58px] cursor-pointer items-center gap-1.5 px-1 py-1 text-sm font-medium text-default select-none lg:px-3',
   'outline-hidden transition duration-150 ease-in-out hover:text-emphasis focus-visible:ring-2 focus-visible:ring-gray-a4',
@@ -46,7 +64,9 @@ function MenuPanel({ items }: { items: NavLink[] }) {
 
 /**
  * The sticky marketing header: logo, menus with panels, and the two calls to
- * action. It blurs the page behind it once you scroll.
+ * action. It blurs the page behind it once you scroll. `actions` sits before
+ * the calls to action and at the foot of the mobile menu: a language switch,
+ * for example.
  */
 export function MarketingHeader({
   nav,
@@ -54,6 +74,8 @@ export function MarketingHeader({
   loginHref = '/login',
   signupHref = '/signup',
   signupLabel = 'Get started',
+  actions,
+  labels,
   className,
 }: {
   nav: NavEntry[]
@@ -61,8 +83,11 @@ export function MarketingHeader({
   loginHref?: string
   signupHref?: string
   signupLabel?: string
+  actions?: React.ReactNode
+  labels?: Partial<MarketingHeaderLabels>
   className?: string
 }) {
+  const t = { ...defaultLabels, ...labels }
   const [scrolled, setScrolled] = React.useState(false)
   const [open, setOpen] = React.useState(false)
 
@@ -85,12 +110,12 @@ export function MarketingHeader({
     >
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 md:max-w-7xl">
         <div className="flex h-[58px] items-center md:hidden">
-          <a href={homeHref} aria-label="Home" className="flex-auto">
+          <a href={homeHref} aria-label={t.home} className="flex-auto">
             <Logo />
           </a>
           <IconButton
             size="md"
-            aria-label={open ? 'Close menu' : 'Open main menu'}
+            aria-label={open ? t.closeMenu : t.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
             className="-mr-2"
@@ -103,7 +128,7 @@ export function MarketingHeader({
           <div className="flex flex-1 lg:w-[225px]">
             <a
               href={homeHref}
-              aria-label="Home"
+              aria-label={t.home}
               className="rounded-md py-1 outline-hidden focus-visible:ring-2 focus-visible:ring-gray-a4"
             >
               <Logo />
@@ -145,9 +170,10 @@ export function MarketingHeader({
               <NavigationMenuPrimitive.Viewport className="relative mt-1 box-content h-(--radix-navigation-menu-viewport-height) w-(--radix-navigation-menu-viewport-width) origin-top overflow-hidden rounded-2xl border border-gray-a4 bg-elevated/95 shadow-popover backdrop-blur-xl transition-[width,height] duration-300 ease-dylo data-[state=closed]:animate-fade-out data-[state=open]:animate-scale-up-fade" />
             </div>
           </NavigationMenuPrimitive.Root>
-          <div className="flex flex-1 justify-end gap-4">
+          <div className="flex flex-1 items-center justify-end gap-4">
+            {actions}
             <CtaButton asChild variant="ghost" size="md" className="hidden lg:flex">
-              <a href={loginHref}>Log in</a>
+              <a href={loginHref}>{t.login}</a>
             </CtaButton>
             <CtaButton asChild size="md">
               <a href={signupHref}>{signupLabel}</a>
@@ -158,7 +184,7 @@ export function MarketingHeader({
 
       {open ? (
         <nav
-          aria-label="Main"
+          aria-label={t.main}
           className="absolute inset-x-0 top-[58px] z-20 h-[calc(100dvh-58px)] overflow-y-auto bg-background px-6 pb-10 md:hidden"
         >
           <ul className="flex flex-col divide-y divide-gray-a3">
@@ -186,9 +212,10 @@ export function MarketingHeader({
               <a href={signupHref}>{signupLabel}</a>
             </CtaButton>
             <CtaButton asChild variant="ghost" size="lg" className="w-full">
-              <a href={loginHref}>Log in</a>
+              <a href={loginHref}>{t.login}</a>
             </CtaButton>
           </div>
+          {actions ? <div className="mt-6 flex justify-center">{actions}</div> : null}
         </nav>
       ) : null}
     </header>

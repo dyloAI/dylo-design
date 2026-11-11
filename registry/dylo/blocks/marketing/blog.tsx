@@ -96,14 +96,17 @@ export function CategoryPills({
   categories,
   active,
   hrefFor,
+  label = 'Categories',
 }: {
   categories: string[]
   active: string
   hrefFor?: (c: string) => string
+  /** The accessible name of the filter row. */
+  label?: string
 }) {
   return (
     <nav
-      aria-label="Categories"
+      aria-label={label}
       className="mx-auto mb-6 grid w-fit max-w-full min-w-72 grid-cols-2 items-center gap-2 md:mr-auto md:ml-0 md:flex"
     >
       {categories.map((c) => (
@@ -124,40 +127,63 @@ export function CategoryPills({
   )
 }
 
-/** The blog index: headline with search and subscribe, filters, featured and recent posts. */
+/** The words the blog index supplies itself. Pass any of them to translate it. */
+export type BlogIndexLabels = { categories: string; featured: string; recent: string; subscribe: string }
+
+const blogIndexLabels: BlogIndexLabels = {
+  categories: 'Categories',
+  featured: 'Featured posts',
+  recent: 'Recent posts',
+  subscribe: 'Subscribe',
+}
+
+/**
+ * The blog index: headline with search and subscribe, filters, featured and
+ * recent posts. `actions` replaces the search and subscribe pair beside the
+ * headline; pass `null` when the site has neither.
+ */
 export function BlogIndex({
   title = 'Blog',
   categories,
   featured,
   posts,
+  actions,
+  labels,
   className,
 }: {
   title?: React.ReactNode
   categories: string[]
   featured: Post[]
   posts: Post[]
+  actions?: React.ReactNode
+  labels?: Partial<BlogIndexLabels>
   className?: string
 }) {
+  const t = { ...blogIndexLabels, ...labels }
   return (
     <div className={cn(container, 'pt-24 pb-24 md:pt-32', className)}>
       <div className="mb-10 flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
         <DisplayTitle className="md:text-[4.8rem]">{title}</DisplayTitle>
-        <div className="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center">
-          <SearchTrigger className="h-10 w-full rounded-2xl sm:w-auto sm:min-w-[200px]" />
-          <CtaButton size="md">
-            <Mail className="size-4" />
-            Subscribe
-          </CtaButton>
-        </div>
+        {actions === undefined ? (
+          <div className="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center">
+            <SearchTrigger className="h-10 w-full rounded-2xl sm:w-auto sm:min-w-[200px]" />
+            <CtaButton size="md">
+              <Mail className="size-4" />
+              {t.subscribe}
+            </CtaButton>
+          </div>
+        ) : (
+          actions
+        )}
       </div>
-      <CategoryPills categories={categories} active={categories[0]} />
-      <h3 className="sr-only">Featured posts</h3>
+      <CategoryPills categories={categories} active={categories[0]} label={t.categories} />
+      <h3 className="sr-only">{t.featured}</h3>
       <ul className="relative grid gap-6 md:grid-cols-2">
         {featured.map((p) => (
           <PostCard key={p.title} post={p} size="lg" />
         ))}
       </ul>
-      <h2 className="mt-20 mb-4 font-display effect-font-styling text-xl leading-[130%] text-emphasis">Recent posts</h2>
+      <h2 className="mt-20 mb-4 font-display effect-font-styling text-xl leading-[130%] text-emphasis">{t.recent}</h2>
       <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((p) => (
           <PostCard key={p.title} post={p} />
@@ -213,16 +239,20 @@ export function Prose({ className, ...props }: React.ComponentProps<'div'>) {
 export function LegalPage({
   title,
   updated,
+  updatedLabel = 'Last updated',
   children,
 }: {
   title: React.ReactNode
   updated: string
+  updatedLabel?: string
   children: React.ReactNode
 }) {
   return (
     <article className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24 md:pt-32">
       <DisplayTitle className="md:text-[4.8rem]">{title}</DisplayTitle>
-      <p className="mt-2 text-sm text-gray-10">Last updated {updated}</p>
+      <p className="mt-2 text-sm text-gray-10">
+        {updatedLabel} {updated}
+      </p>
       <Prose className="mt-12">{children}</Prose>
     </article>
   )
