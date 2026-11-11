@@ -1,5 +1,5 @@
 import { ExamplePricing, KitMarketingHeader } from '@/components/kits/marketing-chrome'
-import { about, legal, objections, pains, pillars, pitch, positioning } from '@/lib/messaging'
+import { about, legal, objections, pains, pillars, pitch, positioning } from '@/lib/kits/marketing-copy'
 import {
   AddOnPanel,
   BlogIndex,
@@ -147,9 +147,9 @@ const pillarIcons = [<UserRound key="u" />, <Wrench key="w" />, <CalendarCheck k
 
 const stats = [
   { value: '4 days', label: 'From an accepted quote to a first version in production' },
-  { value: '€500', label: 'A two-day scoping sprint, credited in full if you build' },
-  { value: '3 weeks', label: 'For catalog work, with the scope fixed' },
-  { value: '€30', label: 'A month, from, to host the app and look after it' },
+  { value: '4 times', label: 'The same configurator pattern, sold to one industrial group and its partner' },
+  { value: '33,000', label: 'Schools reached by a publisher whose book data we extract' },
+  { value: 'Dec 2024', label: 'A quote calculator in production since then, and still looked after' },
 ]
 
 function QuoteMock() {
@@ -269,10 +269,10 @@ function HomePage() {
   return (
     <SiteChrome>
       <Hero
-        announcement={{ label: 'Catalog work is set at three weeks', href: m('pricing') }}
+        announcement={{ label: 'The price and the date come first', href: m('pricing') }}
         title="A piece of work, built and looked after"
         lead={pitch.oneLine.en}
-        primary={{ label: 'Book a scoping sprint', href: m('contact') }}
+        primary={{ label: 'Book a call', href: m('contact') }}
         secondary={{ label: 'See pricing', href: m('pricing') }}
       />
       <LogoStrip lead="For companies of 1 to 500 people with no tech team, in sectors like these." logos={sectors} />
@@ -298,9 +298,9 @@ function HomePage() {
         <Faq title="Questions owners ask" items={faqItems} />
       </Section>
       <CtaSection
-        title="Start with two days"
-        lead="The scoping sprint costs €500 and takes two days. If you build, it is credited in full."
-        primary={{ label: 'Book a scoping sprint', href: m('contact') }}
+        title="Start with a call"
+        lead="Tell us what the app should do. The proposal comes back with the scope, the price and the date."
+        primary={{ label: 'Book a call', href: m('contact') }}
         secondary={{ label: 'See pricing', href: m('pricing') }}
       />
     </SiteChrome>
@@ -309,28 +309,28 @@ function HomePage() {
 
 const dyloPlans: Plan[] = [
   {
-    name: 'Scoping sprint',
-    price: '€500',
-    period: 'once',
-    description: 'Two days to see whether we fit. Credited in full if you build.',
-    cta: { label: 'Book a sprint', href: m('contact') },
-    features: ['Two days with a dylo engineer', 'A written scope', 'A price and a date for the build'],
-  },
-  {
     name: 'Build',
-    price: 'In the quote',
-    description: 'A one-off fee for building the app. Catalog work is set at three weeks.',
-    cta: { label: 'Ask for a quote', href: m('contact') },
-    features: ['A fixed scope', 'The price and the date before we start', 'A dylo engineer on the platform'],
+    price: 'In the proposal',
+    description: 'A one-off fee for building the app, set for your project.',
+    cta: { label: 'Ask for a proposal', href: m('contact') },
+    features: ['A written scope', 'The price and the date before we start', 'A dylo engineer on the platform'],
     recommended: true,
   },
   {
     name: 'Looking after it',
-    price: 'From €30',
-    period: '/ month',
-    description: 'Hosting and maintenance once it is live. A few hundred euros a month for a complex app.',
+    price: 'In the proposal',
+    period: '/ year',
+    description: 'Hosting, updates, security updates and monitoring once it is live. Set for each app.',
     cta: { label: 'Talk to us', href: m('contact') },
-    features: ['Hosting', 'Maintenance', 'Take the app elsewhere whenever you want'],
+    features: ['Hosting', 'Updates and security updates', 'Monitoring', 'Take the app elsewhere whenever you want'],
+  },
+  {
+    name: 'Changes',
+    price: 'Quoted',
+    period: 'each',
+    description: 'A change after delivery is quoted at a fixed price, like the build.',
+    cta: { label: 'Ask about a change', href: m('contact') },
+    features: ['A fixed price', 'A date', 'No hourly rate'],
   },
 ]
 
@@ -340,7 +340,7 @@ function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title="A price and a date, first"
-        lead="A one-off fee pays for the build. One monthly fee covers hosting and maintenance."
+        lead="A one-off fee pays for the build. One yearly fee covers hosting and looking after it."
       />
       <Section>
         <PlanGrid plans={dyloPlans} />
@@ -348,15 +348,14 @@ function PricingPage() {
       <Section>
         <ComparisonTable
           title="What each part includes"
-          columns={['Scoping sprint', 'Build', 'Looking after it']}
+          columns={['Build', 'Looking after it', 'Changes']}
           rows={[
             { label: 'Price agreed before we start', values: [true, true, true] },
             { label: 'A dylo engineer', values: [true, true, true] },
-            { label: 'Written scope', values: [true, true, false] },
-            { label: 'Credited against the build', hint: 'In full, if you build.', values: [true, false, false] },
-            { label: 'Hosting', values: [false, false, true] },
-            { label: 'Maintenance', values: [false, false, true] },
-            { label: 'Hand-over whenever you want', values: [false, true, true] },
+            { label: 'Written scope', values: [true, false, true] },
+            { label: 'Hosting', values: [false, true, false] },
+            { label: 'Updates and security updates', values: [false, true, false] },
+            { label: 'Monitoring', hint: 'Errors and uptime.', values: [false, true, false] },
           ]}
         />
       </Section>
@@ -366,8 +365,8 @@ function PricingPage() {
           items={[
             {
               name: 'A complex app',
-              price: 'A few hundred euros a month',
-              body: 'A 3D configurator, for example, sits toward a few hundred euros a month to host and look after.',
+              price: 'Set in the proposal',
+              body: 'A 3D configurator, for example, costs more to host and look after. The yearly fee is set for each app.',
               cta: { label: 'Ask about yours', href: m('contact') },
             },
           ]}
@@ -445,23 +444,24 @@ function FeaturePage({ id }: { id: string }) {
       <FeaturePanels
         title="How a build runs"
         panels={[
-          { icon: <Hammer />, title: 'Scope', body: 'Two days with a dylo engineer, for €500, credited if you build.' },
+          {
+            icon: <Hammer />,
+            title: 'Agree',
+            body: 'The scope, the price and the date are written into the proposal before we start.',
+          },
           {
             icon: <CalendarCheck />,
             title: 'Build',
-            body: 'The price and the date are agreed first. Catalog work is set at three weeks.',
+            body: 'A dylo engineer builds it on the platform, to the date in the proposal.',
           },
           {
             icon: <ShieldCheck />,
             title: 'Look after',
-            body: 'We host it and look after it from €30 a month. You can take it elsewhere.',
+            body: 'We host it and look after it for a yearly fee. You can take it elsewhere.',
           },
         ]}
       />
-      <CtaSection
-        title={`Start your ${f.name.toLowerCase()}`}
-        primary={{ label: 'Book a scoping sprint', href: m('contact') }}
-      />
+      <CtaSection title={`Start your ${f.name.toLowerCase()}`} primary={{ label: 'Book a call', href: m('contact') }} />
     </SiteChrome>
   )
 }
@@ -588,7 +588,13 @@ const posts: Post[] = [
     authors: team,
     excerpt: 'You can, whenever you want. We hand it over.',
   },
-  { title: 'What the scoping sprint is for', href: m('blog'), date: 'July 2026', category: 'Pricing', authors: team },
+  {
+    title: 'Why the price comes in the proposal',
+    href: m('blog'),
+    date: 'July 2026',
+    category: 'Pricing',
+    authors: team,
+  },
   {
     title: 'An operations platform is not an ERP',
     href: m('blog'),
@@ -620,13 +626,13 @@ function PostPage() {
         </p>
         <h2>The answer comes first</h2>
         <p>
-          A catalog product has a published price and a fixed scope, and catalog work is set at three weeks. If the work
-          is not in the catalog, a scoping sprint costs €500, takes two days, and is credited in full if you build.
+          Before we start, you get a proposal with the scope, the price and the date. Both are set for your project, and
+          nothing is built until you have them.
         </p>
         <h2>Then we keep it running</h2>
         <p>
-          One monthly fee covers hosting and maintenance, from €30 a month. A more complex app sits toward a few hundred
-          euros a month.
+          One yearly fee covers hosting, updates, security updates and monitoring. A change after delivery is quoted at
+          a fixed price, like the build.
         </p>
         <SubtleCta href={m('pricing')}>See pricing</SubtleCta>
       </BlogPost>
@@ -680,7 +686,7 @@ function LegalKitPage() {
         <h2>Who we are</h2>
         <p>{legal.en}</p>
         <h2>What we provide</h2>
-        <p>A web app built for a one-off fee, then hosted and looked after for a monthly fee.</p>
+        <p>A web app built for a one-off fee, then hosted and looked after for a yearly fee.</p>
         <h2>Your app</h2>
         <p>You can take the app elsewhere whenever you want. We hand it over.</p>
       </LegalPage>
@@ -693,7 +699,7 @@ const docsGroups: DocsNavGroup[] = [
     title: 'Getting started',
     items: [
       { label: 'Introduction', href: `${m('docs')}#introduction` },
-      { label: 'The scoping sprint', href: `${m('docs')}#scoping-sprint` },
+      { label: 'The proposal', href: `${m('docs')}#proposal` },
       { label: 'Quotes and dates', href: `${m('docs')}#quotes` },
     ],
   },
@@ -733,11 +739,11 @@ function DocsPage() {
       <Prose className="mt-6">
         <p>{pitch.thirtySeconds.en}</p>
         <h2 id="how">How a build runs</h2>
-        <p>A scoping sprint, a quote with the price and the date, the build, and then we look after it.</p>
+        <p>A proposal with the scope, the price and the date, the build, and then we look after it.</p>
         <h3 id="need">What you need</h3>
         <p>Nothing technical. A person who owns the result, and an hour a week.</p>
         <h2 id="after">After launch</h2>
-        <p>We host the app and look after it from €30 a month.</p>
+        <p>We host the app and look after it for a yearly fee.</p>
       </Prose>
       <div className="mt-8">
         <CodeBlock
@@ -749,7 +755,7 @@ function DocsPage() {
           ]}
         />
       </div>
-      <DocsPager next={{ label: 'The scoping sprint', href: `${m('docs')}#scoping-sprint` }} />
+      <DocsPager next={{ label: 'The proposal', href: `${m('docs')}#proposal` }} />
     </DocsShell>
   )
 }

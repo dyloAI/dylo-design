@@ -9,6 +9,10 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    // The customer-facing wording moved to dylo-hq on 11 November 2026.
+    return [{ source: '/foundations/messaging', destination: 'https://hq.dylo.dev/market/wording', permanent: true }]
+  },
   async headers() {
     return [
       {

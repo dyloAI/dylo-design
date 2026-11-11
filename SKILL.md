@@ -28,7 +28,7 @@ production code depending on the need.
 
 dylo is a technology provider. We build and look after web apps for companies
 with 1 to 500 people and no tech team. There is no tagline. The promise is a
-one-off fee, then from €30 a month. Quiet monochrome in a light and a dark
+one-off fee, then a yearly fee to host it and look after it. Quiet monochrome in a light and a dark
 theme, Inter for the interface, the dylo mark.
 
 ## Non-negotiables
@@ -68,8 +68,8 @@ text-on-accent`). One primary action per view.
   features, pricing, FAQ, blog, changelog, footer and docs shell.
 - `public/brand/` — the mark and logo lockups, black and reversed white, SVG
   and PNG.
-- `src/lib/messaging.ts` — the messaging framework, in English and Spanish.
-  The docs page is `/foundations/messaging`.
+- Customer-facing wording is not here. It lives in dylo-hq,
+  `content/market/wording.md` (https://hq.dylo.dev/market/wording).
 - `rules/` — the Cursor brand rule and the ESLint adherence config.
 - `design-source/` — the raw Claude Design export of v1. Reference only; not
   maintained.

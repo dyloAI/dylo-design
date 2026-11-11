@@ -63,8 +63,8 @@ export default function KitsPage() {
       <Prose className="mb-12">
         <p>
           The kits install into <code>src/components/dashboard</code> and <code>src/components/marketing</code>. Data
-          and copy are placeholders: the dashboard reads from <code>data.ts</code>, and the marketing pages here use the
-          dylo messaging framework.
+          and copy are placeholders: the dashboard reads from <code>data.ts</code>, and the marketing pages use sample
+          copy taken from the wording in dylo-hq. They are layouts, not dylo&apos;s copy.
         </p>
       </Prose>
       <KitSection

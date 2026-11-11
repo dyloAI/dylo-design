@@ -29,11 +29,6 @@ const parts = [
   { href: '/components', title: 'Components', body: '42 Radix primitives, each with live examples in both themes.' },
   { href: '/kits', title: 'Kits', body: 'Every dashboard section and marketing page, assembled from the primitives.' },
   { href: '/agents', title: 'For agents', body: 'The short contract for a coding agent working in a dylo repo.' },
-  {
-    href: '/foundations/messaging',
-    title: 'Messaging',
-    body: 'The pitch, the pillars and the answers, in English and Spanish.',
-  },
 ]
 
 export default function HomePage() {
