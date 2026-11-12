@@ -5,7 +5,9 @@ a technology provider. We build and look after web apps for companies with
 1 to 500 employees and no tech team.
 
 The name comes from the Czech word **_dílo_**, a piece of work. dylo has no
-tagline. The promise is a one-off fee, then from €30 a month.
+tagline. The promise is a one-off fee for the build, then a yearly fee to host
+it and look after it. The customer-facing wording lives in
+[dylo-hq](https://hq.dylo.dev/market/wording); this repository holds the visual rules.
 
 Docs site: **[design.dylo.dev](https://design.dylo.dev)** · Agent contract:
 [AGENTS.md](AGENTS.md)

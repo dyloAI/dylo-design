@@ -316,8 +316,9 @@ an agency, a consultancy, or a software factory, and do not mention AI.
 - Plain and reassuring. Short sentences. Say the thing, then stop.
 - Honest. If a date is not known yet, say so. Do not imply a promise we cannot
   keep.
-- Clear about cost and time. A price and a date belong in the first
-  explanation.
+- Clear about time. A date belongs in the first explanation. A price belongs
+  in the proposal. Public copy states no figure of dylo's: no price, no range
+  of what was paid, no maintenance minimum.
 - Numbers over adjectives. "A working web app in six weeks" is the form to use.
 - First and second person: "we" (dylo) and "you" (the client).
 - The brand is lowercase: `dylo`. The work is capitalised: a Dílo.
@@ -331,25 +332,27 @@ dylo has no tagline. Do not write "Software, made.", "Software, hecho.", or a
 line under the logo. The promise is the one-line pitch. The footer carries the
 legal line: dylo is a brand of Ax42 S.L.
 
-#### Messaging
+#### Customer-facing words
 
-The framework is [`src/lib/messaging.ts`](src/lib/messaging.ts), rendered at
-`/foundations/messaging`. Use that file for customer-facing copy. Do not
-invent a price, a client, or a competitor to fill a TODO.
+The wording and its rules live in dylo-hq: `content/market/wording.md`, read
+at https://hq.dylo.dev/market/wording (behind Vercel sign-in). This design
+system holds the visual rules only. If you cannot read dylo-hq, these hold:
 
-One-line pitch: "A dylo engineer builds your web app for a one-off fee, and we
-look after it from €30 a month."
-
-Pillars: a dylo engineer on the platform; a product we already know; a price
-and a date first; one monthly fee, from €30 a month. A more complex app, such
-as a 3D configurator, sits toward a few hundred euros a month. Do not name
-the client. The customer can take the app elsewhere whenever they want. We
-hand it over. dylo is a brand of Ax42 S.L.
+- No tagline. No figure of dylo's in public copy.
+- One-line pitch: "A dylo engineer builds your web app for a one-off fee, and
+  we host it and look after it for a yearly fee." Spanish: "Un ingeniero de
+  dylo construye su aplicación web por un pago único, y la alojamos y la
+  mantenemos por una cuota anual."
+- Do not invent a price, a client, or a competitor. Do not name a client
+  without written permission. The customer can take the app elsewhere
+  whenever they want. We hand it over.
+- dylo is a brand of Ax42 S.L.
 
 #### Tone by channel
 
 **Website.** The one-line pitch, then who it is for, that we build the app and
-look after it, and that the price and the date come first. No tagline.
+look after it, and that the price and the date are agreed before we start. No
+figure of dylo's. No tagline.
 
 **Proposals and quotes.** Name the app, the price, what is included, and the
 date. Say what looking after it costs after launch. Every claim that can be a
@@ -358,7 +361,8 @@ number should be a number.
 **Email.** Write as you would to a director you have already met. One subject,
 one ask. If you are waiting on them, say what you need and by when.
 
-**Social.** One fact: a price range, a timeline, or who it is for. No emoji.
+**Social.** One fact: a timeline, a sector, or who it is for. No figure of
+dylo's. No emoji.
 Do not add a tagline under the logo.
 
 #### English
@@ -374,7 +378,7 @@ Don't: "Supercharge your workflow with a seamless AI-native platform."
 
 #### Spanish
 
-Same rules: plain, short, a price and a date. Use "usted" with an owner or
+Same rules: plain, short, a date, no figure of dylo's in public. Use "usted" with an owner or
 director unless they have already used "tú". The brand stays lowercase: dylo.
 There is no Spanish tagline. Use the pitch, with usted.
 

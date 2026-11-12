@@ -80,7 +80,7 @@ export const layout: ComponentDoc[] = [
             <AccordionItem value="cost">
               <AccordionTrigger>What does it cost?</AccordionTrigger>
               <AccordionContent>
-                The build price is in the quote. Looking after it starts at €30 a month.
+                The build price is in the proposal, and so is the yearly fee for looking after it.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="time">
